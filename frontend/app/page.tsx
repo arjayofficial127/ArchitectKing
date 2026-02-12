@@ -1,10 +1,11 @@
-import { AtomicFuelLandingPage } from '@/components/landing/AtomicFuelLandingPage';
+import { ArvinLandingPage } from '@/components/landing/ArvinLandingPage';
 
 /**
  * Root page - Server Component
  * 
- * Renders AtomicFuel landing page.
+ * High-conversion job search MVP for Arvin Jayson Castro.
+ * Single long-form page optimized for recruiters, CTOs, and clients.
  */
 export default function Home() {
-  return <AtomicFuelLandingPage />;
+  return <ArvinLandingPage />;
 }

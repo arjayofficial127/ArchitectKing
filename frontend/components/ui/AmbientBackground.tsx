@@ -43,12 +43,12 @@ export function AmbientBackground({
 }: AmbientBackgroundProps) {
   return (
     <div className={`pointer-events-none absolute inset-0 ${className}`}>
-      {/* Gradient overlay */}
+      {/* Gradient overlay - Deep teal for Architect-King theme */}
       {enableGradient && (
         <div 
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(60% 40% at 50% 30%, rgba(6, 182, 212, ${gradientOpacity}), transparent 60%)`,
+            background: `radial-gradient(60% 40% at 50% 30%, rgba(19, 78, 74, ${gradientOpacity}), transparent 60%)`,
           }}
         />
       )}
