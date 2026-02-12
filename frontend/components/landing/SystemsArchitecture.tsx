@@ -51,7 +51,7 @@ export function SystemsArchitecture() {
         <div className="mt-12 rounded-xl border-l-4 border-teal-600 bg-teal-50/50 p-6">
           <h3 className="text-lg font-semibold text-teal-900">The Architect Mindset</h3>
           <p className="mt-3 text-teal-800">
-            Architecture isn't about complexity—it's about clarity. The best systems are 
+            Architecture isn&apos;t about complexity—it&apos;s about clarity. The best systems are 
             simple to understand, easy to extend, and reliable in production. I build systems 
             that other engineers can reason about, modify, and scale.
           </p>

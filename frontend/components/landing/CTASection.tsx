@@ -7,7 +7,7 @@ export function CTASection() {
             Ready to Build Systems That Scale?
           </h2>
           <p className="mt-6 text-xl text-teal-50">
-            Let's discuss how architecture-first thinking can accelerate your product development 
+            Let&apos;s discuss how architecture-first thinking can accelerate your product development 
             and create sustainable technical leverage.
           </p>
 

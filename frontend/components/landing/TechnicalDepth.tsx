@@ -40,7 +40,7 @@ export function TechnicalDepth() {
           <div className="mt-12 rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
             <h3 className="text-xl font-semibold text-slate-900">What This Means</h3>
             <p className="mt-4 text-slate-700">
-              I don't just write code—I design systems. Every technology choice is made with 
+              I don&apos;t just write code—I design systems. Every technology choice is made with 
               scalability, maintainability, and business outcomes in mind. I understand how 
               frontend state management affects backend API design, how database schemas impact 
               application architecture, and how infrastructure decisions shape development velocity.
