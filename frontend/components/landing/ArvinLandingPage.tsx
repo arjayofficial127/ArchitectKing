@@ -101,7 +101,7 @@ export function ArvinLandingPage() {
               </p>
               <p>
                 <strong className="text-slate-900">Business needs outpace technical capacity.</strong> The roadmap 
-                is clear, but the foundation can't support it. You need someone who thinks in systems, 
+                is clear, but the foundation can&apos;t support it. You need someone who thinks in systems, 
                 not just features—someone who builds for scale from day one.
               </p>
             </div>
@@ -127,7 +127,7 @@ export function ArvinLandingPage() {
                   <h3 className="text-xl font-semibold text-slate-900">Production-Grade Discipline</h3>
                   <p className="mt-2 text-slate-600">
                     Code that ships is code that matters. I build with error handling, monitoring, and 
-                    observability from day one. No "we'll add that later."
+                    observability from day one. No &quot;we&apos;ll add that later.&quot;
                   </p>
                 </div>
                 <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
