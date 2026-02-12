@@ -1,0 +1,69 @@
+.bookWrap {
+  width: 320px;
+  aspect-ratio: 2 / 3;
+  position: relative;
+}
+
+.shadowSlab,
+.shadowSlab2,
+.shadowSlab3,
+.shadowSlab4 {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  z-index: 0;
+  will-change: transform, filter, opacity;
+}
+
+.shadowSlab {
+  background:
+    radial-gradient(ellipse at 15% 85%, rgba(0,0,0,0.35), rgba(0,0,0,0.18) 35%, transparent 65%),
+    linear-gradient(to right, #1f1f1f 0%, #2a2a2a 45%, #3a3a3a 100%);
+  filter: blur(13px);
+  opacity: 0.35;
+}
+
+.shadowSlab2 {
+  background: radial-gradient(circle at top right, #f6e6a8 0%, #e2c36b 35%, #b58a3c 70%, #7a5524 100%);
+  filter: blur(6px);
+  opacity: 0.30;
+}
+
+.shadowSlab3,
+.shadowSlab4 {
+  background: #333;
+  filter: blur(11px);
+  opacity: 0.30;
+}
+
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: 2;
+  background: #f7f4ee;
+  box-shadow: none;
+}
+
+.frontSlab {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1) 3%, transparent 10%);
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shadowSlab,
+  .shadowSlab2,
+  .shadowSlab3,
+  .shadowSlab4,
+  .frontSlab {
+    transition: none;
+    transform: none;
+  }
+}

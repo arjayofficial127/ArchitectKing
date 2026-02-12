@@ -1,12 +1,13 @@
 'use client';
 
-import Link from 'next/link';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { CaseStudy } from './CaseStudy';
 import { CTASection } from './CTASection';
 import { AuthorityStrip } from './AuthorityStrip';
 import { TechnicalDepth } from './TechnicalDepth';
 import { SystemsArchitecture } from './SystemsArchitecture';
+import { BookAuthorityStrip } from './BookAuthorityStrip';
+import Link from 'next/link';
 
 export function ArvinLandingPage() {
   return (
@@ -32,6 +33,9 @@ export function ArvinLandingPage() {
             <span className="text-sm text-slate-600">Senior Fullstack Architect</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
+            <Link href="/working-fundamentals" className="text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors">
+              Working Fundamentals
+            </Link>
             <a href="#case-studies" className="text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors">
               Case Studies
             </a>
@@ -81,6 +85,9 @@ export function ArvinLandingPage() {
 
         {/* Authority Strip */}
         <AuthorityStrip />
+
+        {/* Book Authority Strip */}
+        <BookAuthorityStrip />
 
         {/* Problem Statement */}
         <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
