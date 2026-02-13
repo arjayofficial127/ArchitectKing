@@ -15,8 +15,10 @@ import {
   index,
   bigint,
   jsonb,
+  numeric,
 } from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
+import type { InferSelectModel, InferInsertModel } from 'drizzle-orm';
 
 // User table
 export const usersTable = pgTable('users', {
@@ -416,3 +418,211 @@ export const orgFileLinksTable = pgTable('org_file_links', {
   codeIdx: index('org_file_links_code_idx').on(table.code),
   fileIdx: index('org_file_links_file_idx').on(table.fileId),
 }));
+
+// ============================================
+// SUPERADMIN CONTROL OS SCHEMA
+// Phase 1 - Core Schema (Additive Only)
+// ============================================
+
+// Enums
+export const calendarEventStatusEnum = pgEnum('calendar_event_status', [
+  'scheduled',
+  'completed',
+  'cancelled',
+  'open_slot',
+]);
+
+export const calendarEventVisibilityEnum = pgEnum('calendar_event_visibility', [
+  'private',
+  'public_open',
+]);
+
+export const prospectStatusEnum = pgEnum('prospect_status', [
+  'new',
+  'contacted',
+  'meeting',
+  'proposal',
+  'closed',
+  'lost',
+  'other',
+]);
+
+export const entityTypeEnum = pgEnum('entity_type', [
+  'person',
+  'company',
+  'event',
+  'other',
+]);
+
+export const notificationTypeEnum = pgEnum('notification_type', [
+  'booking_request',
+  'system',
+  'reminder',
+]);
+
+// 1. Calendar Events table
+export const calendarEventsTable = pgTable('calendar_events', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  ownerUserId: uuid('owner_user_id')
+    .notNull()
+    .references(() => usersTable.id, { onDelete: 'cascade' }),
+  title: varchar('title', { length: 255 }).notNull(),
+  agenda: text('agenda'),
+  notes: text('notes'),
+  startDatetime: timestamp('start_datetime', { withTimezone: true }).notNull(),
+  endDatetime: timestamp('end_datetime', { withTimezone: true }).notNull(),
+  timezone: varchar('timezone', { length: 100 }).notNull().default('Asia/Manila'),
+  status: calendarEventStatusEnum('status').notNull(),
+  visibility: calendarEventVisibilityEnum('visibility').notNull(),
+  recurrenceRule: jsonb('recurrence_rule'),
+  recurrenceParentId: uuid('recurrence_parent_id').references((): any => calendarEventsTable.id, { onDelete: 'cascade' }),
+  color: varchar('color', { length: 50 }),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+}, (table) => ({
+  ownerUserIdIdx: index('calendar_events_owner_user_id_idx').on(table.ownerUserId),
+  startDatetimeIdx: index('calendar_events_start_datetime_idx').on(table.startDatetime),
+  statusIdx: index('calendar_events_status_idx').on(table.status),
+  recurrenceParentIdIdx: index('calendar_events_recurrence_parent_id_idx').on(table.recurrenceParentId),
+}));
+
+// 2. Entities table
+export const entitiesTable = pgTable('entities', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  type: entityTypeEnum('type').notNull(),
+  name: varchar('name', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }),
+  phone: varchar('phone', { length: 100 }),
+  website: varchar('website', { length: 255 }),
+  imageUrl: varchar('image_url', { length: 500 }),
+  notes: text('notes'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+}, (table) => ({
+  typeIdx: index('entities_type_idx').on(table.type),
+  nameIdx: index('entities_name_idx').on(table.name),
+}));
+
+// 3. Booking Requests table
+export const bookingRequestsTable = pgTable('booking_requests', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  calendarEventId: uuid('calendar_event_id')
+    .notNull()
+    .references(() => calendarEventsTable.id, { onDelete: 'cascade' }),
+  name: varchar('name', { length: 255 }).notNull(),
+  email: varchar('email', { length: 255 }).notNull(),
+  message: text('message'),
+  timezoneAtBooking: varchar('timezone_at_booking', { length: 100 }),
+  status: varchar('status', { length: 50 }).notNull().default('confirmed'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+}, (table) => ({
+  calendarEventIdIdx: index('booking_requests_calendar_event_id_idx').on(table.calendarEventId),
+  createdAtIdx: index('booking_requests_created_at_idx').on(table.createdAt),
+}));
+
+// 4. Prospects table
+export const prospectsTable = pgTable('prospects', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  type: varchar('type', { length: 50 }).notNull(), // 'person' | 'company'
+  name: varchar('name', { length: 255 }).notNull(),
+  targetBudget: numeric('target_budget', { precision: 19, scale: 4 }),
+  status: prospectStatusEnum('status').notNull(),
+  swimlane: varchar('swimlane', { length: 100 }),
+  tags: text('tags').array().default(sql`'{}'`),
+  notes: text('notes'),
+  websiteUrl: varchar('website_url', { length: 500 }),
+  imageUrl: varchar('image_url', { length: 500 }),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+}, (table) => ({
+  statusIdx: index('prospects_status_idx').on(table.status),
+  swimlaneIdx: index('prospects_swimlane_idx').on(table.swimlane),
+}));
+
+// 5. Prospect Meetings junction table
+export const prospectMeetingsTable = pgTable('prospect_meetings', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  prospectId: uuid('prospect_id')
+    .notNull()
+    .references(() => prospectsTable.id, { onDelete: 'cascade' }),
+  calendarEventId: uuid('calendar_event_id')
+    .notNull()
+    .references(() => calendarEventsTable.id, { onDelete: 'cascade' }),
+}, (table) => ({
+  uniqueProspectMeeting: unique('prospect_meetings_prospect_calendar_unique').on(table.prospectId, table.calendarEventId),
+}));
+
+// 6. Notifications table (SuperAdmin scope)
+export const superAdminNotificationsTable = pgTable('super_admin_notifications', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  type: notificationTypeEnum('type').notNull(),
+  relatedId: uuid('related_id'),
+  read: boolean('read').notNull().default(false),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+}, (table) => ({
+  readIdx: index('super_admin_notifications_read_idx').on(table.read),
+  createdAtIdx: index('super_admin_notifications_created_at_idx').on(table.createdAt),
+}));
+
+// 7. Folders table
+export const foldersTable = pgTable('folders', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  parentFolderId: uuid('parent_folder_id').references((): any => foldersTable.id, { onDelete: 'cascade' }),
+  name: varchar('name', { length: 255 }).notNull(),
+  ownerUserId: uuid('owner_user_id')
+    .notNull()
+    .references(() => usersTable.id, { onDelete: 'cascade' }),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+}, (table) => ({
+  ownerUserIdIdx: index('folders_owner_user_id_idx').on(table.ownerUserId),
+  parentFolderIdIdx: index('folders_parent_folder_id_idx').on(table.parentFolderId),
+}));
+
+// 8. Files table
+export const superAdminFilesTable = pgTable('super_admin_files', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  folderId: uuid('folder_id').references(() => foldersTable.id, { onDelete: 'cascade' }),
+  name: varchar('name', { length: 255 }).notNull(),
+  fileType: varchar('file_type', { length: 20 }).notNull(), // 'txt' | 'md' | 'rtf'
+  content: text('content').notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+}, (table) => ({
+  folderIdIdx: index('super_admin_files_folder_id_idx').on(table.folderId),
+}));
+
+// ============================================
+// TYPE EXPORTS FOR SERVICES LAYER
+// ============================================
+
+// Calendar Events
+export type CalendarEvent = InferSelectModel<typeof calendarEventsTable>;
+export type NewCalendarEvent = InferInsertModel<typeof calendarEventsTable>;
+
+// Entities
+export type Entity = InferSelectModel<typeof entitiesTable>;
+export type NewEntity = InferInsertModel<typeof entitiesTable>;
+
+// Booking Requests
+export type BookingRequest = InferSelectModel<typeof bookingRequestsTable>;
+export type NewBookingRequest = InferInsertModel<typeof bookingRequestsTable>;
+
+// Prospects
+export type Prospect = InferSelectModel<typeof prospectsTable>;
+export type NewProspect = InferInsertModel<typeof prospectsTable>;
+
+// Prospect Meetings
+export type ProspectMeeting = InferSelectModel<typeof prospectMeetingsTable>;
+export type NewProspectMeeting = InferInsertModel<typeof prospectMeetingsTable>;
+
+// SuperAdmin Notifications
+export type SuperAdminNotification = InferSelectModel<typeof superAdminNotificationsTable>;
+export type NewSuperAdminNotification = InferInsertModel<typeof superAdminNotificationsTable>;
+
+// Folders
+export type Folder = InferSelectModel<typeof foldersTable>;
+export type NewFolder = InferInsertModel<typeof foldersTable>;
+
+// SuperAdmin Files
+export type SuperAdminFile = InferSelectModel<typeof superAdminFilesTable>;
+export type NewSuperAdminFile = InferInsertModel<typeof superAdminFilesTable>;

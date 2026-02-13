@@ -1,0 +1,165 @@
+MODE: CODE
+MODE: SAFE
+PROJECT: ArchitectKing (AK)
+PHASE: 6 — SuperAdmin Prospect Intelligence System
+
+OBJECTIVE:
+Replace placeholder prospects page with full CRM-style prospect management system.
+
+DO NOT modify AtomicFuel layout.
+DO NOT modify calendar logic.
+Use existing /api/superadmin/prospects endpoints.
+
+-------------------------------------------------------
+SECTION 1 — PAGE STRUCTURE
+
+Route:
+/superadmin/prospects
+
+Top Controls:
+- View toggle: List | Swimlane
+- Status filter dropdown
+- Tag filter multi-select
+- "+ Add Prospect" button
+
+State:
+viewMode
+selectedStatus
+selectedTags
+
+-------------------------------------------------------
+SECTION 2 — PROSPECT CARD COMPONENT
+
+Create reusable:
+
+ProspectCard
+
+Displays:
+
+- Name
+- Type (person/company)
+- Target budget
+- Status (color-coded)
+- Swimlane tag (if exists)
+- Tags (small pills)
+- Meeting count
+- Website link
+- Notes preview
+
+Color logic:
+Use prospectStatusColors from config.
+
+-------------------------------------------------------
+SECTION 3 — LIST VIEW
+
+Simple vertical list of ProspectCard.
+
+Supports:
+- Filtering by status
+- Filtering by tags
+- Combined filtering
+
+-------------------------------------------------------
+SECTION 4 — SWIMLANE BOARD VIEW
+
+Dynamic swimlanes based on:
+
+unique swimlane values in DB.
+
+Each lane:
+Column with header = swimlane name
+Cards inside = prospects assigned to that swimlane
+
+Prospects with no swimlane:
+Show in "Unassigned" lane.
+
+-------------------------------------------------------
+SECTION 5 — DRAG & DROP
+
+Implement lightweight drag-and-drop.
+
+When dragging ProspectCard to new lane:
+
+Call:
+moveSwimlane(prospectId, newLane)
+
+Rules:
+- Only one swimlane per prospect
+- Replacing removes old lane automatically
+
+No external heavy library.
+Use minimal drag API.
+
+-------------------------------------------------------
+SECTION 6 — ADD / EDIT PROSPECT MODAL
+
+Fields:
+
+- Name (required)
+- Type (person/company)
+- Target Budget
+- Status (enum)
+- Swimlane (free text, optional)
+- Tags (free text, comma separated)
+- Website URL
+- Notes
+
+Save via POST/PATCH API.
+
+-------------------------------------------------------
+SECTION 7 — TAG FILTERING
+
+Tag filter multi-select:
+- Populate unique tags from loaded prospects
+- Filtering is client-side
+
+If selectedTags.length > 0:
+Prospect must include ALL selected tags.
+
+-------------------------------------------------------
+SECTION 8 — LINKING MEETINGS
+
+Inside ProspectCard:
+"Meetings" button
+
+Opens modal listing linked CalendarEvents.
+Allow linking new meeting via dropdown search.
+
+Calls:
+linkMeeting(prospectId, calendarEventId)
+
+-------------------------------------------------------
+SECTION 9 — PERFORMANCE
+
+- Memoize filtered results
+- Do not refetch unnecessarily
+- Keep board smooth
+- Avoid heavy dependencies
+
+-------------------------------------------------------
+SECTION 10 — EMPTY STATES
+
+If no prospects:
+Show centered message:
+"No prospects yet — add your first opportunity."
+
+-------------------------------------------------------
+ACCEPTANCE CRITERIA
+
+- List view works
+- Swimlane board works
+- Drag updates swimlane correctly
+- Tag filtering works
+- Status filtering works
+- Add/Edit works
+- Meeting linking works
+- No regression to calendar
+- No regression to dashboard
+
+DO NOT TOUCH:
+- Public booking
+- Files system
+- Calendar UI
+- AtomicFuel homepage
+
+END.

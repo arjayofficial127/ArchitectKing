@@ -1,0 +1,211 @@
+MODE: CODE
+MODE: SAFE
+PROJECT: ArchitectKing (AK)
+PHASE: 2 — SuperAdmin Control OS — API & Business Logic
+
+OBJECTIVE:
+Implement backend logic for SuperAdmin Control OS.
+DO NOT modify existing routes.
+Create additive routes under:
+
+/api/superadmin/*
+/api/public/*
+
+SuperAdmin scope only (single user).
+Timezone default: Asia/Manila.
+Store internally as UTC.
+
+Recurring events MUST be dynamically expanded (do NOT materialize instances).
+
+-------------------------------------------------------
+SECTION 1 — CALENDAR SERVICE
+-------------------------------------------------------
+
+Create:
+
+services/superadmin/calendar.service.ts
+
+Functions:
+
+1) createEvent(input)
+   - validates start < end
+   - timezone default Asia/Manila
+   - supports recurrenceRule
+   - supports open_slot
+   - returns created event
+
+2) updateEvent(eventId, input, mode)
+   mode:
+     "single"
+     "series"
+
+   if single:
+     - clone instance
+     - remove recurrenceParentId
+   if series:
+     - update master event
+
+3) deleteEvent(eventId, mode)
+
+4) generateRecurringInstances(event, rangeStart, rangeEnd)
+   - expands recurrenceRule into instances within range
+   - DO NOT persist
+   - returns virtual instances
+
+5) getEvents(rangeStart, rangeEnd)
+   - fetch base events
+   - expand recurrence
+   - merge results
+   - sort by start_datetime
+
+6) validatePublicBooking(slotId, start, end)
+   - ensure slot exists
+   - ensure slot status == open_slot
+   - ensure no overlap with scheduled/private events
+   - ensure not already booked
+
+7) convertOpenSlotToScheduled(slotId)
+
+-------------------------------------------------------
+SECTION 2 — PUBLIC BOOKING
+-------------------------------------------------------
+
+Create:
+
+services/public/booking.service.ts
+
+Function:
+
+createBookingRequest(input)
+   - validate slot
+   - create booking_request
+   - convert slot to scheduled
+   - create entity (type person) if not existing by email
+   - create notification (type booking_request)
+   - return success
+
+-------------------------------------------------------
+SECTION 3 — PROSPECT SERVICE
+-------------------------------------------------------
+
+services/superadmin/prospect.service.ts
+
+Functions:
+
+createProspect
+updateProspect
+deleteProspect
+
+moveSwimlane(prospectId, newLane)
+   - replace existing swimlane
+
+addTag
+removeTag
+
+linkMeeting(prospectId, calendarEventId)
+   - insert into prospect_meetings
+
+getProspects(filter)
+   - filter by status
+   - filter by tags
+   - filter by swimlane
+
+-------------------------------------------------------
+SECTION 4 — NOTIFICATION SERVICE
+-------------------------------------------------------
+
+services/superadmin/notification.service.ts
+
+Functions:
+
+createNotification(type, relatedId)
+getUnreadNotifications()
+markAsRead(notificationId)
+
+-------------------------------------------------------
+SECTION 5 — SUPERADMIN ROUTE GUARD
+-------------------------------------------------------
+
+Create middleware:
+
+middleware/requireSuperAdmin.ts
+
+Logic:
+- Ensure user exists
+- Ensure role == "superadmin"
+- If not → 403
+
+Do NOT modify auth system.
+Just plug into routes.
+
+-------------------------------------------------------
+SECTION 6 — ROUTES
+-------------------------------------------------------
+
+Create routes:
+
+/api/superadmin/calendar
+/api/superadmin/prospects
+/api/superadmin/notifications
+/api/superadmin/files (stub only)
+/api/public/schedule
+/api/public/book
+
+All JSON REST.
+
+Calendar routes:
+
+GET /range?start=...&end=...
+POST /
+PATCH /:id
+DELETE /:id
+
+Public routes:
+
+GET /schedule?start=...&end=...
+POST /book
+
+-------------------------------------------------------
+SECTION 7 — TIMEZONE HANDLING
+
+Use:
+- luxon or date-fns-tz (whichever project already uses)
+
+Store:
+UTC in DB
+Convert:
+Manila → UTC on save
+UTC → visitor timezone on public response
+
+-------------------------------------------------------
+SECTION 8 — OVERLAP LOGIC
+
+Overlap rule:
+
+Two events overlap if:
+
+newStart < existingEnd
+AND
+newEnd > existingStart
+
+Public booking must reject if overlap.
+
+SuperAdmin creation does NOT reject overlap.
+
+-------------------------------------------------------
+ACCEPTANCE CRITERIA
+
+- API compiles
+- Recurring expansion works
+- Booking auto converts open slot
+- Prospect swimlane replacement enforced
+- No UI touched
+- No existing routes broken
+
+DO NOT TOUCH:
+- AtomicFuel frontend
+- Existing posts
+- Existing org logic
+- Existing auth logic
+
+END.

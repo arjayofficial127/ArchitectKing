@@ -1,0 +1,171 @@
+MODE: CODE
+MODE: SAFE
+PROJECT: ArchitectKing (AK)
+PHASE: 5 — Public Booking System
+
+OBJECTIVE:
+Create public scheduling page that allows outside users to book available open slots.
+
+This must:
+- Not expose private events
+- Not break AtomicFuel homepage
+- Be accessible at /schedule
+- Be fully decoupled from superadmin UI
+
+-------------------------------------------------------
+SECTION 1 — ROUTE
+
+Create:
+
+/schedule
+
+Public route (no auth required).
+
+-------------------------------------------------------
+SECTION 2 — TIMEZONE DETECTION
+
+On load:
+
+Detect visitor timezone using:
+  Intl.DateTimeFormat().resolvedOptions().timeZone
+
+Store in state:
+  visitorTimezone
+
+When fetching schedule:
+
+Call:
+GET /api/public/schedule?start=...&end=...
+
+Backend returns Manila UTC times.
+
+Frontend:
+Convert event times from UTC → visitorTimezone.
+
+Display small badge:
+
+"Your Timezone: {visitorTimezone}"
+
+If timezone = Asia/Manila:
+Do not show badge.
+
+-------------------------------------------------------
+SECTION 3 — VIEW
+
+Keep simple and conversion-focused.
+
+Do NOT build heavy admin grid.
+
+Use:
+
+Weekly view (7 days)
+- Each day card
+- List available time slots
+
+For each open slot:
+Show:
+
+Date
+Start - End
+Book button
+
+Do NOT show:
+- Notes
+- Linked entities
+- Private events
+
+-------------------------------------------------------
+SECTION 4 — BOOKING MODAL
+
+When clicking Book:
+
+Open modal with fields:
+
+- Name (required)
+- Email (required)
+- Message (optional)
+- Date (editable within slot day only)
+- Time (prefilled from slot, editable within slot bounds)
+
+On submit:
+
+POST /api/public/book
+
+Body:
+{
+  calendarEventId,
+  name,
+  email,
+  message,
+  timezone
+}
+
+-------------------------------------------------------
+SECTION 5 — AFTER SUBMIT
+
+On success:
+
+Show confirmation screen:
+
+"Your meeting has been confirmed."
+
+No email integration yet.
+No pending state (auto-confirm).
+
+-------------------------------------------------------
+SECTION 6 — VALIDATION
+
+Frontend validation:
+- Name required
+- Email required + format
+- Time within slot bounds
+
+Backend enforces:
+- Slot still open
+- No overlap
+- Auto converts slot to scheduled
+- Creates BookingRequest
+- Creates Notification
+
+-------------------------------------------------------
+SECTION 7 — DESIGN
+
+Keep style aligned with AtomicFuel:
+
+- Clean typography
+- Strong CTA button
+- Minimal noise
+- Spacious layout
+- Centered booking card
+
+This is revenue surface.
+Make it feel premium.
+
+-------------------------------------------------------
+SECTION 8 — EDGE CASES
+
+If slot already taken:
+Return error:
+"Sorry, this time has just been booked."
+
+Frontend handles gracefully.
+
+-------------------------------------------------------
+ACCEPTANCE CRITERIA
+
+- /schedule loads publicly
+- Timezone detected
+- Only open slots shown
+- Booking works
+- Slot converts to scheduled
+- Notification created
+- SuperAdmin sees it on dashboard
+- No design regression
+
+DO NOT TOUCH:
+- Superadmin calendar
+- Prospect system
+- Files system
+- AtomicFuel homepage
+
+END.

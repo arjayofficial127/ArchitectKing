@@ -1,0 +1,165 @@
+MODE: CODE
+MODE: SAFE
+PROJECT: ArchitectKing (AK)
+PHASE: 3 — SuperAdmin Control OS — Route Protection + Layout Shell
+
+OBJECTIVE:
+Create protected SuperAdmin UI structure.
+DO NOT modify AtomicFuel landing pages.
+DO NOT break existing layout.
+Add additive routes under:
+
+/superadmin/*
+
+-------------------------------------------------------
+SECTION 1 — ROUTE STRUCTURE
+-------------------------------------------------------
+
+Create new route group:
+
+/superadmin
+  /dashboard
+  /calendar
+  /prospects
+  /files
+  /notifications
+
+If using Next.js App Router:
+  create app/superadmin/layout.tsx
+  create subfolders accordingly
+
+If using Pages Router:
+  create pages/superadmin/*
+
+DO NOT touch root layout.
+
+-------------------------------------------------------
+SECTION 2 — SUPERADMIN GUARD (FRONTEND)
+
+Create:
+
+hooks/useRequireSuperAdmin.ts
+
+Logic:
+- Fetch current user session
+- If not logged in → redirect to login
+- If role !== superadmin → redirect to /
+
+Wrap entire superadmin layout with this guard.
+
+-------------------------------------------------------
+SECTION 3 — SUPERADMIN LAYOUT SHELL
+
+Create:
+
+components/superadmin/SuperAdminLayout.tsx
+
+Layout structure:
+
+Left Sidebar:
+- Dashboard
+- Calendar
+- Prospects
+- Files
+- Notifications
+
+Top Bar:
+- Unread notification count
+- Manila timezone label
+- Current date/time (live updating)
+
+Main Content:
+- children
+
+Keep design minimal.
+Do NOT modify global theme.
+Respect AtomicFuel styling.
+
+-------------------------------------------------------
+SECTION 4 — DASHBOARD PAGE (SKELETON)
+
+Create:
+
+/superadmin/dashboard
+
+Display:
+
+Sections:
+
+1) Recent Booking Requests
+2) Tomorrow
+3) This Week
+4) Overdue
+5) Urgent Prospects
+
+For now:
+- Call API endpoints
+- Display raw JSON in clean cards
+- No heavy styling yet
+
+-------------------------------------------------------
+SECTION 5 — COLOR CONFIG
+
+Create:
+
+config/superadminColors.ts
+
+Export:
+
+calendarColors
+prospectStatusColors
+swimlaneColors (default mapping fallback)
+
+Keep centralized.
+
+-------------------------------------------------------
+SECTION 6 — API HOOKS
+
+Create:
+
+hooks/superadmin/useCalendar.ts
+hooks/superadmin/useProspects.ts
+hooks/superadmin/useNotifications.ts
+
+Use fetch or existing API client.
+
+-------------------------------------------------------
+SECTION 7 — FILES PAGE (STUB)
+
+Create placeholder page with:
+
+"Knowledge Vault — Coming in Phase 7"
+
+-------------------------------------------------------
+SECTION 8 — CALENDAR + PROSPECT PAGE PLACEHOLDERS
+
+For now:
+
+Calendar page:
+- Range selector (start + end date)
+- JSON dump of events
+- "Add Event" button (no modal yet)
+
+Prospects page:
+- JSON dump list
+- "Add Prospect" button (no modal yet)
+
+-------------------------------------------------------
+ACCEPTANCE CRITERIA
+
+- /superadmin protected
+- Only superadmin can access
+- Sidebar renders
+- Dashboard loads data
+- Calendar page loads data
+- Prospects page loads data
+- No design breakage
+- No changes to public site
+
+DO NOT TOUCH:
+- AtomicFuel homepage
+- Existing posts
+- Public booking yet
+- Org system
+
+END.

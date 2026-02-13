@@ -1,0 +1,178 @@
+MODE: CODE
+MODE: SAFE
+PROJECT: ArchitectKing (AK)
+PHASE: 7 — SuperAdmin Knowledge Vault
+
+OBJECTIVE:
+Replace placeholder /superadmin/files page with full folder + file management system.
+
+Scope:
+- Single SuperAdmin
+- Invisible root
+- Tree structure
+- Files: txt | md | rtf
+- Stored as UTF-8 text
+- RTF viewer-only
+- No sharing
+- No org integration
+
+-------------------------------------------------------
+SECTION 1 — PAGE STRUCTURE
+
+Route:
+/superadmin/files
+
+Layout:
+
+Left Panel:
+- Folder Tree
+- "+ Add Folder"
+- "+ Add File"
+
+Right Panel:
+- File Viewer / Editor
+
+-------------------------------------------------------
+SECTION 2 — ROOT LOGIC
+
+Invisible root:
+- parent_folder_id = null
+- Displayed as top-level container
+
+When creating:
+If no folder selected → create in root.
+
+-------------------------------------------------------
+SECTION 3 — FOLDER TREE
+
+Recursive tree component.
+
+Supports:
+- Expand/collapse
+- Click to select
+- Right-click rename
+- Delete (with confirmation)
+
+API:
+GET folders
+POST folder
+PATCH folder
+DELETE folder
+
+Do NOT cascade delete silently.
+Deleting folder:
+- Confirm
+- Deletes child folders/files via backend cascade
+
+-------------------------------------------------------
+SECTION 4 — FILE CREATION
+
+Modal fields:
+
+- Name
+- File type (txt default | md | rtf)
+
+On create:
+POST /api/superadmin/files
+
+Load file into editor.
+
+-------------------------------------------------------
+SECTION 5 — FILE EDITOR ROUTING
+
+If fileType:
+
+txt:
+  Simple textarea editor
+
+md:
+  Split view:
+    Left: textarea
+    Right: rendered markdown preview
+  Use lightweight markdown renderer
+
+rtf:
+  Read-only viewer
+  Display formatted content
+  No editing allowed
+  Show note:
+    "RTF is view-only in v1"
+
+-------------------------------------------------------
+SECTION 6 — SAVE LOGIC
+
+For txt + md:
+- Save button
+- PATCH request
+- Update updatedAt
+- Show subtle "Saved" indicator
+
+No auto-save.
+
+-------------------------------------------------------
+SECTION 7 — RENAME LOGIC
+
+Renaming file:
+- Must be unique within folder
+- If conflict → show error
+
+-------------------------------------------------------
+SECTION 8 — DELETE LOGIC
+
+Deleting file:
+- Confirmation modal
+- Hard delete (no trash system v1)
+
+-------------------------------------------------------
+SECTION 9 — STATE MANAGEMENT
+
+Maintain:
+
+selectedFolderId
+selectedFileId
+
+When selecting folder:
+Show files in that folder.
+
+When selecting file:
+Load content.
+
+-------------------------------------------------------
+SECTION 10 — STYLING
+
+Minimal.
+Professional.
+Clean spacing.
+No heavy theme changes.
+
+Keep within SuperAdmin layout.
+
+-------------------------------------------------------
+SECTION 11 — FUTURE-PROOF
+
+Add comment in code:
+
+// Future: AI command console can operate on file content
+
+-------------------------------------------------------
+ACCEPTANCE CRITERIA
+
+- Folder tree renders
+- Create folder works
+- Create file works
+- Select file loads content
+- TXT editable
+- MD editable + preview works
+- RTF view-only works
+- Rename works
+- Delete works
+- No regression to other modules
+- No modification to AtomicFuel homepage
+
+DO NOT TOUCH:
+- Public schedule
+- Calendar system
+- Prospect system
+- Auth system
+
+END.

@@ -1,0 +1,216 @@
+MODE: CODE
+MODE: SAFE
+PROJECT: ArchitectKing (AK)
+PHASE: 4 — SuperAdmin Calendar UI Engine
+
+OBJECTIVE:
+Replace placeholder calendar page with full interactive scheduling system.
+
+DO NOT modify global layout.
+DO NOT break existing APIs.
+Use existing /api/superadmin/calendar endpoints.
+
+-------------------------------------------------------
+SECTION 1 — CALENDAR CORE STRUCTURE
+-------------------------------------------------------
+
+On /superadmin/calendar implement:
+
+Top Controls:
+- View selector: Day | Week | Bi-Weekly | Month | Year
+- Date navigation (prev/next)
+- Toggle: Open Slot Mode
+- "+ Add Event" button
+
+State:
+
+viewMode
+currentStartDate
+openSlotMode (boolean)
+
+-------------------------------------------------------
+SECTION 2 — 24-HOUR GRID (DAY VIEW)
+
+Implement vertical time grid:
+
+- 24 hours
+- Each hour divided visually
+- Default snap interval = 30 minutes
+- Represent slots at:
+  00 and 30
+
+UI Behavior:
+
+Click empty slot:
+  - If normal mode → open Create Event modal
+  - If openSlotMode → open Create Open Slot modal
+
+Drag across time blocks:
+  - Select start and end
+  - Snap to 30min intervals
+  - Auto calculate duration
+
+Manual override:
+  - Time inputs allow manual minutes
+  - But snapping default is 30
+
+-------------------------------------------------------
+SECTION 3 — WEEK + BIWEEK VIEW
+
+7-column grid (week)
+14-column grid (bi-week)
+
+Each column:
+- 24-hour vertical layout
+
+Render events positioned by:
+top = minutes from 00:00
+height = duration in minutes
+
+Allow overlapping events for SuperAdmin.
+Stack visually with slight horizontal offset.
+
+-------------------------------------------------------
+SECTION 4 — MONTH VIEW
+
+Grid calendar.
+
+Display:
+- Day cell
+- Small event bars
+- Indicator if more than 3
+
+Click day → switch to Day view.
+
+-------------------------------------------------------
+SECTION 5 — YEAR VIEW
+
+Simplified summary:
+- Month blocks
+- Event count
+- Click month → go to Month view
+
+-------------------------------------------------------
+SECTION 6 — EVENT MODAL
+
+When creating/editing event:
+
+Fields:
+- Title
+- Agenda
+- Notes
+- Start datetime
+- End datetime
+- Duration dropdown (30, 60, 90, 120)
+- Recurring toggle
+
+If Recurring enabled:
+Show:
+
+Frequency:
+  daily
+  weekly
+  monthly
+  yearly
+
+Interval
+End Date
+
+Save sends recurrenceRule JSON.
+
+-------------------------------------------------------
+SECTION 7 — EDITING MODE
+
+When clicking event:
+
+Modal shows:
+
+Buttons:
+- Edit This Only
+- Edit Series
+
+If single:
+  PATCH with mode=single
+
+If series:
+  PATCH with mode=series
+
+Deleting:
+- Same dual option
+
+-------------------------------------------------------
+SECTION 8 — OPEN SLOT MODE
+
+When openSlotMode = true:
+
+- Grid visually tinted
+- Creating event sets:
+  status = open_slot
+  visibility = public_open
+  default title = "Available"
+
+Prevent overlapping with scheduled/private events.
+Allow overlapping open slots only if non-conflicting.
+
+-------------------------------------------------------
+SECTION 9 — COLOR CODING
+
+Use superadminColors config:
+
+Event color priority:
+1. Explicit color
+2. Linked prospect status color
+3. Default calendar color
+
+-------------------------------------------------------
+SECTION 10 — TIMEZONE LABEL
+
+Top bar:
+
+Show:
+Timezone: Asia/Manila
+
+All display times Manila in SuperAdmin view.
+
+-------------------------------------------------------
+SECTION 11 — API INTEGRATION
+
+On view change:
+Call:
+
+GET /api/superadmin/calendar/range?start=...&end=...
+
+Recurring instances already expanded by backend.
+
+-------------------------------------------------------
+SECTION 12 — PERFORMANCE
+
+- Memoize events per range
+- Avoid re-rendering entire grid
+- Use absolute positioning for events
+- Avoid heavy libraries
+
+Do NOT install FullCalendar.
+Custom lightweight implementation only.
+
+-------------------------------------------------------
+ACCEPTANCE CRITERIA
+
+- Day view 24-hour grid works
+- Drag creation works
+- 30min snapping works
+- Recurring modal works
+- Edit single vs series works
+- Overlapping allowed for SuperAdmin
+- Open slot mode works
+- Month view works
+- Year view basic summary works
+- No breakage to other pages
+
+DO NOT TOUCH:
+- Public booking page yet
+- Prospect page
+- Files page
+- AtomicFuel homepage
+
+END.

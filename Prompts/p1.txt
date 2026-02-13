@@ -1,0 +1,232 @@
+MODE: CODE
+MODE: SAFE
+PROJECT: ArchitectKing (AK)
+PHASE: 1 — SuperAdmin Control OS — Core Schema
+
+OBJECTIVE:
+Add database schema for SuperAdmin Control OS without breaking existing architecture.
+We are using backend-node with Drizzle ORM.
+Do NOT modify existing tables.
+Create additive migrations only.
+
+CONTEXT:
+- Single SuperAdmin only
+- Global scope (NOT org-based)
+- Timezone default Asia/Manila
+- Store timestamps in UTC
+- Soft delete NOT required for v1
+- Recurring events generated dynamically (do NOT materialize instances)
+
+-------------------------------------------------------
+STEP 1 — CREATE ENUMS
+-------------------------------------------------------
+
+Add enums:
+
+CalendarEventStatus:
+  scheduled
+  completed
+  cancelled
+  open_slot
+
+CalendarEventVisibility:
+  private
+  public_open
+
+ProspectStatus:
+  new
+  contacted
+  meeting
+  proposal
+  closed
+  lost
+  other
+
+EntityType:
+  person
+  company
+  event
+  other
+
+NotificationType:
+  booking_request
+  system
+  reminder
+
+-------------------------------------------------------
+STEP 2 — CREATE TABLES
+-------------------------------------------------------
+
+1️⃣ calendar_events
+
+id (uuid pk default gen_random_uuid)
+owner_user_id (uuid NOT NULL)
+title (varchar 255)
+agenda (text nullable)
+notes (text nullable)
+start_datetime (timestamp with timezone NOT NULL)
+end_datetime (timestamp with timezone NOT NULL)
+timezone (varchar 100 NOT NULL default 'Asia/Manila')
+status (enum CalendarEventStatus NOT NULL)
+visibility (enum CalendarEventVisibility NOT NULL)
+recurrence_rule (jsonb nullable)
+recurrence_parent_id (uuid nullable)
+color (varchar 50 nullable)
+created_at (timestamp default now())
+updated_at (timestamp default now())
+
+INDEX:
+- owner_user_id
+- start_datetime
+- status
+- recurrence_parent_id
+
+-------------------------------------------------------
+
+2️⃣ entities
+
+id (uuid pk)
+type (enum EntityType NOT NULL)
+name (varchar 255 NOT NULL)
+email (varchar 255 nullable)
+phone (varchar 100 nullable)
+website (varchar 255 nullable)
+image_url (varchar 500 nullable)
+notes (text nullable)
+created_at
+updated_at
+
+INDEX:
+- type
+- name
+
+-------------------------------------------------------
+
+3️⃣ booking_requests
+
+id (uuid pk)
+calendar_event_id (uuid fk -> calendar_events.id ON DELETE CASCADE)
+name (varchar 255 NOT NULL)
+email (varchar 255 NOT NULL)
+message (text nullable)
+timezone_at_booking (varchar 100 nullable)
+status (varchar 50 default 'confirmed')
+created_at
+
+INDEX:
+- calendar_event_id
+- created_at
+
+-------------------------------------------------------
+
+4️⃣ prospects
+
+id (uuid pk)
+type (varchar 50 NOT NULL) // person | company
+name (varchar 255 NOT NULL)
+target_budget (numeric nullable)
+status (enum ProspectStatus NOT NULL)
+swimlane (varchar 100 nullable)
+tags (text[] default '{}')
+notes (text nullable)
+website_url (varchar 500 nullable)
+image_url (varchar 500 nullable)
+created_at
+updated_at
+
+INDEX:
+- status
+- swimlane
+
+-------------------------------------------------------
+
+5️⃣ prospect_meetings (junction table)
+
+id (uuid pk)
+prospect_id (uuid fk -> prospects.id ON DELETE CASCADE)
+calendar_event_id (uuid fk -> calendar_events.id ON DELETE CASCADE)
+
+UNIQUE INDEX:
+- prospect_id + calendar_event_id
+
+-------------------------------------------------------
+
+6️⃣ notifications
+
+id (uuid pk)
+type (enum NotificationType NOT NULL)
+related_id (uuid nullable)
+read (boolean default false)
+created_at
+
+INDEX:
+- read
+- created_at
+
+-------------------------------------------------------
+
+7️⃣ folders
+
+id (uuid pk)
+parent_folder_id (uuid nullable)
+name (varchar 255 NOT NULL)
+owner_user_id (uuid NOT NULL)
+created_at
+
+INDEX:
+- owner_user_id
+- parent_folder_id
+
+-------------------------------------------------------
+
+8️⃣ files
+
+id (uuid pk)
+folder_id (uuid fk -> folders.id ON DELETE CASCADE nullable)
+name (varchar 255 NOT NULL)
+file_type (varchar 20 NOT NULL) // txt | md | rtf
+content (text NOT NULL)
+created_at
+updated_at
+
+INDEX:
+- folder_id
+
+-------------------------------------------------------
+
+STEP 3 — DRIZZLE IMPLEMENTATION
+
+- Add schema definitions in drizzle schema folder.
+- Generate migration file.
+- Do NOT delete or alter existing tables.
+- Ensure enums are created safely.
+- Ensure relations are defined.
+- Keep types strict.
+- Export types for services layer use.
+
+-------------------------------------------------------
+
+STEP 4 — MIGRATION SAFETY
+
+- Generate migration.
+- Do NOT run destructive migration.
+- Ensure idempotency.
+
+-------------------------------------------------------
+
+ACCEPTANCE CRITERIA
+
+- Tables exist
+- Enums exist
+- No breaking changes
+- Types exported
+- Project builds
+
+DO NOT TOUCH:
+- Existing auth
+- Existing org logic
+- Existing posts
+- AtomicFuel layout
+- Existing routes
+
+END.
