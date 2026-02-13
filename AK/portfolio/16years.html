@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>16 Years — Arvin Jayson Castro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+:root {
+  --bg: #f7f8f8;
+  --ink: #111;
+  --muted: #444;
+  --line: rgba(0,0,0,0.08);
+  --accent: #16a34a;
+  --link: #2563eb;
+  --max-width: 1200px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(980px 560px at 14% 18%, rgba(16,185,129,0.10) 0%, rgba(16,185,129,0) 60%),
+    radial-gradient(860px 540px at 86% 74%, rgba(245,158,11,0.10) 0%, rgba(245,158,11,0) 62%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.045) 0, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 46px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.045) 0, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 46px),
+    var(--bg);
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ================= HEADER ================= */
+.page {
+  padding: 22px 24px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.nav a { color: #1f2937; }
+
+.linkedin {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkedin a { color: var(--link); }
+.linkedin span {
+  font-family: Georgia, serif;
+  font-size: 9px;
+  font-style: italic;
+  color: #888;
+}
+
+/* ================= HERO 16 ================= */
+.hero-16 {
+  padding: 96px 0 72px;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero-16 svg {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto 28px;
+  display: block;
+}
+
+.hero-role {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.hero-line {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ================= MAIN CONTENT ================= */
+.main {
+  padding-top: 72px;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: 1fr 520px;
+  align-items: start;
+}
+
+.content h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.byline {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #666;
+  margin-bottom: 18px;
+}
+
+.paragraph {
+  font-size: 15px;
+  color: #222;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.meta {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 24px;
+  font-size: 13px;
+}
+
+.meta strong { font-weight: 700; }
+
+/* ================= BOOK (PROOF) ================= */
+.proof {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.book-placeholder {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, #fafafa, #ececec),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 32px);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.book-caption {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-16 {
+    padding: 72px 0 56px;
+  }
+}
+
+@media (max-width: 720px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-role {
+    font-size: 18px;
+  }
+
+  .content h1 {
+    font-size: 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <a href="https://arvinjaysoncastro.com" class="brand" target="_blank">
+        Arvin Jayson Castro
+      </a>
+      <nav class="nav">
+        <a href="https://arvinjaysoncastro.com/hungry-dev-mind" target="_blank">Books</a>
+        <a href="https://arvinjaysoncastro.com/working-systems" target="_blank">Working Systems</a>
+        <a href="https://arvinjaysoncastro.com/about" target="_blank">16 Years</a>
+        <div class="linkedin">
+          <a href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/" target="_blank">LinkedIn</a>
+          <span>let’s connect</span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-16">
+      <div class="hero-inner">
+        <svg viewBox="0 0 400 200" aria-label="16 years experience">
+          <defs>
+            <linearGradient id="fadeInk" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#111"/>
+              <stop offset="100%" stop-color="rgba(17,17,17,0.35)"/>
+            </linearGradient>
+          </defs>
+          <text
+            x="50%"
+            y="60%"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            font-size="170"
+            font-weight="900"
+            letter-spacing="-6"
+            fill="url(#fadeInk)"
+          >16</text>
+        </svg>
+
+        <div class="hero-role">
+          Senior Software Architect · Full-Stack Lead
+        </div>
+        <div class="hero-line">
+          16 years designing production systems that scale, survive change,
+          and ship under real-world constraints.
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- LEFT: CV NARRATIVE -->
+      <section class="content">
+        <h1>Working Fundamentals</h1>
+        <div class="byline">BY ARVIN JAYSON CASTRO</div>
+
+        <p class="paragraph">
+          Software rarely fails suddenly. It decays through unnamed assumptions,
+          unclear responsibilities, invisible state, and misplaced abstractions.
+        </p>
+
+        <p class="paragraph">
+          Over 16 years, I’ve designed identity systems, rule engines, form
+          platforms, reporting pipelines, and large-scale internal tools used
+          by real teams, over long periods of time.
+        </p>
+
+        <p class="paragraph">
+          My work focuses on making systems understandable, predictable,
+          and resilient — not just functional on day one.
+        </p>
+
+        <div class="meta">
+          <div><strong>Role</strong><br/>Senior Software Architect</div>
+          <div><strong>Experience</strong><br/>16 years (production systems)</div>
+          <div><strong>Specialty</strong><br/>System design, architecture, UI platforms</div>
+          <div><strong>Focus</strong><br/>Longevity, clarity, scale</div>
+        </div>
+      </section>
+
+      <!-- RIGHT: PROOF -->
+      <aside class="proof">
+        <div class="book-placeholder"></div>
+        <div class="book-caption">
+          <strong>Working Fundamentals</strong><br/>
+          A practical guide based on real architectural failures,
+          long-lived systems, and lessons learned across teams.
+        </div>
+      </aside>
+
+    </main>
+
+  </div>
+</div>
+</body>
+</html>

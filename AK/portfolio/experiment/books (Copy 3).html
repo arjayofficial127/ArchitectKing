@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Working Fundamentals — Arvin Jayson Castro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #f7f8f8;
+      --ink: #111111;
+      --muted: #666666;
+      --line: rgba(0,0,0,0.08);
+      --accent: #16a34a;
+      --link: #3b82f6;
+      --max-width: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--ink);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(980px 560px at 14% 18%, rgba(16,185,129,0.10) 0%, rgba(16,185,129,0) 60%),
+        radial-gradient(860px 540px at 86% 74%, rgba(245,158,11,0.10) 0%, rgba(245,158,11,0) 62%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.043) 0, rgba(0,0,0,0.043) 1px, transparent 1px, transparent 46px),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.043) 0, rgba(0,0,0,0.043) 1px, transparent 1px, transparent 46px);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page { padding: 22px 24px; }
+    .container { max-width: var(--max-width); margin: 0 auto; }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand { font-size: 16px; font-weight: 600; }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .linkedin span {
+      font-family: Georgia, serif;
+      font-size: 9px;
+      font-style: italic;
+      color: #999;
+    }
+
+    .main {
+      padding-top: 48px;
+      display: grid;
+      gap: 48px;
+      grid-template-columns: 320px minmax(520px, 680px) 220px;
+      align-items: start;
+    }
+
+    /* ===============================
+       BOOK + SHADOW SYSTEM
+    =============================== */
+    .book-wrap {
+      width: 320px;
+      aspect-ratio: 2 / 3;
+      position: relative;
+    }
+
+    .shadow-slab,
+    .shadow-slab-2,
+    .shadow-slab-3,
+    .shadow-slab-4 {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      z-index: 0;
+      will-change: transform, filter, opacity;
+    }
+
+    .shadow-slab {
+      background:
+        radial-gradient(ellipse at 15% 85%, rgba(0,0,0,0.35), rgba(0,0,0,0.18) 35%, transparent 65%),
+        linear-gradient(to right, #1f1f1f 0%, #2a2a2a 45%, #3a3a3a 100%);
+      filter: blur(13px);
+      opacity: 0.35;
+    }
+
+    .shadow-slab-2 {
+      background: radial-gradient(circle at top right, #f6e6a8 0%, #e2c36b 35%, #b58a3c 70%, #7a5524 100%);
+      filter: blur(6px);
+      opacity: 0.30;
+    }
+
+    .shadow-slab-3,
+    .shadow-slab-4 {
+      background: #333;
+      filter: blur(11px);
+      opacity: 0.30;
+    }
+
+    .book {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      z-index: 2;
+      background: #f7f4ee;
+    }
+
+    .front-slab {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1) 3%, transparent 10%);
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .start-reading {
+      margin-top: 14px;
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 650;
+      color: rgba(34,197,94,0.92);
+      background: linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.22);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="container">
+
+      <header class="header">
+        <div class="brand">Arvin Jayson Castro</div>
+        <nav class="nav">
+          <a href="#">Books</a>
+          <a href="#">Working Systems</a>
+          <a href="#">16 Years</a>
+          <div class="linkedin">
+            <a href="#">linkedIn</a>
+            <span>let’s connect</span>
+          </div>
+        </nav>
+      </header>
+
+      <main class="main">
+
+        <section class="book-cover">
+          <div class="book-wrap">
+            <div class="shadow-slab"></div>
+            <div class="shadow-slab-2"></div>
+            <div class="shadow-slab-3"></div>
+            <div class="shadow-slab-4"></div>
+
+            <div class="book"></div>
+            <div class="front-slab"></div>
+          </div>
+
+          <a class="start-reading" href="#">Read the Preface</a>
+        </section>
+
+        <section class="content">
+          <h1>Working Fundamentals</h1>
+          <p class="tagline">
+            A concise, practical guide to building software that lasts.
+          </p>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ===============================
+       MULTI-SLAB DYNAMIC LIGHT ENGINE
+  =============================== -->
+ <script>
+(() => {
+  const wrap = document.querySelector('.book-wrap');
+  if (!wrap) return;
+
+  const slab1 = wrap.querySelector('.shadow-slab');
+  const slab2 = wrap.querySelector('.shadow-slab-2');
+  const slab3 = wrap.querySelector('.shadow-slab-3');
+  const slab4 = wrap.querySelector('.shadow-slab-4');
+  const front = wrap.querySelector('.front-slab');
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+  let raf = 0;
+  let lx = 0; // light vector x
+  let ly = 0; // light vector y
+
+  function render() {
+    raf = 0;
+
+    // Shadow direction = opposite of light
+    const sx = -lx;
+    const sy = -ly;
+
+    const intensity = Math.abs(lx) + Math.abs(ly);
+
+    /* ---------------------------
+       SLAB 1 — KEY CAST SHADOW
+    ---------------------------- */
+    slab1.style.transform =
+      `translate(${(sx * 38).toFixed(2)}px, ${(sy * 38).toFixed(2)}px)`;
+    slab1.style.filter =
+      `blur(${(14 + intensity * 6).toFixed(2)}px)`;
+    slab1.style.opacity =
+      (0.28 + intensity * 0.14).toFixed(2);
+
+    /* ---------------------------
+       SLAB 2 — BOUNCE / COLOR BLEED
+    ---------------------------- */
+    slab2.style.transform =
+      `translate(${(sx * 14).toFixed(2)}px, ${(sy * 14).toFixed(2)}px)`;
+    slab2.style.filter =
+      `blur(${(6 + intensity * 4).toFixed(2)}px)`;
+    slab2.style.opacity =
+      (0.16 + intensity * 0.10).toFixed(2);
+
+    /* ---------------------------
+       SLAB 3 — CONTACT SHADOW
+    ---------------------------- */
+    slab3.style.transform =
+      `translate(${(sx * 6).toFixed(2)}px, ${(sy * 6).toFixed(2)}px)`;
+    slab3.style.filter = `blur(9px)`;
+    slab3.style.opacity =
+      (0.24 + Math.abs(lx) * 0.06).toFixed(2);
+
+    /* ---------------------------
+       SLAB 4 — AMBIENT DEPTH
+    ---------------------------- */
+    slab4.style.transform =
+      `translate(${(sx * 3).toFixed(2)}px, ${(sy * 3).toFixed(2)}px)`;
+    slab4.style.filter = `blur(18px)`;
+    slab4.style.opacity =
+      (0.16 + Math.abs(ly) * 0.04).toFixed(2);
+
+    /* ---------------------------
+       FRONT SLAB — SPECULAR RESPONSE
+       (moves TOWARD light)
+    ---------------------------- */
+if (front) {
+  // Very subtle counter-parallax (NOT toward light)
+  front.style.transform =
+    `translate(${(-lx * 1.6).toFixed(2)}px, ${(-ly * 1.6).toFixed(2)}px)`;
+
+  // Opacity increases when light is grazing
+  front.style.opacity =
+    (0.34 + intensity * 0.22).toFixed(2);
+
+  // Highlight shifts OPPOSITE the light direction
+  const gx = 50 - lx * 28;
+  const gy = 50 - ly * 28;
+  front.style.backgroundPosition = `${gx}% ${gy}%`;
+}
+
+  }
+
+  function onMove(e) {
+    const r = wrap.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+
+    // LIGHT VECTOR (mouse = light source)
+    lx = clamp((e.clientX - cx) / (r.width / 2), -1, 1);
+    ly = clamp((e.clientY - cy) / (r.height / 2), -1, 1);
+
+    if (!raf) raf = requestAnimationFrame(render);
+  }
+
+  window.addEventListener('mousemove', onMove, { passive: true });
+})();
+</script>
+
+
+</body>
+</html>

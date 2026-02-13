@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>16 Years — Arvin Jayson Castro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+:root {
+  --bg: #f7f8f8;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #555555;
+  --line: rgba(0,0,0,0.10);
+  --max: 1200px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(980px 560px at 14% 18%, rgba(16,185,129,0.10), transparent 60%),
+    radial-gradient(860px 540px at 86% 74%, rgba(245,158,11,0.10), transparent 62%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.045) 0, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 46px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.045) 0, rgba(0,0,0,0.045) 1px, transparent 1px, transparent 46px),
+    var(--bg);
+}
+
+.page {
+  padding: 32px 24px 80px;
+}
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+/* =========================
+   16 YEARS HERO (UNCHANGED)
+========================= */
+.hero-16 {
+  text-align: center;
+  padding: 100px 0 80px;
+}
+
+.hero-16 svg {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 32px;
+  display: block;
+}
+
+.hero-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* =========================
+   PAPER CV (RECREATED)
+========================= */
+.cv {
+  background: var(--paper);
+  margin: 0 auto;
+  padding: 64px;
+  box-shadow:
+    0 40px 90px rgba(0,0,0,0.10),
+    0 12px 28px rgba(0,0,0,0.08);
+}
+
+/* HEADER */
+.cv-header {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.cv-name {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cv-role {
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.cv-right {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  text-align: right;
+}
+
+.cv-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.cv-contact {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.cv-contact div {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+
+/* BODY */
+.cv-body {
+  display: grid;
+  grid-template-columns: 2.3fr 1fr;
+  gap: 48px;
+}
+
+/* SECTIONS */
+.section {
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin-bottom: 14px;
+}
+
+.section p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* EXPERIENCE */
+.job {
+  margin-bottom: 26px;
+}
+
+.job-title {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.job-meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.job ul {
+  margin: 8px 0 0 16px;
+  padding: 0;
+}
+
+.job li {
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+
+/* SIDEBAR */
+.sidebar .block {
+  margin-bottom: 32px;
+}
+
+.sidebar h4 {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .cv {
+    padding: 48px;
+  }
+
+  .cv-body {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-header {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-right {
+    text-align: left;
+  }
+
+  .cv-photo {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-16 {
+    padding: 64px 0 48px;
+  }
+
+  .cv {
+    padding: 32px 24px;
+  }
+
+  .cv-name {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+  <div class="container">
+
+    <!-- 16 YEARS HERO -->
+    <section class="hero-16">
+      <svg viewBox="0 0 400 200">
+        <defs>
+          <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#111"/>
+            <stop offset="100%" stop-color="rgba(17,17,17,0.35)"/>
+          </linearGradient>
+        </defs>
+        <text x="50%" y="60%" text-anchor="middle" dominant-baseline="middle"
+          font-size="240" font-weight="900" letter-spacing="-8" fill="url(#fade)">
+          16
+        </text>
+      </svg>
+      <div class="hero-title">Senior Software Architect · Full-Stack Lead</div>
+      <div class="hero-sub">16 years building systems that last</div>
+    </section>
+
+    <!-- CV PAPER -->
+    <section class="cv">
+
+      <!-- HEADER -->
+      <div class="cv-header">
+        <div>
+          <div class="cv-name">Arvin Jayson Castro</div>
+          <div class="cv-role">SOFTWARE ARCHITECT</div>
+        </div>
+
+        <div class="cv-right">
+          <img
+            src="https://arvinjaysoncastro.com/free-images/J_Profile.png"
+            alt="Arvin Jayson Castro"
+            class="cv-photo"
+          />
+          <div class="cv-contact">
+            <div>M · arjayofficial127@gmail.com</div>
+            <div>W · arvinjaysoncastro.com</div>
+            <div>L · linkedin.com/in/arvin-jayson-castro</div>
+            <div>P · Philippines (+63) 962-767-5114</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODY -->
+      <div class="cv-body">
+
+        <!-- LEFT -->
+        <div>
+          <div class="section">
+            <div class="section-title">SUMMARY</div>
+            <p>
+              Senior Software Architect with 16 years of experience designing,
+              building, and scaling long-lived production systems. Specialized in
+              system architecture, internal platforms, and complex UI engines
+              used by organizations over many years.
+            </p>
+          </div>
+
+          <div class="section">
+            <div class="section-title">WORK EXPERIENCE</div>
+
+            <div class="job">
+              <div class="job-title">Senior Full-Stack Engineer</div>
+              <div class="job-meta">Comrise Risewave · 2024 — 2025</div>
+              <ul>
+                <li>Architected income review systems and reporting engines.</li>
+                <li>Designed rule-based calculations and validation platforms.</li>
+                <li>Led UI architecture for complex enterprise grids.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-title">Senior Software Architect / Tech Lead</div>
+              <div class="job-meta">AOtech · 2020 — 2024</div>
+              <ul>
+                <li>Built learning platforms, certificate engines, billing systems.</li>
+                <li>Designed identity systems and dynamic form engines.</li>
+                <li>Led architectural decisions across teams.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-title">Software Engineer / UI-UX Specialist</div>
+              <div class="job-meta">2010 — 2020</div>
+              <ul>
+                <li>Developed dashboards, training systems, forecasting tools.</li>
+                <li>Built internal platforms used across multiple organizations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <aside class="sidebar">
+          <div class="block">
+            <h4>SKILLS</h4>
+            <ul>
+              <li>System Architecture</li>
+              <li>Full-Stack Engineering</li>
+              <li>Domain-Driven Design</li>
+              <li>Platform UI Systems</li>
+              <li>Cloud & DevOps</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h4>TECH</h4>
+            <ul>
+              <li>TypeScript / C# / Node.js</li>
+              <li>React / Angular / Next.js</li>
+              <li>PostgreSQL / SQL</li>
+              <li>AWS / Azure / Docker</li>
+            </ul>
+          </div>
+
+          <div class="block">
+            <h4>EDUCATION</h4>
+            <ul>
+              <li>B.S. Computer Science</li>
+              <li>University of Santo Tomas</li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+</body>
+</html>
