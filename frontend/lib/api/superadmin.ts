@@ -120,6 +120,49 @@ export interface BookingRequest {
   createdAt: string;
 }
 
+// Folder Types
+export interface Folder {
+  id: string;
+  parentFolderId: string | null;
+  name: string;
+  ownerUserId: string;
+  createdAt: string;
+}
+
+export interface CreateFolderInput {
+  name: string;
+  parentFolderId?: string | null;
+}
+
+export interface UpdateFolderInput {
+  name?: string;
+  parentFolderId?: string | null;
+}
+
+// SuperAdmin File Types
+export interface SuperAdminFile {
+  id: string;
+  folderId: string | null;
+  name: string;
+  fileType: 'txt' | 'md' | 'rtf';
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateSuperAdminFileInput {
+  name: string;
+  fileType: 'txt' | 'md' | 'rtf';
+  folderId?: string | null;
+  content?: string;
+}
+
+export interface UpdateSuperAdminFileInput {
+  name?: string;
+  content?: string;
+  folderId?: string | null;
+}
+
 export const superadminApi = {
   // Calendar
   getEvents: async (start: string, end: string): Promise<CalendarEvent[]> => {
@@ -198,5 +241,52 @@ export const superadminApi = {
   markNotificationAsRead: async (id: string): Promise<SuperAdminNotification> => {
     const response = await apiClient.patch(`/superadmin/notifications/${id}/read`);
     return response.data.data;
+  },
+
+  // Folders
+  getFolders: async (): Promise<Folder[]> => {
+    const response = await apiClient.get('/superadmin/files/folders');
+    return response.data.data;
+  },
+
+  createFolder: async (input: CreateFolderInput): Promise<Folder> => {
+    const response = await apiClient.post('/superadmin/files/folders', input);
+    return response.data.data;
+  },
+
+  updateFolder: async (id: string, input: UpdateFolderInput): Promise<Folder> => {
+    const response = await apiClient.patch(`/superadmin/files/folders/${id}`, input);
+    return response.data.data;
+  },
+
+  deleteFolder: async (id: string): Promise<void> => {
+    await apiClient.delete(`/superadmin/files/folders/${id}`);
+  },
+
+  // Files
+  getFiles: async (folderId?: string | null): Promise<SuperAdminFile[]> => {
+    const response = await apiClient.get('/superadmin/files', {
+      params: folderId ? { folderId } : {},
+    });
+    return response.data.data;
+  },
+
+  getFile: async (id: string): Promise<SuperAdminFile> => {
+    const response = await apiClient.get(`/superadmin/files/${id}`);
+    return response.data.data;
+  },
+
+  createFile: async (input: CreateSuperAdminFileInput): Promise<SuperAdminFile> => {
+    const response = await apiClient.post('/superadmin/files', input);
+    return response.data.data;
+  },
+
+  updateFile: async (id: string, input: UpdateSuperAdminFileInput): Promise<SuperAdminFile> => {
+    const response = await apiClient.patch(`/superadmin/files/${id}`, input);
+    return response.data.data;
+  },
+
+  deleteFile: async (id: string): Promise<void> => {
+    await apiClient.delete(`/superadmin/files/${id}`);
   },
 };
