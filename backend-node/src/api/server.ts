@@ -16,6 +16,12 @@ import likesRoutes from './routes/likes.routes';
 import attachmentsRoutes from './routes/attachments.routes';
 import membersRoutes from './routes/members.routes';
 import healthRoutes from './routes/health.routes';
+import superadminCalendarRoutes from './routes/superadmin/calendar.routes';
+import superadminProspectsRoutes from './routes/superadmin/prospects.routes';
+import superadminNotificationsRoutes from './routes/superadmin/notifications.routes';
+import superadminFilesRoutes from './routes/superadmin/files.routes';
+import publicScheduleRoutes from './routes/public/schedule.routes';
+import publicBookRoutes from './routes/public/book.routes';
 
 // Register services in DI container
 import '../core/di/container';
@@ -89,6 +95,26 @@ import { ITeamMemberRepository } from '../application/interfaces/ITeamMemberRepo
 import { INotificationRepository } from '../application/interfaces/INotificationRepository';
 import { ISuperAdminRepository } from '../application/interfaces/ISuperAdminRepository';
 import { SuperAdminRepository } from '../infrastructure/persistence/SuperAdminRepository';
+import { ICalendarEventRepository } from '../application/interfaces/ICalendarEventRepository';
+import { CalendarEventRepository } from '../infrastructure/persistence/CalendarEventRepository';
+import { IEntityRepository } from '../application/interfaces/IEntityRepository';
+import { EntityRepository } from '../infrastructure/persistence/EntityRepository';
+import { IBookingRequestRepository } from '../application/interfaces/IBookingRequestRepository';
+import { BookingRequestRepository } from '../infrastructure/persistence/BookingRequestRepository';
+import { IProspectRepository } from '../application/interfaces/IProspectRepository';
+import { ProspectRepository } from '../infrastructure/persistence/ProspectRepository';
+import { IProspectMeetingRepository } from '../application/interfaces/IProspectMeetingRepository';
+import { ProspectMeetingRepository } from '../infrastructure/persistence/ProspectMeetingRepository';
+import { ISuperAdminNotificationRepository } from '../application/interfaces/ISuperAdminNotificationRepository';
+import { SuperAdminNotificationRepository } from '../infrastructure/persistence/SuperAdminNotificationRepository';
+import { IFolderRepository } from '../application/interfaces/IFolderRepository';
+import { FolderRepository } from '../infrastructure/persistence/FolderRepository';
+import { ISuperAdminFileRepository } from '../application/interfaces/ISuperAdminFileRepository';
+import { SuperAdminFileRepository } from '../infrastructure/persistence/SuperAdminFileRepository';
+import { CalendarService } from '../infrastructure/services/superadmin/calendar.service';
+import { BookingService } from '../infrastructure/services/public/booking.service';
+import { ProspectService } from '../infrastructure/services/superadmin/prospect.service';
+import { NotificationService } from '../infrastructure/services/superadmin/notification.service';
 
 dotenv.config();
 
@@ -127,6 +153,22 @@ container.registerSingleton<INotificationRepository>(TYPES.INotificationReposito
 container.registerSingleton<IJoinRequestUseCase>(TYPES.IJoinRequestUseCase, JoinRequestUseCase);
 container.registerSingleton<ITeamUseCase>(TYPES.ITeamUseCase, TeamUseCase);
 container.registerSingleton<INotificationUseCase>(TYPES.INotificationUseCase, NotificationUseCase);
+
+// SuperAdmin Control OS Repositories
+container.registerSingleton<ICalendarEventRepository>(TYPES.ICalendarEventRepository, CalendarEventRepository);
+container.registerSingleton<IEntityRepository>(TYPES.IEntityRepository, EntityRepository);
+container.registerSingleton<IBookingRequestRepository>(TYPES.IBookingRequestRepository, BookingRequestRepository);
+container.registerSingleton<IProspectRepository>(TYPES.IProspectRepository, ProspectRepository);
+container.registerSingleton<IProspectMeetingRepository>(TYPES.IProspectMeetingRepository, ProspectMeetingRepository);
+container.registerSingleton<ISuperAdminNotificationRepository>(TYPES.ISuperAdminNotificationRepository, SuperAdminNotificationRepository);
+container.registerSingleton<IFolderRepository>(TYPES.IFolderRepository, FolderRepository);
+container.registerSingleton<ISuperAdminFileRepository>(TYPES.ISuperAdminFileRepository, SuperAdminFileRepository);
+
+// SuperAdmin Control OS Services
+container.registerSingleton<CalendarService>(TYPES.ICalendarService, CalendarService);
+container.registerSingleton<BookingService>(TYPES.IBookingService, BookingService);
+container.registerSingleton<ProspectService>(TYPES.IProspectService, ProspectService);
+container.registerSingleton<NotificationService>(TYPES.INotificationService, NotificationService);
 
 container.register<IFileStorageService>(TYPES.IFileStorageService, {
   useFactory: () => StorageBackendFactory.create(),
@@ -225,6 +267,16 @@ export function createApp(): Express {
   app.use('/api/orgs/:orgId/posts/:postId/likes', likesRoutes);
   app.use('/api/orgs/:orgId/posts/:postId/attachments', attachmentsRoutes);
   app.use('/api/orgs/:orgId/members', membersRoutes);
+
+  // SuperAdmin Control OS routes
+  app.use('/api/superadmin/calendar', superadminCalendarRoutes);
+  app.use('/api/superadmin/prospects', superadminProspectsRoutes);
+  app.use('/api/superadmin/notifications', superadminNotificationsRoutes);
+  app.use('/api/superadmin/files', superadminFilesRoutes);
+
+  // Public routes
+  app.use('/api/public/schedule', publicScheduleRoutes);
+  app.use('/api/public/book', publicBookRoutes);
 
   // Error handling (must be last)
   app.use(errorMiddleware);

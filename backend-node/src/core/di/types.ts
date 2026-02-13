@@ -25,10 +25,24 @@ export const TYPES = {
   ITeamMemberRepository: Symbol('ITeamMemberRepository'),
   INotificationRepository: Symbol('INotificationRepository'),
 
+  // SuperAdmin Control OS Repositories
+  ICalendarEventRepository: Symbol('ICalendarEventRepository'),
+  IEntityRepository: Symbol('IEntityRepository'),
+  IBookingRequestRepository: Symbol('IBookingRequestRepository'),
+  IProspectRepository: Symbol('IProspectRepository'),
+  IProspectMeetingRepository: Symbol('IProspectMeetingRepository'),
+  ISuperAdminNotificationRepository: Symbol('ISuperAdminNotificationRepository'),
+  IFolderRepository: Symbol('IFolderRepository'),
+  ISuperAdminFileRepository: Symbol('ISuperAdminFileRepository'),
+
   // Services
   IPasswordHasherService: Symbol('IPasswordHasherService'),
   ITokenService: Symbol('ITokenService'),
   IFileStorageService: Symbol('IFileStorageService'),
+  ICalendarService: Symbol('ICalendarService'),
+  IBookingService: Symbol('IBookingService'),
+  IProspectService: Symbol('IProspectService'),
+  INotificationService: Symbol('INotificationService'),
 
   // Use Cases
   IAuthUseCase: Symbol('IAuthUseCase'),
