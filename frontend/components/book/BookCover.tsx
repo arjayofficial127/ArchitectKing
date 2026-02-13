@@ -31,6 +31,9 @@ export function BookCover() {
       const sy = -ly;
       const intensity = Math.abs(lx) + Math.abs(ly);
 
+      // TypeScript guard: these are checked above, but we need to assert non-null
+      if (!slab1 || !slab2 || !slab3 || !slab4) return;
+
       slab1.style.transform = `translate(${(sx * 38).toFixed(2)}px, ${(sy * 38).toFixed(2)}px)`;
       slab1.style.filter = `blur(${(14 + intensity * 6).toFixed(2)}px)`;
       slab1.style.opacity = (0.28 + intensity * 0.14).toFixed(2);
