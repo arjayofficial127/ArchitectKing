@@ -178,7 +178,8 @@ export const superadminApi = {
   },
 
   removeTag: async (id: string, tag: string): Promise<Prospect> => {
-    await apiClient.delete(`/superadmin/prospects/${id}/tags/${tag}`);
+    const response = await apiClient.delete(`/superadmin/prospects/${id}/tags/${tag}`);
+    return response.data.data;
   },
 
   linkMeeting: async (id: string, calendarEventId: string): Promise<any> => {

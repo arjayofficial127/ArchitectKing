@@ -31,7 +31,10 @@ export function useCalendar(start?: string, end?: string) {
   const createEvent = async (input: CreateCalendarEventInput) => {
     try {
       const newEvent = await superadminApi.createEvent(input);
-      setEvents((prev) => [...prev, newEvent]);
+      // Refetch to get all expanded recurring instances
+      if (start && end) {
+        await fetchEvents(start, end);
+      }
       return newEvent;
     } catch (err: any) {
       throw new Error(err.response?.data?.error?.message || 'Failed to create event');
@@ -41,7 +44,10 @@ export function useCalendar(start?: string, end?: string) {
   const updateEvent = async (id: string, input: UpdateCalendarEventInput, mode: 'single' | 'series' = 'single') => {
     try {
       const updatedEvent = await superadminApi.updateEvent(id, input, mode);
-      setEvents((prev) => prev.map((e) => (e.id === id ? updatedEvent : e)));
+      // Refetch to get all expanded recurring instances
+      if (start && end) {
+        await fetchEvents(start, end);
+      }
       return updatedEvent;
     } catch (err: any) {
       throw new Error(err.response?.data?.error?.message || 'Failed to update event');
@@ -51,7 +57,10 @@ export function useCalendar(start?: string, end?: string) {
   const deleteEvent = async (id: string, mode: 'single' | 'series' = 'single') => {
     try {
       await superadminApi.deleteEvent(id, mode);
-      setEvents((prev) => prev.filter((e) => e.id !== id));
+      // Refetch to get updated list after deletion
+      if (start && end) {
+        await fetchEvents(start, end);
+      }
     } catch (err: any) {
       throw new Error(err.response?.data?.error?.message || 'Failed to delete event');
     }

@@ -60,6 +60,7 @@ export function BookCover() {
     }
 
     function onMove(e: MouseEvent) {
+      if (!wrap) return;
       const r = wrap.getBoundingClientRect();
       const cx = r.left + r.width / 2;
       const cy = r.top + r.height / 2;
