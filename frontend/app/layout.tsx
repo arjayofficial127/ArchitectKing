@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { DM_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { ToastContainer } from '@/lib/toast';
 import ConditionalFooter from '@/components/layout/ConditionalFooter';
@@ -11,7 +11,17 @@ import { OrgSessionProvider } from '@/providers/OrgSessionProvider';
 import { MetadataIndexProvider } from '@/providers/MetadataIndexProvider';
 import { HydratedContentProvider } from '@/providers/HydratedContentProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+const dmSans = DM_Sans({ 
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Arvin Jayson Castro | Senior Fullstack Architect | React Next.js .NET Node',
@@ -109,7 +119,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${dmSans.variable} ${playfairDisplay.variable} font-sans`}>
         <AuthSessionProvider>
           <OrgSessionProvider>
             <MetadataIndexProvider>

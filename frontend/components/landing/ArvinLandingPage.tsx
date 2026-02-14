@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import Image from 'next/image';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { CaseStudy } from './CaseStudy';
 import { CTASection } from './CTASection';
@@ -14,8 +14,8 @@ export function ArvinLandingPage() {
   // Fast conversion mode - show conversion-focused sections, hide architecture content
   const isFastConversionMode = true;
   
-  // Theme state for tech strip
-  const [techStripTheme, setTechStripTheme] = useState('clean' as 'clean' | 'cork' | 'black');
+  // Theme state for tech strip - always blackboard
+  const techStripTheme = 'black';
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
@@ -41,16 +41,16 @@ export function ArvinLandingPage() {
           </div>
           <div className="flex items-center gap-4">
             <nav className="hidden md:flex items-center gap-6">
-              <Link href="/working-fundamentals" className="text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors">
+              <Link href="/working-fundamentals" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
                 Working Fundamentals
               </Link>
-              <a href="#case-studies" className="text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors">
+              <a href="#case-studies" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
                 Case Studies
               </a>
-              <a href="#systems" className="text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors">
+              <a href="#systems" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
                 Systems
               </a>
-              <a href="#contact" className="text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors">
+              <a href="#contact" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
                 Contact
               </a>
             </nav>
@@ -58,7 +58,7 @@ export function ArvinLandingPage() {
               href="https://m.me/arjayofficial127"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center justify-center rounded-md border border-blue-600 bg-transparent px-4 py-1.5 text-sm font-medium text-blue-600 transition-all hover:bg-blue-50 hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-1"
+              className="hidden sm:inline-flex items-center justify-center rounded-md border border-[#0F172A] bg-transparent px-4 py-1.5 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-1"
             >
               Message Me
             </a>
@@ -76,7 +76,7 @@ export function ArvinLandingPage() {
             {/* FOLD 1 — EXECUTION HERO */}
             <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
               <div className="mx-auto max-w-4xl text-center">
-                <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight">
+                <h1 className="font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight">
                   Senior Full-Stack Engineer
                   <span className="block mt-3 text-slate-700 font-normal text-3xl sm:text-4xl md:text-5xl">
                     Building production systems end-to-end.
@@ -100,7 +100,7 @@ export function ArvinLandingPage() {
                     href="https://m.me/arjayofficial127"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-blue-600/30 transition-all hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                   >
                     Message Me Now
                   </a>
@@ -112,15 +112,15 @@ export function ArvinLandingPage() {
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500">
-                  <a href="https://www.linkedin.com/in/arvinjaysoncastro" target="_blank" rel="noopener noreferrer" className="hover:text-teal-700 transition-colors">
+                  <a href="https://www.linkedin.com/in/arvinjaysoncastro" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4C430] transition-colors">
                     LinkedIn
                   </a>
                   <span>•</span>
-                  <a href="mailto:arvinjaysontamayocastro@gmail.com" className="hover:text-teal-700 transition-colors">
+                  <a href="mailto:arvinjaysontamayocastro@gmail.com" className="hover:text-[#F4C430] transition-colors">
                     Email
                   </a>
                   <span>•</span>
-                  <a href="tel:+1234567890" className="hover:text-teal-700 transition-colors">
+                  <a href="tel:+1234567890" className="hover:text-[#F4C430] transition-colors">
                     Phone
                   </a>
                 </div>
@@ -131,56 +131,23 @@ export function ArvinLandingPage() {
             <section 
               className="relative w-full border-t border-b transition-all duration-400 ease-in-out" 
               style={{ 
-                background: techStripTheme === 'clean' 
-                  ? 'linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%)'
-                  : techStripTheme === 'cork'
-                  ? `radial-gradient(circle at 2px 2px, rgba(0,0,0,0.05) 1px, transparent 0),
-                     radial-gradient(circle at 6px 6px, rgba(0,0,0,0.03) 1px, transparent 0),
-                     #d6b98c`
-                  : '#0f172a',
-                backgroundSize: techStripTheme === 'cork' ? '8px 8px, 12px 12px, 100%' : 'auto',
-                borderTopColor: techStripTheme === 'clean' ? 'rgba(234, 179, 8, 0.25)' : 'transparent',
-                borderBottomColor: techStripTheme === 'clean' ? 'rgba(234, 179, 8, 0.25)' : 'transparent',
-                transition: 'background 0.4s ease, background-size 0.4s ease, border-color 0.3s ease, color 0.3s ease'
+                background: '#0f172a',
+                borderTopColor: 'transparent',
+                borderBottomColor: 'transparent',
+                transition: 'background 0.4s ease, border-color 0.3s ease, color 0.3s ease'
               }}
             >
               <div className="w-full px-6" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
                 <div className="mx-auto text-center" style={{ maxWidth: '1200px' }}>
                   <h2 
-                    className="text-2xl font-semibold mb-6 text-center transition-colors duration-300 ease-in-out" 
+                    className="text-2xl font-semibold mb-8 text-center transition-colors duration-300 ease-in-out" 
                     style={{ 
                       letterSpacing: '0.5px',
-                      color: techStripTheme === 'black' ? '#f1f5f9' : '#1e293b'
+                      color: '#f1f5f9'
                     }}
                   >
                     Technologies I Ship In Production
                   </h2>
-                  
-                  {/* Theme Toggle */}
-                  <div className="flex items-center justify-center gap-1 mb-8">
-                    {(['clean', 'cork', 'black'] as const).map((theme) => {
-                      const isActive = techStripTheme === theme;
-                      const isBlackTheme = techStripTheme === 'black';
-                      
-                      return (
-                        <button
-                          key={theme}
-                          onClick={() => setTechStripTheme(theme)}
-                          className={`px-4 py-1.5 text-xs font-medium rounded-full border transition-all duration-200 ease-in-out ${
-                            isActive
-                              ? isBlackTheme
-                                ? 'bg-slate-700 text-slate-100 border-slate-600'
-                                : 'bg-slate-100 text-slate-900 border-slate-300'
-                              : isBlackTheme
-                              ? 'bg-slate-800/50 text-slate-400 border-slate-700 hover:bg-slate-700/50'
-                              : 'bg-transparent text-slate-600 border-slate-200 hover:bg-slate-50'
-                          }`}
-                        >
-                          {theme === 'clean' ? 'Clean' : theme === 'cork' ? 'Corkboard' : 'Blackboard'}
-                        </button>
-                      );
-                    })}
-                  </div>
                   
                   <div className="flex flex-wrap justify-center gap-3">
                     {[
@@ -251,49 +218,15 @@ export function ArvinLandingPage() {
                         </svg>
                       )},
                     ].map((tech) => {
-                      // Theme-specific chip styles
-                      const getChipStyles = () => {
-                        if (techStripTheme === 'clean') {
-                          return {
-                            background: '#ffffff',
-                            border: '1px solid rgba(0, 0, 0, 0.06)',
-                            color: '#1e293b',
-                            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.04)'
-                          };
-                        } else if (techStripTheme === 'cork') {
-                          return {
-                            background: '#fffdf7',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
-                            color: '#1e293b',
-                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)'
-                          };
-                        } else { // black
-                          return {
-                            background: '#1e293b',
-                            border: '1px solid rgba(255, 255, 255, 0.08)',
-                            color: '#e2e8f0',
-                            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
-                          };
-                        }
+                      // Blackboard theme chip styles (always)
+                      const chipStyles = {
+                        background: '#1e293b',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
+                        color: '#e2e8f0',
+                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
                       };
 
-                      const getHoverStyles = () => {
-                        if (techStripTheme === 'clean') {
-                          return {
-                            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.08)'
-                          };
-                        } else if (techStripTheme === 'cork') {
-                          return {
-                            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)'
-                          };
-                        } else { // black
-                          return {
-                            boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)'
-                          };
-                        }
-                      };
-
-                      const chipStyles = getChipStyles();
+                      const hoverShadow = '0 6px 20px rgba(0, 0, 0, 0.4)';
                       
                       return (
                         <span
@@ -302,8 +235,7 @@ export function ArvinLandingPage() {
                           style={chipStyles}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.transform = 'translateY(-2px)';
-                            const hoverStyles = getHoverStyles();
-                            e.currentTarget.style.boxShadow = hoverStyles.boxShadow;
+                            e.currentTarget.style.boxShadow = hoverShadow;
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
@@ -329,7 +261,7 @@ export function ArvinLandingPage() {
                     <div>
                       {/* URGENCY BLOCK */}
                       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
-                        <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        <h3 className="font-display text-xl font-bold text-slate-900 mb-4">
                           Something Breaking Right Now?
                         </h3>
                         
@@ -360,7 +292,7 @@ export function ArvinLandingPage() {
                           href="https://m.me/arjayofficial127"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center w-full rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+                          className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                         >
                           Get Help Now
                         </a>
@@ -373,7 +305,7 @@ export function ArvinLandingPage() {
 
                     {/* RIGHT COLUMN — UI/UX in Production */}
                     <div>
-                      <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                      <h2 className="font-display text-2xl font-bold text-slate-900 mb-6">
                         UI/UX in Production
                       </h2>
                       
@@ -384,21 +316,20 @@ export function ArvinLandingPage() {
                         rel="noopener noreferrer"
                         className="block mb-4 group"
                       >
-                        <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-teal-300">
-                          <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
-                            {/* Placeholder for Oyeroyee screenshot - using gradient for now */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="text-center">
-                                <div className="text-2xl font-bold text-slate-700 mb-2">Oyeroyee</div>
-                                <div className="text-sm text-slate-500">Production Platform</div>
-                              </div>
-                            </div>
-                            {/* Note: Replace with actual screenshot using Next.js Image component */}
+                        <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-[#9CAF88]">
+                          <div className="aspect-video relative overflow-hidden bg-slate-100">
+                            <Image
+                              src="/architectking/oyeroyee.png"
+                              alt="Oyeroyee - Production Platform"
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
                           </div>
                           <div className="p-4">
                             <div className="flex items-center justify-between">
                               <span className="text-sm font-medium text-slate-900">View Live Site</span>
-                              <svg className="w-4 h-4 text-slate-400 group-hover:text-teal-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                               </svg>
                             </div>
@@ -418,7 +349,7 @@ export function ArvinLandingPage() {
             {/* DESIGN GALLERY SECTION */}
             <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
               <div className="mx-auto max-w-6xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-8 text-center">
+                <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl mb-8 text-center">
                   Selected Interface Work
                 </h2>
                 
@@ -430,11 +361,15 @@ export function ArvinLandingPage() {
                     rel="noopener noreferrer"
                     className="group"
                   >
-                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-teal-300">
-                      <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-200 relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-lg font-bold text-blue-700">Oyeroyee</span>
-                        </div>
+                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-[#9CAF88]">
+                      <div className="aspect-video relative overflow-hidden bg-slate-100">
+                        <Image
+                          src="/architectking/oyeroyee.png"
+                          alt="Oyeroyee - Job Search Management Platform"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        />
                       </div>
                       <div className="p-4">
                         <p className="text-sm font-medium text-slate-900 mb-1">Oyeroyee</p>
@@ -448,7 +383,7 @@ export function ArvinLandingPage() {
                     <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
                       <div className="aspect-video bg-gradient-to-br from-teal-100 to-teal-200 relative">
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-lg font-bold text-teal-700">SaaS Dashboard</span>
+                          <span className="text-lg font-bold text-[#F4C430]">SaaS Dashboard</span>
                         </div>
                       </div>
                       <div className="p-4">
@@ -463,7 +398,7 @@ export function ArvinLandingPage() {
                     <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
                       <div className="aspect-video bg-gradient-to-br from-cyan-100 to-cyan-200 relative">
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-lg font-bold text-cyan-700">Admin System</span>
+                          <span className="text-lg font-bold text-[#F4C430]">Admin System</span>
                         </div>
                       </div>
                       <div className="p-4">
@@ -494,7 +429,7 @@ export function ArvinLandingPage() {
             {/* FOLD 3 — ARCHITECTURE POSITIONING */}
             <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
               <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-6">
+                <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl mb-6">
                   Architectural Thinking Applied Through Code
                 </h2>
                 <p className="text-lg text-slate-600 mb-8">
@@ -520,7 +455,7 @@ export function ArvinLandingPage() {
             {/* Hero Section */}
             <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-32">
               <div className="mx-auto max-w-4xl text-center">
-                <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl leading-[1.1] pb-3">
+                <h1 className="font-display text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl leading-[1.1] pb-3">
                   Senior Fullstack Architect
                   <span className="block mt-3 bg-gradient-to-r from-teal-700 via-teal-600 to-cyan-600 bg-clip-text text-transparent pb-2">
                     Who Turns Complex Systems Into Scalable Revenue Engines
@@ -534,7 +469,7 @@ export function ArvinLandingPage() {
                 <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <a
                     href="#contact"
-                    className="inline-flex items-center justify-center rounded-lg bg-teal-700 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-teal-700/30 transition-all hover:bg-teal-800 hover:shadow-xl hover:shadow-teal-700/40 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-offset-2"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                   >
                     Book a 20-Min Architecture Call
                   </a>
@@ -542,7 +477,7 @@ export function ArvinLandingPage() {
                     href="/pdf/ArJay_Castro_Skills.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-teal-600 hover:bg-slate-50 hover:text-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:ring-offset-2"
+                    className="inline-flex items-center justify-center rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-[#FFF8E7] hover:text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                   >
                     Download Resume
                   </a>
@@ -559,7 +494,7 @@ export function ArvinLandingPage() {
             {/* Problem Statement */}
             <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
               <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
                   What Companies Struggle With
                 </h2>
                 <div className="mt-8 space-y-6 text-lg text-slate-600">
@@ -586,7 +521,7 @@ export function ArvinLandingPage() {
             <section className="relative bg-slate-50/50">
               <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
                 <div className="mx-auto max-w-4xl">
-                  <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                  <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
                     How I Think: Architecture-First, Business-Aware
                   </h2>
                   <div className="mt-8 space-y-8">
@@ -619,7 +554,7 @@ export function ArvinLandingPage() {
             {/* Case Studies */}
             <section id="case-studies" className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
               <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">
+                <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
                   Case Studies: Production Systems
                 </h2>
                 <p className="mt-4 text-lg text-slate-600">
@@ -692,7 +627,7 @@ export function ArvinLandingPage() {
                 <p className="text-sm font-medium text-slate-900">Contact</p>
                 <a 
                   href="mailto:arvinjaysontamayocastro@gmail.com" 
-                  className="mt-1 block text-sm text-teal-700 hover:text-teal-800"
+                  className="mt-1 block text-sm text-[#F4C430] hover:text-[#F4C430]/80"
                 >
                   arvinjaysontamayocastro@gmail.com
                 </a>
@@ -700,7 +635,7 @@ export function ArvinLandingPage() {
                   href="https://www.linkedin.com/in/arvinjaysoncastro" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="mt-1 block text-sm text-teal-700 hover:text-teal-800"
+                  className="mt-1 block text-sm text-[#F4C430] hover:text-[#F4C430]/80"
                 >
                   LinkedIn
                 </a>
@@ -708,7 +643,7 @@ export function ArvinLandingPage() {
                   href="https://www.github.com/arvinjaysoncastro" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="mt-1 block text-sm text-teal-700 hover:text-teal-800"
+                  className="mt-1 block text-sm text-[#F4C430] hover:text-[#F4C430]/80"
                 >
                   GitHub
                 </a>

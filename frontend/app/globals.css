@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Color tokens for systems-first design */
+:root {
+  --color-navy: #0F172A;
+  --color-gold: #F4C430;
+  --color-cream: #FFF8E7;
+  --color-sage: #9CAF88;
+}
+
 /* Accessibility: Screen reader only class */
 .sr-only {
   position: absolute;
