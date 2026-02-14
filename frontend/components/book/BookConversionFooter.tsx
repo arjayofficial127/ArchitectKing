@@ -11,17 +11,20 @@ export function BookConversionFooter() {
         </p>
         <div className={styles.conversionActions}>
           <a
-            href="mailto:arjayofficial127@gmail.com?subject=Architecture%20Call%20Request&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20schedule%20a%2020-minute%20architecture%20call%20to%20discuss%20[your%20project%2Frole].%0A%0ABest%2C"
+            href="mailto:arjayofficial127@gmail.com?subject=Architecture%20Discussion&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20discuss%20system%20architecture%20for%20[your%20project%2Frole].%0A%0ABest%2C"
             className={styles.primaryCTA}
           >
-            Book a 20-Min Architecture Call
+            Discuss Your System Architecture
           </a>
-          <Link href="/pdf/ArJay_Castro_Skills.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryCTA}>
-            Download Resume
-          </Link>
-          <a href="mailto:arjayofficial127@gmail.com" className={styles.tertiaryCTA}>
-            Email
-          </a>
+          <div className={styles.secondaryLinks}>
+            <Link href="/pdf/ArJay_Castro_Skills.pdf" target="_blank" rel="noopener noreferrer" className={styles.subtleLink}>
+              Download Resume
+            </Link>
+            <span className={styles.linkSeparator}>•</span>
+            <a href="mailto:arjayofficial127@gmail.com" className={styles.subtleLink}>
+              Email
+            </a>
+          </div>
         </div>
       </div>
     </section>

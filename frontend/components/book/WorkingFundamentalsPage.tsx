@@ -80,7 +80,15 @@ export function WorkingFundamentalsPage() {
             {/* Credibility Signals */}
             <div className={styles.credibility}>
               <p className={styles.credibilityText}>
-                <strong>Senior Software Architect</strong> • 15+ years experience • Multi-tenant SaaS builder • Production systems shipped
+                <strong>Senior Software Architect</strong>
+                <br />
+                <span style={{ fontSize: '0.9em', color: '#666' }}>
+                  Architecture-led delivery across product, platform, and teams.
+                </span>
+                <br />
+                <span style={{ fontSize: '0.85em', color: '#888' }}>
+                  15+ years experience • Multi-tenant SaaS builder • Production systems shipped
+                </span>
               </p>
             </div>
 
@@ -140,8 +148,27 @@ export function WorkingFundamentalsPage() {
           <ChapterSidebar />
         </main>
 
-        {/* Conversion Footer */}
-        <BookConversionFooter />
+          {/* Bridge Section */}
+          <section className={styles.bridgeSection}>
+            <h2 className={styles.bridgeTitle}>How This Thinking Shows Up in Real Systems</h2>
+            <p className={styles.bridgeText}>
+              The ideas in Working Fundamentals are not theoretical.
+              They guide how I design multi-tenant SaaS platforms,
+              structure domain boundaries,
+              and reduce long-term system fragility.
+            </p>
+          </section>
+
+          {/* Conversion Footer */}
+          <BookConversionFooter />
+
+          {/* Close Loop */}
+          <div className={styles.closeLoop}>
+            <p className={styles.closeLoopText}>
+              If you&apos;re building something that needs to hold,
+              this is the lens I bring to it.
+            </p>
+          </div>
       </div>
     </div>
   );

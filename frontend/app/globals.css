@@ -47,6 +47,17 @@ select:focus-visible,
 /* Green status: bg-green-100 text-green-700 (4.5:1) meets AA */
 /* Red destructive: text-red-600 on white (4.5:1) meets AA */
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes heartbeat {
   0%, 100% {
     transform: scale(1);
