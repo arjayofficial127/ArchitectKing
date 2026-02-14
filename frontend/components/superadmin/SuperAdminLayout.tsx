@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useNotifications } from '@/hooks/superadmin/useNotifications';
+import { useOrgSession } from '@/providers/OrgSessionProvider';
 
 interface SuperAdminLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,9 @@ interface SuperAdminLayoutProps {
 export function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
   const pathname = usePathname();
   const { unreadCount } = useNotifications(true);
+  const orgSession = useOrgSession();
+  const activeOrgId = orgSession.activeOrgId;
+  const activeOrg = orgSession.activeOrg;
   const [currentTime, setCurrentTime] = useState<string>('');
   const [currentDate, setCurrentDate] = useState<string>('');
 
@@ -95,6 +99,18 @@ export function SuperAdminLayout({ children }: SuperAdminLayoutProps) {
             </div>
             
             <div className="flex items-center space-x-4">
+              {activeOrgId && activeOrg && (
+                <Link
+                  href={`/orgs/${activeOrgId}/dashboard`}
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
+                  title={`Back to ${activeOrg.name}`}
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                  </svg>
+                  <span className="hidden sm:inline">{activeOrg.name}</span>
+                </Link>
+              )}
               <Link
                 href="/superadmin/notifications"
                 className="relative flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"

@@ -1,2 +1,0 @@
-# AtomicFuel
-BaseApp by J

@@ -136,7 +136,13 @@ export function OrgInfoHeader() {
             {isSuperAdmin && (
               <>
                 <span className="text-gray-400">•</span>
-                <span className="text-blue-600 font-semibold">Super Admin</span>
+                <Link
+                  href="/superadmin/dashboard"
+                  className="text-blue-600 font-semibold hover:text-blue-700 hover:underline transition"
+                  title="Go to SuperAdmin Control OS"
+                >
+                  Super Admin
+                </Link>
               </>
             )}
           </div>
