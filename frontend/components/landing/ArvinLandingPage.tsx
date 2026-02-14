@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState } from 'react';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { CaseStudy } from './CaseStudy';
 import { CTASection } from './CTASection';
@@ -12,6 +13,9 @@ import Link from 'next/link';
 export function ArvinLandingPage() {
   // Fast conversion mode - show conversion-focused sections, hide architecture content
   const isFastConversionMode = true;
+  
+  // Theme state for tech strip
+  const [techStripTheme, setTechStripTheme] = useState('clean' as 'clean' | 'cork' | 'black');
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
@@ -123,63 +127,364 @@ export function ArvinLandingPage() {
               </div>
             </section>
 
+            {/* FULL-WIDTH TECH STRIP */}
+            <section 
+              className="relative w-full border-t border-b transition-all duration-400 ease-in-out" 
+              style={{ 
+                background: techStripTheme === 'clean' 
+                  ? 'linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%)'
+                  : techStripTheme === 'cork'
+                  ? `radial-gradient(circle at 2px 2px, rgba(0,0,0,0.05) 1px, transparent 0),
+                     radial-gradient(circle at 6px 6px, rgba(0,0,0,0.03) 1px, transparent 0),
+                     #d6b98c`
+                  : '#0f172a',
+                backgroundSize: techStripTheme === 'cork' ? '8px 8px, 12px 12px, 100%' : 'auto',
+                borderTopColor: techStripTheme === 'clean' ? 'rgba(234, 179, 8, 0.25)' : 'transparent',
+                borderBottomColor: techStripTheme === 'clean' ? 'rgba(234, 179, 8, 0.25)' : 'transparent',
+                transition: 'background 0.4s ease, background-size 0.4s ease, border-color 0.3s ease, color 0.3s ease'
+              }}
+            >
+              <div className="w-full px-6" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+                <div className="mx-auto text-center" style={{ maxWidth: '1200px' }}>
+                  <h2 
+                    className="text-2xl font-semibold mb-6 text-center transition-colors duration-300 ease-in-out" 
+                    style={{ 
+                      letterSpacing: '0.5px',
+                      color: techStripTheme === 'black' ? '#f1f5f9' : '#1e293b'
+                    }}
+                  >
+                    Technologies I Ship In Production
+                  </h2>
+                  
+                  {/* Theme Toggle */}
+                  <div className="flex items-center justify-center gap-1 mb-8">
+                    {(['clean', 'cork', 'black'] as const).map((theme) => {
+                      const isActive = techStripTheme === theme;
+                      const isBlackTheme = techStripTheme === 'black';
+                      
+                      return (
+                        <button
+                          key={theme}
+                          onClick={() => setTechStripTheme(theme)}
+                          className={`px-4 py-1.5 text-xs font-medium rounded-full border transition-all duration-200 ease-in-out ${
+                            isActive
+                              ? isBlackTheme
+                                ? 'bg-slate-700 text-slate-100 border-slate-600'
+                                : 'bg-slate-100 text-slate-900 border-slate-300'
+                              : isBlackTheme
+                              ? 'bg-slate-800/50 text-slate-400 border-slate-700 hover:bg-slate-700/50'
+                              : 'bg-transparent text-slate-600 border-slate-200 hover:bg-slate-50'
+                          }`}
+                        >
+                          {theme === 'clean' ? 'Clean' : theme === 'cork' ? 'Corkboard' : 'Blackboard'}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  
+                  <div className="flex flex-wrap justify-center gap-3">
+                    {[
+                      { name: 'Vercel', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 76 65" fill="currentColor">
+                          <path d="M37.527 0L75.054 65H0L37.527 0Z"/>
+                        </svg>
+                      )},
+                      { name: 'Render', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                        </svg>
+                      )},
+                      { name: 'Azure', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                      )},
+                      { name: 'C#' },
+                      { name: '.NET', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M2 2h20v20H2V2zm2 2v16h16V4H4zm2 2h12v12H6V6zm2 2v8h8V8H8z"/>
+                        </svg>
+                      )},
+                      { name: 'Node', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                      )},
+                      { name: 'React', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="2"/>
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                      )},
+                      { name: 'TypeScript' },
+                      { name: 'Angular', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                      )},
+                      { name: 'PostgreSQL', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                      )},
+                      { name: 'SQL Server' },
+                      { name: 'Neon' },
+                      { name: 'REST' },
+                      { name: 'CI/CD' },
+                      { name: 'Docker', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                      )},
+                      { name: 'Tailwind' },
+                      { name: 'CSS' },
+                      { name: 'Git', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                      )},
+                      { name: 'Prisma' },
+                      { name: 'EF Core' },
+                      { name: 'Next.js', icon: (
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                      )},
+                    ].map((tech) => {
+                      // Theme-specific chip styles
+                      const getChipStyles = () => {
+                        if (techStripTheme === 'clean') {
+                          return {
+                            background: '#ffffff',
+                            border: '1px solid rgba(0, 0, 0, 0.06)',
+                            color: '#1e293b',
+                            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.04)'
+                          };
+                        } else if (techStripTheme === 'cork') {
+                          return {
+                            background: '#fffdf7',
+                            border: '1px solid rgba(0, 0, 0, 0.08)',
+                            color: '#1e293b',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)'
+                          };
+                        } else { // black
+                          return {
+                            background: '#1e293b',
+                            border: '1px solid rgba(255, 255, 255, 0.08)',
+                            color: '#e2e8f0',
+                            boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
+                          };
+                        }
+                      };
+
+                      const getHoverStyles = () => {
+                        if (techStripTheme === 'clean') {
+                          return {
+                            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.08)'
+                          };
+                        } else if (techStripTheme === 'cork') {
+                          return {
+                            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)'
+                          };
+                        } else { // black
+                          return {
+                            boxShadow: '0 6px 20px rgba(0, 0, 0, 0.4)'
+                          };
+                        }
+                      };
+
+                      const chipStyles = getChipStyles();
+                      
+                      return (
+                        <span
+                          key={tech.name}
+                          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-all duration-200 ease-in-out"
+                          style={chipStyles}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            const hoverStyles = getHoverStyles();
+                            e.currentTarget.style.boxShadow = hoverStyles.boxShadow;
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = chipStyles.boxShadow;
+                          }}
+                        >
+                          {tech.icon && <span className="flex-shrink-0">{tech.icon}</span>}
+                          <span>{tech.name}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </section>
+
             {/* FOLD 2 — TWO LANES */}
             <section className="relative bg-slate-50/50">
               <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
                 <div className="mx-auto max-w-6xl">
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                    {/* LEFT COLUMN */}
+                    {/* LEFT COLUMN — Urgency Block */}
                     <div>
-                      <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                        Full Lifecycle Engineering
-                      </h2>
-                      <ul className="space-y-3 text-slate-700">
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>Azure / Render / Vercel</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>Neon / PostgreSQL / SQL Server</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>API Architecture</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>System Integration</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>Deployment Automation</span>
-                        </li>
-                      </ul>
+                      {/* URGENCY BLOCK */}
+                      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
+                        <h3 className="text-xl font-bold text-slate-900 mb-4">
+                          Something Breaking Right Now?
+                        </h3>
+                        
+                        <ul className="space-y-2 mb-4 text-sm text-slate-700">
+                          <li className="flex items-start">
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>Urgent bug?</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>API down?</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>Deployment stuck?</span>
+                          </li>
+                          <li className="flex items-start">
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>System unstable?</span>
+                          </li>
+                        </ul>
+
+                        <p className="text-sm text-slate-600 mb-4">
+                          Senior-level troubleshooting. Immediate execution.
+                        </p>
+
+                        <a
+                          href="https://m.me/arjayofficial127"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center w-full rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+                        >
+                          Get Help Now
+                        </a>
+
+                        <p className="mt-3 text-xs text-slate-500 text-center">
+                          Direct message. No layers. No delays.
+                        </p>
+                      </div>
                     </div>
 
-                    {/* RIGHT COLUMN */}
+                    {/* RIGHT COLUMN — UI/UX in Production */}
                     <div>
                       <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                        UI/UX Edge
+                        UI/UX in Production
                       </h2>
-                      <ul className="space-y-3 text-slate-700">
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>UX thinking</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>Conversion-focused design</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>Product feel &amp; usability</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-teal-600 mr-2">•</span>
-                          <span>Engineering + design balance</span>
-                        </li>
-                      </ul>
+                      
+                      {/* Oyeroyee Preview Card */}
+                      <a
+                        href="https://www.oyeroyee.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block mb-4 group"
+                      >
+                        <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-teal-300">
+                          <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">
+                            {/* Placeholder for Oyeroyee screenshot - using gradient for now */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="text-center">
+                                <div className="text-2xl font-bold text-slate-700 mb-2">Oyeroyee</div>
+                                <div className="text-sm text-slate-500">Production Platform</div>
+                              </div>
+                            </div>
+                            {/* Note: Replace with actual screenshot using Next.js Image component */}
+                          </div>
+                          <div className="p-4">
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm font-medium text-slate-900">View Live Site</span>
+                              <svg className="w-4 h-4 text-slate-400 group-hover:text-teal-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                      
+                      <p className="text-sm text-slate-600 italic">
+                        Oyeroyee — Production-ready platform built end-to-end.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* DESIGN GALLERY SECTION */}
+            <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-8 text-center">
+                  Selected Interface Work
+                </h2>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {/* Oyeroyee Card */}
+                  <a
+                    href="https://www.oyeroyee.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-teal-300">
+                      <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-200 relative">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-lg font-bold text-blue-700">Oyeroyee</span>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm font-medium text-slate-900 mb-1">Oyeroyee</p>
+                        <p className="text-xs text-slate-500">Job search management platform</p>
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* SaaS Dashboard Card */}
+                  <div className="group">
+                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
+                      <div className="aspect-video bg-gradient-to-br from-teal-100 to-teal-200 relative">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-lg font-bold text-teal-700">SaaS Dashboard</span>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm font-medium text-slate-900 mb-1">SaaS Dashboard</p>
+                        <p className="text-xs text-slate-500">Multi-tenant admin system</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Admin System Card */}
+                  <div className="group">
+                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
+                      <div className="aspect-video bg-gradient-to-br from-cyan-100 to-cyan-200 relative">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-lg font-bold text-cyan-700">Admin System</span>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm font-medium text-slate-900 mb-1">Admin System</p>
+                        <p className="text-xs text-slate-500">Enterprise control panel</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Landing Page System Card */}
+                  <div className="group">
+                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
+                      <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 relative">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-lg font-bold text-slate-700">Landing Page</span>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm font-medium text-slate-900 mb-1">Landing Page System</p>
+                        <p className="text-xs text-slate-500">Conversion-focused design</p>
+                      </div>
                     </div>
                   </div>
                 </div>
