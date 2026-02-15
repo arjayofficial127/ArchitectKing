@@ -4,43 +4,15 @@ import Link from 'next/link';
 import { BookCover } from './BookCover';
 import { ChapterSidebar } from './ChapterSidebar';
 import { BookConversionFooter } from './BookConversionFooter';
+import { SiteNavbar } from '@/components/shared/SiteNavbar';
 import styles from './book.module.css';
 
 export function WorkingFundamentalsPage() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        {/* Header */}
-        <header className={styles.header}>
-          <Link href="/" className={styles.brand}>
-            Arvin Jayson Castro
-          </Link>
-          <nav className={styles.nav}>
-            <Link href="/working-fundamentals" className={styles.navLink}>
-              Working Fundamentals
-            </Link>
-            <a href="#case-studies" className={styles.navLink}>
-              Case Studies
-            </a>
-            <a href="#systems" className={styles.navLink}>
-              Systems
-            </a>
-            <a href="#contact" className={styles.navLink}>
-              Contact
-            </a>
-            <div className={styles.linkedin}>
-              <a
-                href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.linkedinLink}
-              >
-                linkedIn
-              </a>
-              <span className={styles.linkedinSubtext}>let&apos;s connect</span>
-            </div>
-          </nav>
-        </header>
+        {/* Header - Reusable navbar */}
+        <SiteNavbar />
 
         {/* Main */}
         <main className={styles.main}>
@@ -58,13 +30,11 @@ export function WorkingFundamentalsPage() {
           {/* Center: Content */}
           <section className={styles.content}>
             <h1 className={styles.contentTitle}>Working Fundamentals</h1>
-            <div className={styles.byline}>by ARVIN JAYSON CASTRO</div>
             <p className={styles.tagline}>
-              A concise, practical guide to building software that lasts — patterns, checklists, and pragmatic examples.
+              The internal blueprint behind the systems I ship in production.
             </p>
-
-            <p className={styles.paragraph}>
-              Software rarely fails suddenly — it decays through unnamed assumptions, unclear responsibilities, invisible state, and misplaced abstractions.
+            <p className={styles.subtext}>
+              Patterns. Ownership. Architecture that survives scale.
             </p>
 
             {/* Why This Matters Section */}
@@ -77,70 +47,41 @@ export function WorkingFundamentalsPage() {
               </ul>
             </div>
 
-            {/* Credibility Signals */}
-            <div className={styles.credibility}>
-              <p className={styles.credibilityText}>
-                <strong>Senior Software Architect</strong>
-                <br />
-                <span style={{ fontSize: '0.9em', color: '#666' }}>
-                  Architecture-led delivery across product, platform, and teams.
-                </span>
-                <br />
-                <span style={{ fontSize: '0.85em', color: '#888' }}>
-                  15+ years experience • Multi-tenant SaaS builder • Production systems shipped
-                </span>
-              </p>
-            </div>
 
             <div className={styles.meta}>
               <div>
-                <strong>Author</strong>
+                <strong>Built By</strong>
                 <br />
                 Arvin Jayson Castro
               </div>
               <div>
-                <strong>Role</strong>
+                <strong>Position</strong>
                 <br />
-                Senior Software Architect
+                Senior Systems Engineer
               </div>
               <div>
-                <strong>Structure</strong>
+                <strong>Focus</strong>
                 <br />
-                13 core chapters + preface + postscript
+                Production Systems & Multi-Tenant SaaS
               </div>
               <div>
-                <strong>Release</strong>
+                <strong>Operating Model</strong>
                 <br />
-                Jan 2026
+                Used to build real production systems
               </div>
               <div>
                 <strong>Language</strong>
                 <br />
                 English
               </div>
-              <div>
-                <strong>Positioning</strong>
-                <br />
-                Practical systems thinking for builders
-              </div>
             </div>
 
-            <div className={styles.author}>
-              <img
-                alt="Arvin Jayson Castro"
-                loading="lazy"
-                width="44"
-                height="44"
-                className={styles.authorImage}
-                src="https://media.licdn.com/dms/image/v2/D4D03AQFu3T0VxHF1Fg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1699015981714?e=1770854400&v=beta&t=K6EWG2XmIt5qYpvu_3nCLgHVSa3-DCc2k6fD6YX2Oow"
-              />
-              <div>
-                <strong>About the Author</strong>
-                <div>
-                  Arvin Jayson Castro is a software architect focused on designing dependable systems that scale across teams.
-                  He writes from hands-on experience in delivery, platform work, and engineering leadership—turning messy realities into clear boundaries, predictable execution, and maintainable software.
-                </div>
-              </div>
+            {/* How This Connects Section */}
+            <div className={styles.connectsSection}>
+              <h2 className={styles.connectsTitle}>How This Connects To My Work</h2>
+              <p className={styles.connectsText}>
+                This book reflects the patterns and invariants I use when building production systems for clients and teams.
+              </p>
             </div>
           </section>
 

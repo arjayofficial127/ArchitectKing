@@ -12,8 +12,9 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* Header */
@@ -164,7 +165,7 @@
   font-weight: 800;
   line-height: 1.15;
   margin: 0;
-  color: #111111;
+  color: #0F172A;
 }
 
 .byline {
@@ -175,9 +176,19 @@
 }
 
 .tagline {
-  font-size: 18px;
-  font-weight: 500;
-  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  color: #0F172A;
+  margin: 16px 0 8px 0;
+  line-height: 1.4;
+}
+
+.subtext {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
 }
 
 .paragraph {
@@ -191,7 +202,7 @@
   padding: 24px;
   background: rgba(255,255,255,0.6);
   border-radius: 8px;
-  border-left: 4px solid #16a34a;
+  border-left: 4px solid #9CAF88;
 }
 
 .whyMattersTitle {
@@ -220,7 +231,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #16a34a;
+  color: #9CAF88;
   font-weight: bold;
 }
 
@@ -243,6 +254,29 @@
   font-weight: 600;
 }
 
+.connectsSection {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.connectsTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #F4C430;
+  display: inline-block;
+}
+
+.connectsText {
+  font-size: 15px;
+  color: #222;
+  line-height: 1.6;
+  margin: 16px 0 0 0;
+}
+
 .bridgeSection {
   margin-top: 48px;
   padding: 32px 0;
@@ -253,7 +287,7 @@
 .bridgeTitle {
   font-size: 20px;
   font-weight: 700;
-  color: #111111;
+  color: #0F172A;
   margin: 0 0 16px 0;
 }
 
@@ -280,12 +314,14 @@
 }
 
 .meta {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 32px;
+  padding: 24px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.08);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px 24px;
+  gap: 16px 24px;
   font-size: 13px;
 }
 

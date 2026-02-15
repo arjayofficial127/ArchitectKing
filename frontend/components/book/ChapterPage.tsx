@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ChapterDropdown } from './ChapterDropdown';
 import { bookChapters } from '@/lib/bookChapters';
+import { SiteNavbar } from '@/components/shared/SiteNavbar';
 import styles from './chapterPage.module.css';
 
 interface ChapterPageProps {
@@ -29,25 +30,8 @@ export function ChapterPage({
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        <header className={styles.header}>
-          <Link href="/" className={styles.brand}>
-            Arvin Jayson Castro
-          </Link>
-          <nav className={styles.nav}>
-            <Link href="/working-fundamentals" className={styles.navLink}>
-              Working Fundamentals
-            </Link>
-            <a href="/#case-studies" className={styles.navLink}>
-              Case Studies
-            </a>
-            <a href="/#systems" className={styles.navLink}>
-              Systems
-            </a>
-            <a href="/#contact" className={styles.navLink}>
-              Contact
-            </a>
-          </nav>
-        </header>
+        {/* Header - Reusable navbar */}
+        <SiteNavbar />
 
         <main className={styles.main}>
           <article className={styles.chapterContent}>

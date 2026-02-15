@@ -1,27 +1,31 @@
 .conversionFooter {
   margin-top: 64px;
-  padding: 48px 0;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 96px 0;
+  background-color: #0F172A;
+  border-top: 1px solid #F4C430;
 }
 
 .conversionContent {
-  max-width: 600px;
+  max-width: 680px;
   margin: 0 auto;
   text-align: center;
+  padding: 0 24px;
 }
 
 .conversionTitle {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
-  color: #111111;
-  margin: 0 0 12px 0;
+  color: #FFF8E7;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
 }
 
 .conversionSubtitle {
-  font-size: 15px;
-  color: #666;
-  margin: 0 0 32px 0;
+  font-size: 16px;
+  color: #E2E8F0;
+  margin: 0 0 40px 0;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .conversionActions {
@@ -36,43 +40,52 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  padding: 14px 32px;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: white;
-  background: #16a34a;
+  color: #0F172A;
+  background: #F4C430;
   text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: background-color 0.2s ease;
 }
 
 .primaryCTA:hover {
-  background: #15803d;
-  transform: translateY(-1px);
+  background: #E6B82E;
 }
 
 .secondaryLinks {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 .subtleLink {
   font-size: 14px;
-  color: #666;
+  color: #CBD5E1;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .subtleLink:hover {
-  color: #111111;
+  color: #FFF8E7;
   text-decoration: underline;
 }
 
 .linkSeparator {
-  color: #999;
+  color: #64748B;
   font-size: 14px;
+}
+
+.signatureLine {
+  margin-top: 32px;
+  font-size: 14px;
+  color: #94A3B8;
+  font-style: italic;
+  line-height: 1.6;
+  opacity: 0.85;
 }
 
 @media (max-width: 768px) {

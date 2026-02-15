@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { CaseStudy } from './CaseStudy';
 import { CTASection } from './CTASection';
@@ -9,16 +9,12 @@ import { AuthorityStrip } from './AuthorityStrip';
 import { TechnicalDepth } from './TechnicalDepth';
 import { SystemsArchitecture } from './SystemsArchitecture';
 import { BookAuthorityStrip } from './BookAuthorityStrip';
-import { ContactPopover } from './ContactPopover';
-import Link from 'next/link';
+import { SiteNavbar } from '@/components/shared/SiteNavbar';
+import classes from './arvinLandingPage.module.css';
 
 export function ArvinLandingPage() {
   // Fast conversion mode - show conversion-focused sections, hide architecture content
   const isFastConversionMode = true;
-  
-  // Contact popover state
-  const [isContactPopoverOpen, setIsContactPopoverOpen] = useState(false);
-  const contactTriggerRef = useRef<HTMLAnchorElement>(null);
   
   // Theme state for tech strip - always blackboard
   const techStripTheme = 'black';
@@ -35,59 +31,8 @@ export function ArvinLandingPage() {
         grainOpacity={0.04}
       />
 
-      {/* Header - Minimal, professional */}
-      <header className="relative border-b border-slate-200/60 bg-white/80 backdrop-blur-sm z-50">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-3">
-          <div className="flex items-center gap-2">
-            <span className="text-base font-semibold tracking-tight text-slate-900">
-              Arvin Jayson Castro
-            </span>
-            <span className="text-sm text-slate-400">|</span>
-            <span className="text-sm text-slate-500">Senior Full-Stack Engineer</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <nav className="hidden md:flex items-center gap-6">
-              <Link href="/working-fundamentals" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
-                Working Fundamentals
-              </Link>
-              <a href="#case-studies" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
-                Case Studies
-              </a>
-              <a href="#systems" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
-                Systems
-              </a>
-              <div className="relative">
-                <a
-                  ref={contactTriggerRef}
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setIsContactPopoverOpen(!isContactPopoverOpen);
-                  }}
-                  className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors cursor-pointer"
-                  aria-expanded={isContactPopoverOpen}
-                  aria-haspopup="true"
-                >
-                  Contact
-                </a>
-                <ContactPopover
-                  isOpen={isContactPopoverOpen}
-                  onClose={() => setIsContactPopoverOpen(false)}
-                  triggerRef={contactTriggerRef}
-                />
-              </div>
-            </nav>
-            <a
-              href="https://m.me/arjayofficial127"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center justify-center rounded-md border border-[#0F172A] bg-transparent px-4 py-1.5 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-1"
-            >
-              Message Me
-            </a>
-          </div>
-        </div>
-      </header>
+      {/* Header - Reusable navbar */}
+      <SiteNavbar />
 
       <main className="relative">
         {/* ============================================
@@ -106,6 +51,18 @@ export function ArvinLandingPage() {
                   </span>
                 </h1>
                 
+                {/* Availability line - under subheadline */}
+                <div className="mt-6 text-sm text-slate-500">
+                  <span>Available for:</span>
+                  <span className="mx-2">•</span>
+                  <span>Urgent system fixes</span>
+                  <span className="mx-2">•</span>
+                  <span>Full feature builds</span>
+                  <span className="mx-2">•</span>
+                  <span>Contract or full-time roles</span>
+                </div>
+                
+                {/* Skills list - horizontal with bullets */}
                 <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-lg text-slate-600">
                   <span>React / TypeScript</span>
                   <span className="text-slate-400">•</span>
@@ -136,11 +93,17 @@ export function ArvinLandingPage() {
                   </a>
                 </div>
 
-                {/* Power line - placed immediately after CTA for psychological reinforcement */}
-                <p className="mt-4 text-lg font-medium text-slate-700">
+                {/* Microcopy below CTA */}
+                <p className="mt-3 text-sm text-slate-500">
+                  Direct access. Fast response. Built to ship.
+                </p>
+
+                {/* Motto below CTA */}
+                <p className="mt-6 text-lg font-medium text-slate-700">
                   &quot;I solve problems. I ship.&quot;
                 </p>
 
+                {/* Contact info at bottom */}
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500">
                   <a href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4C430] transition-colors">
                     LinkedIn
@@ -167,10 +130,10 @@ export function ArvinLandingPage() {
                 transition: 'background 0.4s ease, border-color 0.3s ease, color 0.3s ease'
               }}
             >
-              <div className="w-full px-6" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
+              <div className="w-full px-6" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
                 <div className="mx-auto text-center" style={{ maxWidth: '1200px' }}>
                   <h2 
-                    className="text-2xl font-semibold mb-8 text-center transition-colors duration-300 ease-in-out" 
+                    className="text-2xl font-semibold mb-2 text-center transition-colors duration-300 ease-in-out" 
                     style={{ 
                       letterSpacing: '0.5px',
                       color: '#f1f5f9'
@@ -178,6 +141,9 @@ export function ArvinLandingPage() {
                   >
                     Technologies I Ship In Production
                   </h2>
+                  <p className="text-sm mb-8 text-center" style={{ color: '#94a3b8' }}>
+                    Stack I actively use in live systems.
+                  </p>
                   
                   <div className="flex flex-wrap justify-center gap-3">
                     {[
@@ -284,14 +250,13 @@ export function ArvinLandingPage() {
               </div>
             </section>
 
-            {/* FOLD 2 — TWO LANES */}
+            {/* TWO COLUMN SECTION: URGENCY + PORTFOLIO */}
             <section className="relative bg-slate-50/50">
               <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
                 <div className="mx-auto max-w-6xl">
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
                     {/* LEFT COLUMN — Urgency Block */}
                     <div>
-                      {/* URGENCY BLOCK */}
                       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
                         <h3 className="text-xl font-bold text-slate-900 mb-4">
                           Something Breaking Right Now?
@@ -335,146 +300,173 @@ export function ArvinLandingPage() {
                       </div>
                     </div>
 
-                    {/* RIGHT COLUMN — UI/UX in Production */}
+                    {/* RIGHT COLUMN — Portfolio Iframe */}
                     <div>
-                      <h2 className="text-2xl font-bold text-slate-900 mb-6">
-                        UI/UX in Production
-                      </h2>
-                      
-                      {/* Oyeroyee Preview Card */}
+                      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                        <div className="aspect-video relative bg-slate-100">
+                          <iframe
+                            src="https://arvinjaysoncastro.com"
+                            className="w-full h-full border-0"
+                            title="Portfolio Preview"
+                            allow="fullscreen"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <a
+                            href="/pdf/ArJay_Castro_Skills.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                          >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Download Resume
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* BOOK STRIP */}
+            <section className="relative bg-slate-50/50 border-y border-slate-200/50">
+              <div className="mx-auto max-w-7xl px-6 py-12">
+                <div className="mx-auto max-w-4xl text-center">
+                  <p className="text-lg text-slate-700 mb-3">
+                    &quot;Every program—regardless of language, framework, or scale—reduces to the same shape:&quot;
+                  </p>
+                  <p className="text-xl font-semibold text-slate-900 mb-6">
+                    Input → Transform → Output
+                  </p>
+                  <Link
+                    href="/working-fundamentals"
+                    className="inline-flex items-center text-sm font-medium text-[#F4C430] hover:text-[#E6B82E] transition-colors"
+                  >
+                    Then read the whole book...
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </section>
+
+            {/* PRODUCTION SYSTEMS I'VE BUILT */}
+            <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-12 text-center">
+                  Production Systems I&apos;ve Built
+                </h2>
+                
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+                  {/* LEFT COLUMN — Featured System (Oyeroyee) */}
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Oyeroyee</h3>
+                    <p className="text-sm text-slate-500 mb-4">Job & Applicant Tracking Platform</p>
+                    <p className="text-slate-700 mb-6">
+                      A production-ready platform that helps job seekers track applications and employers manage hiring pipelines. Built with end-to-end ownership from database design to deployment.
+                    </p>
+                    <ul className="space-y-2 mb-6 text-sm text-slate-700">
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>Production deployment with real users</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>End-to-end ownership and architecture</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>Funnel-based analytics and insights</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>Product thinking applied to code</span>
+                      </li>
+                    </ul>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
+                        href="/case-studies/oyeroyee"
+                        className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                      >
+                        View Case Study
+                      </Link>
                       <a
                         href="https://www.oyeroyee.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block mb-4 group"
+                        className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                       >
-                        <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-[#9CAF88]">
-                          <div className="aspect-video relative overflow-hidden bg-slate-100">
-                            <Image
-                              src="/architectking/oyeroyee.png"
-                              alt="Oyeroyee - Production Platform"
-                              fill
-                              className="object-cover"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            />
-                          </div>
-                          <div className="p-4">
-                            <div className="flex items-center justify-between">
-                              <span className="text-sm font-medium text-slate-900">View Live Site</span>
-                              <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
+                        See Live Site
                       </a>
-                      
-                      <p className="text-sm text-slate-600 italic">
-                        Oyeroyee — Production-ready platform built end-to-end.
-                      </p>
                     </div>
+                  </div>
+
+                  {/* RIGHT COLUMN — Other Systems List */}
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-6">Other Systems</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <Link
+                          href="/case-studies/baseofui"
+                          className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
+                        >
+                          <span className="font-medium">BaseOfUI</span>
+                          <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/case-studies/airunote"
+                          className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
+                        >
+                          <span className="font-medium">Airunote</span>
+                          <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/case-studies/gov-platform"
+                          className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
+                        >
+                          <span className="font-medium">Government Platform</span>
+                          <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* DESIGN GALLERY SECTION */}
-            <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
-              <div className="mx-auto max-w-6xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-8 text-center">
-                  Selected Interface Work
+            {/* FINAL PUNCHLINE SECTION */}
+            <section className={classes.finalClose}>
+              <div className={classes.finalCloseInner}>
+                <h2 className={classes.finalCloseTitle}>
+                  I design systems that survive real traffic, real deadlines, and real production constraints.
                 </h2>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {/* Oyeroyee Card */}
-                  <a
-                    href="https://www.oyeroyee.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group"
-                  >
-                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md hover:border-[#9CAF88]">
-                      <div className="aspect-video relative overflow-hidden bg-slate-100">
-                        <Image
-                          src="/architectking/oyeroyee.png"
-                          alt="Oyeroyee - Job Search Management Platform"
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <p className="text-sm font-medium text-slate-900 mb-1">Oyeroyee</p>
-                        <p className="text-xs text-slate-500">Job search management platform</p>
-                      </div>
-                    </div>
-                  </a>
 
-                  {/* SaaS Dashboard Card */}
-                  <div className="group">
-                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
-                      <div className="aspect-video bg-gradient-to-br from-teal-100 to-teal-200 relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-lg font-bold text-[#F4C430]">SaaS Dashboard</span>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <p className="text-sm font-medium text-slate-900 mb-1">SaaS Dashboard</p>
-                        <p className="text-xs text-slate-500">Multi-tenant admin system</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Admin System Card */}
-                  <div className="group">
-                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
-                      <div className="aspect-video bg-gradient-to-br from-cyan-100 to-cyan-200 relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-lg font-bold text-[#F4C430]">Admin System</span>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <p className="text-sm font-medium text-slate-900 mb-1">Admin System</p>
-                        <p className="text-xs text-slate-500">Enterprise control panel</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Landing Page System Card */}
-                  <div className="group">
-                    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
-                      <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-lg font-bold text-slate-700">Landing Page</span>
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <p className="text-sm font-medium text-slate-900 mb-1">Landing Page System</p>
-                        <p className="text-xs text-slate-500">Conversion-focused design</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <button
+                  className={classes.primaryCTA}
+                  onClick={() => {
+                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Start The Conversation
+                </button>
               </div>
             </section>
 
-            {/* FOLD 3 — ARCHITECTURE POSITIONING */}
-            <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-6">
-                  Architectural Thinking Applied Through Code
-                </h2>
-                <p className="text-lg text-slate-600 mb-8">
-                  Architecture exists to support execution and shipping.
-                </p>
-                {/* Placeholder for existing books/architecture visuals */}
-                <div className="mt-8 p-8 bg-slate-50 rounded-lg border border-slate-200">
-                  <p className="text-sm text-slate-500 text-center">
-                    [Architecture content placeholder - existing books/visuals will appear here]
-                  </p>
-                </div>
-              </div>
-            </section>
           </>
         )}
 
@@ -647,27 +639,26 @@ export function ArvinLandingPage() {
 
       {/* Footer */}
       <footer className="relative border-t border-slate-200 bg-slate-50/50">
-        <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="mx-auto max-w-7xl px-6 py-10">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div>
-              <p className="text-sm font-semibold text-slate-900">Arvin Jayson Castro</p>
-              <p className="mt-1 text-sm text-slate-600">Senior Fullstack Architect</p>
-              <p className="mt-1 text-xs text-slate-500">BS Computer Science, University of Santo Tomas</p>
+              <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
+              <p className="mt-1 text-xs text-slate-500">Senior Full-Stack Engineer</p>
+              <p className="mt-1 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
-            <div className="flex flex-col items-center gap-4 md:flex-row md:items-start">
+            <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">
               <div className="text-center md:text-right">
-                <p className="text-sm font-medium text-slate-900">Contact</p>
                 <a 
                   href="mailto:arvinjaysontamayocastro@gmail.com" 
-                  className="mt-1 block text-sm text-[#F4C430] hover:text-[#F4C430]/80"
+                  className="block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
                 >
-                  arvinjaysontamayocastro@gmail.com
+                  Email
                 </a>
                 <a 
                   href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="mt-1 block text-sm text-[#F4C430] hover:text-[#F4C430]/80"
+                  className="mt-1 block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -675,17 +666,12 @@ export function ArvinLandingPage() {
                   href="https://www.github.com/arvinjaysoncastro" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="mt-1 block text-sm text-[#F4C430] hover:text-[#F4C430]/80"
+                  className="mt-1 block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
                 >
                   GitHub
                 </a>
               </div>
             </div>
-          </div>
-          <div className="mt-8 border-t border-slate-200 pt-8 text-center">
-            <p className="text-xs text-slate-500">
-              © {new Date().getFullYear()} Arvin Jayson Castro. All rights reserved.
-            </p>
           </div>
         </div>
       </footer>
