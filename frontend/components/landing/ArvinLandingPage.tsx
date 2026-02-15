@@ -316,10 +316,10 @@ export function ArvinLandingPage() {
 
                     {/* RIGHT COLUMN — Resume Image */}
                     <div>
+                      <p className="mb-3 text-xs text-slate-500 text-center">
+                        Prefer a traditional CV? Download the full resume.
+                      </p>
                       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
-                        <p className="px-4 pt-4 text-xs text-slate-500 text-center">
-                          Prefer a traditional CV? Download the full resume.
-                        </p>
                         <a
                           href="/pdf/ArJay_Castro_Skills.pdf"
                           target="_blank"
@@ -331,19 +331,19 @@ export function ArvinLandingPage() {
                               src="/architectking/cv.png"
                               alt="Arvin Jayson Castro - Resume"
                               fill
-                              className="object-contain"
+                              className="object-contain transition-transform group-hover:scale-[1.02]"
                               sizes="(max-width: 768px) 100vw, 50vw"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                               <div className="bg-[#F4C430] text-[#0F172A] px-4 py-2 rounded-lg font-semibold shadow-lg text-sm">
                                 Click to Download PDF
                               </div>
                             </div>
                           </div>
                         </a>
-                        <div className="p-4 text-center">
-                          <p className="text-xs text-slate-500">
+                        <div className="p-3 text-center border-t border-slate-100">
+                          <p className="text-xs text-slate-400">
                             Click the resume to download
                           </p>
                         </div>
