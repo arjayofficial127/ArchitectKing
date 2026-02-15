@@ -47,7 +47,7 @@ export function ArvinLandingPage() {
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight">
                   Senior Full-Stack Engineer
                   <span className="block mt-3 text-slate-700 font-normal text-3xl sm:text-4xl md:text-5xl">
-                    Building production systems end-to-end.
+                    Reliable execution for production-scale systems.
                   </span>
                 </h1>
                 
@@ -55,11 +55,11 @@ export function ArvinLandingPage() {
                 <div className="mt-6 text-sm text-slate-500">
                   <span>Available for:</span>
                   <span className="mx-2">•</span>
-                  <span>Urgent system fixes</span>
+                  <span>System stabilization</span>
                   <span className="mx-2">•</span>
-                  <span>Full feature builds</span>
+                  <span>Feature delivery</span>
                   <span className="mx-2">•</span>
-                  <span>Contract or full-time roles</span>
+                  <span>Contract or full-time collaboration</span>
                 </div>
                 
                 {/* Skills list - horizontal with bullets */}
@@ -70,9 +70,9 @@ export function ArvinLandingPage() {
                   <span className="text-slate-400">•</span>
                   <span>SQL</span>
                   <span className="text-slate-400">•</span>
-                  <span>Cloud Deployments</span>
+                  <span>Cloud</span>
                   <span className="text-slate-400">•</span>
-                  <span>Product Ownership</span>
+                  <span>System Implementation</span>
                 </div>
 
                 <div className="mt-10">
@@ -95,12 +95,12 @@ export function ArvinLandingPage() {
 
                 {/* Microcopy below CTA */}
                 <p className="mt-3 text-sm text-slate-500">
-                  Direct access. Fast response. Built to ship.
+                  Direct access. Clear communication. Production-ready outcomes.
                 </p>
 
                 {/* Motto below CTA */}
                 <p className="mt-6 text-lg font-medium text-slate-700">
-                  &quot;I solve problems. I ship.&quot;
+                  &quot;I build what teams can rely on.&quot;
                 </p>
 
                 {/* Contact info at bottom */}
@@ -132,6 +132,20 @@ export function ArvinLandingPage() {
             >
               <div className="w-full px-6" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
                 <div className="mx-auto text-center" style={{ maxWidth: '1200px' }}>
+                  {/* METRICS STRIP */}
+                  <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-medium mb-8" style={{ letterSpacing: '0.75px', color: '#e2e8f0' }}>
+                    <span>16+ Years Experience</span>
+                    <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
+                    <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
+                    <span>20+ Production Systems</span>
+                    <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
+                    <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
+                    <span>Multi-tenant SaaS Architect</span>
+                    <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
+                    <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
+                    <span>Enterprise + Startup Exposure</span>
+                  </div>
+
                   <h2 
                     className="text-2xl font-semibold mb-2 text-center transition-colors duration-300 ease-in-out" 
                     style={{ 
@@ -282,7 +296,7 @@ export function ArvinLandingPage() {
                         </ul>
 
                         <p className="text-sm text-slate-600 mb-4">
-                          Senior-level troubleshooting. Immediate execution.
+                          Senior-level production troubleshooting. Calm execution under pressure.
                         </p>
 
                         <a
@@ -300,30 +314,38 @@ export function ArvinLandingPage() {
                       </div>
                     </div>
 
-                    {/* RIGHT COLUMN — Portfolio Iframe */}
+                    {/* RIGHT COLUMN — Resume Image */}
                     <div>
                       <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
-                        <div className="aspect-video relative bg-slate-100">
-                          <iframe
-                            src="https://arvinjaysoncastro.com"
-                            className="w-full h-full border-0"
-                            title="Portfolio Preview"
-                            allow="fullscreen"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <a
-                            href="/pdf/ArJay_Castro_Skills.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                            Download Resume
-                          </a>
+                        <p className="px-4 pt-4 text-xs text-slate-500 text-center">
+                          Prefer a traditional CV? Download the full resume.
+                        </p>
+                        <a
+                          href="/pdf/ArJay_Castro_Skills.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block group cursor-pointer"
+                        >
+                          <div className="relative aspect-[8.5/11] w-full bg-slate-50">
+                            <Image
+                              src="/architectking/cv.png"
+                              alt="Arvin Jayson Castro - Resume"
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                              <div className="bg-[#F4C430] text-[#0F172A] px-4 py-2 rounded-lg font-semibold shadow-lg text-sm">
+                                Click to Download PDF
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <div className="p-4 text-center">
+                          <p className="text-xs text-slate-500">
+                            Click the resume to download
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -333,24 +355,45 @@ export function ArvinLandingPage() {
             </section>
 
             {/* BOOK STRIP */}
-            <section className="relative bg-slate-50/50 border-y border-slate-200/50">
+            <section className="relative bg-slate-100/60 border-y border-slate-200/50">
               <div className="mx-auto max-w-7xl px-6 py-12">
-                <div className="mx-auto max-w-4xl text-center">
-                  <p className="text-lg text-slate-700 mb-3">
-                    &quot;Every program—regardless of language, framework, or scale—reduces to the same shape:&quot;
-                  </p>
-                  <p className="text-xl font-semibold text-slate-900 mb-6">
-                    Input → Transform → Output
-                  </p>
-                  <Link
-                    href="/working-fundamentals"
-                    className="inline-flex items-center text-sm font-medium text-[#F4C430] hover:text-[#E6B82E] transition-colors"
-                  >
-                    Then read the whole book...
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                <div className="mx-auto max-w-6xl">
+                  <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    {/* LEFT: Book Image */}
+                    <div className="flex-shrink-0 w-32 md:w-40">
+                      <div className="relative aspect-[9/16] w-full">
+                        <Image
+                          src="/architectking/working_fundamentals_book.png"
+                          alt="Working Fundamentals Book"
+                          fill
+                          className="object-contain"
+                          sizes="(max-width: 768px) 128px, 160px"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* RIGHT: Content */}
+                    <div className="flex-1 text-center md:text-left">
+                      <h3 className="text-sm font-medium text-slate-600 mb-4 uppercase tracking-wide">
+                        How I think about software:
+                      </h3>
+                      <p className="text-lg text-slate-700 mb-3">
+                        &quot;Every program—regardless of language, framework, or scale—reduces to the same shape:&quot;
+                      </p>
+                      <p className="text-xl font-semibold text-slate-900 mb-6">
+                        Input → Transform → Output
+                      </p>
+                      <Link
+                        href="/working-fundamentals"
+                        className="inline-flex items-center text-base font-semibold text-[#F4C430] hover:text-[#E6B82E] transition-colors"
+                      >
+                        Then read the whole book...
+                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -368,16 +411,17 @@ export function ArvinLandingPage() {
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">Oyeroyee</h3>
                     <p className="text-sm text-slate-500 mb-4">Job & Applicant Tracking Platform</p>
                     <p className="text-slate-700 mb-6">
-                      A production-ready platform that helps job seekers track applications and employers manage hiring pipelines. Built with end-to-end ownership from database design to deployment.
+                      Production job & applicant tracking platform.
+                      Designed, built, and deployed end-to-end.
                     </p>
                     <ul className="space-y-2 mb-6 text-sm text-slate-700">
                       <li className="flex items-start">
                         <span className="text-[#F4C430] mr-2 mt-1">•</span>
-                        <span>Production deployment with real users</span>
+                        <span>Live production deployment</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-[#F4C430] mr-2 mt-1">•</span>
-                        <span>End-to-end ownership and architecture</span>
+                        <span>System architecture & deployment</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-[#F4C430] mr-2 mt-1">•</span>
@@ -453,7 +497,7 @@ export function ArvinLandingPage() {
             <section className={classes.finalClose}>
               <div className={classes.finalCloseInner}>
                 <h2 className={classes.finalCloseTitle}>
-                  I design systems that survive real traffic, real deadlines, and real production constraints.
+                  I build systems that hold up under real traffic, real deadlines, and real production constraints.
                 </h2>
 
                 <button

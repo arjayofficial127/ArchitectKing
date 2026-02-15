@@ -37,9 +37,6 @@ export function SiteNavbar() {
             <a href="/#case-studies" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
               Case Studies
             </a>
-            <a href="/#systems" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
-              Systems
-            </a>
             <div className="relative">
               <a
                 ref={contactTriggerRef}
