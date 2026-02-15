@@ -355,8 +355,16 @@ export function ArvinLandingPage() {
             </section>
 
             {/* BOOK STRIP */}
-            <section className="relative bg-slate-100/60 border-y border-slate-200/50">
-              <div className="mx-auto max-w-7xl px-6 py-12">
+            <section 
+              className="relative border-y border-slate-900/20"
+              style={{
+                background: `
+                  radial-gradient(circle at 30% 20%, rgba(255,255,255,0.03), transparent 40%),
+                  #111318
+                `
+              }}
+            >
+              <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
                 <div className="mx-auto max-w-6xl">
                   <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                     {/* LEFT: Book Image */}
@@ -366,7 +374,7 @@ export function ArvinLandingPage() {
                           src="/architectking/working_fundamentals_book.png"
                           alt="Working Fundamentals Book"
                           fill
-                          className="object-contain"
+                          className="object-contain drop-shadow-lg"
                           sizes="(max-width: 768px) 128px, 160px"
                         />
                       </div>
@@ -374,21 +382,31 @@ export function ArvinLandingPage() {
                     
                     {/* RIGHT: Content */}
                     <div className="flex-1 text-center md:text-left">
-                      <h3 className="text-sm font-medium text-slate-600 mb-4 uppercase tracking-wide">
-                        How I think about software:
+                      <h3 className="text-xs font-medium text-[#9CA3AF] mb-4 uppercase tracking-[0.1em]">
+                        HOW I THINK ABOUT SOFTWARE
                       </h3>
-                      <p className="text-lg text-slate-700 mb-3">
-                        &quot;Every program—regardless of language, framework, or scale—reduces to the same shape:&quot;
+                      <p className="text-lg text-[#EAEAEA] mb-4 leading-relaxed">
+                        &quot;Every program — regardless of language, framework, or scale — reduces to the same shape.&quot;
                       </p>
-                      <p className="text-xl font-semibold text-slate-900 mb-6">
+                      <p className="text-2xl font-bold text-[#EAEAEA] mb-5">
                         Input → Transform → Output
+                      </p>
+                      <p className="text-base text-[#9CA3AF] mb-6">
+                        Most systems fail because engineers forget this shape.
                       </p>
                       <Link
                         href="/working-fundamentals"
-                        className="inline-flex items-center text-base font-semibold text-[#F4C430] hover:text-[#E6B82E] transition-colors"
+                        className="group inline-flex items-center text-base font-semibold text-[#F4C430] hover:text-[#E6B82E] transition-colors"
                       >
-                        Then read the whole book...
-                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="border-b border-transparent group-hover:border-[#F4C430] transition-all duration-200">
+                          Explore the System
+                        </span>
+                        <svg 
+                          className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </Link>
@@ -408,6 +426,19 @@ export function ArvinLandingPage() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
                   {/* LEFT COLUMN — Featured System (Oyeroyee) */}
                   <div>
+                    {/* UI Preview */}
+                    <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+                      <div className="relative aspect-video w-full">
+                        <Image
+                          src="/architectking/oyeroyee.png"
+                          alt="Oyeroyee Platform Preview"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                    </div>
+                    
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">Oyeroyee</h3>
                     <p className="text-sm text-slate-500 mb-4">Job & Applicant Tracking Platform</p>
                     <p className="text-slate-700 mb-6">
@@ -434,7 +465,7 @@ export function ArvinLandingPage() {
                     </ul>
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link
-                        href="/case-studies/oyeroyee"
+                        href="/case-studies"
                         className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                       >
                         View Case Study
@@ -456,10 +487,10 @@ export function ArvinLandingPage() {
                     <ul className="space-y-4">
                       <li>
                         <Link
-                          href="/case-studies/baseofui"
+                          href="/case-studies/learning-platform"
                           className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
                         >
-                          <span className="font-medium">BaseOfUI</span>
+                          <span className="font-medium">Enterprise Learning & Certification Platform</span>
                           <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -467,10 +498,10 @@ export function ArvinLandingPage() {
                       </li>
                       <li>
                         <Link
-                          href="/case-studies/airunote"
+                          href="/case-studies/dynamic-form-engine"
                           className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
                         >
-                          <span className="font-medium">Airunote</span>
+                          <span className="font-medium">Dynamic Form & Identity Engine</span>
                           <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -478,10 +509,10 @@ export function ArvinLandingPage() {
                       </li>
                       <li>
                         <Link
-                          href="/case-studies/gov-platform"
+                          href="/case-studies/org-role-billing"
                           className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
                         >
-                          <span className="font-medium">Government Platform</span>
+                          <span className="font-medium">Organization & Role Management + Billing System</span>
                           <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>

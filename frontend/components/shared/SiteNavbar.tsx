@@ -11,6 +11,7 @@ export function SiteNavbar() {
   const contactTriggerRef = useRef<HTMLAnchorElement>(null);
   
   const isWorkingFundamentals = pathname?.startsWith('/working-fundamentals') ?? false;
+  const isCaseStudies = pathname?.startsWith('/case-studies') ?? false;
 
   return (
     <header className="relative border-b border-slate-200/60 bg-white/80 backdrop-blur-sm z-50">
@@ -34,9 +35,16 @@ export function SiteNavbar() {
             >
               Working Fundamentals
             </Link>
-            <a href="/#case-studies" className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors">
+            <Link 
+              href="/case-studies" 
+              className={`text-sm font-medium transition-colors ${
+                isCaseStudies 
+                  ? 'text-[#0F172A] border-b-2 border-[#F4C430] pb-1' 
+                  : 'text-slate-600 hover:text-[#F4C430]'
+              }`}
+            >
               Case Studies
-            </a>
+            </Link>
             <div className="relative">
               <a
                 ref={contactTriggerRef}
