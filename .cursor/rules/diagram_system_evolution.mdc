@@ -1,0 +1,57 @@
+---
+alwaysApply: false
+description: Diagram system evolution phases, visual grammar, and quality checks for case-study diagrams
+globs: frontend/components/case-studies/**/*.ts,frontend/components/case-studies/**/*.tsx,frontend/app/case-studies/**/page.tsx
+---
+
+# Diagram System Evolution Contract
+
+This rule governs how diagram capabilities are evolved while preserving existing outputs.
+
+## Phase Plan
+
+1. **Phase 1 - Stability First**
+   - Keep current `layered` and `manual` layouts stable.
+   - No visual drift from animations.
+   - Backward compatibility is mandatory for all existing diagrams.
+
+2. **Phase 2 - Creative Controls**
+   - Add selective highlighting (node/edge/layer), not full-canvas highlighting by default.
+   - Add theme overrides per diagram.
+   - Add optional motion that can be disabled per diagram.
+
+3. **Phase 3 - Multi-Grammar Expansion**
+   - Extend support for flow-like, workflow-like, and UI-map-like compositions using reusable primitives.
+   - Keep API additive (no breaking schema changes).
+
+## Visual Grammar Rules
+
+- Prefer neutral base palettes with 1 accent color.
+- Highlight budget per diagram:
+  - 1-3 focus nodes
+  - 1-2 emphasis paths
+  - optional 1 highlighted boundary/group
+- Avoid heavy motion:
+  - use subtle pulse/flow only on focus elements
+  - no global movement that can reduce readability
+
+## Diagram Data Authoring Rules
+
+- `theme` controls global palette.
+- node-level controls (`fillColor`, `strokeColor`, `emphasis`) are for focal points only.
+- layer-level controls (`highlight`, `accentColor`) are for grouped emphasis.
+- edge-level controls (`color`, `dashed`, `animated`, `emphasis`) should encode information hierarchy.
+
+## Quality Gate (Before Merge)
+
+- No node overlaps at common desktop widths.
+- Title and labels must remain visible.
+- No animation-induced position drift.
+- Ensure diagrams remain understandable with animations off.
+- Run lints on all changed files.
+
+## Reference
+
+- Main implementation: [frontend/components/case-studies/DiagramCreator.tsx](mdc:frontend/components/case-studies/DiagramCreator.tsx)
+- Schema: [frontend/components/case-studies/diagram/types.ts](mdc:frontend/components/case-studies/diagram/types.ts)
+- Usage guide: [frontend/components/case-studies/DIAGRAM_CREATOR_USAGE.md](mdc:frontend/components/case-studies/DIAGRAM_CREATOR_USAGE.md)

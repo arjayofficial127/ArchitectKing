@@ -13,28 +13,34 @@ interface CaseStudyCard {
 
 const caseStudies: CaseStudyCard[] = [
   {
-    title: 'Oyeroyee',
-    slug: 'oyeroyee',
-    summary: 'Production job & applicant tracking platform. Designed, built, and deployed end-to-end with funnel-based analytics and real user deployment.',
-    techStack: ['React', 'TypeScript', 'Next.js', 'PostgreSQL', 'Node.js']
+    title: 'AiruNote',
+    slug: 'airunote',
+    summary: 'AI-powered note capture, structured knowledge management, and document organization system. Built with privacy-first architecture and modular extensibility.',
+    techStack: ['React', 'TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'AI Integration APIs']
   },
   {
-    title: 'Enterprise Learning & Certification Platform',
-    slug: 'learning-platform',
-    summary: 'Scalable learning management system with certification workflows, progress tracking, and enterprise-grade user management.',
-    techStack: ['React', '.NET Core', 'SQL Server', 'Azure', 'Docker']
+    title: 'Enterprise Resource Assessment & Monitoring Platform',
+    slug: 'resource-monitoring-system',
+    summary: 'Enterprise-grade resource assessment and monitoring platform enabling real-time visibility into organizational resources, capacity planning, and operational metrics across distributed teams.',
+    techStack: ['React', 'TypeScript', '.NET Core', 'SQL Server', 'Azure', 'REST APIs', 'Chart.js']
   },
   {
-    title: 'Dynamic Form & Identity Engine',
-    slug: 'dynamic-form-engine',
-    summary: 'Flexible form builder with identity verification, dynamic validation, and secure data handling for enterprise applications.',
-    techStack: ['Angular', 'C#', '.NET', 'PostgreSQL', 'REST API']
+    title: 'Manufacturing Inventory & Operations Platform',
+    slug: 'thread-inventory-system',
+    summary: 'Production-grade inventory tracking and management system for manufacturing operations, enabling real-time stock monitoring, automated reordering, and comprehensive reporting for supply chain optimization.',
+    techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'REST APIs', 'Express.js', 'Material-UI']
   },
   {
-    title: 'Organization & Role Management + Billing System',
-    slug: 'org-role-billing',
-    summary: 'Multi-tenant organization management with role-based access control, subscription billing, and automated payment processing.',
-    techStack: ['.NET Core', 'SQL', 'React', 'Azure']
+    title: 'Government Equipment Registration Platform',
+    slug: 'denr-chainsaw-registration',
+    summary: 'Secure government compliance system for equipment registration and permit processing, enabling citizens to register equipment, track permit status, and maintain compliance with regulatory requirements.',
+    techStack: ['React', 'TypeScript', '.NET Core', 'SQL Server', 'Azure', 'Government APIs', 'PDF Generation']
+  },
+  {
+    title: 'Enterprise Workflow & Forms Management System',
+    slug: 'custom-forms-management',
+    summary: 'Enterprise-grade dynamic forms platform enabling organizations to create, configure, and manage complex form workflows with conditional logic, validation rules, and seamless backend integration.',
+    techStack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'REST APIs', 'Formik', 'Yup']
   }
 ];
 

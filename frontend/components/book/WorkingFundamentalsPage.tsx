@@ -29,21 +29,21 @@ export function WorkingFundamentalsPage() {
 
           {/* Center: Content */}
           <section className={styles.content}>
-            <h1 className={styles.contentTitle}>Working Fundamentals</h1>
+            <h1 className={styles.contentTitle}>How I Build Systems</h1>
             <p className={styles.tagline}>
-              The internal blueprint behind the systems I ship in production.
+              Practical engineering principles I rely on when shipping production systems.
             </p>
             <p className={styles.subtext}>
-              Patterns. Ownership. Architecture that survives scale.
+              These principles guide how I approach real-world feature delivery, system stability, and long-term maintainability.
             </p>
 
             {/* Why This Matters Section */}
             <div className={styles.whyMatters}>
               <h2 className={styles.whyMattersTitle}>Why This Matters in Real Systems</h2>
               <ul className={styles.whyMattersList}>
-                <li>Systems fail through hidden assumptions</li>
-                <li>Complexity compounds silently</li>
-                <li>Architecture determines velocity</li>
+                <li>In my experience, systems fail through hidden assumptions</li>
+                <li>I&apos;ve found that complexity compounds silently</li>
+                <li>When building production systems, architecture determines velocity</li>
               </ul>
             </div>
 
@@ -80,7 +80,7 @@ export function WorkingFundamentalsPage() {
             <div className={styles.connectsSection}>
               <h2 className={styles.connectsTitle}>How This Connects To My Work</h2>
               <p className={styles.connectsText}>
-                This book reflects the patterns and invariants I use when building production systems for clients and teams.
+                These principles reflect the patterns and invariants I prioritize when building production systems within collaborative team environments.
               </p>
             </div>
           </section>
@@ -93,8 +93,7 @@ export function WorkingFundamentalsPage() {
           <section className={styles.bridgeSection}>
             <h2 className={styles.bridgeTitle}>How This Thinking Shows Up in Real Systems</h2>
             <p className={styles.bridgeText}>
-              The ideas in Working Fundamentals are not theoretical.
-              They guide how I design multi-tenant SaaS platforms,
+              In my experience, these principles guide how I approach multi-tenant SaaS platforms,
               structure domain boundaries,
               and reduce long-term system fragility.
             </p>
@@ -106,8 +105,7 @@ export function WorkingFundamentalsPage() {
           {/* Close Loop */}
           <div className={styles.closeLoop}>
             <p className={styles.closeLoopText}>
-              If you&apos;re building something that needs to hold,
-              this is the lens I bring to it.
+              These principles support how I deliver reliable, maintainable features within collaborative team environments.
             </p>
           </div>
       </div>

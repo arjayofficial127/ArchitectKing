@@ -26,16 +26,6 @@ export function SiteNavbar() {
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center gap-6">
             <Link 
-              href="/working-fundamentals" 
-              className={`text-sm font-medium transition-colors ${
-                isWorkingFundamentals 
-                  ? 'text-[#0F172A] border-b-2 border-[#F4C430] pb-1' 
-                  : 'text-slate-600 hover:text-[#F4C430]'
-              }`}
-            >
-              Working Fundamentals
-            </Link>
-            <Link 
               href="/case-studies" 
               className={`text-sm font-medium transition-colors ${
                 isCaseStudies 
@@ -44,6 +34,16 @@ export function SiteNavbar() {
               }`}
             >
               Case Studies
+            </Link>
+            <Link 
+              href="/working-fundamentals" 
+              className={`text-sm font-medium transition-colors ${
+                isWorkingFundamentals 
+                  ? 'text-[#0F172A] border-b-2 border-[#F4C430] pb-1' 
+                  : 'text-slate-600 hover:text-[#F4C430]'
+              }`}
+            >
+              How I Build Systems
             </Link>
             <div className="relative">
               <a

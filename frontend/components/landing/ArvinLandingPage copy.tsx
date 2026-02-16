@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
@@ -13,24 +12,12 @@ import { BookAuthorityStrip } from './BookAuthorityStrip';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
 import classes from './arvinLandingPage.module.css';
 
-export function ArvinLandingPage() {
+export function ArvinLandingPage2() {
   // Fast conversion mode - show conversion-focused sections, hide architecture content
   const isFastConversionMode = true;
   
   // Theme state for tech strip - always blackboard
   const techStripTheme = 'black';
-  
-  // Active project state for Selected Production Work section
-  const [activeProject, setActiveProject] = useState<'airunote' | 'wtw-comrise' | 'coats-inventory' | 'denr-chainsaw' | 'kinetic-forms'>('airunote');
-  
-  // Map activeProject to case study slug
-  const projectSlugMap: Record<typeof activeProject, string> = {
-    'airunote': 'airunote',
-    'wtw-comrise': 'resource-monitoring-system',
-    'coats-inventory': 'thread-inventory-system',
-    'denr-chainsaw': 'denr-chainsaw-registration',
-    'kinetic-forms': 'custom-forms-management'
-  };
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
@@ -59,20 +46,33 @@ export function ArvinLandingPage() {
               <div className="mx-auto max-w-4xl text-center">
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight">
                   Senior Full-Stack Engineer
-                  <span className="block mt-3 text-slate-700 font-normal text-2xl sm:text-3xl md:text-4xl">
-                    React • Node • SQL • 15+ Years Production Experience
-                  </span>
+                  <span className="block mt-3 text-slate-700 font-normal text-3xl sm:text-4xl md:text-5xl">
+                  I build systems that don’t collapse under pressure.                  </span>
                 </h1>
                 
-                {/* Subline */}
-                <p className="mt-6 text-base text-slate-600 sm:text-lg">
-                  Available immediately. I take ownership of features end-to-end and ship clean, maintainable code.
-                </p>
+                {/* Availability line - under subheadline */}
+                <div className="mt-6 text-sm text-slate-500">
+                  <span>Available for:</span>
+                  <span className="mx-2">•</span>
+                  <span>System stabilization</span>
+                  <span className="mx-2">•</span>
+                  <span>Feature delivery</span>
+                  <span className="mx-2">•</span>
+                  <span>Contract or full-time collaboration</span>
+                </div>
                 
-                {/* Additional line */}
-                <p className="mt-3 text-sm text-slate-500">
-                  Comfortable working independently or within Agile teams. References available upon request.
-                </p>
+                {/* Skills list - horizontal with bullets */}
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-lg text-slate-600">
+                  <span>React / TypeScript</span>
+                  <span className="text-slate-400">•</span>
+                  <span>APIs</span>
+                  <span className="text-slate-400">•</span>
+                  <span>SQL</span>
+                  <span className="text-slate-400">•</span>
+                  <span>Cloud</span>
+                  <span className="text-slate-400">•</span>
+                  <span>System Implementation</span>
+                </div>
 
                 <div className="mt-10">
                   <a
@@ -88,9 +88,19 @@ export function ArvinLandingPage() {
                     >
                       <path d="M12 0C5.373 0 0 4.925 0 11c0 2.153.74 4.163 2.016 5.868L0 24l7.437-4.42c1.324.36 2.74.555 4.188.555h.375C15.524 24 24 18.925 24 11S18.475 0 12 0zm0 18.868c-1.125 0-2.227-.16-3.277-.468l-.375-.11-3.75 2.25 1.125-3.375-.375-.468C2.61 15.15 1.875 13.163 1.875 11c0-4.688 4.163-8.5 9.375-8.5S21 6.312 21 11s-4.163 8.5-9.375 8.5l-.375-.015-.375.015z"/>
                     </svg>
-                    Discuss Role
+                    Message Me Now
                   </a>
                 </div>
+
+                {/* Microcopy below CTA */}
+                <p className="mt-3 text-sm text-slate-500">
+                  Direct access. Clear communication. Production-ready outcomes.
+                </p>
+
+                {/* Motto below CTA */}
+                <p className="mt-6 text-lg font-medium text-slate-700">
+                  &quot;I build what teams can rely on.&quot;
+                </p>
 
                 {/* Contact info at bottom */}
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500">
@@ -123,10 +133,13 @@ export function ArvinLandingPage() {
                 <div className="mx-auto text-center" style={{ maxWidth: '1200px' }}>
                   {/* METRICS STRIP */}
                   <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-medium mb-8" style={{ letterSpacing: '0.75px', color: '#e2e8f0' }}>
-                    <span>15+ Years Experience</span>
+                    <span>16+ Years Experience</span>
                     <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
                     <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
                     <span>20+ Production Systems</span>
+                    <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
+                    <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
+                    <span>Multi-tenant SaaS Architect</span>
                     <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
                     <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
                     <span>Enterprise + Startup Exposure</span>
@@ -139,8 +152,7 @@ export function ArvinLandingPage() {
                       color: '#f1f5f9'
                     }}
                   >
-                    Core Stack & Tools
-                  </h2>
+                    Technologies I Use to Deliver Stable Production Systems                  </h2>
                   <p className="text-sm mb-8 text-center" style={{ color: '#94a3b8' }}>
                     Stack I actively use in live systems.
                   </p>
@@ -255,42 +267,34 @@ export function ArvinLandingPage() {
               <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
                 <div className="mx-auto max-w-6xl">
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                    {/* LEFT COLUMN — Team Contribution */}
+                    {/* LEFT COLUMN — Urgency Block */}
                     <div>
                       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
                         <h3 className="text-xl font-bold text-slate-900 mb-4">
-                          How I Contribute to a Team
+                          Something Breaking Right Now?
                         </h3>
                         
                         <ul className="space-y-2 mb-4 text-sm text-slate-700">
                           <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implement features from spec to production</span>
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>Urgent bug?</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Design and integrate REST APIs</span>
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>API down?</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Build clean, testable React components</span>
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>Deployment stuck?</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Work with SQL and database optimization</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Refactor and improve legacy code safely</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Communicate clearly within Agile teams</span>
+                            <span className="text-red-500 mr-2">•</span>
+                            <span>System unstable?</span>
                           </li>
                         </ul>
 
                         <p className="text-sm text-slate-600 mb-4">
-                          Team-ready developer. Feature ownership capable. Production-focused execution.
+                          Senior-level production troubleshooting. Calm execution under pressure.
                         </p>
 
                         <a
@@ -299,11 +303,11 @@ export function ArvinLandingPage() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                         >
-                          Discuss Role
+                          Get Help Now
                         </a>
 
                         <p className="mt-3 text-xs text-slate-500 text-center">
-                          Available immediately. Ready to contribute.
+                          Direct message. No layers. No delays.
                         </p>
                       </div>
                     </div>
@@ -357,344 +361,171 @@ export function ArvinLandingPage() {
               </div>
             </section>
 
-            {/* SELECTED PRODUCTION WORK */}
+            {/* BOOK STRIP */}
+            <section 
+              className="relative border-y border-slate-900/20"
+              style={{
+                background: `
+                  radial-gradient(circle at 30% 20%, rgba(255,255,255,0.03), transparent 40%),
+                  #111318
+                `
+              }}
+            >
+              <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+                <div className="mx-auto max-w-6xl">
+                  <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    {/* LEFT: Book Image */}
+                    <div className="flex-shrink-0 w-32 md:w-40">
+                      <div className="relative aspect-[9/16] w-full">
+                        <Image
+                          src="/architectking/working_fundamentals_book.png"
+                          alt="Working Fundamentals Book"
+                          fill
+                          className="object-contain drop-shadow-lg"
+                          sizes="(max-width: 768px) 128px, 160px"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* RIGHT: Content */}
+                    <div className="flex-1 text-center md:text-left">
+                      <h3 className="text-xs font-medium text-[#9CA3AF] mb-4 uppercase tracking-[0.1em]">
+                        HOW I THINK ABOUT SOFTWARE
+                      </h3>
+                      <p className="text-lg text-[#EAEAEA] mb-4 leading-relaxed">
+                        &quot;Every program — regardless of language, framework, or scale — reduces to the same shape.&quot;
+                      </p>
+                      <p className="text-2xl font-bold text-[#EAEAEA] mb-5">
+                        Input → Transform → Output
+                      </p>
+                      <p className="text-base text-[#9CA3AF] mb-6">
+                        Most systems fail because engineers forget this shape.
+                      </p>
+                      <Link
+                        href="/working-fundamentals"
+                        className="group inline-flex items-center text-base font-semibold text-[#F4C430] hover:text-[#E6B82E] transition-colors"
+                      >
+                        <span className="border-b border-transparent group-hover:border-[#F4C430] transition-all duration-200">
+                          Explore the System
+                        </span>
+                        <svg 
+                          className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* PRODUCTION SYSTEMS I'VE BUILT */}
             <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
               <div className="mx-auto max-w-6xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-3 text-center">
-                  Selected Production Work
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-12 text-center">
+                  Production Systems I&apos;ve Built
                 </h2>
-                <p className="text-sm text-slate-500 mb-12 text-center">
-                  Hands-on contributions across production systems.
-                </p>
                 
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-[40%_60%] md:gap-12">
-                  {/* LEFT COLUMN — System List */}
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+                  {/* LEFT COLUMN — Featured System (Oyeroyee) */}
                   <div>
-                    <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-4">
-                      Systems
+                    {/* UI Preview */}
+                    <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+                      <div className="relative aspect-video w-full">
+                        <Image
+                          src="/architectking/oyeroyee.png"
+                          alt="Oyeroyee Platform Preview"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Oyeroyee</h3>
+                    <p className="text-sm text-slate-500 mb-4">Job & Applicant Tracking Platform</p>
+                    <p className="text-slate-700 mb-6">
+                      Production job & applicant tracking platform.
+                      Designed, built, and deployed end-to-end.
                     </p>
-                    <ul className="space-y-3">
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('airunote')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'airunote'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'airunote' ? 'font-bold' : 'font-medium'}>AiruNote</span>
-                        </button>
+                    <ul className="space-y-2 mb-6 text-sm text-slate-700">
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>Live production deployment</span>
                       </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('wtw-comrise')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'wtw-comrise'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'wtw-comrise' ? 'font-bold' : 'font-medium'}>Enterprise Resource Assessment & Monitoring Platform</span>
-                        </button>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>System architecture & deployment</span>
                       </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('coats-inventory')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'coats-inventory'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'coats-inventory' ? 'font-bold' : 'font-medium'}>Manufacturing Inventory & Operations Platform</span>
-                        </button>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>Funnel-based analytics and insights</span>
                       </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('denr-chainsaw')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'denr-chainsaw'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'denr-chainsaw' ? 'font-bold' : 'font-medium'}>Government Equipment Registration Platform</span>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('kinetic-forms')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'kinetic-forms'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'kinetic-forms' ? 'font-bold' : 'font-medium'}>Enterprise Workflow & Forms Management System</span>
-                        </button>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2 mt-1">•</span>
+                        <span>Product thinking applied to code</span>
                       </li>
                     </ul>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
+                        href="/case-studies"
+                        className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                      >
+                        View Case Study
+                      </Link>
+                      <a
+                        href="https://www.oyeroyee.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                      >
+                        See Live Site
+                      </a>
+                    </div>
                   </div>
 
-                  {/* RIGHT COLUMN — Dynamic Content */}
+                  {/* RIGHT COLUMN — Other Systems List */}
                   <div>
-                    {activeProject === 'airunote' && (
-                      <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">AiruNote</h3>
-                        <p className="text-sm text-slate-500 mb-2">AI-Assisted TXT | MD | RTF Capture & Knowledge Management System</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-sm text-slate-600 mb-4">
-                          AI-powered note capture, structured knowledge management, and document organization system. Built with privacy-first architecture and modular extensibility.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Designed structured document lifecycle architecture</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implemented folder + ownership boundaries</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Built installable-app modular system</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Created metadata-driven rendering engine</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated AI-assisted capture workflows</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'wtw-comrise' && (
-                      <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Enterprise Resource Assessment & Monitoring Platform</h3>
-                        <p className="text-sm text-slate-500 mb-2">Global Insurance & Advisory Environment</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Developed interactive dashboards and reporting modules</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated backend APIs for enterprise data visualization</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implemented secure role-based access control</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Participated in CI/CD deployment workflows</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'coats-inventory' && (
-                      <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Manufacturing Inventory & Operations Platform</h3>
-                        <p className="text-sm text-slate-500 mb-2">Global Manufacturing Environment</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Built inventory tracking dashboards using React</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated REST APIs with backend inventory services</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implemented search, filtering, and reporting capabilities</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Supported production deployment and data integrity checks</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'denr-chainsaw' && (
-                      <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Government Equipment Registration Platform</h3>
-                        <p className="text-sm text-slate-500 mb-2">Public Sector Compliance System</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Developed registration forms and validation workflows</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated backend services for permit processing</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Improved UI responsiveness across devices</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Deployed updates within secure production environment</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'kinetic-forms' && (
-                      <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Enterprise Workflow & Forms Management System</h3>
-                        <p className="text-sm text-slate-500 mb-2">Large-Scale Organizational Deployment</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Built dynamic form components with conditional logic</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Connected frontend workflows to secure backend APIs</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Collaborated within Agile team to deliver feature modules</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Participated in production rollout and system enhancements</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
+                    <h3 className="text-xl font-bold text-slate-900 mb-6">Other Systems</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <Link
+                          href="/case-studies/learning-platform"
+                          className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
+                        >
+                          <span className="font-medium">Enterprise Learning & Certification Platform</span>
+                          <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/case-studies/dynamic-form-engine"
+                          className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
+                        >
+                          <span className="font-medium">Dynamic Form & Identity Engine</span>
+                          <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href="/case-studies/org-role-billing"
+                          className="flex items-center justify-between group text-slate-700 hover:text-[#F4C430] transition-colors"
+                        >
+                          <span className="font-medium">Organization & Role Management + Billing System</span>
+                          <svg className="w-4 h-4 text-slate-400 group-hover:text-[#F4C430] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -704,7 +535,7 @@ export function ArvinLandingPage() {
             <section className={classes.finalClose}>
               <div className={classes.finalCloseInner}>
                 <h2 className={classes.finalCloseTitle}>
-                  Looking for a Senior Full-Stack Developer who can start immediately? Let&apos;s talk.
+                If your system must work - not just demo - let’s talk.
                 </h2>
                 <button
                   className={classes.primaryCTA}
@@ -712,7 +543,7 @@ export function ArvinLandingPage() {
                     document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
-                  Discuss Role
+                  Start The Conversation
                 </button>
               </div>
             </section>
