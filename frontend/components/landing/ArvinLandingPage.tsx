@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
+import { DiagramCreator } from '@/components/case-studies/DiagramCreator';
 import { CaseStudy } from './CaseStudy';
 import { CTASection } from './CTASection';
 import { AuthorityStrip } from './AuthorityStrip';
@@ -11,6 +12,7 @@ import { TechnicalDepth } from './TechnicalDepth';
 import { SystemsArchitecture } from './SystemsArchitecture';
 import { BookAuthorityStrip } from './BookAuthorityStrip';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
+import { selectedProductionWorkDiagrams, type SelectedProductionProjectId } from './selectedProductionWorkDiagrams';
 import classes from './arvinLandingPage.module.css';
 
 export function ArvinLandingPage() {
@@ -21,7 +23,7 @@ export function ArvinLandingPage() {
   const techStripTheme = 'black';
   
   // Active project state for Selected Production Work section
-  const [activeProject, setActiveProject] = useState<'airunote' | 'wtw-comrise' | 'coats-inventory' | 'denr-chainsaw' | 'kinetic-forms'>('airunote');
+  const [activeProject, setActiveProject] = useState<SelectedProductionProjectId>('airunote');
   
   // Map activeProject to case study slug
   const projectSlugMap: Record<typeof activeProject, string> = {
@@ -31,6 +33,12 @@ export function ArvinLandingPage() {
     'denr-chainsaw': 'denr-chainsaw-registration',
     'kinetic-forms': 'custom-forms-management'
   };
+
+  const renderArchitecturePreview = (projectId: SelectedProductionProjectId) => (
+    <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+      <DiagramCreator data={selectedProductionWorkDiagrams[projectId]} className="p-2" />
+    </div>
+  );
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
@@ -446,12 +454,7 @@ export function ArvinLandingPage() {
                   <div>
                     {activeProject === 'airunote' && (
                       <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
+                        {renderArchitecturePreview('airunote')}
                         
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">AiruNote</h3>
                         <p className="text-sm text-slate-500 mb-2">AI-Assisted TXT | MD | RTF Capture & Knowledge Management System</p>
@@ -502,12 +505,7 @@ export function ArvinLandingPage() {
 
                     {activeProject === 'wtw-comrise' && (
                       <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
+                        {renderArchitecturePreview('wtw-comrise')}
                         
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">Enterprise Resource Assessment & Monitoring Platform</h3>
                         <p className="text-sm text-slate-500 mb-2">Global Insurance & Advisory Environment</p>
@@ -551,12 +549,7 @@ export function ArvinLandingPage() {
 
                     {activeProject === 'coats-inventory' && (
                       <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
+                        {renderArchitecturePreview('coats-inventory')}
                         
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">Manufacturing Inventory & Operations Platform</h3>
                         <p className="text-sm text-slate-500 mb-2">Global Manufacturing Environment</p>
@@ -600,12 +593,7 @@ export function ArvinLandingPage() {
 
                     {activeProject === 'denr-chainsaw' && (
                       <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
+                        {renderArchitecturePreview('denr-chainsaw')}
                         
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">Government Equipment Registration Platform</h3>
                         <p className="text-sm text-slate-500 mb-2">Public Sector Compliance System</p>
@@ -649,12 +637,7 @@ export function ArvinLandingPage() {
 
                     {activeProject === 'kinetic-forms' && (
                       <>
-                        {/* System Architecture Preview */}
-                        <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-                          <div className="relative aspect-video w-full flex items-center justify-center">
-                            <p className="text-sm text-slate-400">System Architecture Preview</p>
-                          </div>
-                        </div>
+                        {renderArchitecturePreview('kinetic-forms')}
                         
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">Enterprise Workflow & Forms Management System</h3>
                         <p className="text-sm text-slate-500 mb-2">Large-Scale Organizational Deployment</p>
