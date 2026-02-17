@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useOrgSession } from '@/providers/OrgSessionProvider';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for post operations; cannot use provider here
 import { postsApi } from '@/lib/api/posts';
 import { commentsApi } from '@/lib/api/comments';
 import { likesApi } from '@/lib/api/likes';

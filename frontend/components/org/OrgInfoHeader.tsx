@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useOrgSession } from '@/providers/OrgSessionProvider';
 import { useOrgPermissions } from '@/hooks/useOrgPermissions';
 import { useSuperAdmin } from '@/hooks/useSuperAdmin';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for org operations; cannot use provider here
 import { orgsApi, type Org } from '@/lib/api/orgs';
 import Link from 'next/link';
 

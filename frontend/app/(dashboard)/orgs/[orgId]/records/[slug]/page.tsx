@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for record operations; cannot use provider here
 import { recordsApi, type CollectionRecord } from '@/lib/api/records';
+// eslint-disable-next-line no-restricted-imports -- Type-only import for Collection type
 import type { Collection } from '@/lib/api/collections';
 import { toast } from '@/lib/toast';
 import Link from 'next/link';
 import { useMetadataIndex } from '@/providers/MetadataIndexProvider';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for collection operations; cannot use provider here
 import { collectionsApi } from '@/lib/api/collections';
 
 export default function RecordsPage() {

@@ -8,6 +8,7 @@ import { useOrgSession } from '@/providers/OrgSessionProvider';
 // ❌ Do not fetch posts here
 // ✅ Must consume from metadata index
 import { useMetadataIndex, type PostMetadata } from '@/providers/MetadataIndexProvider';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for post deletion; cannot use provider here
 import { postsApi } from '@/lib/api/posts';
 import { useAuth } from '@/hooks/useAuth';
 import Link from 'next/link';

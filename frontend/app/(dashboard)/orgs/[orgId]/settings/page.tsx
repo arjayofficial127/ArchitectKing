@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useOrgSession } from '@/providers/OrgSessionProvider';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for org updates; cannot use provider here
 import { orgsApi, type Org } from '@/lib/api/orgs';
 import JoinCodeSettings from '@/components/orgs/JoinCodeSettings';
 import { useOrgPermissions } from '@/hooks/useOrgPermissions';

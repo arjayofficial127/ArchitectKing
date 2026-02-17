@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useOrgSession } from '@/providers/OrgSessionProvider';
 import { useMetadataIndex } from '@/providers/MetadataIndexProvider';
 import { dashboardApi } from '@/lib/api/dashboard';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for post operations; cannot use provider here
 import { postsApi, type Post } from '@/lib/api/posts';
 import { FreshnessBadge } from '@/components/system/FreshnessBadge';
 import { markChecked, setActiveOrgId } from '@/lib/freshness/freshnessService';

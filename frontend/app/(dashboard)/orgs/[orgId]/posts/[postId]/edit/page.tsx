@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for post updates; cannot use provider here
 import { postsApi } from '@/lib/api/posts';
 import RichTextEditor from '@/components/posts/RichTextEditor';
 

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for join code operations; cannot use provider here
 import { orgsApi } from '@/lib/api/orgs';
 
 const JoinCodeSettingsSchema = z.object({

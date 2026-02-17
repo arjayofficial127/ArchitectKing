@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for user profile updates; cannot use provider here
 import { authApi, type User } from '@/lib/api/auth';
 import { useOrgSession } from '@/providers/OrgSessionProvider';
 

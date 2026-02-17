@@ -6,6 +6,7 @@ import { useSuperAdmin } from '@/hooks/useSuperAdmin';
 import { useOrgPermissions } from '@/hooks/useOrgPermissions';
 import { useParams } from 'next/navigation';
 import { useState, useEffect, useCallback, useRef } from 'react';
+// eslint-disable-next-line no-restricted-imports -- Type-only import for Org type
 import { type Org } from '@/lib/api/orgs';
 
 interface NavItem {

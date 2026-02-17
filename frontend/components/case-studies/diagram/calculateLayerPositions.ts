@@ -62,6 +62,11 @@ export function calculateLayeredLayout(
       height: layerHeightWithBoundary,
       label: layer.label,
       boundary: layer.boundary,
+      boundaryFill: layer.boundaryFill,
+      boundaryStroke: layer.boundaryStroke,
+      boundaryLabelColor: layer.boundaryLabelColor,
+      highlight: layer.highlight,
+      accentColor: layer.accentColor,
       nodes: calculatedNodes,
     });
 

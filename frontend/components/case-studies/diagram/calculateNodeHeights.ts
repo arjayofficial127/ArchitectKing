@@ -43,5 +43,10 @@ export function createCalculatedNode(
     type: node.type || 'card',
     expandable: node.expandable || false,
     expanded,
+    fillColor: node.fillColor,
+    strokeColor: node.strokeColor,
+    textColor: node.textColor,
+    accentColor: node.accentColor,
+    emphasis: node.emphasis,
   };
 }

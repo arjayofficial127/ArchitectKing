@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 // ✅ Must consume from metadata index
 import { useOrgSession } from '@/providers/OrgSessionProvider';
 import { useMetadataIndex, type CollectionMetadata } from '@/providers/MetadataIndexProvider';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for collection deletion; cannot use provider here
 import { collectionsApi } from '@/lib/api/collections';
 import Link from 'next/link';
 import { toast } from '@/lib/toast';

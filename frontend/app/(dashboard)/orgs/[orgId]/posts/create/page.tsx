@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useOrgSession } from '@/providers/OrgSessionProvider';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for post creation; cannot use provider here
 import { postsApi } from '@/lib/api/posts';
 import RichTextEditor from '@/components/posts/RichTextEditor';
 // TODO: Re-enable file uploads when UploadThing is fixed

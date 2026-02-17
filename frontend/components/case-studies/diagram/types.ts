@@ -135,6 +135,11 @@ export interface CalculatedNode {
   type: NodeType;
   expandable: boolean;
   expanded: boolean;
+  fillColor?: string;
+  strokeColor?: string;
+  textColor?: string;
+  accentColor?: string;
+  emphasis?: DiagramNodeEmphasis;
 }
 
 export interface CalculatedLayer {
@@ -145,6 +150,11 @@ export interface CalculatedLayer {
   height: number;
   label?: string;
   boundary?: boolean;
+  boundaryFill?: string;
+  boundaryStroke?: string;
+  boundaryLabelColor?: string;
+  highlight?: boolean;
+  accentColor?: string;
   nodes: CalculatedNode[];
 }
 

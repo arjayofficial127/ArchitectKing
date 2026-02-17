@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for org creation/joining; cannot use provider here
 import { orgsApi, type Org } from '@/lib/api/orgs';
 import { useSuperAdmin } from '@/hooks/useSuperAdmin';
 import apiClient from '@/lib/api/client';

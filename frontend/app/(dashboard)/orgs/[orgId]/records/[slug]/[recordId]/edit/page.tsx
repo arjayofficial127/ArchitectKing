@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for record updates; cannot use provider here
 import { recordsApi, type CollectionRecord } from '@/lib/api/records';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for collection schema; cannot use provider here
 import { collectionsApi, type Collection, type CollectionField } from '@/lib/api/collections';
 import { toast } from '@/lib/toast';
 import Link from 'next/link';

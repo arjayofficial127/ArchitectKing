@@ -9,6 +9,7 @@ import { useOrgSession } from '@/providers/OrgSessionProvider';
 import Link from 'next/link';
 import UserProfileModal from '@/components/user/UserProfileModal';
 import OrgAccessChecker from '@/components/org/OrgAccessChecker';
+// eslint-disable-next-line no-restricted-imports -- Type-only import for Org type
 import type { Org } from '@/lib/api/orgs';
 import { ErrorBoundary } from '@/components/errors/ErrorBoundary';
 import { UnifiedSidebar } from '@/components/layout/UnifiedSidebar';

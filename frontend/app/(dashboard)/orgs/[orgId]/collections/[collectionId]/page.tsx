@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+// eslint-disable-next-line no-restricted-imports -- Runtime API needed for collection updates; cannot use provider here
 import { collectionsApi, type Collection, type CollectionField } from '@/lib/api/collections';
 import { toast } from '@/lib/toast';
 import Link from 'next/link';
