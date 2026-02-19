@@ -361,7 +361,7 @@ export function ArvinLandingPage2() {
               </div>
             </section>
 
-            {/* BOOK STRIP */}
+            {/* BOOK STRIP */} 
             <section 
               className="relative border-y border-slate-900/20"
               style={{
