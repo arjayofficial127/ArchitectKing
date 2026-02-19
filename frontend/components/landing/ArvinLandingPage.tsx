@@ -347,7 +347,7 @@ export function ArvinLandingPage() {
                         </p>
 
                         <a
-                          href="/pdf/ArJay_Castro_Skills.pdf"
+                          href="/pdf/ARVIN_JAYSON_CASTRO_Senior_Full-Stack_Engineer_Technical_Architect.pdf"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
@@ -731,7 +731,7 @@ export function ArvinLandingPage() {
                     Book a 20-Min Architecture Call
                   </a>
                   <a
-                    href="/pdf/ArJay_Castro_Skills.pdf"
+                    href="/pdf/ARVIN_JAYSON_CASTRO_Senior_Full-Stack_Engineer_Technical_Architect.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-[#FFF8E7] hover:text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"

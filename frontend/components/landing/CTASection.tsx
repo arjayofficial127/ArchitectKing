@@ -19,7 +19,7 @@ export function CTASection() {
               Book a 20-Min Architecture Call
             </a>
             <a
-              href="/pdf/ArJay_Castro_Skills.pdf"
+              href="/pdf/ARVIN_JAYSON_CASTRO_Senior_Full-Stack_Engineer_Technical_Architect.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white/30 bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:border-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-teal-700"

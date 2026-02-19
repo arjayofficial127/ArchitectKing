@@ -92,7 +92,7 @@ frontend/
 - Calendly placeholder ready
 
 **Secondary:** "Download Resume"
-- Links to `/pdf/ArJay_Castro_Skills.pdf`
+- Links to `/pdf/ARVIN_JAYSON_CASTRO_Senior_Full-Stack_Engineer_Technical_Architect.pdf`
 
 **Tertiary:** GitHub/LinkedIn links in footer
 
