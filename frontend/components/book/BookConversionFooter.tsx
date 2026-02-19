@@ -12,7 +12,7 @@ export function BookConversionFooter() {
         </p>
         <div className={styles.conversionActions}>
           <a
-            href="mailto:arjayofficial127@gmail.com?subject=Architecture%20Discussion&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20discuss%20system%20architecture%20for%20[your%20project%2Frole].%0A%0ABest%2C"
+            href="mailto:arvinjaysoncastro@gmail.com?subject=Architecture%20Discussion&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20discuss%20system%20architecture%20for%20[your%20project%2Frole].%0A%0ABest%2C"
             className={styles.primaryCTA}
           >
             Discuss Your System
@@ -31,7 +31,7 @@ export function BookConversionFooter() {
               LinkedIn
             </a>
             <span className={styles.linkSeparator}>·</span>
-            <a href="mailto:arjayofficial127@gmail.com" className={styles.subtleLink}>
+            <a href="mailto:arvinjaysoncastro@gmail.com" className={styles.subtleLink}>
               Email
             </a>
           </div>

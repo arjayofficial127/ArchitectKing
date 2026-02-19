@@ -85,7 +85,7 @@ export default function RootLayout({
               name: 'Arvin Jayson Castro',
               jobTitle: 'Senior Fullstack Architect',
               description: '15 years experience. Senior Fullstack Architect specializing in React, Next.js, .NET, Node.js. Multi-tenant SaaS systems, production-grade architecture.',
-              email: 'arjayofficial127@gmail.com',
+              email: 'arvinjaysoncastro@gmail.com',
               alumniOf: {
                 '@type': 'EducationalOrganization',
                 name: 'University of Santo Tomas',

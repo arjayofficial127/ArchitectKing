@@ -98,7 +98,7 @@ frontend/
 
 ## Contact Information
 
-- Email: arjayofficial127@gmail.com
+- Email: arvinjaysoncastro@gmail.com
 - LinkedIn: linkedin.com/in/arvinjaysoncastro (placeholder - update if needed)
 - GitHub: github.com/arvinjaysoncastro (placeholder - update if needed)
 
