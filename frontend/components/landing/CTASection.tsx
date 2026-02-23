@@ -37,7 +37,7 @@ export function CTASection() {
             </a>
             <span className="text-teal-300">•</span>
             <a
-              href="https://www.linkedin.com/in/arvinjaysoncastro"
+              href="https://linkedin.com/in/arvinjaysoncastro"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"

@@ -1,14 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { ContactPopover } from '@/components/landing/ContactPopover';
 
 export function SiteNavbar() {
   const pathname = usePathname();
-  const [isContactPopoverOpen, setIsContactPopoverOpen] = useState(false);
-  const contactTriggerRef = useRef<HTMLAnchorElement>(null);
   
   const isWorkingFundamentals = pathname?.startsWith('/working-fundamentals') ?? false;
   const isCaseStudies = pathname?.startsWith('/case-studies') ?? false;
@@ -45,31 +41,19 @@ export function SiteNavbar() {
             >
               How I Build Systems
             </Link>
-            <div className="relative">
-              <a
-                ref={contactTriggerRef}
-                href="/#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsContactPopoverOpen(!isContactPopoverOpen);
-                }}
-                className="text-sm font-medium text-slate-600 hover:text-[#F4C430] transition-colors cursor-pointer"
-                aria-expanded={isContactPopoverOpen}
-                aria-haspopup="true"
-              >
-                Contact
-              </a>
-              <ContactPopover
-                isOpen={isContactPopoverOpen}
-                onClose={() => setIsContactPopoverOpen(false)}
-                triggerRef={contactTriggerRef}
-              />
-            </div>
+            <Link 
+              href="/contact-me" 
+              className={`text-sm font-medium transition-colors ${
+                pathname === '/contact-me'
+                  ? 'text-[#0F172A] border-b-2 border-[#F4C430] pb-1' 
+                  : 'text-slate-600 hover:text-[#F4C430]'
+              }`}
+            >
+              Contact
+            </Link>
           </nav>
           <a
-            href="https://m.me/arjayofficial127"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:arvinjaysoncastro@gmail.com"
             className="hidden sm:inline-flex items-center justify-center rounded-md border border-[#0F172A] bg-transparent px-4 py-1.5 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-1"
           >
             Message Me

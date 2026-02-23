@@ -103,7 +103,7 @@ export default function RootLayout({
               ],
               url: 'https://arvinjaysoncastro.com',
               sameAs: [
-                'https://www.linkedin.com/in/arvinjaysoncastro',
+                'https://linkedin.com/in/arvinjaysoncastro',
                 'https://www.github.com/arvinjaysoncastro',
               ],
             }),

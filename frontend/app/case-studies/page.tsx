@@ -130,13 +130,13 @@ export default function CaseStudiesPage() {
             <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">
               <div className="text-center md:text-right">
                 <a 
-                  href="mailto:arvinjaysontamayocastro@gmail.com" 
+                  href="mailto:arvinjaysoncastro@gmail.com" 
                   className="block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
                 >
                   Email
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/" 
+                  href="https://linkedin.com/in/arvinjaysoncastro" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="mt-1 block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"

@@ -83,10 +83,8 @@ export function ArvinLandingPage() {
                 </p>
 
                 <div className="mt-10">
-                  <a
-                    href="https://m.me/arjayofficial127"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="/contact-me"
                     className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                   >
                     <svg
@@ -94,19 +92,20 @@ export function ArvinLandingPage() {
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
-                      <path d="M12 0C5.373 0 0 4.925 0 11c0 2.153.74 4.163 2.016 5.868L0 24l7.437-4.42c1.324.36 2.74.555 4.188.555h.375C15.524 24 24 18.925 24 11S18.475 0 12 0zm0 18.868c-1.125 0-2.227-.16-3.277-.468l-.375-.11-3.75 2.25 1.125-3.375-.375-.468C2.61 15.15 1.875 13.163 1.875 11c0-4.688 4.163-8.5 9.375-8.5S21 6.312 21 11s-4.163 8.5-9.375 8.5l-.375-.015-.375.015z"/>
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
                     </svg>
                     Discuss Role
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Contact info at bottom */}
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500">
-                  <a href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4C430] transition-colors">
+                  <a href="https://linkedin.com/in/arvinjaysoncastro" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4C430] transition-colors">
                     LinkedIn
                   </a>
                   <span>•</span>
-                  <a href="mailto:arvinjaysontamayocastro@gmail.com" className="hover:text-[#F4C430] transition-colors">
+                  <a href="mailto:arvinjaysoncastro@gmail.com" className="hover:text-[#F4C430] transition-colors">
                     Email
                   </a>
                   <span>•</span>
@@ -301,14 +300,12 @@ export function ArvinLandingPage() {
                           Team-ready developer. Feature ownership capable. Production-focused execution.
                         </p>
 
-                        <a
-                          href="https://m.me/arjayofficial127"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Link
+                          href="/contact-me"
                           className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                         >
                           Discuss Role
-                        </a>
+                        </Link>
 
                         <p className="mt-3 text-xs text-slate-500 text-center">
                           Available immediately. Ready to contribute.
@@ -689,14 +686,12 @@ export function ArvinLandingPage() {
                 <h2 className={classes.finalCloseTitle}>
                   Looking for a Senior Full-Stack Developer who can start immediately? Let&apos;s talk.
                 </h2>
-                <button
+                <Link
+                  href="/contact-me"
                   className={classes.primaryCTA}
-                  onClick={() => {
-                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
                 >
                   Discuss Role
-                </button>
+                </Link>
               </div>
             </section>
 
@@ -882,13 +877,13 @@ export function ArvinLandingPage() {
             <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">
               <div className="text-center md:text-right">
                 <a 
-                  href="mailto:arvinjaysontamayocastro@gmail.com" 
+                  href="mailto:arvinjaysoncastro@gmail.com" 
                   className="block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
                 >
                   Email
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/" 
+                  href="https://linkedin.com/in/arvinjaysoncastro" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="mt-1 block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"

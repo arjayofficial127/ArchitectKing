@@ -23,7 +23,7 @@ export function BookConversionFooter() {
             </Link>
             <span className={styles.linkSeparator}>·</span>
             <a 
-              href="https://www.linkedin.com/in/arvin-jayson-castro-7458199a/" 
+              href="https://linkedin.com/in/arvinjaysoncastro" 
               target="_blank" 
               rel="noopener noreferrer" 
               className={styles.subtleLink}

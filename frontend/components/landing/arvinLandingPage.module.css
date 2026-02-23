@@ -28,6 +28,7 @@
   background: #f4c430;
   border: none;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.2s ease, transform 0.1s ease;
   box-shadow: 0 4px 12px rgba(244, 196, 48, 0.3);
 }
