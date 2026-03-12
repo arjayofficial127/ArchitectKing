@@ -72,8 +72,37 @@ export default function ContactMePage() {
               Let&apos;s Connect
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Available immediately. Ready to discuss your project or role.
+              Ready to review your SaaS system, architecture, or dashboard project.
             </p>
+          </div>
+
+          {/* Common Topics Section */}
+          <div className="mb-16 max-w-2xl mx-auto bg-slate-50/60 border border-slate-200 rounded-xl p-8">
+            <h2 className="text-lg font-bold text-slate-900 mb-4 text-center">
+              Common Topics I Help With
+            </h2>
+            <ul className="space-y-3 text-sm text-slate-700">
+              <li className="flex items-start">
+                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                <span>SaaS architecture</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                <span>Admin dashboards</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                <span>API design</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                <span>Performance issues</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                <span>System scalability</span>
+              </li>
+            </ul>
           </div>
 
           {/* Contact Methods */}
@@ -119,14 +148,17 @@ export default function ContactMePage() {
           {/* Additional Info */}
           <div className="mt-20 text-center">
             <p className="text-sm text-slate-500 mb-4">
-              Prefer to schedule a call?
+              Ready to discuss your project?
             </p>
             <a
-              href="mailto:arvinjaysoncastro@gmail.com?subject=Schedule%20a%20Call&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20schedule%20a%20call%20to%20discuss%20[your%20project%2Frole].%0A%0ABest%2C"
+              href="mailto:arvinjaysoncastro@gmail.com?subject=Discuss%20Your%20System&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20discuss%20[your%20SaaS%20system%2Fdashboard%2Farchitecture].%0A%0ABest%2C"
               className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
             >
-              Schedule a Call
+              Discuss Your System
             </a>
+            <p className="mt-4 text-xs text-slate-500">
+              Typical architecture reviews take 1–2 days depending on system size.
+            </p>
           </div>
         </div>
       </main>

@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { DiagramCreator } from '@/components/case-studies/DiagramCreator';
@@ -12,33 +10,12 @@ import { TechnicalDepth } from './TechnicalDepth';
 import { SystemsArchitecture } from './SystemsArchitecture';
 import { BookAuthorityStrip } from './BookAuthorityStrip';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
-import { selectedProductionWorkDiagrams, type SelectedProductionProjectId } from './selectedProductionWorkDiagrams';
+import { selectedProductionWorkDiagrams } from './selectedProductionWorkDiagrams';
 import classes from './arvinLandingPage.module.css';
 
 export function ArvinLandingPage() {
   // Fast conversion mode - show conversion-focused sections, hide architecture content
   const isFastConversionMode = true;
-  
-  // Theme state for tech strip - always blackboard
-  const techStripTheme = 'black';
-  
-  // Active project state for Selected Production Work section
-  const [activeProject, setActiveProject] = useState<SelectedProductionProjectId>('airunote');
-  
-  // Map activeProject to case study slug
-  const projectSlugMap: Record<typeof activeProject, string> = {
-    'airunote': 'airunote',
-    'wtw-comrise': 'resource-monitoring-system',
-    'coats-inventory': 'thread-inventory-system',
-    'denr-chainsaw': 'denr-chainsaw-registration',
-    'kinetic-forms': 'custom-forms-management'
-  };
-
-  const renderArchitecturePreview = (projectId: SelectedProductionProjectId) => (
-    <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
-      <DiagramCreator data={selectedProductionWorkDiagrams[projectId]} className="p-2" />
-    </div>
-  );
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
@@ -63,29 +40,24 @@ export function ArvinLandingPage() {
         {isFastConversionMode && (
           <>
             {/* FOLD 1 — EXECUTION HERO */}
-            <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+            <section className="relative mx-auto max-w-7xl px-6 pt-20 pb-16 md:pt-28 md:pb-24">
               <div className="mx-auto max-w-4xl text-center">
-                <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight">
-                  Senior Full-Stack Engineer
-                  <span className="block mt-3 text-slate-700 font-normal text-2xl sm:text-3xl md:text-4xl">
-                    React • Node • SQL • 15+ Years Production Experience
+                <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-[1.05]">
+                  SaaS Systems Architect
+                  <span className="block mt-5 text-slate-700 font-normal text-lg sm:text-xl md:text-2xl leading-relaxed">
+                    I build production-ready SaaS platforms, admin dashboards, and internal tools.
                   </span>
                 </h1>
                 
                 {/* Subline */}
-                <p className="mt-6 text-base text-slate-600 sm:text-lg">
-                  Available immediately. I take ownership of features end-to-end and ship clean, maintainable code.
-                </p>
-                
-                {/* Additional line */}
-                <p className="mt-3 text-sm text-slate-500">
-                  Comfortable working independently or within Agile teams. References available upon request.
+                <p className="mt-8 text-base text-slate-600 sm:text-lg leading-relaxed max-w-3xl mx-auto">
+                  15+ years building scalable systems using React, .NET, Node, and SQL. I help startups and companies ship reliable software faster.
                 </p>
 
-                <div className="mt-10">
+                <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Link
                     href="/contact-me"
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-xl shadow-[#F4C430]/40 ring-1 ring-[#F4C430]/30 transition-all hover:-translate-y-0.5 hover:bg-[#F4C430]/90 hover:shadow-2xl hover:shadow-[#F4C430]/50 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                   >
                     <svg
                       className="w-5 h-5"
@@ -95,12 +67,18 @@ export function ArvinLandingPage() {
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                       <polyline points="22,6 12,13 2,6"/>
                     </svg>
-                    Discuss Role
+                    Discuss Your System
+                  </Link>
+                  <Link
+                    href="#featured-project"
+                    className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:text-slate-900 hover:bg-[#FFFDF4] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                  >
+                    View My Work
                   </Link>
                 </div>
 
                 {/* Contact info at bottom */}
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500">
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-500">
                   <a href="https://linkedin.com/in/arvinjaysoncastro" target="_blank" rel="noopener noreferrer" className="hover:text-[#F4C430] transition-colors">
                     LinkedIn
                   </a>
@@ -126,234 +104,62 @@ export function ArvinLandingPage() {
                 transition: 'background 0.4s ease, border-color 0.3s ease, color 0.3s ease'
               }}
             >
-              <div className="w-full px-6" style={{ paddingTop: '48px', paddingBottom: '48px' }}>
-                <div className="mx-auto text-center" style={{ maxWidth: '1200px' }}>
-                  {/* METRICS STRIP */}
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-medium mb-8" style={{ letterSpacing: '0.75px', color: '#e2e8f0' }}>
+              <div className="w-full px-6" style={{ paddingTop: '30px', paddingBottom: '30px' }}>
+                <div className="mx-auto" style={{ maxWidth: '1200px' }}>
+                  <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm md:text-base font-medium" style={{ letterSpacing: '0.5px', color: '#e2e8f0' }}>
                     <span>15+ Years Experience</span>
-                    <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
-                    <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
+                    <span style={{ color: '#94a3b8' }}>•</span>
                     <span>20+ Production Systems</span>
-                    <span className="hidden md:inline" style={{ color: '#94a3b8' }}>•</span>
-                    <span className="md:hidden" style={{ color: '#94a3b8' }}>•</span>
-                    <span>Enterprise + Startup Exposure</span>
-                  </div>
-
-                  <h2 
-                    className="text-2xl font-semibold mb-2 text-center transition-colors duration-300 ease-in-out" 
-                    style={{ 
-                      letterSpacing: '0.5px',
-                      color: '#f1f5f9'
-                    }}
-                  >
-                    Core Stack & Tools
-                  </h2>
-                  <p className="text-sm mb-8 text-center" style={{ color: '#94a3b8' }}>
-                    Stack I actively use in live systems.
-                  </p>
-                  
-                  <div className="flex flex-wrap justify-center gap-3">
-                    {[
-                      { name: 'Vercel', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 76 65" fill="currentColor">
-                          <path d="M37.527 0L75.054 65H0L37.527 0Z"/>
-                        </svg>
-                      )},
-                      { name: 'Render', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                        </svg>
-                      )},
-                      { name: 'Azure', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                      )},
-                      { name: 'C#' },
-                      { name: '.NET', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M2 2h20v20H2V2zm2 2v16h16V4H4zm2 2h12v12H6V6zm2 2v8h8V8H8z"/>
-                        </svg>
-                      )},
-                      { name: 'Node', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.238V6.921c0-0.099-0.053-0.192-0.137-0.242l-8.791-5.072c-0.081-0.047-0.185-0.047-0.268,0 L3.075,6.68C2.99,6.729,2.936,6.825,2.936,6.921v10.15c0,0.097,0.054,0.193,0.139,0.242l2.409,1.392 c1.307,0.654,2.108-0.116,2.108-0.89V7.787c0-0.142,0.114-0.253,0.256-0.253h1.115c0.139,0,0.255,0.112,0.255,0.253v10.021 c0,1.745-0.95,2.745-2.604,2.745c-0.508,0-0.909,0-1.384-0.224l-2.444-1.412c-0.616-0.36-1.001-1.01-1.001-1.734V6.921 c0-0.724,0.385-1.377,1.001-1.737l8.795-5.082c0.618-0.361,1.433-0.361,2.049,0l8.794,5.082c0.619,0.361,1.007,1.014,1.007,1.737 v10.15c0,0.723-0.387,1.374-1.004,1.734l-8.795,5.078C12.643,23.916,12.324,24,11.998,24z M19.099,13.993 c0-1.9-1.284-2.406-3.987-3.277c-1.697-0.556-2.027-0.984-2.027-1.792c0-0.897,0.592-1.5,1.593-1.5c1.038,0,1.643,0.474,2.041,1.488 c0.082,0.196,0.24,0.318,0.45,0.318h1.133c0.184,0,0.343-0.08,0.461-0.22c0.119-0.14,0.18-0.33,0.12-0.513 c-0.38-1.455-1.407-2.443-3.129-2.976V4.84c0-0.142-0.115-0.255-0.256-0.255h-1.114c-0.143,0-0.256,0.113-0.256,0.255v1.443 c-1.792,0.415-3.183,1.612-3.183,3.513c0,1.896,1.24,2.415,3.95,3.286c1.787,0.582,2.008,1.02,2.008,1.8c0,0.962-0.717,1.602-1.87,1.602 c-1.407,0-2.188-0.688-2.531-1.528c-0.062-0.152-0.215-0.255-0.386-0.255H9.423c-0.192,0-0.353,0.098-0.448,0.255 c-0.099,0.164-0.12,0.362-0.062,0.543c0.515,1.602,1.976,2.789,4.151,3.158v1.549c0,0.142,0.114,0.257,0.256,0.257h1.116 c0.141,0,0.255-0.115,0.255-0.257v-1.555c1.864-0.361,3.231-1.525,3.231-3.514H19.099z"/>
-                        </svg>
-                      )},
-                      { name: 'React', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                          <ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="currentColor" strokeWidth="1"/>
-                          <ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="currentColor" strokeWidth="1" transform="rotate(60 12 12)"/>
-                          <ellipse cx="12" cy="12" rx="11" ry="4.2" fill="none" stroke="currentColor" strokeWidth="1" transform="rotate(120 12 12)"/>
-                        </svg>
-                      )},
-                      { name: 'TypeScript' },
-                      { name: 'Angular', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M9.96 11.31l1.09-1.9L12 6.25l.95 3.16 1.09 1.9-2.04-.01L12 11.3l-2.04-.01zm-2.04 1.5h4.16l-2.08 3.61-2.08-3.61zM12 2L2 7l2 14 8 1 8-1 2-14L12 2zm0 2.18l7.39 2.12L18.3 19.5 12 20.5l-6.3-1L4.61 6.3L12 4.18z"/>
-                        </svg>
-                      )},
-                      { name: 'PostgreSQL', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M23.559 4.684c-.338-1.19-1.428-2.043-2.634-2.043-.338 0-.676.084-1.012.17-.338-.085-.676-.17-1.012-.17-1.206 0-2.296.853-2.634 2.043-.338 1.19.084 2.38.676 3.313L12 9.93l-3.925-1.933c.592-.933 1.014-2.123.676-3.313C8.413 3.494 7.323 2.64 6.117 2.64c-.338 0-.676.085-1.012.17-.338-.085-.676-.17-1.012-.17C3.897 2.64 2.807 3.494 2.47 4.684c-.338 1.19.084 2.38.676 3.313L1.014 9.93c-.338.17-.338.593 0 .763l2.132 1.014c-.592.933-1.014 2.123-.676 3.313.338 1.19 1.428 2.043 2.634 2.043.338 0 .676-.084 1.012-.17.338.085.676.17 1.012.17 1.206 0 2.296-.853 2.634-2.043.338-1.19-.084-2.38-.676-3.313L12 14.07l3.925 1.933c-.592.933-1.014 2.123-.676 3.313.338 1.19 1.428 2.043 2.634 2.043.338 0 .676-.084 1.012-.17.338.085.676.17 1.012.17 1.206 0 2.296-.853 2.634-2.043.338-1.19-.084-2.38-.676-3.313L22.986 14.07c.338-.17.338-.593 0-.763l-2.132-1.014c.592-.933 1.014-2.123.676-3.313z"/>
-                        </svg>
-                      )},
-                      { name: 'SQL Server' },
-                      { name: 'Neon' },
-                      { name: 'REST' },
-                      { name: 'CI/CD' },
-                      { name: 'Docker', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M13.983 6.21c.12-.008.235-.014.343-.014.084 0 .168.006.25.01a5.24 5.24 0 0 1 4.19 2.05h.004a5.28 5.28 0 0 1 .95 3.02v.05a5.28 5.28 0 0 1-.3 1.72 5.26 5.26 0 0 1-4.88 3.38h-.05a5.24 5.24 0 0 1-3.72-1.55 5.2 5.2 0 0 1-1.5-3.5v-.05c0-.07.01-.14.01-.2a5.28 5.28 0 0 1 5.24-4.98zm.02 1.99c-.08 0-.15.01-.23.02a3.2 3.2 0 0 0-2.57 1.25 3.18 3.18 0 0 0-.58 1.8 3.22 3.22 0 0 0 .92 2.28 3.2 3.2 0 0 0 2.28.95h.05a3.19 3.19 0 0 0 2.96-2.05 3.23 3.23 0 0 0 .19-1.05v-.05a3.2 3.2 0 0 0-3.18-3.05zM4.74 2.26h2.12v2.13H4.74zm0 3.18h2.12v2.13H4.74zm0 3.18h2.12v2.13H4.74zm-3.15 0h2.12v2.13H1.59zm3.15-6.37h2.12v2.14H4.74zm-3.15 0h2.12v2.14H1.59zm3.15-3.19h2.12v2.13H4.74zm-3.15 0h2.12v2.13H1.59zm16.5 12.75h-1.6v1.61h-1.6v-1.61h-1.6v-1.6h1.6v-1.6h1.6v1.6h1.6zm-3.2-1.6h-1.6v1.6h1.6zm3.2-3.2h-1.6v1.6h1.6zm0-3.2h-1.6v1.6h1.6zm-3.2 0h-1.6v1.6h1.6z"/>
-                        </svg>
-                      )},
-                      { name: 'Tailwind' },
-                      { name: 'CSS' },
-                      { name: 'Git', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M21.62 11.108l-8.731-8.729a1.487 1.487 0 0 0-2.104 0L9.617 3.492l2.299 2.281a1.784 1.784 0 0 1 2.242 2.27l2.214 2.188a1.785 1.785 0 0 1 .599 2.953c-.442.258-.958.365-1.477.365a2.557 2.557 0 0 1-1.825-.755l-2.131-2.108v5.577a1.8 1.8 0 0 1 .488 3.523 1.8 1.8 0 0 1-1.976-1.976V9.849a1.785 1.785 0 0 1-.98-2.323L6.983 4.93 1.108 10.804a1.488 1.488 0 0 0 0 2.104l8.731 8.729a1.487 1.487 0 0 0 2.104 0l8.731-8.729a1.488 1.488 0 0 0 0-2.104"/>
-                        </svg>
-                      )},
-                      { name: 'Prisma' },
-                      { name: 'EF Core' },
-                      { name: 'Next.js', icon: (
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M11.5725 0c-.1763 0-.3109.0007-.3109.0007L4.5078 5.9939l-.0007.0007 6.1682 6.1682.0007-.0007 6.2558-6.2558L11.5725 0zM5.3108 7.1336l-.0007.0007 4.6847 4.6847-1.7827 1.7827-4.6847-4.6847L2.727 12.0007 11.5725 20.8462l.0007-.0007 1.7827-1.7827-4.6847-4.6847 4.6847-4.6847-1.7827-1.7827-4.6847 4.6847zm6.2558 1.7827l1.7827-1.7827 6.2558 6.2558-6.2558 6.2558-1.7827-1.7827 4.4731-4.4731-4.4731-4.4731z"/>
-                        </svg>
-                      )},
-                    ].map((tech) => {
-                      // Blackboard theme chip styles (always)
-                      const chipStyles = {
-                        background: '#1e293b',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        color: '#e2e8f0',
-                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)'
-                      };
-
-                      const hoverShadow = '0 6px 20px rgba(0, 0, 0, 0.4)';
-                      
-                      return (
-                        <span
-                          key={tech.name}
-                          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-all duration-200 ease-in-out"
-                          style={chipStyles}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = hoverShadow;
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = chipStyles.boxShadow;
-                          }}
-                        >
-                          {tech.icon && <span className="flex-shrink-0">{tech.icon}</span>}
-                          <span>{tech.name}</span>
-                        </span>
-                      );
-                    })}
+                    <span style={{ color: '#94a3b8' }}>•</span>
+                    <span>Enterprise &amp; Startup Experience</span>
+                    <span style={{ color: '#94a3b8' }}>•</span>
+                    <span>React • .NET • Node • SQL • Cloud</span>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* TWO COLUMN SECTION: URGENCY + PORTFOLIO */}
-            <section className="relative bg-slate-50/50">
-              <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+            {/* WHAT I BUILD */}
+            <section className="relative bg-slate-50/60 border-y border-slate-200/70">
+              <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
                 <div className="mx-auto max-w-6xl">
-                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                    {/* LEFT COLUMN — Team Contribution */}
+                  <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                    What I Build
+                  </h2>
+                  <p className="text-sm text-slate-500 mb-14 text-center max-w-2xl mx-auto">
+                    I focus on systems that support real operations and long-term growth.
+                  </p>
+
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
                     <div>
-                      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
+                      <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
                         <h3 className="text-xl font-bold text-slate-900 mb-4">
-                          How I Contribute to a Team
+                          SaaS Platforms
                         </h3>
-                        
-                        <ul className="space-y-2 mb-4 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implement features from spec to production</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Design and integrate REST APIs</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Build clean, testable React components</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Work with SQL and database optimization</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Refactor and improve legacy code safely</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Communicate clearly within Agile teams</span>
-                          </li>
-                        </ul>
-
-                        <p className="text-sm text-slate-600 mb-4">
-                          Team-ready developer. Feature ownership capable. Production-focused execution.
-                        </p>
-
-                        <Link
-                          href="/contact-me"
-                          className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                        >
-                          Discuss Role
-                        </Link>
-
-                        <p className="mt-3 text-xs text-slate-500 text-center">
-                          Available immediately. Ready to contribute.
+                        <p className="text-sm text-slate-600">
+                          Multi-tenant architecture, APIs, authentication systems, scalable backend services.
                         </p>
                       </div>
                     </div>
 
-                    {/* RIGHT COLUMN — CV Card */}
                     <div>
-                      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
+                      <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
                         <h3 className="text-xl font-bold text-slate-900 mb-4">
-                          Professional Résumé
+                          Admin Dashboards
                         </h3>
-                        
-                        <ul className="space-y-2 mb-4 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Detailed work history (16 Years)</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Production impact across enterprise and startup environments.</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Skill Matrix</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Architecture decisions documented with real-world context.</span>
-                          </li>
-                        </ul>
-
-                        <p className="text-sm text-slate-600 mb-4">
-                          Comprehensive experience documentation. Clear technical depth.
+                        <p className="text-sm text-slate-600">
+                          Data tables, analytics dashboards, reporting tools, role-based access systems.
                         </p>
+                      </div>
+                    </div>
 
-                        <a
-                          href="/pdf/ARVIN_JAYSON_CASTRO_Senior_Full-Stack_Engineer.pdf"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center w-full rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                        >
-                          Download Résumé (PDF)
-                        </a>
-
-                        <p className="mt-3 text-xs text-slate-500 text-center">
-                          Structured experience. Real production impact.
+                    <div>
+                      <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                        <h3 className="text-xl font-bold text-slate-900 mb-4">
+                          Internal Tools
+                        </h3>
+                        <p className="text-sm text-slate-600">
+                          Operational dashboards, workflow systems, integrations, and automation tools.
                         </p>
                       </div>
                     </div>
@@ -362,320 +168,135 @@ export function ArvinLandingPage() {
               </div>
             </section>
 
-            {/* SELECTED PRODUCTION WORK */}
-            <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+            {/* FEATURED PROJECT */}
+            <section id="featured-project" className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
               <div className="mx-auto max-w-6xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-3 text-center">
-                  Selected Production Work
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Featured Project
                 </h2>
-                <p className="text-sm text-slate-500 mb-12 text-center">
-                  Hands-on contributions across production systems.
+                <p className="text-sm text-slate-500 mb-14 text-center">
+                  AiruNote
                 </p>
                 
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-[40%_60%] md:gap-12">
-                  {/* LEFT COLUMN — System List */}
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3">AiruNote</h3>
+                    <p className="text-sm text-slate-600 mb-6">
+                      AI-assisted knowledge management platform designed with modular architecture and installable apps.
+                    </p>
+
+                    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm mb-5">
+                      <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">
+                        Project Screenshot
+                      </p>
+                      <div className="h-48 rounded border border-dashed border-slate-300 bg-slate-50 flex items-center justify-center text-sm text-slate-500">
+                        Screenshot placeholder
+                      </div>
+                    </div>
+
+                    <Link
+                      href="/case-studies/airunote"
+                      className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                    >
+                      View Case Study
+                    </Link>
+                  </div>
+
                   <div>
                     <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-4">
-                      Systems
+                      Architecture Diagram
                     </p>
-                    <ul className="space-y-3">
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('airunote')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'airunote'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'airunote' ? 'font-bold' : 'font-medium'}>AiruNote</span>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('wtw-comrise')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'wtw-comrise'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'wtw-comrise' ? 'font-bold' : 'font-medium'}>Enterprise Resource Assessment & Monitoring Platform</span>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('coats-inventory')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'coats-inventory'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'coats-inventory' ? 'font-bold' : 'font-medium'}>Manufacturing Inventory & Operations Platform</span>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('denr-chainsaw')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'denr-chainsaw'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'denr-chainsaw' ? 'font-bold' : 'font-medium'}>Government Equipment Registration Platform</span>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => setActiveProject('kinetic-forms')}
-                          className={`w-full text-left px-4 py-3 rounded-lg border transition-all cursor-pointer ${
-                            activeProject === 'kinetic-forms'
-                              ? 'border-[#F4C430] border-2 bg-[#F4C430]/15 text-slate-900 font-bold'
-                              : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50'
-                          }`}
-                        >
-                          <span className={activeProject === 'kinetic-forms' ? 'font-bold' : 'font-medium'}>Enterprise Workflow & Forms Management System</span>
-                        </button>
-                      </li>
-                    </ul>
+                    <div className="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
+                      <DiagramCreator data={selectedProductionWorkDiagrams.airunote} className="p-2" />
+                    </div>
                   </div>
+                </div>
+              </div>
+            </section>
 
-                  {/* RIGHT COLUMN — Dynamic Content */}
-                  <div>
-                    {activeProject === 'airunote' && (
-                      <>
-                        {renderArchitecturePreview('airunote')}
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">AiruNote</h3>
-                        <p className="text-sm text-slate-500 mb-2">AI-Assisted TXT | MD | RTF Capture & Knowledge Management System</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-sm text-slate-600 mb-4">
-                          AI-powered note capture, structured knowledge management, and document organization system. Built with privacy-first architecture and modular extensibility.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Designed structured document lifecycle architecture</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implemented folder + ownership boundaries</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Built installable-app modular system</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Created metadata-driven rendering engine</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated AI-assisted capture workflows</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'wtw-comrise' && (
-                      <>
-                        {renderArchitecturePreview('wtw-comrise')}
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Enterprise Resource Assessment & Monitoring Platform</h3>
-                        <p className="text-sm text-slate-500 mb-2">Global Insurance & Advisory Environment</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Developed interactive dashboards and reporting modules</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated backend APIs for enterprise data visualization</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implemented secure role-based access control</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Participated in CI/CD deployment workflows</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'coats-inventory' && (
-                      <>
-                        {renderArchitecturePreview('coats-inventory')}
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Manufacturing Inventory & Operations Platform</h3>
-                        <p className="text-sm text-slate-500 mb-2">Global Manufacturing Environment</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Built inventory tracking dashboards using React</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated REST APIs with backend inventory services</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Implemented search, filtering, and reporting capabilities</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Supported production deployment and data integrity checks</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'denr-chainsaw' && (
-                      <>
-                        {renderArchitecturePreview('denr-chainsaw')}
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Government Equipment Registration Platform</h3>
-                        <p className="text-sm text-slate-500 mb-2">Public Sector Compliance System</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Developed registration forms and validation workflows</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Integrated backend services for permit processing</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Improved UI responsiveness across devices</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Deployed updates within secure production environment</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
-
-                    {activeProject === 'kinetic-forms' && (
-                      <>
-                        {renderArchitecturePreview('kinetic-forms')}
-                        
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Enterprise Workflow & Forms Management System</h3>
-                        <p className="text-sm text-slate-500 mb-2">Large-Scale Organizational Deployment</p>
-                        <p className="text-xs text-slate-500 mb-4 italic">
-                          Hands-on contribution within a team environment.
-                        </p>
-                        <p className="text-slate-700 mb-4 font-medium">
-                          Key Contributions:
-                        </p>
-                        <ul className="space-y-2 mb-6 text-sm text-slate-700">
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Built dynamic form components with conditional logic</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Connected frontend workflows to secure backend APIs</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Collaborated within Agile team to deliver feature modules</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-[#F4C430] mr-2">•</span>
-                            <span>Participated in production rollout and system enhancements</span>
-                          </li>
-                        </ul>
-                        <div className="flex flex-col sm:flex-row gap-3">
-                          <Link
-                            href={`/case-studies/${projectSlugMap[activeProject]}`}
-                            className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                          >
-                            View Case Study
-                            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </>
-                    )}
+            {/* EXPERIENCE */}
+            <section className="relative bg-slate-50/60 border-y border-slate-200/70">
+              <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+                <div className="mx-auto max-w-4xl">
+                  <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-8 text-center">
+                    Professional Experience
+                  </h2>
+                  <div className="space-y-4">
+                    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                      <p className="text-sm text-slate-700">
+                        Senior full-stack engineer and architecture lead across enterprise and startup teams, delivering SaaS platforms, operational dashboards, and workflow systems.
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                      <p className="text-sm text-slate-700">
+                        Built and maintained production systems using React, .NET, Node, and SQL, with focus on reliability, maintainability, and clean system boundaries.
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                      <p className="text-sm text-slate-700">
+                        Partnered with product and engineering teams to scope, design, and deliver business-critical features from architecture through production rollout.
+                      </p>
+                    </div>
                   </div>
+                </div>
+              </div>
+            </section>
+
+            {/* CONSULTING OFFER */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Architecture Review
+                </h2>
+                <p className="text-sm text-slate-600 text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+                  If your SaaS system, dashboard, or backend is becoming difficult to maintain or scale, I can review your architecture and provide a clear plan for improvement.
+                </p>
+
+                <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 md:p-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3">Architecture Review</h3>
+                  <p className="text-sm text-slate-700 mb-6">
+                    A structured review of your SaaS system, codebase, or architecture.
+                  </p>
+
+                  <p className="text-sm font-semibold text-slate-900 mb-3">Includes:</p>
+                  <ul className="space-y-2 mb-6 text-sm text-slate-700">
+                    <li className="flex items-start">
+                      <span className="text-[#F4C430] mr-2">•</span>
+                      <span>System architecture review</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#F4C430] mr-2">•</span>
+                      <span>Performance and scalability risks</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#F4C430] mr-2">•</span>
+                      <span>Codebase structure analysis</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#F4C430] mr-2">•</span>
+                      <span>Data and API design feedback</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#F4C430] mr-2">•</span>
+                      <span>Recommendations for improvement</span>
+                    </li>
+                  </ul>
+
+                  <p className="text-sm text-slate-700 mb-6">
+                    <span className="font-semibold text-slate-900">Outcome:</span>{' '}
+                    You receive a clear technical report outlining improvements and next steps.
+                  </p>
+
+                  <Link
+                    href="/architecture-review"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                  >
+                    Book Architecture Review
+                  </Link>
+
+                  <p className="mt-3 text-xs text-slate-500">
+                    Typical reviews take 1–2 days depending on system size.
+                  </p>
                 </div>
               </div>
             </section>
@@ -684,13 +305,16 @@ export function ArvinLandingPage() {
             <section className={classes.finalClose}>
               <div className={classes.finalCloseInner}>
                 <h2 className={classes.finalCloseTitle}>
-                  Looking for a Senior Full-Stack Developer who can start immediately? Let&apos;s talk.
+                  Need a SaaS System or Admin Dashboard?
                 </h2>
+                <p className="mt-5 text-sm text-slate-200 max-w-2xl mx-auto leading-relaxed">
+                  If you need help designing or building reliable systems, I&apos;m happy to review your project.
+                </p>
                 <Link
                   href="/contact-me"
-                  className={classes.primaryCTA}
+                  className={`${classes.primaryCTA} mt-6`}
                 >
-                  Discuss Role
+                  Discuss Your System
                 </Link>
               </div>
             </section>
