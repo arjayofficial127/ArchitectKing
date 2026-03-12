@@ -119,6 +119,104 @@ export function ArvinLandingPage() {
               </div>
             </section>
 
+            {/* COMMON SAAS PROBLEMS I SOLVE */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Common SaaS Problems I Solve
+                </h2>
+                <p className="text-sm text-slate-500 mb-12 text-center">
+                  These are the issues that keep SaaS teams from shipping reliably and scaling.
+                </p>
+
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span><strong className="text-slate-900">Slow dashboards and APIs</strong> — Performance issues that degrade user experience and business trust</span>
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span><strong className="text-slate-900">Messy codebases</strong> — Code that slows development and makes changes risky</span>
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span><strong className="text-slate-900">Systems that don&apos;t scale</strong> — Infrastructure that breaks as user count grows</span>
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span><strong className="text-slate-900">Architecture decisions causing issues</strong> — Past choices that create reliability and deployment bottlenecks</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* RECENT ARCHITECTURE INSIGHTS */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Recent Architecture Insights
+                </h2>
+                <p className="text-sm text-slate-500 mb-12 text-center">
+                  Short architecture lessons from building production SaaS systems.
+                </p>
+
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8 mb-12">
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-lg font-bold text-slate-900 mb-3">
+                        Why SaaS Dashboards Become Slow
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Many dashboards query raw data for every widget. As usage grows, this creates dozens of heavy queries per page. Designing APIs around aggregated data dramatically improves performance.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-lg font-bold text-slate-900 mb-3">
+                        The Hidden Cost of a Messy Codebase
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Technical debt doesn&apos;t just slow development. It increases the risk of bugs, failed deployments, and architectural bottlenecks that prevent teams from shipping quickly.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-lg font-bold text-slate-900 mb-3">
+                        Design APIs for Scale, Not Just Features
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Many APIs are designed quickly for early product needs. As the product grows, poorly structured endpoints create performance issues and complex frontend logic.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <p className="text-sm text-slate-600 mb-6">
+                    Want help improving your SaaS architecture?
+                  </p>
+                  <Link
+                    href="/contact-me"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                  >
+                    Discuss Your System
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             {/* WHAT I BUILD */}
             <section className="relative bg-slate-50/60 border-y border-slate-200/70">
               <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
@@ -168,6 +266,60 @@ export function ArvinLandingPage() {
               </div>
             </section>
 
+            {/* RED FLAGS YOUR SAAS ARCHITECTURE NEEDS REVIEW */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-4xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Red Flags Your SaaS Architecture Needs Review
+                </h2>
+                <p className="text-sm text-slate-500 mb-12 text-center">
+                  If any of these sound familiar, it might be time for an architecture review.
+                </p>
+
+                <div className="space-y-3 mb-10">
+                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span>Dashboard becomes slower as users grow</span>
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span>Backend changes are risky and hard to deploy</span>
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span>APIs were designed quickly and now cause bottlenecks</span>
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span>Database queries are becoming slow or complex</span>
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p className="text-sm text-slate-700 flex items-start">
+                      <span className="text-[#F4C430] mr-3 font-semibold">•</span>
+                      <span>Engineers are afraid to touch certain parts of the system</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <Link
+                    href="/architecture-review"
+                    className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                  >
+                    Book Architecture Review
+                  </Link>
+                </div>
+              </div>
+            </section>
+
             {/* FEATURED PROJECT */}
             <section id="featured-project" className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
               <div className="mx-auto max-w-6xl">
@@ -184,6 +336,21 @@ export function ArvinLandingPage() {
                     <p className="text-sm text-slate-600 mb-6">
                       AI-assisted knowledge management platform designed with modular architecture and installable apps.
                     </p>
+
+                    <ul className="space-y-2 mb-6 text-sm text-slate-700">
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2">•</span>
+                        <span>Built modular SaaS architecture</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2">•</span>
+                        <span>Implemented AI knowledge pipeline</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[#F4C430] mr-2">•</span>
+                        <span>Designed scalable backend services</span>
+                      </li>
+                    </ul>
 
                     <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm mb-5">
                       <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">
@@ -305,7 +472,7 @@ export function ArvinLandingPage() {
             <section className={classes.finalClose}>
               <div className={classes.finalCloseInner}>
                 <h2 className={classes.finalCloseTitle}>
-                  Need a SaaS System or Admin Dashboard?
+                  Need Help Improving Your SaaS Architecture?
                 </h2>
                 <p className="mt-5 text-sm text-slate-200 max-w-2xl mx-auto leading-relaxed">
                   If you need help designing or building reliable systems, I&apos;m happy to review your project.
@@ -347,7 +514,7 @@ export function ArvinLandingPage() {
                     href="#contact"
                     className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                   >
-                    Book a 20-Min Architecture Call
+                    Discuss Your System
                   </a>
                   <a
                     href="/pdf/ARVIN_JAYSON_CASTRO_Senior_Full-Stack_Engineer.pdf"
@@ -495,8 +662,9 @@ export function ArvinLandingPage() {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div>
               <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
-              <p className="mt-1 text-xs text-slate-500">Senior Full-Stack Engineer</p>
-              <p className="mt-1 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
+              <p className="mt-1 text-xs text-slate-500">SaaS Systems Architect</p>
+              <p className="mt-1 text-xs text-slate-600">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
+              <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
             <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">
               <div className="text-center md:text-right">
