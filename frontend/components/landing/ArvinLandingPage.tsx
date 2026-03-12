@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { DiagramCreator } from '@/components/case-studies/DiagramCreator';
 import { CaseStudy } from './CaseStudy';
@@ -43,32 +44,39 @@ export function ArvinLandingPage() {
             <section className="relative mx-auto max-w-7xl px-6 pt-20 pb-16 md:pt-28 md:pb-24">
               <div className="mx-auto max-w-4xl text-center">
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-[1.05]">
-                  SaaS Systems Architect
+                  Fixing SaaS Systems That Are Slow, Fragile, or Hard to Scale
                   <span className="block mt-5 text-slate-700 font-normal text-lg sm:text-xl md:text-2xl leading-relaxed">
-                    I build production-ready SaaS platforms, admin dashboards, and internal tools.
+                    I help startups and companies improve SaaS architecture, admin dashboards, and backend systems so teams can ship reliably and scale with confidence.
                   </span>
                 </h1>
                 
                 {/* Subline */}
                 <p className="mt-8 text-base text-slate-600 sm:text-lg leading-relaxed max-w-3xl mx-auto">
-                  15+ years building scalable systems using React, .NET, Node, and SQL. I help startups and companies ship reliable software faster.
+                  15+ years building and improving production SaaS systems using React, .NET, Node, and SQL.
+                  <br />
+                  Focused on reliability, clear system boundaries, and architecture that scales with the business.
                 </p>
 
                 <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                  <Link
-                    href="/contact-me"
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-xl shadow-[#F4C430]/40 ring-1 ring-[#F4C430]/30 transition-all hover:-translate-y-0.5 hover:bg-[#F4C430]/90 hover:shadow-2xl hover:shadow-[#F4C430]/50 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
+                  <div className="flex flex-col items-center">
+                    <Link
+                      href="/contact-me"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-xl shadow-[#F4C430]/40 ring-1 ring-[#F4C430]/30 transition-all hover:-translate-y-0.5 hover:bg-[#F4C430]/90 hover:shadow-2xl hover:shadow-[#F4C430]/50 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                     >
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                      <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                    Discuss Your System
-                  </Link>
+                      <svg
+                        className="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                      Discuss Your System
+                    </Link>
+                    <p className="mt-2 text-center text-xs text-slate-500">
+                      Quick architecture discussion — no preparation needed.
+                    </p>
+                  </div>
                   <Link
                     href="#featured-project"
                     className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:text-slate-900 hover:bg-[#FFFDF4] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
@@ -266,6 +274,141 @@ export function ArvinLandingPage() {
               </div>
             </section>
 
+            {/* SYSTEMS I'VE HELPED IMPROVE */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Systems I&apos;ve Helped Improve
+                </h2>
+                <p className="text-sm text-slate-500 mb-14 text-center max-w-3xl mx-auto">
+                  Production systems across startups and enterprise teams. Focused on architecture stability, performance, and scalability.
+                </p>
+
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        Enterprise SaaS Platforms
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Multi-tenant architecture, authentication systems, scalable APIs, and production deployment pipelines.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        Admin Dashboards
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        High-volume dashboards with reporting systems, analytics tools, and role-based access control.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        Internal Operations Tools
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Workflow systems, automation tools, and operational dashboards used by internal teams.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        AI-Enabled Knowledge Systems
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        AI pipelines, modular SaaS architectures, and knowledge capture systems similar to AiruNote.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ARCHITECTURE IMPROVEMENTS IN PRACTICE */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Architecture Improvements in Practice
+                </h2>
+                <p className="text-sm text-slate-500 mb-14 text-center max-w-3xl mx-auto">
+                  Examples of common SaaS architecture problems and how they are solved.
+                </p>
+
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <div className="mb-5 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Before</p>
+                        <ul className="space-y-2 text-sm text-slate-700">
+                          <li>Dashboards slow down as the database grows</li>
+                          <li>Every page runs heavy queries</li>
+                          <li>Performance degrades with more users</li>
+                        </ul>
+                      </div>
+                      <div className="rounded-lg border border-[#F4C430]/40 bg-[#FFFDF4] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-3">After</p>
+                        <ul className="space-y-2 text-sm text-slate-700">
+                          <li>Query aggregation layer added</li>
+                          <li>Caching strategy introduced</li>
+                          <li>API response time reduced dramatically</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <div className="mb-5 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Before</p>
+                        <ul className="space-y-2 text-sm text-slate-700">
+                          <li>Backend changes are risky</li>
+                          <li>Developers afraid to touch core modules</li>
+                          <li>Deployments break unexpectedly</li>
+                        </ul>
+                      </div>
+                      <div className="rounded-lg border border-[#F4C430]/40 bg-[#FFFDF4] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-3">After</p>
+                        <ul className="space-y-2 text-sm text-slate-700">
+                          <li>Clean service boundaries introduced</li>
+                          <li>Clear architecture layers defined</li>
+                          <li>Safe deployments and faster iteration</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <div className="mb-5 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Before</p>
+                        <ul className="space-y-2 text-sm text-slate-700">
+                          <li>APIs built quickly during MVP</li>
+                          <li>Endpoints tightly coupled</li>
+                          <li>Scaling becomes difficult</li>
+                        </ul>
+                      </div>
+                      <div className="rounded-lg border border-[#F4C430]/40 bg-[#FFFDF4] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-3">After</p>
+                        <ul className="space-y-2 text-sm text-slate-700">
+                          <li>API design standardized</li>
+                          <li>Domain separation introduced</li>
+                          <li>Scalable service architecture implemented</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             {/* RED FLAGS YOUR SAAS ARCHITECTURE NEEDS REVIEW */}
             <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
               <div className="mx-auto max-w-4xl">
@@ -356,9 +499,13 @@ export function ArvinLandingPage() {
                       <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">
                         Project Screenshot
                       </p>
-                      <div className="h-48 rounded border border-dashed border-slate-300 bg-slate-50 flex items-center justify-center text-sm text-slate-500">
-                        Screenshot placeholder
-                      </div>
+                      <Image
+                        src="/architectking/airunote-preview.png"
+                        alt="AiruNote project screenshot"
+                        width={1365}
+                        height={768}
+                        className="h-48 w-full rounded border border-slate-200 object-cover"
+                      />
                     </div>
 
                     <Link
@@ -406,6 +553,102 @@ export function ArvinLandingPage() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </section>
+
+            {/* SYSTEMS I'VE ARCHITECTED */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-6xl">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                  Systems I&apos;ve Architected
+                </h2>
+                <p className="text-sm text-slate-500 mb-14 text-center max-w-3xl mx-auto">
+                  Production systems built across enterprise and startup environments. Focused on reliability, scalability, and long-term maintainability.
+                </p>
+
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-4 md:gap-8">
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        SaaS Platforms
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Multi-tenant SaaS platforms with authentication systems, APIs, and scalable backend services.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        Admin &amp; Operations Dashboards
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Operational dashboards with analytics, reporting tools, and role-based access systems.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        Internal Workflow Systems
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        Internal business tools supporting daily operations, integrations, and automation pipelines.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                      <h3 className="text-xl font-bold text-slate-900 mb-4">
+                        AI Knowledge Platforms
+                      </h3>
+                      <p className="text-sm text-slate-600">
+                        AI-enabled knowledge systems with modular architecture and extensible capabilities.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* FREE 15-MINUTE ARCHITECTURE DIAGNOSIS */}
+            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-4xl text-center">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4">
+                  Free 15-Minute Architecture Diagnosis
+                </h2>
+                <p className="text-sm text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+                  Not sure if your SaaS system architecture needs improvement? I can quickly review your system and point out the biggest risks.
+                </p>
+
+                <ul className="space-y-3 text-sm text-slate-700 max-w-md mx-auto text-left mb-8">
+                  <li className="flex items-start">
+                    <span className="text-[#F4C430] mr-2">•</span>
+                    <span>Identify architecture bottlenecks</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#F4C430] mr-2">•</span>
+                    <span>Spot scalability risks early</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#F4C430] mr-2">•</span>
+                    <span>Get practical improvement suggestions</span>
+                  </li>
+                </ul>
+
+                <Link
+                  href="/contact-me"
+                  className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                >
+                  Discuss Your System
+                </Link>
+
+                <p className="mt-3 text-xs text-slate-500">
+                  No preparation needed. Just bring your system problem.
+                </p>
               </div>
             </section>
 
