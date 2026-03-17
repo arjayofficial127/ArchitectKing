@@ -52,12 +52,11 @@ export function ArvinLandingPage() {
                 
                 {/* Subline */}
                 <p className="mt-8 text-base text-slate-600 sm:text-lg leading-relaxed max-w-3xl mx-auto">
-                  15+ years building and fixing production SaaS systems used in real operations.
-                  <br />
-                  I focus on removing bottlenecks, stabilizing systems, and creating architecture teams can actually build on.
+                  15+ years building and fixing SaaS systems.<br />
+                  I remove bottlenecks and stabilize production for growth.
                 </p>
                 <p className="mt-2 text-sm text-slate-500 max-w-3xl mx-auto">
-                  {/* moved below CTA buttons as requested */}
+                  {/* removed for clarity, no extra supporting paragraph */}
                 </p>
 
                 <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -85,13 +84,17 @@ export function ArvinLandingPage() {
                   </div>
                   <Link
                     href="#featured-project"
-                    className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:text-slate-900 hover:bg-[#FFFDF4] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                    className="text-slate-500 underline text-base font-medium hover:text-slate-700 transition-colors"
+                    style={{ background: 'none', boxShadow: 'none', border: 'none', padding: 0 }}
                   >
                     View My Work
                   </Link>
                 </div>
                 <p className="mt-4 text-sm text-slate-500 max-w-3xl mx-auto">
                   Teams I’ve worked with typically see faster deployments, fewer production issues, and systems that scale without constant firefighting.
+                </p>
+                <p className="text-xs text-slate-500 mt-2">
+                  Trusted by SaaS teams for 15+ years.
                 </p>
 
                 {/* Contact info at bottom */}
@@ -141,9 +144,9 @@ export function ArvinLandingPage() {
 
 
             {/* ARCHITECTURE IMPROVEMENTS IN PRACTICE */}
-            <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-24">
+            <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-20">
               <div className="mx-auto max-w-6xl">
-                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4 text-center">
+                <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-6 text-center">
                   Architecture Improvements in Practice
                 </h2>
                 <p className="text-sm text-slate-500 mb-14 text-center max-w-3xl mx-auto">
@@ -152,7 +155,7 @@ export function ArvinLandingPage() {
 
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
                   <div>
-                    <div className="h-full bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+                    <div className="h-full bg-white rounded-xl border border-slate-300 shadow-md p-6">
                       <div className="mb-5 rounded-lg border border-slate-200 bg-slate-50 p-4">
                         <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Before</p>
                         <ul className="space-y-2 text-sm text-slate-700">
@@ -287,10 +290,11 @@ export function ArvinLandingPage() {
                     <div className="mb-6 text-sm text-slate-700">
                       <div><span className="font-semibold">Problem:</span><br/>Slow, unstructured knowledge retrieval</div>
                       <div className="mt-3"><span className="font-semibold">Solution:</span><br/>Modular SaaS architecture with AI pipeline</div>
-                      <div className="mt-3"><span className="font-semibold">Result:</span><br/>
-                        <span className="flex items-start"><span className="text-[#F4C430] mr-2">•</span>Faster data retrieval</span>
-                        <span className="flex items-start"><span className="text-[#F4C430] mr-2">•</span>Scalable system foundation</span>
-                        <span className="flex items-start"><span className="text-[#F4C430] mr-2">•</span>Extensible via installable apps</span>
+                      <div className="mt-3 p-4 rounded-lg bg-[#FFFDF4] border border-[#F4C430]/40">
+                        <span className="font-semibold text-[#F4C430]">Result:</span><br/>
+                        <span className="flex items-start"><span className="text-[#F4C430] mr-2 font-bold">•</span><span><b>3x faster</b> data retrieval</span></span>
+                        <span className="flex items-start"><span className="text-[#F4C430] mr-2 font-bold">•</span><span><b>Scalable</b> system foundation</span></span>
+                        <span className="flex items-start"><span className="text-[#F4C430] mr-2 font-bold">•</span><span><b>Extensible</b> via installable apps</span></span>
                       </div>
                     </div>
 
@@ -330,7 +334,7 @@ export function ArvinLandingPage() {
             {/* EXPERIENCE */}
             {/* EXPERIENCE & SYSTEMS BUILT (MERGED) */}
             <section className="relative bg-slate-50/60 border-y border-slate-200/70">
-              <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
+              <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
                 <div className="mx-auto max-w-4xl">
                   <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-8 text-center">
                     Experience & Systems Built
@@ -491,9 +495,22 @@ export function ArvinLandingPage() {
             <section className={classes.finalClose}>
               <div className={classes.finalCloseInner}>
                 <h2 className={classes.finalCloseTitle}>
-                  Let’s Fix Your System Before It Becomes a Bigger Problem
+                  Fix Your System Before It Breaks in Production
                 </h2>
-                {/* Final punchline CTA removed as requested */}
+                <ul className="mb-6 mt-4 space-y-2 text-base text-slate-700">
+                  <li>• Prevent costly outages and downtime</li>
+                  <li>• Remove scaling bottlenecks before they hurt growth</li>
+                  <li>• Get actionable, expert feedback fast</li>
+                </ul>
+                <p className="text-base text-slate-700 mb-6">
+                  Outcome: A clear, prioritized action plan for your SaaS system.
+                </p>
+                <a
+                  href="/contact-me"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-xl shadow-[#F4C430]/40 ring-1 ring-[#F4C430]/30 transition-all hover:-translate-y-0.5 hover:bg-[#F4C430]/90 hover:shadow-2xl hover:shadow-[#F4C430]/50 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+                >
+                  Get Expert Feedback on Your System
+                </a>
               </div>
             </section>
 
