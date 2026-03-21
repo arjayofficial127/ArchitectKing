@@ -17,47 +17,34 @@ export function SiteNavbar() {
             Arvin Jayson Castro
           </Link>
           <span className="text-sm text-slate-400">|</span>
-          <span className="text-sm text-slate-500">SaaS Systems Architect</span>
+          <span className="text-sm text-slate-500">Solutions Architect — Scalable Systems</span>
         </div>
         <div className="flex items-center gap-4">
-          <nav className="hidden md:flex items-center gap-6">
-            <Link 
-              href="/case-studies" 
-              className={`text-sm font-medium transition-colors ${
-                isCaseStudies 
-                  ? 'text-[#0F172A] border-b-2 border-[#F4C430] pb-1' 
-                  : 'text-slate-600 hover:text-[#F4C430]'
-              }`}
-            >
-              Case Studies
-            </Link>
-            <Link 
-              href="/working-fundamentals" 
-              className={`text-sm font-medium transition-colors ${
-                isWorkingFundamentals 
-                  ? 'text-[#0F172A] border-b-2 border-[#F4C430] pb-1' 
-                  : 'text-slate-600 hover:text-[#F4C430]'
-              }`}
-            >
-              How I Build Systems
-            </Link>
-            <Link 
-              href="/contact-me" 
-              className={`text-sm font-medium transition-colors ${
-                pathname === '/contact-me'
-                  ? 'text-[#0F172A] border-b-2 border-[#F4C430] pb-1' 
-                  : 'text-slate-600 hover:text-[#F4C430]'
-              }`}
-            >
-              Contact
-            </Link>
-          </nav>
-          <a
-            href="mailto:arvinjaysoncastro@gmail.com"
-            className="hidden sm:inline-flex items-center justify-center rounded-md border border-[#0F172A] bg-transparent px-4 py-1.5 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-1"
+          <Link 
+            href="/contact-me" 
+            className={`text-sm font-medium transition-colors text-slate-600 hover:text-[#F4C430]`}
           >
-            Discuss Your System
-          </a>
+            Contact
+          </Link>
+
+          <button
+            type="button"
+            aria-label="Let’s Work Together"
+            onClick={(e) => {
+              e.preventDefault();
+              const ids = ['contact', 'contact-me', 'contact-section', 'contactForm'];
+              for (const id of ids) {
+                const el = document.getElementById(id);
+                if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+              }
+              const ev = new CustomEvent('open-contact-popover', { bubbles: true, cancelable: true });
+              const notCanceled = window.dispatchEvent(ev);
+              if (notCanceled) { window.location.href = 'mailto:arvinjaysoncastro@gmail.com'; }
+            }}
+            className="inline-flex items-center justify-center rounded-md border border-[#0F172A] bg-transparent px-4 py-1.5 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-1"
+          >
+            Let’s Work Together
+          </button>
         </div>
       </div>
     </header>
