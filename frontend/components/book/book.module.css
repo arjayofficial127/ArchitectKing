@@ -19,11 +19,43 @@
 
 /* Header */
 .header {
+  position: sticky;
+  /* top: 12px; */
+  z-index: 50;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  padding: 12px 18px;
+  border-radius: 14px;
+
+  /* 🔥 layered glass */
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.65),
+    rgba(255,255,255,0.45)
+  );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  /* 🔥 better border */
+  border: 1px solid rgba(255,255,255,0.6);
+
+  /* 🔥 depth */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.10),
+    0 2px 8px rgba(0,0,0,0.06),
+
+    /* 🔥 inner highlight (THIS IS KEY) */
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    inset 0 -1px 0 rgba(255,255,255,0.2);
+}
+
+.header:hover {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .brand {
@@ -40,8 +72,9 @@
   font-size: 14px;
 }
 
+
 .navLink {
-  color: #1f2937;
+  color: rgba(15, 23, 42, 0.85);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -198,11 +231,11 @@
 }
 
 .whyMatters {
-  margin: 32px 0;
-  padding: 24px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 8px;
-  border-left: 4px solid #9CAF88;
+  margin: 0 0;
+  /* padding: 24px; */
+  /* background: rgba(255,255,255); */
+  /* border-radius: 8px; */
+  /* border-left: 4px solid #091320; */
 }
 
 .whyMattersTitle {
@@ -255,8 +288,8 @@
 }
 
 .connectsSection {
-  margin-top: 32px;
-  padding-top: 32px;
+  /* margin-top: 32px; */
+  /* padding-top: 32px; */
   border-top: 1px solid rgba(0,0,0,0.08);
 }
 
@@ -266,7 +299,7 @@
   color: #0F172A;
   margin: 0 0 16px 0;
   padding-bottom: 8px;
-  border-bottom: 2px solid #F4C430;
+  border-bottom: 2px solid #091320;
   display: inline-block;
 }
 
@@ -314,7 +347,7 @@
 }
 
 .meta {
-  margin-top: 32px;
+  /* margin-top: 32px; */
   padding: 24px;
   background: rgba(255,255,255,0.4);
   border-radius: 8px;
@@ -379,3 +412,4 @@
     font-size: 32px;
   }
 }
+

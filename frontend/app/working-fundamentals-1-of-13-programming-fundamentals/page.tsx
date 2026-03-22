@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 1: Programming Fundamentals — Working Fundamentals by Arvin Jayson Castro',
-  description: 'A system of thinking for predictable software — Chapter 1 of Working Fundamentals',
+  title: 'Chapter 1: Programming Fundamentals - Working Fundamentals by Arvin Jayson Castro',
+  description: 'A system of thinking for predictable software - Chapter 1 of Working Fundamentals',
 };
 
 export default function Chapter1Page() {
@@ -40,7 +40,7 @@ export default function Chapter1Page() {
       <h2>The core truth</h2>
 
       <p>
-        Every program—regardless of language, framework, or scale—reduces to the same shape:
+        Every program-regardless of language, framework, or scale-reduces to the same shape:
       </p>
 
       <p>
@@ -114,11 +114,11 @@ export default function Chapter1Page() {
       </p>
 
       <p>
-        🧠 <strong>Mental Model</strong> Data is passive. Behavior comes later.
+        <span className="icon-think"></span> <strong>Mental Model</strong> Data is passive. Behavior comes later.
       </p>
 
       <p>
-        ⚠️ <strong>Common Drift</strong> When developers confuse data with behavior, logic spreads uncontrollably.
+        <span className="icon-alert"></span> <strong>Common Drift</strong> When developers confuse data with behavior, logic spreads uncontrollably.
       </p>
 
       <h3>2. Variables</h3>
@@ -132,7 +132,7 @@ export default function Chapter1Page() {
       </p>
 
       <p>
-        Naming is not cosmetic—it is structural.
+        Naming is not cosmetic-it is structural.
       </p>
 
       <p>
@@ -146,7 +146,7 @@ export default function Chapter1Page() {
       </ul>
 
       <p>
-        🧠 <strong>Perspective</strong> Poor naming is the earliest form of technical debt.
+        <span className="icon-think"></span> <strong>Perspective</strong> Poor naming is the earliest form of technical debt.
       </p>
 
       <h3>3. Control Flow</h3>
@@ -171,11 +171,11 @@ export default function Chapter1Page() {
       </p>
 
       <p>
-        🧠 <strong>Mental Model</strong> Control flow answers: <em>&quot;What path does execution take?&quot;</em>
+        <span className="icon-think"></span> <strong>Mental Model</strong> Control flow answers: <em>&quot;What path does execution take?&quot;</em>
       </p>
 
       <p>
-        ⚠️ <strong>Common Drift</strong> Nested conditionals are a symptom of unclear rules.
+        <span className="icon-alert"></span> <strong>Common Drift</strong> Nested conditionals are a symptom of unclear rules.
       </p>
 
       <h3>4. Functions</h3>
@@ -204,7 +204,7 @@ export default function Chapter1Page() {
       </p>
 
       <p>
-        🧠 <strong>Architect&apos;s Note</strong> Good systems are collections of small, honest transformations.
+        <span className="icon-think"></span> <strong>Architect&apos;s Note</strong> Good systems are collections of small, honest transformations.
       </p>
 
       <h3>5. State & Mutability</h3>
@@ -222,11 +222,11 @@ export default function Chapter1Page() {
       </p>
 
       <p>
-        🧠 <strong>Mental Model</strong> The more things that can change, the harder the system is to reason about.
+        <span className="icon-think"></span> <strong>Mental Model</strong> The more things that can change, the harder the system is to reason about.
       </p>
 
       <p>
-        ⚠️ <strong>Common Drift</strong> Hidden state is responsible for most &quot;impossible&quot; bugs.
+        <span className="icon-alert"></span> <strong>Common Drift</strong> Hidden state is responsible for most &quot;impossible&quot; bugs.
       </p>
 
       <h3>6. Errors</h3>
@@ -255,7 +255,7 @@ export default function Chapter1Page() {
       </p>
 
       <p>
-        🧠 <strong>Perspective</strong> Unhandled errors are silent contracts you didn&apos;t realize you made.
+        <span className="icon-think"></span> <strong>Perspective</strong> Unhandled errors are silent contracts you didn&apos;t realize you made.
       </p>
 
       <h2>How these fundamentals work together</h2>
@@ -301,7 +301,7 @@ export default function Chapter1Page() {
       </p>
 
       <p>
-        🧠 <strong>Architect&apos;s Note</strong> If you cannot describe behavior in words, code will not save you.
+        <span className="icon-think"></span> <strong>Architect&apos;s Note</strong> If you cannot describe behavior in words, code will not save you.
       </p>
 
       <h2>What beginners gain here</h2>

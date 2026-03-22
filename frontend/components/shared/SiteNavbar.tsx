@@ -37,7 +37,35 @@ export function SiteNavbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 border-b border-slate-200/60 bg-white shadow-sm z-50">
+    <header
+      className="z-50"
+      style={{
+        position: 'sticky',
+        // top: 12, 
+        zIndex: 50,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '12px 18px',
+        borderRadius: 12,
+        background: 'rgba(255,255,255,0.55)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255,255,255,0.4)',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06)',
+        transition: 'all 200ms ease',
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget;
+        el.style.background = 'rgba(255,255,255,0.65)';
+        el.style.borderColor = 'rgba(255,255,255,0.6)';
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget;
+        el.style.background = 'rgba(255,255,255,0.55)';
+        el.style.borderColor = 'rgba(255,255,255,0.4)';
+      }}
+    >
       <div className="mx-auto flex w-full max-w-7xl flex-col md:flex-row items-center md:justify-between px-6 py-3">
 
         {/* Row 1 + Row 2 (mobile stacked, desktop inline) */}

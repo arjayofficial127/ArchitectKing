@@ -13,7 +13,6 @@ export function ArvinLandingPage() {
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
-      
       {/* Background */}
       <AmbientBackground 
         gridSize={64} 
@@ -25,7 +24,9 @@ export function ArvinLandingPage() {
       />
 
       {/* Navbar */}
-      <SiteNavbar />
+      <div className="header">
+        <SiteNavbar />
+      </div>
 
       <main className="relative">
 

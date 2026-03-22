@@ -38,7 +38,9 @@ export function ArvinLandingPage3() {
       />
 
       {/* Navbar */}
-      <SiteNavbar />
+      <div className="header">
+        <SiteNavbar />
+      </div>
 
       <main className="relative">
 

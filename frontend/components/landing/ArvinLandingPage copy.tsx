@@ -32,7 +32,9 @@ export function ArvinLandingPage2() {
       />
 
       {/* Header - Reusable navbar */}
-      <SiteNavbar />
+      <div className="header">
+        <SiteNavbar />
+      </div>
 
       <main className="relative">
         {/* ============================================
