@@ -45,7 +45,7 @@ export default function ContactMePage() {
                 Is your system becoming slow, fragile, or harder to scale?
               </h1>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-2">
-                If things are getting harder to maintain, slower under load, or difficult to extend — you're not alone.
+                {"If things are getting harder to maintain, slower under load, or difficult to extend — you're not alone."}
               </p>
             </div>
 
@@ -120,7 +120,7 @@ export default function ContactMePage() {
             {/* CTA Section */}
             <div className="text-center space-y-3 mt-2">
               <p className="text-lg font-semibold text-slate-900">
-                Sometimes a second set of eyes is all it takes.
+                {"Sometimes a second set of eyes is all it takes."}
               </p>
               <a
                 href="mailto:arvinjaysoncastro@gmail.com?subject=Review%20Your%20System&body=Hi%20Arvin%2C%0A%0ACould%20you%20take%20a%20look%20at%20our%20system%3F%0A%0AThanks%2C"
@@ -129,13 +129,13 @@ export default function ContactMePage() {
                 Take a closer look at your system
               </a>
               <p className="text-sm text-slate-500">
-                We’ll go through what’s happening, what might be causing it, and what options you have.
+                {"We’ll go through what’s happening, what might be causing it, and what options you have."}
               </p>
               <p className="text-sm text-slate-500">
-                No pressure — just a quick look at what might be going on.
+                {"No pressure — just a quick look at what might be going on."}
               </p>
               <p className="text-xs text-slate-500">
-                I usually respond within a few hours.
+                {"I usually respond within a few hours."}
               </p>
             </div>
           </div>
