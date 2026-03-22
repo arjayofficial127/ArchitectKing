@@ -521,3 +521,54 @@ tr:hover > .block-icon-wrapper .block-icon {
   display: none;  /* Chrome, Safari and Opera */
 }
 
+/* Marquee / horizontal ticker (premium, subtle) */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  align-items: center;
+  gap: 4rem;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* mask fade edges for subtle premium feel */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+@media (max-width: 640px) {
+  .animate-marquee { animation-duration: 35s; }
+}
+
+/* Fade-edge wrapper for company strip */
+.strip-fade {
+  position: relative;
+  overflow: hidden;
+}
+.strip-fade::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6rem;
+  background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0));
+  pointer-events: none;
+}
+.strip-fade::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 6rem;
+  background: linear-gradient(270deg, rgba(255,255,255,1), rgba(255,255,255,0));
+  pointer-events: none;
+}
+
