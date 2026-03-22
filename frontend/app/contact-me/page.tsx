@@ -1,42 +1,12 @@
 'use client';
 
+
 import Link from 'next/link';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
+import { contactMethods } from '@/lib/contactMethods';
 
 export default function ContactMePage() {
-  const contactMethods = [
-    {
-      label: 'Email',
-      value: 'arvinjaysoncastro@gmail.com',
-      href: 'mailto:arvinjaysoncastro@gmail.com',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/arvinjaysoncastro',
-      href: 'https://linkedin.com/in/arvinjaysoncastro',
-      icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-      ),
-    },
-    {
-      label: 'Phone',
-      value: '+63 962 767 5114',
-      href: 'tel:+639627675114',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-        </svg>
-      ),
-    },
-  ];
 
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
@@ -54,154 +24,149 @@ export default function ContactMePage() {
       <SiteNavbar />
 
       <main className="relative">
-        <div className="mx-auto max-w-4xl px-6 py-24 md:py-32">
-          {/* Back link */}
-          <Link
-            href="/"
-            className="inline-flex items-center text-sm text-slate-500 hover:text-[#F4C430] transition-colors mb-12 group"
-          >
-            <svg className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Home
-          </Link>
-
-          {/* Main Content */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl mb-6">
-              Let&apos;s Connect
-            </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              Ready to review your SaaS system, architecture, or dashboard project.
-            </p>
-          </div>
-
-          {/* Common Topics Section */}
-          <div className="mb-16 max-w-2xl mx-auto bg-slate-50/60 border border-slate-200 rounded-xl p-8">
-            <h2 className="text-lg font-bold text-slate-900 mb-4 text-center">
-              Common Topics I Help With
-            </h2>
-            <ul className="space-y-3 text-sm text-slate-700">
-              <li className="flex items-start">
-                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
-                <span>SaaS architecture</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
-                <span>Admin dashboards</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
-                <span>API design</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
-                <span>Performance issues</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#F4C430] mr-3 font-semibold">•</span>
-                <span>System scalability</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Methods */}
-          <div className="space-y-6 max-w-2xl mx-auto">
-            {contactMethods.map((method, index) => (
-              <a
-                key={method.label}
-                href={method.href}
-                target={method.href.startsWith('http') ? '_blank' : undefined}
-                rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group relative block p-8 bg-white rounded-2xl border border-slate-200 hover:border-[#F4C430] transition-all duration-300 hover:shadow-lg hover:shadow-[#F4C430]/10"
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                }}
+        <div className="px-6 py-10 md:py-16 overflow-x-hidden">
+          <div className="max-w-2xl mx-auto w-full flex flex-col gap-4 md:gap-6">
+            {/* Back link */}
+            <div className="mb-4 text-left">
+              <Link
+                href="/"
+                className="inline-flex items-center text-base text-slate-600 hover:underline transition-colors group"
               >
-                <div className="flex items-start gap-6">
-                  {/* Icon */}
-                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-slate-50 group-hover:bg-[#F4C430]/10 flex items-center justify-center text-slate-600 group-hover:text-[#F4C430] transition-all duration-300">
-                    {method.icon}
-                  </div>
+                <svg className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Home
+              </Link>
+            </div>
 
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                      {method.label}
-                    </div>
-                    <div className="text-lg font-medium text-slate-900 group-hover:text-[#F4C430] transition-colors">
-                      {method.value}
-                    </div>
-                  </div>
+            {/* Main Content */}
+            <div className="text-center">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-3">
+                Is your system becoming slow, fragile, or harder to scale?
+              </h1>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-2">
+                If things are getting harder to maintain, slower under load, or difficult to extend — you're not alone.
+              </p>
+            </div>
 
-                  {/* Arrow */}
-                  <div className="flex-shrink-0 text-slate-300 group-hover:text-[#F4C430] transition-all duration-300 group-hover:translate-x-1">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
+            {/* Problem Section */}
+            <div className="bg-slate-50/60 border border-slate-200 rounded-xl p-4 md:p-6">
+              <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">What might be happening:</h2>
+              <ul className="grid grid-cols-1 gap-2 text-sm text-slate-700 mb-2">
+                <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Pages are getting slower as usage grows</span></li>
+                <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Small changes cause unexpected issues</span></li>
+                <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Permissions and roles are harder to manage</span></li>
+                <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Systems feel risky to extend</span></li>
+                <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Costs increase without clear reasons</span></li>
+              </ul>
+              <div className="text-xs text-slate-500 text-center mt-1">
+                This tends to show up once systems start growing or getting more complex.
+              </div>
+              <div className="text-xs text-slate-500 text-center mt-1">
+                If any of this feels familiar, it might be worth taking a closer look.
+              </div>
+            </div>
+
+            {/* Contact Methods */}
+            <div className="space-y-4">
+              {contactMethods.map((method, index) => {
+                let subtext = '';
+                if (method.label.toLowerCase().includes('email')) {
+                  subtext = 'for a quick note';
+                } else if (method.label.toLowerCase().includes('linkedin')) {
+                  subtext = 'if you prefer messaging';
+                } else if (method.label.toLowerCase().includes('phone')) {
+                  subtext = 'for time-sensitive concerns';
+                }
+                return (
+                  <a
+                    key={method.label}
+                    href={method.href}
+                    target={method.href.startsWith('http') ? '_blank' : undefined}
+                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="group relative block p-6 bg-white rounded-2xl border border-slate-200 hover:border-slate-400 transition-all duration-200 hover:shadow-md cursor-pointer active:scale-[0.98] w-full"
+                    style={{ animationDelay: `${index * 80}ms` }}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        {/* Icon */}
+                        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-slate-100 text-slate-600">
+                          {method.icon}
+                        </div>
+                        {/* Content */}
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs uppercase text-slate-400 mb-1">{method.label}</div>
+                          <div className="text-base font-medium text-slate-900 truncate group-hover:text-[#F4C430] transition-colors">{method.value}</div>
+                          <p className="text-xs text-slate-500 mt-1">{subtext}</p>
+                        </div>
+                      </div>
+                      {/* Arrow */}
+                      <div className="flex-shrink-0 text-slate-300 group-hover:text-[#F4C430] transition-all duration-300 group-hover:translate-x-1 ml-4">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Pre-CTA context line */}
+            <div className="text-sm text-slate-500 text-center mt-4">
+              These patterns tend to repeat across different systems.
+            </div>
+
+            {/* CTA Section */}
+            <div className="text-center space-y-3 mt-2">
+              <p className="text-lg font-semibold text-slate-900">
+                Sometimes a second set of eyes is all it takes.
+              </p>
+              <a
+                href="mailto:arvinjaysoncastro@gmail.com?subject=Review%20Your%20System&body=Hi%20Arvin%2C%0A%0ACould%20you%20take%20a%20look%20at%20our%20system%3F%0A%0AThanks%2C"
+                className="inline-flex w-full md:w-auto items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-lg font-semibold text-[#0F172A] shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
+              >
+                Take a closer look at your system
               </a>
-            ))}
-          </div>
-
-          {/* Additional Info */}
-          <div className="mt-20 text-center">
-            <p className="text-sm text-slate-500 mb-4">
-              Ready to discuss your project?
-            </p>
-            <a
-              href="mailto:arvinjaysoncastro@gmail.com?subject=Discuss%20Your%20System&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20discuss%20[your%20SaaS%20system%2Fdashboard%2Farchitecture].%0A%0ABest%2C"
-              className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
-            >
-              Discuss Your System
-            </a>
-            <p className="mt-4 text-xs text-slate-500">
-              Typical architecture reviews take 1–2 days depending on system size.
-            </p>
+              <p className="text-sm text-slate-500">
+                We’ll go through what’s happening, what might be causing it, and what options you have.
+              </p>
+              <p className="text-sm text-slate-500">
+                No pressure — just a quick look at what might be going on.
+              </p>
+              <p className="text-xs text-slate-500">
+                I usually respond within a few hours.
+              </p>
+            </div>
           </div>
         </div>
       </main>
 
+      {/* CTA grouping divider above footer */}
+      <div className="mt-8 pt-6 border-t border-slate-200" />
+
       {/* Footer */}
-      <footer className="relative border-t border-slate-200 bg-slate-50/50 mt-24">
-        <div className="mx-auto max-w-7xl px-6 py-10">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+      <footer className="bg-slate-50 mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 border-t border-slate-200">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
-              <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
-              <p className="mt-1 text-xs text-slate-500">SaaS Systems Architect</p>
-              <p className="mt-1 text-xs text-slate-600">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
+              <p className="font-semibold text-base text-slate-700">Arvin Jayson Castro</p>
+              <p className="text-sm text-slate-500 mt-1">Solutions Architect — Scalable Systems</p>
+              <p className="mt-1 text-xs text-slate-400">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
               <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
-            <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">
-              <div className="text-center md:text-right">
-                <a 
-                  href="mailto:arvinjaysoncastro@gmail.com" 
-                  className="block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
-                >
-                  Email
-                </a>
-                <a 
-                  href="https://linkedin.com/in/arvinjaysoncastro" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="mt-1 block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
-                >
-                  LinkedIn
-                </a>
-                <a 
-                  href="https://www.github.com/arvinjaysoncastro" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="mt-1 block text-xs text-slate-500 hover:text-[#F4C430] transition-colors"
-                >
-                  GitHub
-                </a>
-              </div>
+
+            <div className="flex gap-4 text-sm">
+              <a href="mailto:arvinjaysoncastro@gmail.com" className="hover:underline cursor-pointer text-slate-600">Email</a>
+              <a href="https://linkedin.com/in/arvinjaysoncastro" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer text-slate-600">LinkedIn</a>
+              <a href="tel:+639627675114"  rel="noopener noreferrer" className="hover:underline cursor-pointer text-slate-600">Phone</a>
+              {/* <a href="https://www.github.com/arvinjaysoncastro" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer text-slate-600">GitHub</a> */}
             </div>
           </div>
         </div>
       </footer>
+
+      <div className="text-xs text-slate-400 text-center mt-6">Built for systems that scale.</div>
     </div>
   );
 }

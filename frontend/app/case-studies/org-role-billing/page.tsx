@@ -179,6 +179,7 @@ export default function OrgRoleBillingCaseStudy() {
                 >
                   LinkedIn
                 </a>
+                {/*
                 <a 
                   href="https://www.github.com/arvinjaysoncastro" 
                   target="_blank" 
@@ -187,6 +188,7 @@ export default function OrgRoleBillingCaseStudy() {
                 >
                   GitHub
                 </a>
+                */}
               </div>
             </div>
           </div>

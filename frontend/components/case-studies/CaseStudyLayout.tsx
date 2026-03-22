@@ -189,7 +189,7 @@ export function CaseStudyLayout({
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div>
               <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
-              <p className="mt-1 text-xs text-slate-500">SaaS Systems Architect</p>
+              <p className="mt-1 text-xs text-slate-500">Solutions Architect — Scalable Systems</p>
               <p className="mt-1 text-xs text-slate-600">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
               <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
@@ -209,6 +209,7 @@ export function CaseStudyLayout({
                 >
                   LinkedIn
                 </a>
+                {/*
                 <a 
                   href="https://www.github.com/arvinjaysoncastro" 
                   target="_blank" 
@@ -217,6 +218,7 @@ export function CaseStudyLayout({
                 >
                   GitHub
                 </a>
+                */}
               </div>
             </div>
           </div>

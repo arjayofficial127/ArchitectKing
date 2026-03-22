@@ -143,6 +143,7 @@ export default function CaseStudiesPage() {
                 >
                   LinkedIn
                 </a>
+                {/*
                 <a 
                   href="https://www.github.com/arvinjaysoncastro" 
                   target="_blank" 
@@ -151,6 +152,7 @@ export default function CaseStudiesPage() {
                 >
                   GitHub
                 </a>
+                */}
               </div>
             </div>
           </div>

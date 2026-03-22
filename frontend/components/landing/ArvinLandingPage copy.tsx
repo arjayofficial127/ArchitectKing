@@ -740,6 +740,7 @@ export function ArvinLandingPage2() {
                 >
                   LinkedIn
                 </a>
+                {/*
                 <a 
                   href="https://www.github.com/arvinjaysoncastro" 
                   target="_blank" 
@@ -748,6 +749,7 @@ export function ArvinLandingPage2() {
                 >
                   GitHub
                 </a>
+                */}
               </div>
             </div>
           </div>

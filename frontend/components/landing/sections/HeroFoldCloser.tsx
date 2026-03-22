@@ -3,46 +3,45 @@ import Link from 'next/link';
 
 export function HeroFoldCloser() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 mt-8 md:mt-12 overflow-x-hidden">
+    <section className="relative mx-auto max-w-7xl px-6 py-12 md:py-20 mt-8 md:mt-12 overflow-x-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-white/3 to-white/5 bg-float" />
       <div className="mx-auto w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-          <div className="md:text-left">
-            <p className="text-sm text-gray-500 mb-6 opacity-0 animate-fade-in-up delay-0">Solutions Architect — Scalable SaaS Systems</p>
+          <div className="mx-auto max-w-sm md:max-w-none text-center md:text-left">
+            <p className="text-sm text-gray-500 mb-3 opacity-0 animate-fade-in-up delay-0">Solutions Architect — Scalable SaaS Systems</p>
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl leading-[1.05] mt-0 opacity-0 animate-fade-in-up delay-100">
               <span className="block">Built to scale.</span>
               <span className="block">Not break.</span>
             </h1>
 
-            <p className="mt-8 text-xl text-slate-600 opacity-0 animate-fade-in-up delay-150 leading-7 text-left">
+            <p className="mt-4 text-base md:text-xl text-slate-600 opacity-0 animate-fade-in-up delay-150 leading-relaxed text-center md:text-left">
                 I architect and evolve scalable production systems that perform under pressure and scale with your business.
             </p>
 
-              <ul className="mt-8 space-y-3 text-slate-700 text-left">
-                <li className="flex items-start opacity-0 animate-fade-in-up delay-250"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-base">15+ Years in production systems</span></li>
-                <li className="flex items-start opacity-0 animate-fade-in-up delay-350"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-base">20+ systems designed and delivered</span></li>
-                <li className="flex items-start opacity-0 animate-fade-in-up delay-450"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-base">Multi-tenant platforms • RBAC • Fast and reliable</span></li>
+              <ul className="mt-6 space-y-2 text-slate-700 text-center md:text-left">
+                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-250"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">15+ Years in production systems</span></li>
+                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-350"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">20+ systems designed and delivered</span></li>
+                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-450"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">Multi-tenant platforms • RBAC • Fast and reliable</span></li>
               </ul>
-              <p className="mt-6 text-base text-slate-700 font-medium text-left opacity-0 animate-fade-in-up delay-550">Operating at Senior, Lead, and Architect levels</p>
+              <p className="mt-4 text-base text-slate-700 font-medium text-center md:text-left opacity-0 animate-fade-in-up delay-550">Operating at Senior, Lead, and Architect levels</p>
 
-              <p className="mt-2 text-sm text-slate-500 text-left opacity-0 animate-fade-in-up delay-650"></p>
+              <div className="mt-4 md:mt-10 text-left">
+<div className="flex flex-col items-center md:items-start gap-2 mt-4 max-w-sm md:max-w-none mx-auto md:mx-0 px-4 md:px-0">
 
-              <div className="mt-10 text-left">
-                <Link href="/contact-me">
-                  <button
-                    type="button"
-                    aria-label="Discuss Your System"
-                    className="bg-slate-900 text-white px-8 py-3.5 rounded-xl font-semibold inline-block shadow-xl hover:shadow-2xl transition transform hover:scale-[1.02] btn-hover-scale opacity-0 animate-fade-in-up delay-750"
-                  >
-                    Discuss Your System
-                  </button>
-                </Link>
-                <div className="mt-3 text-xs text-slate-500 text-left opacity-0 animate-fade-in-up delay-850">Your system deserves focus every step of the way</div>
+  <button className="w-full md:w-auto px-6 py-3 rounded-md bg-[#0F172A] text-white font-medium text-center md:text-left">
+    Discuss Your System
+  </button>
+
+  <p className="text-sm text-slate-500 text-center md:text-left max-w-xs md:max-w-none">
+    Your system deserves focus every step of the way
+  </p>
+
+</div>
               </div>
           </div>
 
             <div className="flex justify-center md:justify-end">
-              <div className="w-[360px] md:w-[440px] rounded-3xl shadow-2xl overflow-hidden border border-slate-200/60">
+              <div className="max-w-xs w-full mx-auto md:w-[440px] mt-6 mb-6 md:mt-0 rounded-2xl shadow-2xl overflow-hidden border border-slate-200/60">
                 <img src="/architectking/profile_recent.png" alt="Arvin Jayson Castro" className="w-full h-full object-cover" />
               </div>
             </div>
