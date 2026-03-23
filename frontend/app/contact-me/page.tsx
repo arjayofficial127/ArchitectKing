@@ -24,6 +24,13 @@ export default function ContactMePage() {
       <SiteNavbar />
 
       <main className="relative">
+        {/* Conversion-focused intro */}
+        {/* <div className="max-w-2xl mx-auto w-full text-center space-y-2 mt-8 mb-8">
+          <h2 className="text-2xl font-bold text-slate-900">Tell me what’s slowing or breaking your system.</h2>
+          <p className="text-base text-slate-700">I’ll review it and reply with a clear fix plan + next steps.</p>
+          <p className="text-base text-slate-600">Available to start immediately.<br />If I can’t help, I’ll tell you upfront.</p>
+          <p className="text-base text-slate-600">Response within a few hours.</p>
+        </div> */}
         <div className="px-6 py-10 md:py-16 overflow-x-hidden">
           <div className="max-w-2xl mx-auto w-full flex flex-col gap-4 md:gap-6">
             {/* Back link */}

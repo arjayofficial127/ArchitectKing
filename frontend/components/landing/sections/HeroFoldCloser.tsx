@@ -8,32 +8,35 @@ export function HeroFoldCloser() {
       <div className="mx-auto w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
           <div className="mx-auto max-w-sm md:max-w-none text-center md:text-left">
-            <p className="text-sm text-gray-500 mb-3 opacity-0 animate-fade-in-up delay-0">Solutions Architect — Scalable SaaS Systems</p>
+            {/* <p className="text-sm text-gray-500 mb-3 opacity-0 animate-fade-in-up delay-0">Solutions Architect — Scalable SaaS Systems</p> */}
+            <p className="text-sm text-gray-500 mb-3 opacity-0 animate-fade-in-up delay-0">For growing products that can’t afford to break.</p>
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl leading-[1.05] mt-0 opacity-0 animate-fade-in-up delay-100">
+              {/* <span className="block">For growing products that can’t afford to break.</span> */}
               <span className="block">Built to scale.</span>
-              <span className="block">Not break.</span>
+              <span className="block">Never break.</span>
             </h1>
 
             <p className="mt-4 text-base md:text-xl text-slate-600 opacity-0 animate-fade-in-up delay-150 leading-relaxed text-center md:text-left">
-                I architect and evolve scalable production systems that perform under pressure and scale with your business.
-            </p>
+As systems grow, they become harder to maintain, slower to change, and more likely to break under pressure.
+
+I help teams design and evolve systems that stay stable, scale cleanly, and hold up in real production.       </p>
 
               <ul className="mt-6 space-y-2 text-slate-700 text-center md:text-left">
-                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-250"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">15+ Years in production systems</span></li>
-                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-350"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">20+ systems designed and delivered</span></li>
-                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-450"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">Multi-tenant platforms • RBAC • Fast and reliable</span></li>
+                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-250"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">15+ years building production systems</span></li>
+                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-350"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">20+ systems designed and shipped</span></li>
+                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-450"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">Multi-tenant • RBAC • High-scale platforms</span></li>
               </ul>
-              <p className="mt-4 text-base text-slate-700 font-medium text-center md:text-left opacity-0 animate-fade-in-up delay-550">Operating at Senior, Lead, and Architect levels</p>
+              <p className="mt-4 text-base text-slate-700 font-medium text-center md:text-left opacity-0 animate-fade-in-up delay-550">Trusted across critical systems and production environments</p>
 
               <div className="mt-4 md:mt-10 text-left">
 <div className="flex flex-col items-center md:items-start gap-2 mt-4 max-w-sm md:max-w-none mx-auto md:mx-0 px-4 md:px-0">
 
   <button className="w-full md:w-auto px-6 py-3 rounded-md bg-[#0F172A] text-white font-medium text-center md:text-left">
-    Discuss Your System
+    Let’s look at your system
   </button>
 
   <p className="text-sm text-slate-500 text-center md:text-left max-w-xs md:max-w-none">
-    Your system deserves focus every step of the way
+    No pressure. Just a quick look at what’s slowing things down.
   </p>
 
 </div>
