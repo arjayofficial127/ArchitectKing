@@ -48,7 +48,7 @@
 
                     {/* Pain Section */}
                     <div className="bg-slate-50/60 border border-slate-200 rounded-xl p-4 md:p-6">
-                      <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">If you're dealing with:</h2>
+                      <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">If you&apos;re dealing with:</h2>
                       <ul className="grid grid-cols-1 gap-2 text-sm text-slate-700 mb-2">
                         <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Build errors or failed deployments</span></li>
                         <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Slow or unstable production apps</span></li>
