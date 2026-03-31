@@ -99,6 +99,26 @@ export function SiteNavbar() {
             Contact
           </button>
 
+          <Link href="/working-fundamentals">
+            <button
+              type="button"
+              aria-label="Working Fundamentals"
+              className={`text-sm font-medium transition-colors px-4 py-2 ${isWorkingFundamentals ? 'text-[#F4C430]' : 'text-slate-600 hover:text-[#F4C430]'}`}
+            >
+              Working Fundamentals
+            </button>
+          </Link>
+
+          <Link href="/case-studies">
+            <button
+              type="button"
+              aria-label="Case Studies"
+              className="text-sm font-medium transition-colors text-slate-600 hover:text-[#F4C430] px-4 py-2"
+            >
+              Case Studies
+            </button>
+          </Link>
+
           <Link href="/contact-me">
             <button
               type="button"
@@ -106,6 +126,16 @@ export function SiteNavbar() {
               className="inline-flex items-center justify-center rounded-md border border-[#0F172A] bg-transparent px-4 py-2 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-1 hover:scale-[1.02]"
             >
               Discuss Your System
+            </button>
+          </Link>
+
+          <Link href="https://arvinjaysoncastro.com/pdf/ARVIN_JAYSON_CASTRO_-_Solutions_Architect.pdf" target="_blank" rel="noopener noreferrer">
+            <button
+              type="button"
+              aria-label="Download CV"
+              className="inline-flex items-center justify-center rounded-md border border-transparent bg-[#0F172A] px-3 py-2 text-sm font-medium text-white transition-all hover:opacity-90 focus:outline-none"
+            >
+              Download CV
             </button>
           </Link>
 
