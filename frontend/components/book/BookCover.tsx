@@ -10,11 +10,11 @@ export function BookCover() {
     const wrap = wrapRef.current;
     if (!wrap) return;
 
-    const slab1 = wrap.querySelector<HTMLElement>('.shadow-slab');
-    const slab2 = wrap.querySelector<HTMLElement>('.shadow-slab-2');
-    const slab3 = wrap.querySelector<HTMLElement>('.shadow-slab-3');
-    const slab4 = wrap.querySelector<HTMLElement>('.shadow-slab-4');
-    const front = wrap.querySelector<HTMLElement>('.front-slab');
+    const slab1 = wrap.querySelector<HTMLElement>(`.${styles.shadowSlab}`);
+    const slab2 = wrap.querySelector<HTMLElement>(`.${styles.shadowSlab2}`);
+    const slab3 = wrap.querySelector<HTMLElement>(`.${styles.shadowSlab3}`);
+    const slab4 = wrap.querySelector<HTMLElement>(`.${styles.shadowSlab4}`);
+    const front = wrap.querySelector<HTMLElement>(`.${styles.frontSlab}`);
 
     if (!slab1 || !slab2 || !slab3 || !slab4) return;
 

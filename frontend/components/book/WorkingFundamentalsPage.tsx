@@ -10,10 +10,9 @@ import styles from './book.module.css';
 export function WorkingFundamentalsPage() {
   return (
     <div className={styles.page}>
-      <div className={styles.container}>
-        {/* Header - Reusable navbar */}
-        <SiteNavbar />
+      <SiteNavbar />
 
+      <div className={styles.container}>
         {/* Main */}
         <main className={styles.main}>
           {/* Left: Book Cover */}

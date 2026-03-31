@@ -7,7 +7,7 @@ export function FooterFold() {
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div>
             <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
-            <p className="mt-1 text-xs text-slate-500">Solutions Architect — Scalable Systems</p>
+            <p className="mt-1 text-xs text-slate-500">Architect of Scalable Systems</p>
             <p className="text-xs text-slate-500">
               Open to Senior Full-Stack Engineer and Systems Architect roles.
             </p>

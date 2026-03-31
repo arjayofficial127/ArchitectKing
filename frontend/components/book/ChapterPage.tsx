@@ -31,7 +31,9 @@ export function ChapterPage({
     <div className={styles.page}>
       <div className={styles.container}>
         {/* Header - Reusable navbar */}
-        <SiteNavbar />
+        <div className="header">
+          <SiteNavbar />
+        </div>
 
         <main className={styles.main}>
           <article className={styles.chapterContent}>

@@ -79,12 +79,12 @@ export function SiteNavbar() {
           {/* Desktop inline separator + title */}
           <div className="hidden md:flex items-center gap-2">
             <span className="text-sm text-slate-400">|</span>
-            <span className="text-sm text-slate-500">Solutions Architect — Scalable Systems</span>
+            <span className="text-sm text-slate-500">Architect of Scalable Systems</span>
           </div>
 
           {/* Mobile stacked title */}
           <div className="md:hidden mt-1">
-            <span className="text-sm text-slate-500">Solutions Architect — Scalable Systems</span>
+            <span className="text-sm text-slate-500">Architect of Scalable Systems</span>
           </div>
         </div>
 

@@ -158,7 +158,7 @@ export default function ContactMePage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
               <p className="font-semibold text-base text-slate-700">Arvin Jayson Castro</p>
-              <p className="text-sm text-slate-500 mt-1">Solutions Architect — Scalable Systems</p>
+              <p className="text-sm text-slate-500 mt-1">Architect of Scalable Systems</p>
               <p className="mt-1 text-xs text-slate-400">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
               <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
