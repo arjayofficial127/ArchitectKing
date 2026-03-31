@@ -22,7 +22,7 @@ export function WorkingFundamentalsPage() {
               href="/working-fundamentals-introduction"
               className={styles.startReading}
             >
-              Read the Preface
+              Begin the Preface
             </Link>
           </section>
 

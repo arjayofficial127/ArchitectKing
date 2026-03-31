@@ -84,26 +84,27 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 999px;
+  padding: 14px 18px;
+  border-radius: 14px;
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-weight: 650;
-  color: rgba(34,197,94,0.92);
+  font-weight: 700;
+  color: #f3ead8;
   text-shadow:
-    0 0 10px rgba(34,197,94,0.22),
-    0 0 22px rgba(34,197,94,0.14);
+    0 1px 0 rgba(42, 16, 18, 0.7),
+    0 0 6px rgba(219, 175, 79, 0.05);
   background:
-    radial-gradient(120% 140% at 20% 10%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.00) 55%),
-    radial-gradient(140% 140% at 80% 90%, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.00) 60%),
-    linear-gradient(180deg, #141414 0%, #0a0a0a 100%);
-  border: 1px solid rgba(255,255,255,0.10);
+    linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.00) 22%),
+    radial-gradient(120% 120% at 50% 0%, rgba(234, 197, 111, 0.09) 0%, rgba(234, 197, 111, 0.00) 52%),
+    linear-gradient(180deg, #5f1822 0%, #4b1118 55%, #3a0d13 100%);
+  border: 1px solid rgba(184, 144, 63, 0.66);
   box-shadow:
-    0 14px 34px rgba(0,0,0,0.22),
-    0 8px 16px rgba(0,0,0,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.10),
-    inset 0 -1px 0 rgba(0,0,0,0.55);
+    0 8px 20px rgba(46, 13, 19, 0.21),
+    0 3px 8px rgba(20, 8, 10, 0.16),
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 -1px 0 rgba(31, 7, 10, 0.5),
+    inset 0 0 0 2px rgba(219, 175, 79, 0.22);
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -112,7 +113,8 @@
   transition:
     transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    border-color 160ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .startReading::before {
@@ -121,27 +123,31 @@
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(120deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.00) 46%),
-    repeating-linear-gradient(0deg,
-      rgba(255,255,255,0.028) 0px,
-      rgba(255,255,255,0.028) 1px,
-      rgba(0,0,0,0.00) 3px,
-      rgba(0,0,0,0.00) 6px),
-    radial-gradient(120% 90% at 50% 0%, rgba(34,197,94,0.14) 0%, rgba(34,197,94,0.00) 62%);
-  opacity: 0.75;
+    linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.00) 26%),
+    linear-gradient(90deg, rgba(222, 186, 100, 0.14) 0%, rgba(222, 186, 100, 0.02) 12%, rgba(222, 186, 100, 0.02) 88%, rgba(222, 186, 100, 0.14) 100%);
+  opacity: 0.72;
+}
+
+.startReading::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 10px;
+  pointer-events: none;
+  border: 1px solid rgba(231, 197, 124, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.035);
 }
 
 .startReading:hover {
   transform: translateY(-1px);
-  border-color: rgba(34,197,94,0.30);
+  border-color: rgba(222, 186, 100, 0.82);
   box-shadow:
-    0 18px 42px rgba(0,0,0,0.24),
-    0 10px 18px rgba(0,0,0,0.18),
-    inset 0 1px 0 rgba(255,255,255,0.12),
-    inset 0 -1px 0 rgba(0,0,0,0.55);
-  text-shadow:
-    0 0 12px rgba(34,197,94,0.28),
-    0 0 26px rgba(34,197,94,0.18);
+    0 11px 24px rgba(46, 13, 19, 0.24),
+    0 0 12px rgba(219, 175, 79, 0.07),
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(31, 7, 10, 0.52),
+    inset 0 0 0 2px rgba(222, 186, 100, 0.28);
+  filter: saturate(1.02);
 }
 
 .startReading:active {
