@@ -1259,3 +1259,144 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.airu-command-shell {
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.airu-command-sidebar {
+  padding: 12px 10px;
+  gap: 10px;
+  border-radius: 20px;
+  background: #fcfbf8;
+}
+
+.airu-command-shell .airu-brand {
+  justify-content: center;
+}
+
+.airu-command-shell .airu-brand-copy,
+.airu-command-shell .airu-command-badge,
+.airu-command-shell .airu-sidebar-module,
+.airu-command-shell .airu-sidebar-metric {
+  display: none;
+}
+
+.airu-command-shell .airu-nav {
+  gap: 10px;
+}
+
+.airu-command-shell .airu-nav-item {
+  min-height: 48px;
+  justify-content: center;
+  padding: 10px 6px;
+}
+
+.airu-command-shell .airu-nav-item span {
+  display: none;
+}
+
+.airu-command-shell .airu-nav-item strong {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: #5b5244;
+}
+
+.airu-command-toolbar,
+.airu-command-hero,
+.airu-board,
+.airu-health-card,
+.airu-workset-card,
+.airu-stream-item,
+.airu-mini-card {
+  box-shadow: 0 1px 2px rgba(30, 26, 20, 0.04);
+}
+
+.airu-map-shell {
+  grid-template-columns: 168px minmax(0, 1fr) 308px;
+}
+
+.airu-map-rail,
+.airu-map-inspector,
+.airu-map-topbar,
+.airu-map-surface {
+  box-shadow: 0 1px 2px rgba(30, 26, 20, 0.04);
+}
+
+.airu-map-rail,
+.airu-map-inspector {
+  background: #fcfbf8;
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+.airu-map-topbar {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+.airu-map-surface {
+  background:
+    radial-gradient(circle at 50% 32%, rgba(202, 164, 59, 0.12), transparent 24%),
+    radial-gradient(circle at 24% 70%, rgba(202, 164, 59, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(255, 254, 251, 0.98), rgba(248, 244, 236, 0.96));
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+.airu-map-grid {
+  background-image:
+    linear-gradient(rgba(110, 101, 91, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 101, 91, 0.09) 1px, transparent 1px);
+}
+
+.airu-cluster.a,
+.airu-cluster.b,
+.airu-cluster.c {
+  background: rgba(202, 164, 59, 0.1);
+}
+
+.airu-map-svg path {
+  stroke: rgba(154, 106, 31, 0.26) !important;
+}
+
+.airu-capture-shell {
+  grid-template-columns: 280px minmax(0, 1fr) 286px;
+}
+
+.airu-capture-left,
+.airu-capture-right {
+  display: grid;
+  gap: 12px;
+}
+
+.airu-capture-topbar,
+.airu-editor-wrap,
+.airu-queue-card,
+.airu-source-card,
+.airu-assist-card,
+.airu-summary-card {
+  box-shadow: 0 1px 2px rgba(30, 26, 20, 0.04);
+}
+
+.airu-capture-topbar {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.airu-capture-topbar .airu-title {
+  color: #111827 !important;
+}
+
+.airu-capture-chip,
+.airu-inline-mark,
+.airu-tag,
+.airu-chip {
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+.airu-capture-chip,
+.airu-inline-mark,
+.airu-tag {
+  background: #f7f5ef;
+  color: #6e5417;
+}
