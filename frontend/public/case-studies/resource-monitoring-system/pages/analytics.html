@@ -6,51 +6,185 @@
     <title>Resource Monitoring Analytics</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#eff6ff; --surface:rgba(255,255,255,0.84); --accent:#1d4ed8; --accent-strong:#1e3a8a;">
+  <body class="enterprise-monitoring-page enterprise-analytics-page" style="--bg:#f4f1eb; --accent:#9a6a1f; --accent-soft:rgba(154,106,31,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">AN</div><div class="brand-copy"><h1>Ops Analytics</h1><p>Trend review</p></div></div>
-          <div class="nav-group">
-            <div class="nav-item active"><span>Quarter view</span><strong>Q2</strong></div>
-            <div class="nav-item"><span>Trend alerts</span><strong>09</strong></div>
-            <div class="nav-item"><span>Regions stable</span><strong>05</strong></div>
-            <div class="nav-item"><span>Action plans</span><strong>04</strong></div>
+          <div class="brand">
+            <div class="brand-mark">AN</div>
+            <div class="brand-copy">
+              <h1>ERM Analytics</h1>
+              <p>Leadership review surface</p>
+            </div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Leadership pulse</p><div class="value">+12%</div><p class="stage-copy">Improvement in forecast accuracy after dashboard rollout.</p></div>
+          <div class="nav-group">
+            <div class="nav-item active"><span>Utilization reporting</span><strong>Monthly pack</strong></div>
+            <div class="nav-item"><span>Saved views</span><strong>09 available</strong></div>
+            <div class="nav-item"><span>Scheduled exports</span><strong>03 active</strong></div>
+            <div class="nav-item"><span>Executive notes</span><strong>06 attached</strong></div>
+          </div>
+          <div class="sidebar-footer">
+            <p class="sidebar-label">Forecast accuracy</p>
+            <div class="value">+12%</div>
+            <p class="small-note">Improvement since the rollout. This report compares the last 30 days against the prior period and current operating thresholds.</p>
+          </div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Trend Analytics</p><p class="header-note">Historical utilization, intervention rates, and staffing volatility over time.</p></div><div class="pill-row"><span class="pill">Quarterly trends</span><span class="pill">Bench leakage</span><span class="pill">Scenario review</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Analytics Review</p>
-              <h2 class="hero-title">Move beyond static snapshots and understand how staffing pressure evolves.</h2>
-              <p class="hero-copy">Executives and delivery leads use this analytics surface to compare trendlines, isolate recurring stress zones, and validate whether interventions are actually changing utilization quality rather than just redistributing pressure.</p>
-              <div class="panel" style="margin-top:18px;">
-                <div class="panel-header"><div><p class="section-kicker">Trailing 12 weeks</p><h3 class="panel-title">Utilization signal</h3></div><span class="badge">Forecast aligned</span></div>
-                <div class="chart">
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.32;"></div><span>W1</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.48;"></div><span>W2</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.41;"></div><span>W3</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.62;"></div><span>W4</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.70;"></div><span>W5</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.76;"></div><span>W6</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.64;"></div><span>W7</span></div>
+          <div class="topbar enterprise-topbar">
+            <div class="toolbar-group">
+              <span class="status-soft info">Leadership report pack</span>
+              <span class="chip">Audience: Directors + Finance</span>
+              <span class="chip">Dataset version 18.2</span>
+            </div>
+            <div class="toolbar-group">
+              <span class="chip">Last refresh 09:11</span>
+              <span class="chip">Schedule weekly</span>
+              <button class="primary-button">Export board-ready pack</button>
+            </div>
+          </div>
+          <div class="toolbar enterprise-toolbar">
+            <div class="toolbar-group">
+              <span class="tab active">Utilization review</span>
+              <span class="tab">Incident trend</span>
+              <span class="tab">Cost variance</span>
+              <span class="tab">Forecast accuracy</span>
+            </div>
+            <div class="toolbar-group">
+              <span class="chip">Region: All</span>
+              <span class="chip">Period: Last 30 days</span>
+              <span class="chip">Compare: Prior 30 days</span>
+              <span class="chip">Segment: Compute + Staff</span>
+            </div>
+          </div>
+          <section class="page-header">
+            <p class="page-kicker">Analytics workspace</p>
+            <h2 class="page-title">Reporting, trend analysis, and decision support for the leadership conversations that follow operating reality.</h2>
+            <p class="page-copy">This screen acts as a review surface, not a dashboard collage. It leads with the question leadership needs answered, then provides variance evidence, trend context, and exportable outputs in a controlled sequence.</p>
+          </section>
+          <div class="summary-ribbon">
+            <div class="summary-item">
+              <p class="section-kicker">Active report</p>
+              <strong>Monthly utilization variance and threshold breach summary</strong>
+            </div>
+            <div class="summary-item">
+              <p class="section-kicker">Leadership question</p>
+              <strong>Which regions consumed incremental capacity without a matching reserve plan?</strong>
+            </div>
+            <div class="summary-item">
+              <p class="section-kicker">Distribution</p>
+              <strong>Weekly executive pack, finance PDF, and CSV for regional operations</strong>
+            </div>
+          </div>
+          <div class="content-grid analytics-grid enterprise-analytics-layout">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Report controls</p>
+                  <h3 class="panel-title">Utilization trend and variance context</h3>
+                </div>
+                <div class="toolbar-group">
+                  <span class="chip">Breakout: Weekly</span>
+                  <span class="chip">Threshold overlay</span>
+                </div>
+              </div>
+              <div class="filter-row">
+                <span class="chip">Region: All</span>
+                <span class="chip">Threshold breaches only</span>
+                <span class="chip">Exclude maintenance windows</span>
+                <span class="chip">Export notes attached</span>
+              </div>
+              <div class="chart large-chart enterprise-chart" style="margin-top:12px;">
+                <div class="chart-column"><div class="chart-bar" style="--size:0.44;"></div><span>W1</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.57;"></div><span>W2</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.71;"></div><span>W3</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.62;"></div><span>W4</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.78;"></div><span>W5</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.68;"></div><span>W6</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.74;"></div><span>W7</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.64;"></div><span>W8</span></div>
+              </div>
+              <div class="mini-stat-grid enterprise-mini-stats enterprise-snapshot-grid" style="margin-top:12px;">
+                <div class="mini-stat">
+                  <p class="section-kicker">Largest variance</p>
+                  <strong>South +14%</strong>
+                  <p class="panel-copy">Growth outpaced reserve planning in two consecutive weeks and drove the majority of threshold breaches.</p>
+                </div>
+                <div class="mini-stat">
+                  <p class="section-kicker">Most stable region</p>
+                  <strong>Central -6%</strong>
+                  <p class="panel-copy">Available headroom stayed above target and positioned Central as the primary donor region.</p>
+                </div>
+                <div class="mini-stat">
+                  <p class="section-kicker">Threshold breaches</p>
+                  <strong>18 events</strong>
+                  <p class="panel-copy">Seven tied to staffing and eleven tied to compute saturation across the review period.</p>
+                </div>
+              </div>
+              <div class="table-card enterprise-subtable" style="margin-top:12px;">
+                <div class="table-header">
+                  <div>
+                    <p class="section-kicker">Variance evidence</p>
+                    <h3 class="panel-title">Regional comparison for leadership review</h3>
+                  </div>
+                </div>
+                <table class="table dense-table">
+                  <tr><th>Region</th><th>Variance</th><th>Primary driver</th><th>Business meaning</th></tr>
+                  <tr><td>South</td><td>+14%</td><td>Compute growth, delayed reserve plan</td><td><span class="status risk">Requires intervention narrative</span></td></tr>
+                  <tr><td>East</td><td>+9%</td><td>Staffing gap, weekend deployment load</td><td><span class="status warn">Explain staffing response</span></td></tr>
+                  <tr><td>Central</td><td>-6%</td><td>Released reserve to donor pool</td><td><span class="status ok">Supports platform resilience</span></td></tr>
+                  <tr><td>EU</td><td>+3%</td><td>Archive pressure during finance cycle</td><td><span class="status info">Track for next pack</span></td></tr>
+                </table>
+              </div>
+            </div>
+            <div class="right-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Report package</p>
+                  <h3 class="panel-title">Export, commentary, and follow-up</h3>
+                </div>
+                <span class="chip">Ready for export</span>
+              </div>
+              <div class="queue-list enterprise-priority-list">
+                <div class="queue-item active priority-item">
+                  <strong class="doc-title">Scheduled distribution</strong>
+                  <p class="panel-copy">Leadership PDF and CSV export are scheduled for 17:00 UTC after final commentary is approved.</p>
+                </div>
+                <div class="queue-item priority-item">
+                  <strong class="doc-title">Saved view</strong>
+                  <p class="panel-copy">Threshold breaches only, grouped by region and resource type, shared with Capacity Operations.</p>
+                </div>
+                <div class="queue-item priority-item">
+                  <strong class="doc-title">Follow-up request</strong>
+                  <p class="panel-copy">Finance requested a separate breakout for contractor staffing cost variance before board distribution.</p>
+                </div>
+              </div>
+              <div class="detail-stack" style="margin-top:12px;">
+                <div class="detail-card enterprise-detail-card executive-note-card">
+                  <div class="panel-header">
+                    <div>
+                      <p class="section-kicker">Review note</p>
+                      <h3 class="panel-title">Decision support summary</h3>
+                    </div>
+                  </div>
+                  <p class="executive-note">The reporting signal is clear: demand growth is concentrated, reserve execution lagged in South and East, and the platform now supplies the evidence needed to justify corrective action and resource transfer decisions.</p>
+                </div>
+                <div class="table-card enterprise-subtable">
+                  <div class="table-header">
+                    <div>
+                      <p class="section-kicker">Export controls</p>
+                      <h3 class="panel-title">Distribution state</h3>
+                    </div>
+                  </div>
+                  <table class="table dense-table">
+                    <tr><th>Artifact</th><th>Audience</th><th>Status</th></tr>
+                    <tr><td>Executive PDF</td><td>Leadership team</td><td><span class="status ok">Approved</span></td></tr>
+                    <tr><td>Finance appendix</td><td>Finance review</td><td><span class="status warn">Awaiting note</span></td></tr>
+                    <tr><td>Regional CSV</td><td>Operations</td><td><span class="status info">Queued</span></td></tr>
+                  </table>
                 </div>
               </div>
             </div>
-            <div class="hero-side">
-              <div class="table-card">
-                <div class="table-header"><div><p class="section-kicker">Trend flags</p><h3 class="panel-title">Where intervention helped</h3></div></div>
-                <table class="table">
-                  <tr><td><strong>APAC insurance pod</strong><div class="mini-copy">Overload reduced after reassignment</div></td><td><span class="status ok">Recovered</span></td></tr>
-                  <tr><td><strong>Shared architecture pool</strong><div class="mini-copy">Demand still climbing</div></td><td><span class="status warn">Watch</span></td></tr>
-                  <tr><td><strong>LATAM advisory bench</strong><div class="mini-copy">Capacity underused</div></td><td><span class="status risk">Low yield</span></td></tr>
-                </table>
-              </div>
-              <div class="status-card"><p class="panel-label">Intervention hit rate</p><div class="metric-value">73%</div><p class="metric-label">Actions that improved staffing pressure within one cycle.</p></div>
-            </div>
-          </section>
+          </div>
         </main>
       </div>
     </div>

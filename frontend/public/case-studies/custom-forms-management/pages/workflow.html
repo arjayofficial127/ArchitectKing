@@ -6,7 +6,7 @@
     <title>Forms Workflow Designer</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#f6f1ff; --surface:rgba(255,255,255,0.86); --accent:#8b5cf6; --accent-strong:#6d28d9;">
+  <body style="--bg:#f6f2ff; --accent:#8b5cf6; --accent-soft:rgba(139,92,246,0.1);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
@@ -17,34 +17,47 @@
             <div class="nav-item"><span>SLA timers</span><strong>11</strong></div>
             <div class="nav-item"><span>Escalation paths</span><strong>08</strong></div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Automation coverage</p><div class="value">78%</div><p class="stage-copy">Submissions that now route automatically without manual coordinator steps.</p></div>
+          <div class="sidebar-footer"><p class="sidebar-label">Automation coverage</p><div class="value">78%</div><p class="small-note">Submissions that now route automatically without manual coordinator steps.</p></div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Workflow Routing</p><p class="header-note">Connect submissions to approvals, notifications, and backend actions with configurable logic.</p></div><div class="pill-row"><span class="pill">Rule based</span><span class="pill">Escalation timers</span><span class="pill">Approval branches</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Workflow Design</p>
-              <h2 class="hero-title">Operational routing that can evolve with policy instead of forcing code rewrites.</h2>
-              <p class="hero-copy">The workflow layer turns form submissions into real business processes. Conditions, approvers, SLA timers, and downstream actions are configured in a way that business teams can understand and engineering teams can trust.</p>
-              <div class="approval-flow" style="margin-top:18px;">
-                <div class="approval-card"><h4>Submission intake</h4><p>Capture request type, requester role, and policy scope.</p></div>
-                <div class="approval-card"><h4>Conditional routing</h4><p>Branch by amount, risk level, or organizational hierarchy.</p></div>
-                <div class="approval-card"><h4>Automated actions</h4><p>Notify owners, update systems, and start SLA tracking.</p></div>
+          <div class="toolbar"><div class="toolbar-group"><span class="tab active">Logic flow</span><span class="tab">Conditions</span><span class="tab">SLA timers</span></div><div class="toolbar-group"><span class="chip">Version 12</span><span class="chip">Draft changes</span></div></div>
+          <section class="page-header">
+            <p class="page-kicker">Workflow logic designer</p>
+            <h2 class="page-title">Configure routing branches, approvals, and timed escalations in a dedicated workflow screen.</h2>
+          </section>
+          <div class="content-grid">
+            <div class="canvas-surface">
+              <div class="panel-header"><div><p class="section-kicker">Logic flow</p><h3 class="panel-title">Travel approval workflow</h3></div></div>
+              <div class="logic-flow">
+                <div class="logic-node">Submission intake</div>
+                <div class="logic-node">Policy check</div>
+                <div class="logic-node">Manager approval</div>
+                <div class="logic-node">Finance review if above threshold</div>
+                <div class="logic-node">Executive sign-off if international</div>
+                <div class="logic-node">Notify requester and sync records</div>
               </div>
             </div>
-            <div class="hero-side">
+            <div class="right-panel">
               <div class="table-card">
-                <div class="table-header"><div><p class="section-kicker">Current path</p><h3 class="panel-title">Travel approval workflow</h3></div></div>
+                <div class="table-header"><div><p class="section-kicker">Current path</p><h3 class="panel-title">Rule summary</h3></div></div>
                 <table class="table">
-                  <tr><td><strong>Manager approval</strong></td><td><span class="status ok">Required</span></td></tr>
-                  <tr><td><strong>Finance review</strong></td><td><span class="status warn">Above threshold</span></td></tr>
-                  <tr><td><strong>Executive sign-off</strong></td><td><span class="status ok">Conditional</span></td></tr>
-                  <tr><td><strong>SLA breach alert</strong></td><td><span class="status ok">48h</span></td></tr>
+                  <tr><th>Step</th><th>Condition</th></tr>
+                  <tr><td>Manager approval</td><td>Always required</td></tr>
+                  <tr><td>Finance review</td><td>Amount above threshold</td></tr>
+                  <tr><td>Executive sign-off</td><td>International or high risk</td></tr>
+                  <tr><td>SLA breach alert</td><td>48h idle time</td></tr>
                 </table>
               </div>
-              <div class="status-card"><p class="panel-label">Design cues</p><div class="chip-row" style="margin-top:12px;"><span class="chip">Policy aware</span><span class="chip">Versioned workflow</span><span class="chip">Rollback safe</span></div></div>
+              <div class="panel" style="margin-top:12px; padding:14px;">
+                <div class="panel-header"><div><p class="section-kicker">Rules</p><h3 class="panel-title">Policy bindings</h3></div></div>
+                <div class="rule-list">
+                  <div class="rule-item">Escalate to finance when total amount exceeds 25,000</div>
+                  <div class="rule-item">Send reminder after 24 hours without approver action</div>
+                  <div class="rule-item">Archive decision history after final posting</div>
+                </div>
+              </div>
             </div>
-          </section>
+          </div>
         </main>
       </div>
     </div>

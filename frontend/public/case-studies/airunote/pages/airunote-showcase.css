@@ -1,0 +1,1261 @@
+:root {
+  --airu-ink: #0f172a;
+  --airu-muted: #5f6f85;
+  --airu-line: rgba(148, 163, 184, 0.24);
+  --airu-line-strong: rgba(100, 116, 139, 0.28);
+  --airu-shadow: 0 20px 48px rgba(15, 23, 42, 0.12);
+  --airu-radius-xl: 28px;
+  --airu-radius-lg: 20px;
+  --airu-radius-md: 14px;
+}
+
+.airu-body {
+  color: var(--airu-ink);
+  font-family: "Aptos", "Segoe UI", sans-serif;
+}
+
+.airu-body::before {
+  opacity: 0.45;
+}
+
+.airu-kicker,
+.airu-label,
+.airu-meta-label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(71, 85, 105, 0.75);
+}
+
+.airu-title,
+.airu-panel-title,
+.airu-doc-title,
+.airu-brand-copy h1 {
+  margin: 0;
+  font-family: "Bahnschrift", "Aptos Display", "Segoe UI", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.airu-title {
+  font-size: 1.72rem;
+  line-height: 1.02;
+}
+
+.airu-copy,
+.airu-meta,
+.airu-small {
+  margin: 0;
+  color: var(--airu-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.airu-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.64);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.airu-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 16%, transparent);
+}
+
+.airu-shell {
+  display: grid;
+  gap: 14px;
+  min-height: calc(100vh - 36px);
+}
+
+.airu-card,
+.airu-panel,
+.airu-surface,
+.airu-sidebar,
+.airu-dock,
+.airu-node,
+.airu-stream-item,
+.airu-mini-card,
+.airu-editor-page,
+.airu-inspector,
+.airu-queue-card {
+  border: 1px solid var(--airu-line);
+  border-radius: var(--airu-radius-lg);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--airu-shadow);
+  backdrop-filter: blur(16px);
+}
+
+.airu-command-shell {
+  grid-template-columns: 250px minmax(0, 1fr);
+}
+
+.airu-command-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(45, 212, 191, 0.26), transparent 34%),
+    linear-gradient(180deg, #06141f, #0f2330 58%, #142b38);
+  color: rgba(226, 232, 240, 0.92);
+}
+
+.airu-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.airu-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2dd4bf, #0f766e);
+  color: white;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.airu-brand-copy h1 {
+  font-size: 1rem;
+  color: #f8fafc;
+}
+
+.airu-brand-copy p,
+.airu-command-sidebar .airu-small,
+.airu-command-sidebar .airu-label {
+  color: rgba(226, 232, 240, 0.64);
+}
+
+.airu-nav {
+  display: grid;
+  gap: 8px;
+}
+
+.airu-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.84rem;
+}
+
+.airu-nav-item strong {
+  font-size: 0.68rem;
+  color: rgba(191, 219, 254, 0.78);
+}
+
+.airu-nav-item.is-active {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.airu-sidebar-module {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.airu-sidebar-value {
+  margin: 8px 0 2px;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.airu-main-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.airu-command-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) 320px;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at top right, rgba(45, 212, 191, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 250, 249, 0.92));
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.airu-command-hero-main {
+  display: grid;
+  gap: 14px;
+}
+
+.airu-command-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.airu-command-actions,
+.airu-chip-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.airu-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.airu-signal-card {
+  padding: 14px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(240, 253, 250, 0.92));
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.airu-signal-value {
+  margin: 6px 0 4px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.airu-signal-caption {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--airu-muted);
+}
+
+.airu-command-aside {
+  display: grid;
+  gap: 12px;
+}
+
+.airu-health-card {
+  padding: 16px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #0b1d26, #102833);
+  color: #f8fafc;
+}
+
+.airu-health-ring {
+  width: 120px;
+  height: 120px;
+  margin: 12px auto 10px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at center, #0b1d26 54%, transparent 55%),
+    conic-gradient(#2dd4bf 0 302deg, rgba(255, 255, 255, 0.12) 302deg 360deg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.airu-health-ring strong {
+  font-size: 1.5rem;
+}
+
+.airu-workset-list,
+.airu-stream-list,
+.airu-note-list,
+.airu-rule-list,
+.airu-meta-list,
+.airu-suggestion-list,
+.airu-trail-list {
+  display: grid;
+  gap: 10px;
+}
+
+.airu-workset-item,
+.airu-stream-item,
+.airu-note-item,
+.airu-rule-item,
+.airu-suggestion-item,
+.airu-trail-item {
+  padding: 12px 13px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.airu-command-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 14px;
+}
+
+.airu-command-left,
+.airu-command-right {
+  display: grid;
+  gap: 14px;
+}
+
+.airu-board {
+  padding: 16px;
+}
+
+.airu-board-header,
+.airu-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.airu-metric-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.airu-mini-card {
+  padding: 13px;
+  border-radius: 18px;
+}
+
+.airu-mini-value {
+  margin: 6px 0 2px;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.airu-bar-group {
+  display: grid;
+  gap: 10px;
+}
+
+.airu-bar-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 42px;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+}
+
+.airu-bar-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+  overflow: hidden;
+}
+
+.airu-bar-fill {
+  width: calc(var(--value) * 1%);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #14b8a6, #2dd4bf);
+}
+
+.airu-stream-item {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.airu-stream-dot {
+  width: 10px;
+  height: 10px;
+  margin-top: 3px;
+  border-radius: 999px;
+  background: #14b8a6;
+}
+
+.airu-time {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(71, 85, 105, 0.7);
+}
+
+.airu-workset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.airu-workset-card {
+  padding: 14px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(239, 250, 248, 0.88));
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.08);
+}
+
+.airu-workset-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.airu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: #0f766e;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.airu-progress {
+  position: relative;
+  height: 9px;
+  margin-top: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.14);
+}
+
+.airu-progress::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: calc(var(--progress) * 1%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0f766e, #2dd4bf);
+}
+
+.airu-command-shell {
+  grid-template-columns: 236px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.airu-command-shell .airu-card,
+.airu-command-shell .airu-panel,
+.airu-command-shell .airu-stream-item,
+.airu-command-shell .airu-mini-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  backdrop-filter: none;
+}
+
+.airu-command-sidebar {
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 22px;
+  background: #fbfaf7;
+  color: var(--airu-ink);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.airu-command-shell .airu-brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.airu-command-shell .airu-brand-copy h1 {
+  color: #0f172a;
+  font-size: 0.98rem;
+}
+
+.airu-command-shell .airu-brand-copy p,
+.airu-command-shell .airu-small,
+.airu-command-shell .airu-label {
+  color: rgba(71, 85, 105, 0.82);
+}
+
+.airu-command-brandbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.airu-command-badge,
+.airu-command-chip,
+.airu-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f7f5ef;
+  color: #3f3b32;
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.airu-command-chip.is-live,
+.airu-badge {
+  border-color: rgba(202, 164, 59, 0.28);
+  background: rgba(202, 164, 59, 0.14);
+  color: #85651e;
+}
+
+.airu-nav-item {
+  padding: 11px 12px;
+  border-radius: 14px;
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.airu-nav-item strong {
+  color: rgba(100, 116, 139, 0.8);
+}
+
+.airu-nav-item.is-active {
+  background: #fbf7ea;
+  border-color: rgba(202, 164, 59, 0.28);
+  box-shadow: inset 3px 0 0 #caa43b;
+}
+
+.airu-sidebar-module {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.airu-sidebar-value {
+  margin: 8px 0 4px;
+  font-size: 1.58rem;
+  color: #111827;
+}
+
+.airu-sidebar-metric {
+  margin-top: auto;
+}
+
+.airu-main-stack {
+  gap: 12px;
+}
+
+.airu-command-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.airu-command-toolbar-title {
+  margin: 4px 0 0;
+  font-family: "Bahnschrift", "Aptos Display", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.airu-command-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.airu-command-search {
+  min-width: 248px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #f8f7f4;
+  color: rgba(71, 85, 105, 0.9);
+  font-size: 0.78rem;
+}
+
+.airu-command-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 13px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  color: #111827;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.airu-command-button.is-primary {
+  border-color: rgba(202, 164, 59, 0.32);
+  background: #caa43b;
+  color: #1f1a0d;
+}
+
+.airu-command-hero {
+  grid-template-columns: minmax(0, 1.35fr) 308px;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+}
+
+.airu-command-meta {
+  align-items: flex-start;
+}
+
+.airu-title {
+  max-width: 640px;
+  color: #111827;
+  font-size: 1.6rem;
+  line-height: 1.05;
+}
+
+.airu-command-actions {
+  justify-content: flex-end;
+}
+
+.airu-signal-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.airu-signal-card {
+  min-height: 112px;
+  padding: 16px 16px 14px;
+  border-radius: 16px;
+  background: #fcfbf8;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.airu-signal-card.is-emphasis {
+  background: linear-gradient(180deg, #fffdf7, #fdf8ea);
+  border-color: rgba(202, 164, 59, 0.24);
+}
+
+.airu-signal-value {
+  color: #111827;
+  font-size: 1.56rem;
+  line-height: 1;
+}
+
+.airu-signal-caption {
+  margin-top: 8px;
+  max-width: 22ch;
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.airu-command-aside {
+  gap: 10px;
+}
+
+.airu-health-card {
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #fcfbf8;
+  color: #111827;
+  box-shadow: none;
+}
+
+.airu-health-layout {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.airu-health-ring {
+  width: 112px;
+  height: 112px;
+  margin: 0;
+  background:
+    radial-gradient(circle at center, #ffffff 57%, transparent 58%),
+    conic-gradient(#caa43b 0 302deg, rgba(15, 23, 42, 0.08) 302deg 360deg);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+.airu-health-ring strong {
+  color: #111827;
+}
+
+.airu-health-stats {
+  display: grid;
+  gap: 10px;
+}
+
+.airu-health-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  font-size: 0.77rem;
+  color: rgba(71, 85, 105, 0.84);
+}
+
+.airu-health-stat:last-child {
+  border-bottom: 0;
+}
+
+.airu-health-stat strong {
+  color: #111827;
+  font-size: 0.86rem;
+}
+
+.airu-command-focus {
+  padding: 16px;
+}
+
+.airu-workset-item,
+.airu-note-item,
+.airu-trail-item,
+.airu-suggestion-item,
+.airu-rule-item {
+  padding: 12px;
+  border-radius: 14px;
+  background: #fbfaf7;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.airu-command-grid {
+  gap: 12px;
+}
+
+.airu-board {
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.airu-metric-strip {
+  gap: 10px;
+}
+
+.airu-mini-card {
+  padding: 12px;
+  border-radius: 14px;
+  background: #fbfaf7;
+}
+
+.airu-mini-value {
+  color: #111827;
+}
+
+.airu-bar-track {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.airu-bar-fill {
+  background: linear-gradient(90deg, #b68a17, #d4b252);
+}
+
+.airu-stream-item {
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  padding: 12px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.airu-stream-dot {
+  width: 8px;
+  height: 8px;
+  background: #caa43b;
+}
+
+.airu-time {
+  color: rgba(100, 116, 139, 0.82);
+}
+
+.airu-workset-grid {
+  gap: 10px;
+}
+
+.airu-workset-card {
+  padding: 13px;
+  border-radius: 16px;
+  background: #fcfbf8;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: none;
+}
+
+.airu-progress {
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.airu-progress::after {
+  background: linear-gradient(90deg, #b68a17, #d4b252);
+}
+
+.airu-command-shell .airu-panel-title,
+.airu-command-shell .airu-doc-title,
+.airu-command-shell .airu-title,
+.airu-command-shell .airu-command-toolbar-title {
+  color: #111827;
+}
+
+.airu-command-shell .airu-kicker,
+.airu-command-shell .airu-label {
+  color: rgba(71, 85, 105, 0.72);
+}
+
+.airu-command-shell .airu-small,
+.airu-command-shell .airu-signal-caption {
+  color: rgba(71, 85, 105, 0.88);
+}
+
+.airu-command-shell .airu-body::before,
+.airu-command-shell::before {
+  display: none;
+}
+
+.airu-body {
+  background: var(--bg);
+}
+
+.airu-body::before {
+  opacity: 0.12;
+}
+
+.airu-command-shell .airu-chip {
+  background: #f7f5ef;
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: none;
+}
+
+.airu-map-shell {
+  grid-template-columns: 228px minmax(0, 1fr) 286px;
+}
+
+.airu-map-rail,
+.airu-map-inspector {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(241, 249, 255, 0.82));
+}
+
+.airu-map-center {
+  display: grid;
+  gap: 14px;
+}
+
+.airu-map-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+}
+
+.airu-map-surface {
+  position: relative;
+  min-height: 468px;
+  overflow: hidden;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 50% 32%, rgba(34, 211, 238, 0.18), transparent 24%),
+    radial-gradient(circle at 24% 70%, rgba(14, 165, 233, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(252, 254, 255, 0.96), rgba(239, 248, 255, 0.94));
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 22px 46px rgba(15, 23, 42, 0.08);
+}
+
+.airu-map-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.16));
+}
+
+.airu-cluster {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(14px);
+  opacity: 0.9;
+}
+
+.airu-cluster.a {
+  left: 52px;
+  top: 112px;
+  width: 150px;
+  height: 150px;
+  background: rgba(56, 189, 248, 0.16);
+}
+
+.airu-cluster.b {
+  left: 238px;
+  top: 58px;
+  width: 210px;
+  height: 210px;
+  background: rgba(34, 211, 238, 0.14);
+}
+
+.airu-cluster.c {
+  right: 126px;
+  bottom: 72px;
+  width: 180px;
+  height: 180px;
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.airu-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.airu-node {
+  position: absolute;
+  min-width: 126px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.airu-node strong {
+  display: block;
+  font-size: 0.82rem;
+}
+
+.airu-node span {
+  display: block;
+  margin-top: 4px;
+  color: var(--airu-muted);
+  font-size: 0.72rem;
+}
+
+.airu-node.core {
+  left: 292px;
+  top: 174px;
+  min-width: 180px;
+  background: linear-gradient(180deg, rgba(8, 47, 73, 0.92), rgba(12, 74, 110, 0.92));
+  color: white;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.airu-node.core span {
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.airu-node.n1 { left: 118px; top: 120px; }
+.airu-node.n2 { left: 126px; top: 298px; }
+.airu-node.n3 { left: 308px; top: 70px; }
+.airu-node.n4 { left: 530px; top: 118px; }
+.airu-node.n5 { left: 546px; top: 302px; }
+.airu-node.n6 { left: 324px; top: 344px; }
+
+.airu-inspector-card,
+.airu-rail-card {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.airu-density-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.airu-density-cell {
+  height: 28px;
+  border-radius: 10px;
+  background: color-mix(in srgb, #38bdf8 var(--level), rgba(14, 165, 233, 0.06));
+}
+
+.airu-cluster-list,
+.airu-entity-list {
+  display: grid;
+  gap: 8px;
+}
+
+.airu-cluster-item,
+.airu-entity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.airu-entity-pill {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.08);
+  color: #0369a1;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.airu-capture-shell {
+  grid-template-columns: 232px minmax(0, 1fr) 292px;
+  gap: 14px;
+}
+
+.airu-capture-left,
+.airu-capture-right {
+  display: grid;
+  gap: 14px;
+}
+
+.airu-capture-main {
+  display: grid;
+  gap: 12px;
+}
+
+.airu-capture-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #0f172a, #172136);
+  color: rgba(226, 232, 240, 0.92);
+  box-shadow: 0 22px 38px rgba(15, 23, 42, 0.18);
+}
+
+.airu-capture-topbar .airu-label,
+.airu-capture-topbar .airu-small {
+  color: rgba(226, 232, 240, 0.64);
+}
+
+.airu-capture-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.airu-queue-card,
+.airu-assist-card,
+.airu-summary-card,
+.airu-source-card {
+  padding: 14px;
+}
+
+.airu-queue-item {
+  display: grid;
+  gap: 4px;
+  padding: 12px 13px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.airu-queue-item.is-active {
+  background: linear-gradient(180deg, rgba(236, 253, 245, 0.94), rgba(220, 252, 231, 0.9));
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+.airu-editor-wrap {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-height: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #e7f6ef, #f5fbf8 20%, #f8fafc);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 24px 42px rgba(15, 23, 42, 0.12);
+}
+
+.airu-editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.airu-editor-page {
+  align-self: start;
+  width: calc(100% - 44px);
+  margin: 18px auto;
+  padding: 26px 28px 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fffdfb, #ffffff);
+}
+
+.airu-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.airu-editor-body {
+  display: grid;
+  gap: 16px;
+  padding-top: 18px;
+}
+
+.airu-editor-section h4 {
+  margin: 0 0 8px;
+  font-size: 0.88rem;
+  letter-spacing: -0.01em;
+}
+
+.airu-inline-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.08);
+  color: #047857;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.airu-editor-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.airu-transcript {
+  display: grid;
+  gap: 10px;
+}
+
+.airu-transcript-block {
+  padding: 11px 12px;
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.airu-tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.airu-tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.airu-confidence {
+  display: grid;
+  gap: 8px;
+}
+
+.airu-confidence-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.14);
+  overflow: hidden;
+}
+
+.airu-confidence-bar::after {
+  content: "";
+  display: block;
+  width: 93%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.airu-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 13px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-size: 0.76rem;
+  font-weight: 800;
+  border: 0;
+}
+
+.airu-ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 13px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.8);
+  color: #0f172a;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+@media (max-width: 920px) {
+  .airu-command-shell,
+  .airu-map-shell,
+  .airu-capture-shell,
+  .airu-command-hero,
+  .airu-command-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .airu-signal-grid,
+  .airu-metric-strip,
+  .airu-workset-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 921px) {
+  .airu-command-shell .airu-metric-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

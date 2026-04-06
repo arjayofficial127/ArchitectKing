@@ -3,54 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manufacturing Reporting</title>
+    <title>Inventory Reporting</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#fff7ed; --surface:rgba(255,255,255,0.86); --accent:#fb923c; --accent-strong:#c2410c;">
+  <body style="--bg:#fcf8f2; --accent:#c2410c; --accent-soft:rgba(194,65,12,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">RP</div><div class="brand-copy"><h1>Ops Reporting</h1><p>Supply chain insight</p></div></div>
+          <div class="brand"><div class="brand-mark">RP</div><div class="brand-copy"><h1>Inventory Reports</h1><p>Supply analytics</p></div></div>
           <div class="nav-group">
             <div class="nav-item active"><span>Variance reports</span><strong>12</strong></div>
             <div class="nav-item"><span>Supplier scorecards</span><strong>09</strong></div>
             <div class="nav-item"><span>Demand spikes</span><strong>04</strong></div>
             <div class="nav-item"><span>Open actions</span><strong>06</strong></div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Forecast accuracy</p><div class="value">89%</div><p class="stage-copy">Variance between planned and actual usage tightened after reporting rollout.</p></div>
+          <div class="sidebar-footer"><p class="sidebar-label">Forecast accuracy</p><div class="value">89%</div><p class="small-note">Variance between planned and actual usage tightened after reporting rollout.</p></div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Reporting Layer</p><p class="header-note">Procurement, fulfillment, and manufacturing performance in one reporting surface.</p></div><div class="pill-row"><span class="pill">Supplier view</span><span class="pill">Variance analysis</span><span class="pill">Demand trends</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Supply Chain Reporting</p>
-              <h2 class="hero-title">Give operations and procurement the numbers needed to correct course early.</h2>
-              <p class="hero-copy">Reporting here is deliberately practical: which suppliers are slipping, which products are consuming faster than planned, and where stock variance could affect production confidence in the coming cycle.</p>
-              <div class="panel" style="margin-top:18px;">
-                <div class="panel-header"><div><p class="section-kicker">Monthly variance</p><h3 class="panel-title">Usage vs forecast</h3></div></div>
-                <div class="chart">
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.46;"></div><span>Jan</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.40;"></div><span>Feb</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.52;"></div><span>Mar</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.67;"></div><span>Apr</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.61;"></div><span>May</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.54;"></div><span>Jun</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.73;"></div><span>Jul</span></div>
+          <div class="toolbar"><div class="toolbar-group"><span class="tab active">Monthly usage</span><span class="tab">Supplier lead time</span><span class="tab">Stock variance</span></div><div class="toolbar-group"><span class="chip">Export ready</span></div></div>
+          <section class="page-header">
+            <p class="page-kicker">Reporting workspace</p>
+            <h2 class="page-title">Analyze usage trends, supplier reliability, and stock variance before they hurt production.</h2>
+          </section>
+          <div class="content-grid">
+            <div class="panel">
+              <div class="panel-header"><div><p class="section-kicker">Usage trend</p><h3 class="panel-title">Top material groups</h3></div></div>
+              <div class="chart large-chart">
+                <div class="chart-column"><div class="chart-bar" style="--size:0.72;"></div><span>Cotton</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.64;"></div><span>Poly</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.51;"></div><span>Dyes</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.33;"></div><span>Pkg</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.47;"></div><span>Spares</span></div>
+              </div>
+            </div>
+            <div class="right-panel">
+              <div class="table-card">
+                <div class="table-header"><div><p class="section-kicker">Supplier performance</p><h3 class="panel-title">Lead time variance</h3></div></div>
+                <table class="table">
+                  <tr><th>Supplier</th><th>Variance</th><th>Status</th></tr>
+                  <tr><td>FiberCore</td><td>+1 day</td><td><span class="status ok">Stable</span></td></tr>
+                  <tr><td>ColorWorks</td><td>+4 days</td><td><span class="status warn">Monitor</span></td></tr>
+                  <tr><td>PackRight</td><td>+7 days</td><td><span class="status risk">Escalate</span></td></tr>
+                </table>
+              </div>
+              <div class="panel" style="margin-top:12px;">
+                <div class="panel-header"><div><p class="section-kicker">Commentary</p><h3 class="panel-title">Analyst notes</h3></div></div>
+                <div class="activity-list">
+                  <div class="activity-item"><strong class="doc-title">Black thread risk increasing</strong><p>Lead-time stretch plus rising usage puts WH-2 at highest risk.</p></div>
+                  <div class="activity-item"><strong class="doc-title">Packaging stable</strong><p>No replenishment concern this cycle.</p></div>
                 </div>
               </div>
             </div>
-            <div class="hero-side">
-              <div class="table-card">
-                <div class="table-header"><div><p class="section-kicker">Supplier scorecard</p><h3 class="panel-title">Partner performance</h3></div></div>
-                <table class="table">
-                  <tr><td><strong>North Loom Supply</strong><div class="mini-copy">Primary spools</div></td><td><span class="status ok">96% OTIF</span></td></tr>
-                  <tr><td><strong>Dyeworks Central</strong><div class="mini-copy">Color batches</div></td><td><span class="status warn">83% OTIF</span></td></tr>
-                  <tr><td><strong>Packline Materials</strong><div class="mini-copy">Outbound packaging</div></td><td><span class="status ok">98% OTIF</span></td></tr>
-                </table>
-              </div>
-              <div class="status-card"><p class="panel-label">Review highlights</p><div class="chip-row" style="margin-top:12px;"><span class="chip">Dye variance rising</span><span class="chip">Packaging stable</span><span class="chip">Needle sets need dual sourcing</span></div></div>
-            </div>
-          </section>
+          </div>
         </main>
       </div>
     </div>

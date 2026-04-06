@@ -13,7 +13,7 @@ interface CaseStudyCard {
 
 const caseStudies: CaseStudyCard[] = [
   {
-    title: 'AiruNote',
+    title: 'AI Wiki Team Hub',
     slug: 'airunote',
     summary: 'AI-powered note capture, structured knowledge management, and document organization system. Built with privacy-first architecture and modular extensibility.',
     techStack: ['React', 'TypeScript', 'Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'AI Integration APIs']

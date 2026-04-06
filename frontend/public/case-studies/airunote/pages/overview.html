@@ -3,97 +3,260 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AiruNote Overview</title>
+    <title>AI Wiki Team Hub Knowledge Command Center</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
+    <link rel="stylesheet" href="/case-studies/airunote/pages/airunote-showcase.css" />
   </head>
-  <body style="--bg:#e8f8f7; --surface:rgba(255,255,255,0.82); --accent:#14b8a6; --accent-strong:#0f766e; --heading-font:'Bahnschrift','Aptos Display','Trebuchet MS',sans-serif;">
+  <body class="airu-body" style="--bg:#f7f6f2; --accent:#caa43b; --accent-soft:rgba(202,164,59,0.14);">
     <div class="frame">
-      <div class="app-shell">
-        <aside class="sidebar">
-          <div class="brand">
-            <div class="brand-mark">A</div>
-            <div class="brand-copy">
-              <h1>AiruNote</h1>
-              <p>Private knowledge workspace</p>
+      <div class="airu-shell airu-command-shell">
+        <aside class="airu-command-sidebar">
+          <div class="airu-command-brandbar">
+            <div class="airu-brand">
+              <div class="airu-brand-mark">AI</div>
+              <div class="airu-brand-copy">
+                <h1>AI Wiki Team Hub</h1>
+                <p class="airu-small">Private org workspace</p>
+              </div>
+            </div>
+            <span class="airu-command-badge">Workspace</span>
+          </div>
+
+          <nav class="airu-nav">
+            <div class="airu-nav-item is-active"><span>Command center</span><strong>01</strong></div>
+            <div class="airu-nav-item"><span>Collections</span><strong>12</strong></div>
+            <div class="airu-nav-item"><span>Canonical notes</span><strong>318</strong></div>
+            <div class="airu-nav-item"><span>Review queue</span><strong>11</strong></div>
+            <div class="airu-nav-item"><span>Team activity</span><strong>24h</strong></div>
+          </nav>
+
+          <div class="airu-sidebar-module">
+            <p class="airu-label">Pinned worksets</p>
+            <div class="airu-workset-list" style="margin-top:12px;">
+              <div class="airu-workset-item">
+                <strong class="airu-doc-title">Architecture Review</strong>
+                <p class="airu-small">26 canonical notes</p>
+              </div>
+              <div class="airu-workset-item">
+                <strong class="airu-doc-title">Prompt Library</strong>
+                <p class="airu-small">14 evaluation records</p>
+              </div>
+              <div class="airu-workset-item">
+                <strong class="airu-doc-title">Incident Learnings</strong>
+                <p class="airu-small">9 linked evidence trails</p>
+              </div>
             </div>
           </div>
-          <div class="nav-group">
-            <div class="nav-item active"><span>Inbox Capture</span><strong>24</strong></div>
-            <div class="nav-item"><span>Structured Notes</span><strong>318</strong></div>
-            <div class="nav-item"><span>Collections</span><strong>12</strong></div>
-            <div class="nav-item"><span>AI Drafts</span><strong>08</strong></div>
-          </div>
-          <div class="sidebar-footer">
-            <p class="section-kicker">Search recall</p>
-            <div class="value">94%</div>
-            <p class="stage-copy">Average retrieval confidence across the last 30 days of captured knowledge.</p>
+
+          <div class="airu-sidebar-module airu-sidebar-metric">
+            <p class="airu-label">Retrieval confidence</p>
+            <div class="airu-sidebar-value">94%</div>
+            <p class="airu-small">Source links and ownership scope are stable across active collections.</p>
           </div>
         </aside>
-        <main class="main-shell">
-          <div class="topbar">
+
+        <main class="airu-main-stack">
+          <div class="airu-command-toolbar airu-card">
             <div>
-              <p class="section-kicker">Knowledge Operations</p>
-              <p class="header-note">Unified capture, organization, and ownership across note streams.</p>
+              <p class="airu-label">Workspace / Command center</p>
+              <h2 class="airu-command-toolbar-title">Monday, 9:41 AM</h2>
             </div>
-            <div class="pill-row">
-              <span class="pill">Privacy-first</span>
-              <span class="pill">Markdown + TXT + RTF</span>
-              <span class="pill">AI assisted</span>
+            <div class="airu-command-toolbar-actions">
+              <div class="airu-command-search">Search notes, collections, owners</div>
+              <button class="airu-command-button">Review queue</button>
+              <button class="airu-command-button is-primary">New note</button>
             </div>
           </div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Workspace Overview</p>
-              <h2 class="hero-title">A single command center for capture, context, and controlled knowledge growth.</h2>
-              <p class="hero-copy">This screen presents what matters first: incoming notes, structured collections, signal quality, and recent AI-assisted extractions. The goal is to keep capture friction low without letting the knowledge base become noisy.</p>
-              <div class="stats-grid" style="margin-top:18px;">
-                <div class="metric-card"><p class="stat-label">Captured today</p><div class="stat-value">42</div><p class="stage-copy">Across voice, markdown, and pasted text.</p></div>
-                <div class="metric-card"><p class="stat-label">Linked sources</p><div class="stat-value">87</div><p class="stage-copy">Notes now attached to collections and owners.</p></div>
-                <div class="metric-card"><p class="stat-label">Review backlog</p><div class="stat-value">11</div><p class="stage-copy">Awaiting cleanup, merge, or metadata confirmation.</p></div>
-              </div>
-            </div>
-            <div class="hero-side">
-              <div class="status-card">
-                <p class="panel-label">Capture quality</p>
-                <div class="metric-row" style="justify-content:space-between; align-items:center; margin-top:10px;">
-                  <div><div class="metric-value">91%</div><p class="metric-label">Structured automatically</p></div>
-                  <div class="progress-ring" style="--value:91;" data-label="91%"></div>
+
+          <section class="airu-command-hero airu-card">
+            <div class="airu-command-hero-main">
+              <div class="airu-command-meta">
+                <div>
+                  <p class="airu-kicker">Knowledge command center</p>
+                  <h2 class="airu-title">Captured today, review pressure, and active operating lanes.</h2>
+                </div>
+                <div class="airu-command-actions">
+                  <span class="airu-command-chip is-live">Sync healthy</span>
+                  <span class="airu-command-chip">Private org</span>
+                  <span class="airu-command-chip">AI assist active</span>
                 </div>
               </div>
-              <div class="insight-card">
-                <p class="panel-label">Recent collections</p>
-                <div class="chip-row" style="margin-top:12px;">
-                  <span class="chip">Architecture Review</span>
-                  <span class="chip">Client Discovery</span>
-                  <span class="chip">AI Prompts</span>
-                  <span class="chip">Meeting Syntheses</span>
+
+              <div class="airu-signal-grid">
+                <div class="airu-signal-card is-emphasis">
+                  <p class="airu-label">Captured today</p>
+                  <div class="airu-signal-value">42</div>
+                  <p class="airu-signal-caption">Voice, markdown, transcript imports</p>
+                </div>
+                <div class="airu-signal-card">
+                  <p class="airu-label">Pending review</p>
+                  <div class="airu-signal-value">11</div>
+                  <p class="airu-signal-caption">Ownership and canonicalization checks</p>
+                </div>
+                <div class="airu-signal-card">
+                  <p class="airu-label">Linked entities</p>
+                  <div class="airu-signal-value">148</div>
+                  <p class="airu-signal-caption">Concepts, systems, owners, evidence</p>
+                </div>
+                <div class="airu-signal-card">
+                  <p class="airu-label">Collection health</p>
+                  <div class="airu-signal-value">87%</div>
+                  <p class="airu-signal-caption">Low orphan rate across active worksets</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="airu-command-aside">
+              <div class="airu-health-card">
+                <div class="airu-panel-header">
+                  <div>
+                    <p class="airu-kicker">Note health index</p>
+                    <h3 class="airu-panel-title">Confidence and readiness</h3>
+                  </div>
+                </div>
+                <div class="airu-health-layout">
+                  <div class="airu-health-ring"><strong>84</strong></div>
+                  <div class="airu-health-stats">
+                    <div class="airu-health-stat"><span>Canonical fit</span><strong>91%</strong></div>
+                    <div class="airu-health-stat"><span>Source coverage</span><strong>88%</strong></div>
+                    <div class="airu-health-stat"><span>Review lag</span><strong>6h</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="airu-board airu-card airu-command-focus">
+                <div class="airu-board-header">
+                  <div>
+                    <p class="airu-kicker">Current focus</p>
+                    <h3 class="airu-panel-title">Active command lanes</h3>
+                  </div>
+                </div>
+                <div class="airu-workset-list">
+                  <div class="airu-workset-item"><strong class="airu-doc-title">Inbox triage</strong><p class="airu-small">6 items waiting classification</p></div>
+                  <div class="airu-workset-item"><strong class="airu-doc-title">Knowledge hygiene</strong><p class="airu-small">3 collections below target density</p></div>
+                  <div class="airu-workset-item"><strong class="airu-doc-title">AI publish lane</strong><p class="airu-small">2 drafts above 0.90 confidence</p></div>
                 </div>
               </div>
             </div>
           </section>
-          <section class="content-grid">
-            <div class="panel">
-              <div class="panel-header">
-                <div><p class="section-kicker">Capture Pipeline</p><h3 class="panel-title">Intake velocity by source</h3></div>
-                <span class="badge">Auto-tagging stable</span>
+
+          <section class="airu-command-grid">
+            <div class="airu-command-left">
+              <div class="airu-board airu-card">
+                <div class="airu-board-header">
+                  <div>
+                    <p class="airu-kicker">Recent ingestion stream</p>
+                    <h3 class="airu-panel-title">What changed recently</h3>
+                  </div>
+                  <span class="airu-command-chip">Source linked</span>
+                </div>
+                <div class="airu-stream-list">
+                  <div class="airu-stream-item">
+                    <div class="airu-stream-dot"></div>
+                    <div>
+                      <strong class="airu-doc-title">Meeting transcript converted into canonical draft</strong>
+                      <p class="airu-small">Tagged under Architecture Review with 5 linked entities and 1 unresolved owner.</p>
+                    </div>
+                    <span class="airu-time">7m</span>
+                  </div>
+                  <div class="airu-stream-item">
+                    <div class="airu-stream-dot"></div>
+                    <div>
+                      <strong class="airu-doc-title">Prompt evaluation note merged into Prompt Library</strong>
+                      <p class="airu-small">Duplicate entries resolved and evidence trail retained.</p>
+                    </div>
+                    <span class="airu-time">19m</span>
+                  </div>
+                  <div class="airu-stream-item">
+                    <div class="airu-stream-dot"></div>
+                    <div>
+                      <strong class="airu-doc-title">Incident learning marked for review pressure</strong>
+                      <p class="airu-small">Ownership scope missing before canonical publication.</p>
+                    </div>
+                    <span class="airu-time">28m</span>
+                  </div>
+                </div>
               </div>
-              <div class="bars">
-                <div class="bar-row"><span class="muted">Voice notes</span><div class="bar-track"><div class="bar-fill" style="--size:0.84;"></div></div><strong>84%</strong></div>
-                <div class="bar-row"><span class="muted">Markdown imports</span><div class="bar-track"><div class="bar-fill" style="--size:0.72;"></div></div><strong>72%</strong></div>
-                <div class="bar-row"><span class="muted">Browser clippings</span><div class="bar-track"><div class="bar-fill" style="--size:0.56;"></div></div><strong>56%</strong></div>
-                <div class="bar-row"><span class="muted">Manual entries</span><div class="bar-track"><div class="bar-fill" style="--size:0.46;"></div></div><strong>46%</strong></div>
+
+              <div class="airu-board airu-card">
+                <div class="airu-board-header">
+                  <div>
+                    <p class="airu-kicker">Capture velocity</p>
+                    <h3 class="airu-panel-title">Intake by source</h3>
+                  </div>
+                  <span class="airu-command-chip">24h</span>
+                </div>
+                <div class="airu-metric-strip">
+                  <div class="airu-mini-card">
+                    <p class="airu-label">Voice</p>
+                    <div class="airu-mini-value">18</div>
+                    <p class="airu-small">Fastest growing lane</p>
+                  </div>
+                  <div class="airu-mini-card">
+                    <p class="airu-label">Markdown</p>
+                    <div class="airu-mini-value">11</div>
+                    <p class="airu-small">Specs and operator notes</p>
+                  </div>
+                  <div class="airu-mini-card">
+                    <p class="airu-label">Transcript</p>
+                    <div class="airu-mini-value">07</div>
+                    <p class="airu-small">Calls and synthesis flows</p>
+                  </div>
+                </div>
+                <div class="airu-bar-group" style="margin-top:16px;">
+                  <div class="airu-bar-row"><span>Voice notes</span><div class="airu-bar-track"><div class="airu-bar-fill" style="--value:82;"></div></div><strong>82%</strong></div>
+                  <div class="airu-bar-row"><span>Markdown</span><div class="airu-bar-track"><div class="airu-bar-fill" style="--value:69;"></div></div><strong>69%</strong></div>
+                  <div class="airu-bar-row"><span>Web capture</span><div class="airu-bar-track"><div class="airu-bar-fill" style="--value:54;"></div></div><strong>54%</strong></div>
+                  <div class="airu-bar-row"><span>RTF import</span><div class="airu-bar-track"><div class="airu-bar-fill" style="--value:37;"></div></div><strong>37%</strong></div>
+                </div>
               </div>
             </div>
-            <div class="table-card">
-              <div class="table-header">
-                <div><p class="section-kicker">Recently refined</p><h3 class="panel-title">Knowledge items</h3></div>
+
+            <div class="airu-command-right">
+              <div class="airu-board airu-card">
+                <div class="airu-board-header">
+                  <div>
+                    <p class="airu-kicker">Pinned spaces</p>
+                    <h3 class="airu-panel-title">Active worksets</h3>
+                  </div>
+                </div>
+                <div class="airu-workset-grid">
+                  <div class="airu-workset-card">
+                    <div class="airu-workset-top"><strong class="airu-doc-title">Architecture Review</strong><span class="airu-badge">Stable</span></div>
+                    <p class="airu-small" style="margin-top:8px;">26 notes • 91% source coverage • 4 open links</p>
+                    <div class="airu-progress" style="--progress:91;"></div>
+                  </div>
+                  <div class="airu-workset-card">
+                    <div class="airu-workset-top"><strong class="airu-doc-title">Delivery Notes</strong><span class="airu-badge">Watch</span></div>
+                    <p class="airu-small" style="margin-top:8px;">19 notes • 74% source coverage • 6 review gaps</p>
+                    <div class="airu-progress" style="--progress:74;"></div>
+                  </div>
+                  <div class="airu-workset-card">
+                    <div class="airu-workset-top"><strong class="airu-doc-title">Prompt Library</strong><span class="airu-badge">Curated</span></div>
+                    <p class="airu-small" style="margin-top:8px;">14 prompts • 93% metadata fit • 2 drafts</p>
+                    <div class="airu-progress" style="--progress:93;"></div>
+                  </div>
+                  <div class="airu-workset-card">
+                    <div class="airu-workset-top"><strong class="airu-doc-title">Client Discovery</strong><span class="airu-badge">Growing</span></div>
+                    <p class="airu-small" style="margin-top:8px;">8 notes • 3 new transcripts • 1 unresolved link</p>
+                    <div class="airu-progress" style="--progress:78;"></div>
+                  </div>
+                </div>
               </div>
-              <table class="table">
-                <tr><td><strong>Tenant boundary checklist</strong><div class="mini-copy">Ops architecture</div></td><td><span class="status ok">Ready</span></td></tr>
-                <tr><td><strong>Prompt evaluation notes</strong><div class="mini-copy">AI research</div></td><td><span class="status warn">Review</span></td></tr>
-                <tr><td><strong>Meeting synthesis: Q2 roadmap</strong><div class="mini-copy">Leadership sync</div></td><td><span class="status ok">Published</span></td></tr>
-                <tr><td><strong>Customer objection library</strong><div class="mini-copy">Enablement</div></td><td><span class="status risk">Needs owner</span></td></tr>
-              </table>
+
+              <div class="airu-board airu-card">
+                <div class="airu-board-header">
+                  <div>
+                    <p class="airu-kicker">Review pressure</p>
+                    <h3 class="airu-panel-title">Items needing action</h3>
+                  </div>
+                </div>
+                <div class="airu-note-list">
+                  <div class="airu-note-item"><strong class="airu-doc-title">Failure mode checklist</strong><p class="airu-small">Owner unassigned • imported 2h ago</p></div>
+                  <div class="airu-note-item"><strong class="airu-doc-title">Q2 planning synthesis</strong><p class="airu-small">AI confidence 0.93 • waiting canonical publish</p></div>
+                  <div class="airu-note-item"><strong class="airu-doc-title">Moderation fallback rules</strong><p class="airu-small">New evidence trail available • merge recommended</p></div>
+                </div>
+              </div>
             </div>
           </section>
         </main>

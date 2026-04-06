@@ -10,11 +10,11 @@ export function FeaturedProjectSection() {
           Featured Project
         </h2>
         <p className="text-sm text-slate-500 mb-14 text-center">
-          AiruNote
+          airunote
         </p>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
           <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-3">AiruNote</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">airunote</h3>
             <p className="text-sm text-slate-600 mb-6">
               AI-assisted knowledge management platform designed with modular architecture and installable apps.
             </p>
@@ -34,7 +34,7 @@ export function FeaturedProjectSection() {
               </p>
               <Image
                 src="/architectking/airunote-preview.png"
-                alt="AiruNote project screenshot"
+                alt="airunote project screenshot"
                 width={1365}
                 height={768}
                 className="h-48 w-full rounded border border-slate-200 object-cover"

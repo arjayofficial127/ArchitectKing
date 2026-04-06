@@ -6,64 +6,198 @@
     <title>Resource Monitoring Dashboard</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#eef4ff; --surface:rgba(255,255,255,0.84); --accent:#2563eb; --accent-strong:#1d4ed8;">
+  <body class="enterprise-monitoring-page enterprise-dashboard-page" style="--bg:#f4f1eb; --accent:#9a6a1f; --accent-soft:rgba(154,106,31,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">RM</div><div class="brand-copy"><h1>Resource Monitor</h1><p>Executive visibility</p></div></div>
-          <div class="nav-group">
-            <div class="nav-item active"><span>Portfolio</span><strong>132</strong></div>
-            <div class="nav-item"><span>Regions</span><strong>07</strong></div>
-            <div class="nav-item"><span>At risk</span><strong>14</strong></div>
-            <div class="nav-item"><span>Bench pool</span><strong>29</strong></div>
+          <div class="brand">
+            <div class="brand-mark">ER</div>
+            <div class="brand-copy">
+              <h1>ERM Platform</h1>
+              <p>Strategic visibility surface</p>
+            </div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Utilization trend</p><div class="value">82%</div><p class="stage-copy">Rolling utilization across delivery, advisory, and internal programs.</p></div>
+          <div class="nav-group">
+            <div class="nav-item active"><span>Executive dashboard</span><strong>Board view</strong></div>
+            <div class="nav-item"><span>Regional operations</span><strong>24 active sites</strong></div>
+            <div class="nav-item"><span>Capacity planning</span><strong>5 interventions</strong></div>
+            <div class="nav-item"><span>Leadership reporting</span><strong>Next pack 17:00</strong></div>
+          </div>
+          <div class="sidebar-footer">
+            <p class="sidebar-label">Portfolio resilience</p>
+            <div class="value">97.4%</div>
+            <p class="small-note">All leadership regions remain within service policy. Two regions are inside the planning buffer and require intervention approval today.</p>
+          </div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Resource Assessment</p><p class="header-note">Portfolio-wide staffing, risk, and allocation insight for leadership.</p></div><div class="pill-row"><span class="pill">Real-time metrics</span><span class="pill">Role-based access</span><span class="pill">Regional rollups</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Executive Dashboard</p>
-              <h2 class="hero-title">Operational visibility across capacity, utilization, and delivery health.</h2>
-              <p class="hero-copy">This screen compresses complex staffing and workload signals into a leadership view: where teams are overcommitted, where capacity exists, and which regions require intervention before delivery risk compounds.</p>
-              <div class="stats-grid" style="margin-top:18px;">
-                <div class="metric-card"><p class="stat-label">Billable utilization</p><div class="stat-value">82%</div><p class="stage-copy">Within target band for the current month.</p></div>
-                <div class="metric-card"><p class="stat-label">Projects needing action</p><div class="stat-value">14</div><p class="stage-copy">Includes staffing gaps and red delivery indicators.</p></div>
-                <div class="metric-card"><p class="stat-label">Available capacity</p><div class="stat-value">196h</div><p class="stage-copy">Assignable over the next two planning windows.</p></div>
-              </div>
+          <div class="topbar enterprise-topbar">
+            <div class="toolbar-group">
+              <span class="status-soft info">Executive review window open</span>
+              <span class="chip">Portfolio: Global Infrastructure</span>
+              <span class="chip">Decision cadence: Daily 10:15 UTC</span>
             </div>
-            <div class="hero-side">
-              <div class="panel">
-                <div class="panel-header"><div><p class="section-kicker">Weekly trend</p><h3 class="panel-title">Utilization by business unit</h3></div></div>
-                <div class="chart">
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.44;"></div><span>NA</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.62;"></div><span>EMEA</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.88;"></div><span>APAC</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.58;"></div><span>LATAM</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.70;"></div><span>Advisory</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.55;"></div><span>Ops</span></div>
-                  <div class="chart-column"><div class="chart-bar" style="--size:0.74;"></div><span>Digital</span></div>
+            <div class="toolbar-group">
+              <span class="chip">Last sync 09:42</span>
+              <span class="chip">Service policy v4.2</span>
+              <button class="primary-button">Publish leadership brief</button>
+            </div>
+          </div>
+          <div class="toolbar enterprise-toolbar">
+            <div class="toolbar-group">
+              <span class="tab active">Strategic overview</span>
+              <span class="tab">Regional exposure</span>
+              <span class="tab">Intervention queue</span>
+            </div>
+            <div class="toolbar-group">
+              <div class="search">Search region, site, owner, service line</div>
+              <span class="chip">Scope: Global</span>
+              <span class="chip">Resources: Compute + Field Ops</span>
+              <span class="chip">Auto-refresh 5 min</span>
+            </div>
+          </div>
+          <section class="page-header">
+            <p class="page-kicker">Executive dashboard</p>
+            <h2 class="page-title">Leadership visibility into regional capacity health, threshold exposure, and the decisions that protect service continuity.</h2>
+            <p class="page-copy">This view is designed as a leadership operating surface: portfolio-level indicators first, exposure by region second, then a concise action rail showing what requires approval, what can wait, and why.</p>
+          </section>
+          <div class="kpi-grid enterprise-kpi-grid">
+            <div class="kpi-card premium-metric-card metric-critical">
+              <p class="section-kicker">Regions requiring intervention</p>
+              <div class="kpi-value">02</div>
+              <p class="panel-copy">South and East have crossed the preferred planning buffer and need action within the current operating day.</p>
+            </div>
+            <div class="kpi-card premium-metric-card">
+              <p class="section-kicker">Portfolio utilization</p>
+              <div class="kpi-value">73.2%</div>
+              <p class="panel-copy">Capacity remains stable overall, but growth concentration continues to shift risk toward two regions.</p>
+            </div>
+            <div class="kpi-card premium-metric-card">
+              <p class="section-kicker">Service policy adherence</p>
+              <div class="kpi-value">94.8%</div>
+              <p class="panel-copy">Most sites remain inside governance targets for load, staffing, and reserve preservation.</p>
+            </div>
+            <div class="kpi-card premium-metric-card">
+              <p class="section-kicker">Decisions due before noon</p>
+              <div class="kpi-value">04</div>
+              <p class="panel-copy">Three operational approvals and one finance exception determine today&apos;s intervention plan.</p>
+            </div>
+          </div>
+          <div class="summary-ribbon">
+            <div class="summary-item">
+              <p class="section-kicker">Executive watchlist</p>
+              <strong>South-04 saturation, East staffing gap, EU archive throughput</strong>
+            </div>
+            <div class="summary-item">
+              <p class="section-kicker">Leadership question</p>
+              <strong>Which intervention reduces exposure fastest without weakening donor regions?</strong>
+            </div>
+            <div class="summary-item">
+              <p class="section-kicker">Recommended action</p>
+              <strong>Approve Central-to-South transfer and East backfill package</strong>
+            </div>
+          </div>
+          <section class="content-grid enterprise-dashboard-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Regional exposure</p>
+                  <h3 class="panel-title">Current load against leadership threshold</h3>
+                </div>
+                <div class="toolbar-group">
+                  <span class="chip">View: Current day</span>
+                  <span class="chip">Forecast overlay</span>
+                  <span class="chip">Threshold: 78%</span>
                 </div>
               </div>
+              <div class="chart large-chart enterprise-chart">
+                <div class="chart-column"><div class="chart-bar" style="--size:0.56;"></div><span>North</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.84;"></div><span>South</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.62;"></div><span>West</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.79;"></div><span>East</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.68;"></div><span>Central</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.51;"></div><span>APAC</span></div>
+                <div class="chart-column"><div class="chart-bar" style="--size:0.72;"></div><span>EU</span></div>
+              </div>
+              <div class="mini-stat-grid enterprise-mini-stats enterprise-snapshot-grid" style="margin-top:12px;">
+                <div class="mini-stat">
+                  <p class="section-kicker">Peak site</p>
+                  <strong>South-04</strong>
+                  <p class="panel-copy">87% current load, 91% by shift handoff if no transfer is executed.</p>
+                </div>
+                <div class="mini-stat">
+                  <p class="section-kicker">Recoverable buffer</p>
+                  <strong>14%</strong>
+                  <p class="panel-copy">Available through Central-03, APAC-02, and contracted reserve capacity.</p>
+                </div>
+                <div class="mini-stat">
+                  <p class="section-kicker">Unstaffed demand</p>
+                  <strong>42 hrs</strong>
+                  <p class="panel-copy">Tomorrow&apos;s field coverage deficit before approved reallocations are applied.</p>
+                </div>
+              </div>
+              <div class="table-card enterprise-subtable" style="margin-top:12px;">
+                <div class="table-header">
+                  <div>
+                    <p class="section-kicker">Leadership exceptions</p>
+                    <h3 class="panel-title">Regions that warrant executive attention</h3>
+                  </div>
+                </div>
+                <table class="table dense-table">
+                  <tr><th>Region</th><th>Current load</th><th>24h forecast</th><th>Decision signal</th><th>Status</th></tr>
+                  <tr><td>South</td><td>84%</td><td>89%</td><td>Approve compute transfer from Central</td><td><span class="status risk">Action now</span></td></tr>
+                  <tr><td>East</td><td>79%</td><td>82%</td><td>Backfill support coverage before deployment</td><td><span class="status warn">Needs review</span></td></tr>
+                  <tr><td>EU</td><td>72%</td><td>77%</td><td>Archive cleanup to protect reporting throughput</td><td><span class="status info">Monitor closely</span></td></tr>
+                  <tr><td>Central</td><td>55%</td><td>58%</td><td>Can release reserve without policy breach</td><td><span class="status ok">Within guardrails</span></td></tr>
+                </table>
+              </div>
             </div>
-          </section>
-          <section class="content-grid">
-            <div class="table-card">
-              <div class="table-header"><div><p class="section-kicker">Priority review</p><h3 class="panel-title">Programs requiring intervention</h3></div><span class="badge">Updated 08:45 UTC</span></div>
-              <table class="table">
-                <tr><td><strong>Claims Modernization</strong><div class="mini-copy">North America</div></td><td><span class="status risk">Understaffed</span></td></tr>
-                <tr><td><strong>Risk Controls Refresh</strong><div class="mini-copy">EMEA</div></td><td><span class="status warn">Overbooked</span></td></tr>
-                <tr><td><strong>Broker Analytics Rollout</strong><div class="mini-copy">APAC</div></td><td><span class="status ok">Stable</span></td></tr>
-                <tr><td><strong>Regulatory Remediation</strong><div class="mini-copy">Shared services</div></td><td><span class="status warn">Watch</span></td></tr>
-              </table>
-            </div>
-            <div class="panel">
-              <div class="panel-header"><div><p class="section-kicker">Allocation mix</p><h3 class="panel-title">Current capacity split</h3></div></div>
-              <div class="bars">
-                <div class="bar-row"><span class="muted">Client delivery</span><div class="bar-track"><div class="bar-fill" style="--size:0.82;"></div></div><strong>82%</strong></div>
-                <div class="bar-row"><span class="muted">Bench capacity</span><div class="bar-track"><div class="bar-fill" style="--size:0.18;"></div></div><strong>18%</strong></div>
-                <div class="bar-row"><span class="muted">Internal projects</span><div class="bar-track"><div class="bar-fill" style="--size:0.24;"></div></div><strong>24%</strong></div>
-                <div class="bar-row"><span class="muted">Critical shortage roles</span><div class="bar-track"><div class="bar-fill" style="--size:0.36;"></div></div><strong>36%</strong></div>
+            <div class="right-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Decision queue</p>
+                  <h3 class="panel-title">What leadership needs to clear today</h3>
+                </div>
+                <span class="chip">4 decisions due</span>
+              </div>
+              <div class="queue-list enterprise-priority-list">
+                <div class="queue-item active priority-item priority-critical">
+                  <strong class="doc-title">Approve South resilience package</strong>
+                  <p class="panel-copy">Move 8 compute units from Central-03 before 11:00 to avoid threshold breach during the next demand wave.</p>
+                </div>
+                <div class="queue-item priority-item">
+                  <strong class="doc-title">Confirm East staffing backfill</strong>
+                  <p class="panel-copy">Two contractor shifts remain unassigned for tomorrow&apos;s rollout and will trigger overtime if left unresolved.</p>
+                </div>
+                <div class="queue-item priority-item">
+                  <strong class="doc-title">Authorize EU archive cleanup</strong>
+                  <p class="panel-copy">Storage pressure will begin to slow leadership reporting if cleanup does not start before finance load.</p>
+                </div>
+              </div>
+              <div class="detail-stack" style="margin-top:12px;">
+                <div class="detail-card enterprise-detail-card executive-note-card">
+                  <div class="panel-header">
+                    <div>
+                      <p class="section-kicker">Leadership note</p>
+                      <h3 class="panel-title">Board-ready summary</h3>
+                    </div>
+                  </div>
+                  <p class="executive-note">Overall portfolio resilience remains healthy. Today&apos;s risk is concentrated, understandable, and addressable through two contained interventions. The system recommends approval with no material downside to donor regions.</p>
+                </div>
+                <div class="table-card enterprise-subtable">
+                  <div class="table-header">
+                    <div>
+                      <p class="section-kicker">Site watchlist</p>
+                      <h3 class="panel-title">Highest-load operating sites</h3>
+                    </div>
+                  </div>
+                  <table class="table dense-table">
+                    <tr><th>Site</th><th>Load</th><th>Owner</th><th>State</th></tr>
+                    <tr><td>South-04</td><td>87%</td><td>R. Tan</td><td><span class="status risk">Escalated</span></td></tr>
+                    <tr><td>East-01</td><td>78%</td><td>J. Khan</td><td><span class="status warn">Watch</span></td></tr>
+                    <tr><td>EU-ARC-2</td><td>76%</td><td>L. Meyer</td><td><span class="status info">Constrained</span></td></tr>
+                    <tr><td>Central-03</td><td>54%</td><td>S. Ahn</td><td><span class="status ok">Donor ready</span></td></tr>
+                  </table>
+                </div>
               </div>
             </div>
           </section>

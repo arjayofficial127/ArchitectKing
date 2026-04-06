@@ -97,10 +97,6 @@ export function CaseStudyShowcaseGallery({ studyId }: CaseStudyShowcaseGalleryPr
               Slide {activeIndex + 1} of {slides.length}
             </p>
           </div>
-          <div className="hidden items-center gap-2 sm:flex">
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_0_6px_rgba(16,185,129,0.12)]" />
-            <span className="text-xs font-medium text-slate-500">Preview locked</span>
-          </div>
         </div>
 
         <div className="relative overflow-hidden rounded-[24px] border border-slate-200 bg-slate-950/5">
@@ -117,6 +113,7 @@ export function CaseStudyShowcaseGallery({ studyId }: CaseStudyShowcaseGalleryPr
                     loading="lazy"
                     sandbox="allow-same-origin allow-scripts"
                     className="pointer-events-none absolute inset-0 h-full w-full border-0"
+                    style={{ zoom: 0.5 }}
                     tabIndex={-1}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),transparent_16%,transparent_84%,rgba(15,23,42,0.06))]" />

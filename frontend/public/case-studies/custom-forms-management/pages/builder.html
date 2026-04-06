@@ -6,7 +6,7 @@
     <title>Forms Builder</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#f7f4ff; --surface:rgba(255,255,255,0.86); --accent:#7c3aed; --accent-strong:#5b21b6;">
+  <body style="--bg:#f8f4ff; --accent:#7c3aed; --accent-soft:rgba(124,58,237,0.1);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
@@ -17,32 +17,51 @@
             <div class="nav-item"><span>Reusable fields</span><strong>76</strong></div>
             <div class="nav-item"><span>Rule sets</span><strong>29</strong></div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Build velocity</p><div class="value">4.2x</div><p class="stage-copy">Faster form delivery versus hard-coded implementations.</p></div>
+          <div class="sidebar-footer"><p class="sidebar-label">Build velocity</p><div class="value">4.2x</div><p class="small-note">Faster form delivery versus hard-coded implementations.</p></div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Builder Surface</p><p class="header-note">Compose sections, fields, and visibility rules without touching source code.</p></div><div class="pill-row"><span class="pill">Schema driven</span><span class="pill">Conditional logic</span><span class="pill">Publishing states</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Visual Builder</p>
-              <h2 class="hero-title">A builder designed for speed, structure, and safe configuration.</h2>
-              <p class="hero-copy">Instead of hard-coding every form variation, administrators compose sections, fields, validations, and conditional visibility using a controlled metadata layer that still feels approachable.</p>
-              <div class="content-grid" style="margin-top:18px;">
-                <div class="panel">
-                  <div class="panel-header"><div><p class="section-kicker">Field palette</p><h3 class="panel-title">Reusable building blocks</h3></div></div>
-                  <div class="chip-row"><span class="chip">Text input</span><span class="chip">Date picker</span><span class="chip">Section repeater</span><span class="chip">Attachment</span><span class="chip">Conditional branch</span><span class="chip">Approval checkpoint</span></div>
-                </div>
-                <div class="status-card"><p class="panel-label">Current draft</p><div class="metric-value">Leave Request v3</div><p class="metric-label">14 fields, 3 sections, 4 conditional rules.</p></div>
-              </div>
-            </div>
-            <div class="hero-side">
-              <div class="timeline">
-                <div class="panel-header"><div><p class="section-kicker">Form structure</p><h3 class="panel-title">Draft composition</h3></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Section 1</p><h4 class="timeline-title">Requester details</h4><p class="timeline-copy">Base identity, department, and contact fields.</p></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Section 2</p><h4 class="timeline-title">Request specifics</h4><p class="timeline-copy">Dynamic fields shown by request type and duration.</p></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Section 3</p><h4 class="timeline-title">Approval handoff</h4><p class="timeline-copy">Route to managers only when business rules are satisfied.</p></div></div>
-              </div>
-            </div>
+          <div class="toolbar"><div class="toolbar-group"><span class="tab active">Builder</span><span class="tab">Preview</span><span class="tab">JSON schema</span></div><div class="toolbar-group"><span class="chip">Draft</span><button class="primary-button">Publish form</button></div></div>
+          <section class="page-header">
+            <p class="page-kicker">Visual form builder</p>
+            <h2 class="page-title">Compose sections, fields, and validations in a real builder workspace instead of a presentation card.</h2>
           </section>
+          <div class="builder-grid">
+            <div class="panel">
+              <div class="panel-header"><div><p class="section-kicker">Field palette</p><h3 class="panel-title">Reusable components</h3></div></div>
+              <div class="field-list">
+                <div class="field-row">Text input</div>
+                <div class="field-row">Date picker</div>
+                <div class="field-row">Select</div>
+                <div class="field-row">Attachment</div>
+                <div class="field-row">Approval checkpoint</div>
+                <div class="field-row">Conditional section</div>
+              </div>
+            </div>
+            <div class="canvas-surface">
+              <div class="panel-header"><div><p class="section-kicker">Canvas</p><h3 class="panel-title">Leave Request v3</h3></div></div>
+              <div class="queue-list">
+                <div class="queue-item"><strong class="doc-title">Section 1: Requester details</strong><p class="panel-copy">Employee name, department, contact information.</p></div>
+                <div class="queue-item"><strong class="doc-title">Section 2: Leave specifics</strong><p class="panel-copy">Leave type, dates, partial day toggle, coverage notes.</p></div>
+                <div class="queue-item"><strong class="doc-title">Section 3: Approval handoff</strong><p class="panel-copy">Manager and HR conditions shown when rules pass.</p></div>
+              </div>
+            </div>
+            <div class="right-panel">
+              <div class="panel-header"><div><p class="section-kicker">Selected field</p><h3 class="panel-title">Leave type</h3></div></div>
+              <div class="meta-stack">
+                <div class="meta-item"><p class="meta-label">Component</p><p class="panel-copy">Select</p></div>
+                <div class="meta-item"><p class="meta-label">Required</p><p class="panel-copy">Yes</p></div>
+                <div class="meta-item"><p class="meta-label">Options</p><p class="panel-copy">Vacation, Sick, Emergency</p></div>
+              </div>
+              <div class="panel" style="margin-top:12px; padding:14px;">
+                <div class="panel-header"><div><p class="section-kicker">Rule bindings</p><h3 class="panel-title">Validation</h3></div></div>
+                <div class="rule-list">
+                  <div class="rule-item">Show HR section when leave length exceeds 3 days</div>
+                  <div class="rule-item">Require attachment for emergency leave</div>
+                  <div class="rule-item">Hide partial-day toggle for vacation type</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>

@@ -6,47 +6,134 @@
     <title>Government Compliance Review</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#f3fbf5; --surface:rgba(255,255,255,0.88); --accent:#166534; --accent-strong:#14532d;">
+  <body class="government-registration-page gov-compliance-page" style="--bg:#f5f2eb; --accent:#9a6a1f; --accent-soft:rgba(154,106,31,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">CR</div><div class="brand-copy"><h1>Compliance Review</h1><p>Internal validation</p></div></div>
-          <div class="nav-group">
-            <div class="nav-item active"><span>Pending review</span><strong>24</strong></div>
-            <div class="nav-item"><span>Flagged records</span><strong>05</strong></div>
-            <div class="nav-item"><span>Region offices</span><strong>11</strong></div>
-            <div class="nav-item"><span>Escalations</span><strong>03</strong></div>
+          <div class="brand">
+            <div class="brand-mark">RV</div>
+            <div class="brand-copy">
+              <h1>Compliance Review</h1>
+              <p>Internal validation</p>
+            </div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Average review time</p><div class="value">18m</div><p class="stage-copy">Reduced from paper-based handling through guided checks and centralized queues.</p></div>
+          <div class="nav-group">
+            <div class="nav-item active"><span>Pending review</span><strong>24 records</strong></div>
+            <div class="nav-item"><span>Flagged cases</span><strong>05 exceptions</strong></div>
+            <div class="nav-item"><span>Regional processors</span><strong>11 offices</strong></div>
+            <div class="nav-item"><span>Escalations</span><strong>03 awaiting action</strong></div>
+          </div>
+          <div class="sidebar-footer">
+            <p class="sidebar-label">Average review time</p>
+            <div class="value">18m</div>
+            <p class="small-note">Guided requirement checks and centralized queues reduced manual review time from paper-based handling.</p>
+          </div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Validation Queue</p><p class="header-note">Internal review for documents, permit eligibility, and compliance exceptions.</p></div><div class="pill-row"><span class="pill">Audit ready</span><span class="pill">Exception routing</span><span class="pill">Regional filtering</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Compliance Review</p>
-              <h2 class="hero-title">A review surface built for accuracy, traceability, and controlled exception handling.</h2>
-              <p class="hero-copy">Agency staff can process registrations with clearer visibility into document completeness, ownership verification, and permit status. The workflow is designed to reduce ambiguity and keep regulatory review defensible.</p>
-              <section class="content-grid" style="margin-top:18px;">
-                <div class="table-card">
-                  <div class="table-header"><div><p class="section-kicker">Review queue</p><h3 class="panel-title">Applications in progress</h3></div></div>
-                  <table class="table">
-                    <tr><td><strong>REG-2026-1841</strong><div class="mini-copy">Region IV-A / citizen application</div></td><td><span class="status ok">Ready</span></td></tr>
-                    <tr><td><strong>REG-2026-1846</strong><div class="mini-copy">Region V / ownership mismatch</div></td><td><span class="status risk">Flagged</span></td></tr>
-                    <tr><td><strong>REG-2026-1852</strong><div class="mini-copy">NCR / document resubmission</div></td><td><span class="status warn">Waiting</span></td></tr>
-                  </table>
-                </div>
-                <div class="status-card"><p class="panel-label">Compliance checks</p><div class="chip-row" style="margin-top:12px;"><span class="chip">Identity validated</span><span class="chip">Serial verified</span><span class="chip">Permit fee posted</span></div><p class="stage-copy" style="margin-top:16px;">High-risk records are elevated immediately with their reason for review visible upfront.</p></div>
-              </section>
+          <div class="topbar gov-topbar">
+            <div class="toolbar-group">
+              <span class="status-soft info">Compliance and document validation queue</span>
+              <span class="chip">Regional review cycle: Today</span>
             </div>
-            <div class="hero-side">
-              <div class="timeline">
-                <div class="panel-header"><div><p class="section-kicker">Review path</p><h3 class="panel-title">Validation sequence</h3></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Initial check</p><h4 class="timeline-title">Completeness scan</h4><p class="timeline-copy">Required fields and uploads are verified before deeper review starts.</p></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Eligibility</p><h4 class="timeline-title">Ownership and serial validation</h4><p class="timeline-copy">Internal data and submitted evidence are compared for consistency.</p></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Decision</p><h4 class="timeline-title">Approve, hold, or escalate</h4><p class="timeline-copy">Any exception keeps an auditable trail tied to the application record.</p></div></div>
+            <div class="toolbar-group">
+              <span class="chip">Audit trail active</span>
+              <button class="primary-button">Open selected case</button>
+            </div>
+          </div>
+          <div class="toolbar gov-toolbar">
+            <div class="toolbar-group">
+              <span class="tab active">Pending review</span>
+              <span class="tab">Flagged cases</span>
+              <span class="tab">Escalated</span>
+            </div>
+            <div class="toolbar-group">
+              <span class="chip">Region: All offices</span>
+              <span class="chip">Owner mismatch filter</span>
+            </div>
+          </div>
+          <section class="page-header">
+            <p class="page-kicker">Compliance review workspace</p>
+            <h2 class="page-title">Validate requirements, compare evidence, and route exceptions through a traceable review process before permit approval.</h2>
+            <p class="page-copy">This screen is structured around actual review work: a queue with actionable cases, a selected record with evidence detail, and a validation matrix that shows whether the file is ready, blocked, or needs escalation.</p>
+          </section>
+          <div class="gov-review-grid">
+            <div class="table-card gov-plain-card">
+              <div class="table-header">
+                <div>
+                  <p class="section-kicker">Review queue</p>
+                  <h3 class="panel-title">Applications in active validation</h3>
+                </div>
+              </div>
+              <table class="table dense-table gov-queue-table">
+                <tr><th>Record</th><th>Region</th><th>Issue</th><th>Status</th></tr>
+                <tr><td>REG-2026-1841</td><td>IV-A</td><td>Ready for final check</td><td><span class="status ok">Ready</span></td></tr>
+                <tr><td>REG-2026-1846</td><td>V</td><td>Ownership mismatch</td><td><span class="status risk">Flagged</span></td></tr>
+                <tr><td>REG-2026-1852</td><td>NCR</td><td>Missing ownership receipt</td><td><span class="status warn">Waiting</span></td></tr>
+                <tr><td>REG-2026-1854</td><td>VII</td><td>Serial confirmation pending</td><td><span class="status info">In review</span></td></tr>
+              </table>
+            </div>
+            <div class="document-surface gov-case-surface">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Selected record</p>
+                  <h3 class="panel-title">REG-2026-1846</h3>
+                </div>
+                <span class="status risk">Ownership mismatch</span>
+              </div>
+              <div class="meta-stack gov-case-meta">
+                <div class="meta-item"><p class="meta-label">Applicant</p><p class="panel-copy">Mario P. Santos</p></div>
+                <div class="meta-item"><p class="meta-label">Equipment serial</p><p class="panel-copy">CS-5V-118204</p></div>
+                <div class="meta-item"><p class="meta-label">Filed at</p><p class="panel-copy">Region V office</p></div>
+                <div class="meta-item"><p class="meta-label">Assigned reviewer</p><p class="panel-copy">R. Villanueva</p></div>
+              </div>
+              <div class="panel gov-plain-card" style="margin-top:12px; padding:14px;">
+                <div class="panel-header">
+                  <div>
+                    <p class="section-kicker">Evidence review</p>
+                    <h3 class="panel-title">Exception detail</h3>
+                  </div>
+                </div>
+                <p class="panel-copy">The name on the uploaded official receipt does not match the applicant name on the identification record. Approval is blocked until corrected ownership proof is submitted or the case is escalated to a supervisor for field verification.</p>
+              </div>
+              <div class="gov-document-strip" style="margin-top:12px;">
+                <div class="queue-item active">
+                  <strong class="doc-title">Government ID</strong>
+                  <p class="panel-copy">Matched to the applicant record and filing details.</p>
+                </div>
+                <div class="queue-item">
+                  <strong class="doc-title">Official receipt</strong>
+                  <p class="panel-copy">Readable, but ownership name does not match the applicant file.</p>
+                </div>
               </div>
             </div>
-          </section>
+            <div class="right-panel gov-plain-card">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Validation matrix</p>
+                  <h3 class="panel-title">Requirement checks and routing</h3>
+                </div>
+              </div>
+              <div class="queue-list">
+                <div class="queue-item active">
+                  <strong class="doc-title">Identity validated</strong>
+                  <p class="panel-copy">Government ID matches the applicant record and filing location.</p>
+                </div>
+                <div class="queue-item">
+                  <strong class="doc-title">Serial verified</strong>
+                  <p class="panel-copy">Equipment serial number is present in registered vendor and product data.</p>
+                </div>
+                <div class="queue-item priority-critical">
+                  <strong class="doc-title">Ownership proof mismatch</strong>
+                  <p class="panel-copy">Corrected attachment or supervisor sign-off is required before approval can continue.</p>
+                </div>
+              </div>
+              <div class="timeline" style="margin-top:12px;">
+                <div class="timeline-item"><div class="timeline-dot"></div><div><strong class="doc-title">Initial scan completed</strong><p class="panel-copy">Attachments and applicant data were recorded.</p></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div><strong class="doc-title">Eligibility review in progress</strong><p class="panel-copy">The file remains in active review due to an ownership exception.</p></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div><strong class="doc-title">Escalation if unresolved</strong><p class="panel-copy">Route to regional supervisor if corrected proof is not received.</p></div></div>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>

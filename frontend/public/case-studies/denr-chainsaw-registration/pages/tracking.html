@@ -6,37 +6,121 @@
     <title>Government Permit Tracking</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#ecfdf3; --surface:rgba(255,255,255,0.88); --accent:#22c55e; --accent-strong:#15803d;">
+  <body class="government-registration-page gov-tracking-page" style="--bg:#f5f2eb; --accent:#9a6a1f; --accent-soft:rgba(154,106,31,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">PT</div><div class="brand-copy"><h1>Permit Tracking</h1><p>Status visibility</p></div></div>
-          <div class="nav-group">
-            <div class="nav-item active"><span>Issued this week</span><strong>47</strong></div>
-            <div class="nav-item"><span>Awaiting release</span><strong>18</strong></div>
-            <div class="nav-item"><span>Regional backlog</span><strong>06</strong></div>
-            <div class="nav-item"><span>Field updates</span><strong>12</strong></div>
+          <div class="brand">
+            <div class="brand-mark">PT</div>
+            <div class="brand-copy">
+              <h1>Permit Tracking</h1>
+              <p>Status operations</p>
+            </div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Transparency score</p><div class="value">95%</div><p class="stage-copy">Applicants and reviewers can track status changes without separate follow-up requests.</p></div>
+          <div class="nav-group">
+            <div class="nav-item active"><span>Awaiting release</span><strong>18 permits</strong></div>
+            <div class="nav-item"><span>Issued this week</span><strong>47 released</strong></div>
+            <div class="nav-item"><span>Regional backlog</span><strong>06 under watch</strong></div>
+            <div class="nav-item"><span>Field updates</span><strong>12 posted</strong></div>
+          </div>
+          <div class="sidebar-footer">
+            <p class="sidebar-label">Tracking transparency</p>
+            <div class="value">95%</div>
+            <p class="small-note">Applicants and processors can see status movement, release readiness, and regional backlog without follow-up calls.</p>
+          </div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Permit Status</p><p class="header-note">Track issuance, backlog, and regional field movement with clear status markers.</p></div><div class="pill-row"><span class="pill">Regional view</span><span class="pill">Aging alerts</span><span class="pill">Field visibility</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Tracking Dashboard</p>
-              <h2 class="hero-title">Bring permit progress, aging, and regional workload into one operational lens.</h2>
-              <p class="hero-copy">The dashboard makes status obvious for both public-facing progress and internal operations. Teams can see where permits are getting stuck, which regions are healthy, and where queue aging needs attention.</p>
-              <div class="detail-grid" style="margin-top:18px;">
-                <div class="detail-card"><p class="detail-title">Fastest region</p><p class="detail-copy">NCR is processing routine applications within the target service window.</p></div>
-                <div class="detail-card"><p class="detail-title">Backlog source</p><p class="detail-copy">Region V needs additional reviewer capacity to clear validation holds.</p></div>
-                <div class="detail-card"><p class="detail-title">Public clarity</p><p class="detail-copy">Applicants can now see meaningful state transitions instead of generic pending labels.</p></div>
+          <div class="topbar gov-topbar">
+            <div class="toolbar-group">
+              <span class="status-soft info">Permit lifecycle and release visibility</span>
+              <span class="chip">Regional print and release coordination</span>
+            </div>
+            <div class="toolbar-group">
+              <span class="chip">Updated 09:18</span>
+              <button class="primary-button">View release queue</button>
+            </div>
+          </div>
+          <div class="toolbar gov-toolbar">
+            <div class="toolbar-group">
+              <span class="tab active">Permit record</span>
+              <span class="tab">Regional backlog</span>
+              <span class="tab">Issued permits</span>
+            </div>
+            <div class="toolbar-group">
+              <div class="search">Search permit number or applicant</div>
+            </div>
+          </div>
+          <section class="page-header">
+            <p class="page-kicker">Permit status tracking</p>
+            <h2 class="page-title">Track permit movement from approved application to regional release, with queue age, release readiness, and field visibility in one view.</h2>
+            <p class="page-copy">This page focuses on operational tracking rather than analytics. It shows the current permit state, what has already completed, what still blocks release, and where regional backlog is beginning to age.</p>
+          </section>
+          <div class="gov-tracking-grid">
+            <div class="document-surface gov-tracking-surface">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Permit record</p>
+                  <h3 class="panel-title">PERMIT-2026-1841</h3>
+                </div>
+                <span class="status info">Awaiting release</span>
+              </div>
+              <div class="meta-stack gov-case-meta">
+                <div class="meta-item"><p class="meta-label">Applicant</p><p class="panel-copy">Juan Dela Cruz</p></div>
+                <div class="meta-item"><p class="meta-label">Region</p><p class="panel-copy">IV-A</p></div>
+                <div class="meta-item"><p class="meta-label">Filed on</p><p class="panel-copy">April 3, 2026</p></div>
+                <div class="meta-item"><p class="meta-label">Current owner</p><p class="panel-copy">Regional release officer</p></div>
+              </div>
+              <div class="gov-stage-strip">
+                <div class="gov-stage-card complete"><strong>Application received</strong><p class="panel-copy">Identity and equipment details recorded.</p></div>
+                <div class="gov-stage-card complete"><strong>Compliance review passed</strong><p class="panel-copy">Evidence validated and ready for permit generation.</p></div>
+                <div class="gov-stage-card complete"><strong>Permit generated</strong><p class="panel-copy">Permit number issued and print package created.</p></div>
+                <div class="gov-stage-card current"><strong>Awaiting release</strong><p class="panel-copy">Queued for officer release and applicant notice.</p></div>
+              </div>
+              <div class="panel gov-plain-card" style="margin-top:12px; padding:14px;">
+                <div class="panel-header">
+                  <div>
+                    <p class="section-kicker">Release readiness</p>
+                    <h3 class="panel-title">Current permit requirements</h3>
+                  </div>
+                </div>
+                <div class="queue-list">
+                  <div class="queue-item active"><strong class="doc-title">Permit document generated</strong><p class="panel-copy">Printable permit package is available in the regional release queue.</p></div>
+                  <div class="queue-item"><strong class="doc-title">Fee posting confirmed</strong><p class="panel-copy">Payment is matched to the application reference and cleared.</p></div>
+                  <div class="queue-item"><strong class="doc-title">Officer release pending</strong><p class="panel-copy">Release is expected within the regional service window today.</p></div>
+                </div>
               </div>
             </div>
-            <div class="hero-side">
-              <div class="status-card"><p class="panel-label">Issuance within SLA</p><div class="metric-row" style="justify-content:space-between; align-items:center; margin-top:12px;"><div><div class="metric-value">89%</div><p class="metric-label">Permits released within target processing time</p></div><div class="progress-ring" style="--value:89;" data-label="89%"></div></div></div>
-              <div class="table-card"><div class="table-header"><div><p class="section-kicker">Regional status</p><h3 class="panel-title">Backlog watch</h3></div></div><table class="table"><tr><td><strong>NCR</strong></td><td><span class="status ok">Healthy</span></td></tr><tr><td><strong>Region IV-A</strong></td><td><span class="status ok">Stable</span></td></tr><tr><td><strong>Region V</strong></td><td><span class="status warn">Aging</span></td></tr><tr><td><strong>Region VII</strong></td><td><span class="status warn">Watch</span></td></tr></table></div>
+            <div class="right-panel gov-plain-card">
+              <div class="table-card gov-plain-card">
+                <div class="table-header">
+                  <div>
+                    <p class="section-kicker">Regional backlog</p>
+                    <h3 class="panel-title">Queue age and field visibility</h3>
+                  </div>
+                </div>
+                <table class="table dense-table">
+                  <tr><th>Region</th><th>Queue age</th><th>Release watch</th></tr>
+                  <tr><td>NCR</td><td>1.2 days</td><td><span class="status ok">Within service window</span></td></tr>
+                  <tr><td>IV-A</td><td>1.8 days</td><td><span class="status ok">Stable</span></td></tr>
+                  <tr><td>V</td><td>4.7 days</td><td><span class="status warn">Aging backlog</span></td></tr>
+                  <tr><td>VII</td><td>3.1 days</td><td><span class="status info">Watch list</span></td></tr>
+                </table>
+              </div>
+              <div class="panel gov-plain-card" style="margin-top:12px; padding:14px;">
+                <div class="panel-header">
+                  <div>
+                    <p class="section-kicker">Field coordination</p>
+                    <h3 class="panel-title">Release and notification updates</h3>
+                  </div>
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item"><div class="timeline-dot"></div><div><strong class="doc-title">Release queue prepared</strong><p class="panel-copy">Regional print batch created for today&apos;s release run.</p></div></div>
+                  <div class="timeline-item"><div class="timeline-dot"></div><div><strong class="doc-title">Applicant notice queued</strong><p class="panel-copy">Notification will be sent after officer release is posted.</p></div></div>
+                  <div class="timeline-item"><div class="timeline-dot"></div><div><strong class="doc-title">Field status visible</strong><p class="panel-copy">Regional processors and permit-status teams can track any delay directly from this view.</p></div></div>
+                </div>
+              </div>
             </div>
-          </section>
+          </div>
         </main>
       </div>
     </div>

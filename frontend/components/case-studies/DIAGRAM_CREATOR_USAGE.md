@@ -236,7 +236,7 @@ For backward compatibility, manual positioning is still supported:
 />
 ```
 
-## Example: AiruNote Architecture
+## Example: airunote Architecture
 
 See `frontend/app/case-studies/airunote/page.tsx` for a complete example using the layered layout.
 

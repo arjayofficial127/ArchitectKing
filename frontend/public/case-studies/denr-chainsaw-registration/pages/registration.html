@@ -6,45 +6,159 @@
     <title>Government Registration Intake</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#eefaf2; --surface:rgba(255,255,255,0.88); --accent:#15803d; --accent-strong:#166534;">
+  <body class="government-registration-page gov-intake-page" style="--bg:#f5f2eb; --accent:#9a6a1f; --accent-soft:rgba(154,106,31,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">GR</div><div class="brand-copy"><h1>Registration Portal</h1><p>Citizen intake</p></div></div>
-          <div class="nav-group">
-            <div class="nav-item active"><span>New applications</span><strong>61</strong></div>
-            <div class="nav-item"><span>Saved drafts</span><strong>14</strong></div>
-            <div class="nav-item"><span>Identity checks</span><strong>09</strong></div>
-            <div class="nav-item"><span>Uploads verified</span><strong>37</strong></div>
+          <div class="brand">
+            <div class="brand-mark">GI</div>
+            <div class="brand-copy">
+              <h1>Registration Portal</h1>
+              <p>Citizen intake</p>
+            </div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Completion rate</p><div class="value">92%</div><p class="stage-copy">Applicants reaching final review after guided validation and document cues.</p></div>
+          <div class="nav-group">
+            <div class="nav-item active"><span>New filing</span><strong>Application start</strong></div>
+            <div class="nav-item"><span>Saved drafts</span><strong>14 records</strong></div>
+            <div class="nav-item"><span>Document guide</span><strong>6 required items</strong></div>
+            <div class="nav-item"><span>Help desk</span><strong>Regional support</strong></div>
+          </div>
+          <div class="sidebar-footer">
+            <p class="sidebar-label">Completion rate</p>
+            <div class="value">92%</div>
+            <p class="small-note">Applicants reach final review more consistently when identity, equipment, and ownership details are checked inline.</p>
+          </div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Public Intake</p><p class="header-note">A guided, secure registration experience for citizens and field applicants.</p></div><div class="pill-row"><span class="pill">Step-based flow</span><span class="pill">Document checks</span><span class="pill">Mobile ready</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Digital Registration</p>
-              <h2 class="hero-title">A clearer path from application start to compliant submission.</h2>
-              <p class="hero-copy">The intake experience reduces error rates by guiding applicants through identity details, equipment specifications, upload requirements, and submission readiness. It replaces paper-based ambiguity with a cleaner, more auditable workflow.</p>
-              <div class="stage-row" style="margin-top:18px;">
-                <div class="stage"><p class="stage-note">Step 1</p><h4 class="stage-title">Applicant identity</h4><p class="stage-copy">Personal details, address, and agency-recognized identifiers.</p></div>
-                <div class="stage"><p class="stage-note">Step 2</p><h4 class="stage-title">Equipment details</h4><p class="stage-copy">Serials, ownership proof, and equipment characteristics captured in one section.</p></div>
-                <div class="stage"><p class="stage-note">Step 3</p><h4 class="stage-title">Compliance package</h4><p class="stage-copy">Required documents validated before submission can proceed.</p></div>
+          <div class="topbar gov-topbar">
+            <div class="toolbar-group">
+              <span class="status-soft info">Official equipment registration service</span>
+              <span class="chip">Reference number assigned on submission</span>
+            </div>
+            <div class="toolbar-group">
+              <span class="chip">Secure filing</span>
+              <button class="primary-button">Save draft</button>
+            </div>
+          </div>
+          <div class="toolbar gov-toolbar">
+            <div class="toolbar-group">
+              <span class="pill active">New application</span>
+              <span class="pill">Saved draft</span>
+              <span class="pill">Requirements guide</span>
+            </div>
+            <div class="toolbar-group">
+              <span class="chip">Estimated filing time: 12 min</span>
+            </div>
+          </div>
+          <section class="page-header">
+            <p class="page-kicker">Digital registration intake</p>
+            <h2 class="page-title">A guided application flow for identity, equipment details, and supporting documents before filing a registration request.</h2>
+            <p class="page-copy">The intake screen is intentionally simple and official: clear steps, readable form groupings, and a requirement-readiness panel that shows what is complete before submission.</p>
+          </section>
+          <div class="gov-intake-grid">
+            <div class="panel gov-step-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Application steps</p>
+                  <h3 class="panel-title">Registration progress</h3>
+                </div>
+              </div>
+              <div class="gov-step-list">
+                <div class="gov-step-item active">
+                  <p class="meta-label">Step 1</p>
+                  <strong class="doc-title">Applicant identity</strong>
+                  <p class="panel-copy">Name, address, contact details, and government-issued identification.</p>
+                </div>
+                <div class="gov-step-item">
+                  <p class="meta-label">Step 2</p>
+                  <strong class="doc-title">Equipment details</strong>
+                  <p class="panel-copy">Equipment type, serial number, ownership basis, and intended use.</p>
+                </div>
+                <div class="gov-step-item">
+                  <p class="meta-label">Step 3</p>
+                  <strong class="doc-title">Supporting documents</strong>
+                  <p class="panel-copy">Ownership proof, valid ID, and any additional regional requirements.</p>
+                </div>
+                <div class="gov-step-item">
+                  <p class="meta-label">Step 4</p>
+                  <strong class="doc-title">Review and submit</strong>
+                  <p class="panel-copy">Confirm entries, inspect uploads, and file the application.</p>
+                </div>
               </div>
             </div>
-            <div class="hero-side">
-              <div class="table-card">
-                <div class="table-header"><div><p class="section-kicker">Submission readiness</p><h3 class="panel-title">Current applicant</h3></div></div>
-                <table class="table">
-                  <tr><td><strong>Identity verified</strong></td><td><span class="status ok">Complete</span></td></tr>
-                  <tr><td><strong>Equipment serial validated</strong></td><td><span class="status ok">Match</span></td></tr>
-                  <tr><td><strong>Supporting documents</strong></td><td><span class="status warn">1 missing</span></td></tr>
-                  <tr><td><strong>Final review</strong></td><td><span class="status warn">Pending</span></td></tr>
+            <div class="document-surface gov-form-surface">
+              <div class="panel-header">
+                <div>
+                  <p class="section-kicker">Applicant form</p>
+                  <h3 class="panel-title">Identity and equipment registration details</h3>
+                </div>
+                <span class="status-soft info">Draft autosaved</span>
+              </div>
+              <div class="gov-form-section">
+                <p class="section-kicker">Applicant identity</p>
+                <div class="form-grid gov-form-grid">
+                  <div class="field"><label>Applicant full name</label><div class="input-like">Juan Dela Cruz</div></div>
+                  <div class="field"><label>Province</label><div class="input-like">Batangas</div></div>
+                  <div class="field"><label>Government ID type</label><div class="input-like">TIN / Driver's License</div></div>
+                  <div class="field"><label>ID number</label><div class="input-like">DLN-21-458294</div></div>
+                </div>
+              </div>
+              <div class="gov-form-section">
+                <p class="section-kicker">Equipment details</p>
+                <div class="form-grid gov-form-grid">
+                  <div class="field"><label>Equipment type</label><div class="input-like">Chainsaw for private agricultural use</div></div>
+                  <div class="field"><label>Serial number</label><div class="input-like">CS-4A-102943</div></div>
+                  <div class="field"><label>Purchase date</label><div class="input-like">March 26, 2026</div></div>
+                  <div class="field"><label>Ownership proof</label><div class="input-like">Official receipt uploaded</div></div>
+                </div>
+              </div>
+              <div class="gov-document-strip">
+                <div class="queue-item active">
+                  <strong class="doc-title">Valid government ID</strong>
+                  <p class="panel-copy">Front and back copies attached and readable.</p>
+                </div>
+                <div class="queue-item">
+                  <strong class="doc-title">Ownership receipt</strong>
+                  <p class="panel-copy">Receipt present. Store name and serial number are visible.</p>
+                </div>
+              </div>
+            </div>
+            <div class="right-panel gov-readiness-panel">
+              <div class="table-card gov-plain-card">
+                <div class="table-header">
+                  <div>
+                    <p class="section-kicker">Submission readiness</p>
+                    <h3 class="panel-title">Requirements before filing</h3>
+                  </div>
+                </div>
+                <table class="table dense-table">
+                  <tr><th>Requirement</th><th>Status</th></tr>
+                  <tr><td>Applicant identity</td><td><span class="status ok">Complete</span></td></tr>
+                  <tr><td>Serial verification</td><td><span class="status ok">Recorded</span></td></tr>
+                  <tr><td>Supporting documents</td><td><span class="status warn">1 item to confirm</span></td></tr>
+                  <tr><td>Final applicant review</td><td><span class="status info">Pending</span></td></tr>
                 </table>
               </div>
-              <div class="status-card"><p class="panel-label">Portal signals</p><div class="chip-row" style="margin-top:12px;"><span class="chip">Document preview</span><span class="chip">Save and resume</span><span class="chip">Validation inline</span></div></div>
+              <div class="panel gov-plain-card" style="margin-top:12px; padding:14px;">
+                <div class="panel-header">
+                  <div>
+                    <p class="section-kicker">Applicant guidance</p>
+                    <h3 class="panel-title">Before you submit</h3>
+                  </div>
+                </div>
+                <div class="activity-list">
+                  <div class="activity-item">
+                    <strong class="doc-title">Check ownership details</strong>
+                    <p>Ensure the name on the receipt matches the identification document.</p>
+                  </div>
+                  <div class="activity-item">
+                    <strong class="doc-title">Review uploaded files</strong>
+                    <p>Unreadable attachments may delay regional validation and permit issuance.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </section>
+          </div>
         </main>
       </div>
     </div>

@@ -3,58 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manufacturing Inventory Overview</title>
+    <title>Inventory Command Center</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#fff5eb; --surface:rgba(255,255,255,0.86); --accent:#f97316; --accent-strong:#c2410c;">
+  <body style="--bg:#faf8f4; --accent:#b45309; --accent-soft:rgba(180,83,9,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">IV</div><div class="brand-copy"><h1>Inventory Control</h1><p>Warehouse visibility</p></div></div>
+          <div class="brand"><div class="brand-mark">TI</div><div class="brand-copy"><h1>Thread Inventory</h1><p>Operations control</p></div></div>
           <div class="nav-group">
-            <div class="nav-item active"><span>Tracked SKUs</span><strong>2,418</strong></div>
-            <div class="nav-item"><span>Low stock</span><strong>32</strong></div>
-            <div class="nav-item"><span>Receiving today</span><strong>14</strong></div>
-            <div class="nav-item"><span>Cycle counts</span><strong>06</strong></div>
+            <div class="nav-item active"><span>Inventory</span><strong>Live</strong></div>
+            <div class="nav-item"><span>Warehouses</span><strong>06</strong></div>
+            <div class="nav-item"><span>Low stock</span><strong>18</strong></div>
+            <div class="nav-item"><span>Purchase orders</span><strong>09</strong></div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Accuracy</p><div class="value">98.2%</div><p class="stage-copy">Inventory confidence after live stock synchronization and validation rules.</p></div>
+          <div class="sidebar-footer"><p class="sidebar-label">Accuracy</p><div class="value">98.2%</div><p class="small-note">Inventory confidence after live stock synchronization and validation rules.</p></div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Stock Visibility</p><p class="header-note">Live inventory levels, movement velocity, and shortage pressure across the floor.</p></div><div class="pill-row"><span class="pill">Realtime sync</span><span class="pill">Threshold alerts</span><span class="pill">Warehouse ready</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Inventory Control</p>
-              <h2 class="hero-title">Track stock health before production and fulfillment feel the impact.</h2>
-              <p class="hero-copy">The goal of this screen is operational clarity. Warehouse and supply chain teams can immediately see which SKUs are at risk, where movement velocity is rising, and which bins require intervention or replenishment.</p>
-              <div class="stats-grid" style="margin-top:18px;">
-                <div class="metric-card"><p class="stat-label">Available units</p><div class="stat-value">184k</div><p class="stage-copy">Across active warehouse locations.</p></div>
-                <div class="metric-card"><p class="stat-label">Critical shortage lines</p><div class="stat-value">08</div><p class="stage-copy">Below reorder threshold and tied to active work orders.</p></div>
-                <div class="metric-card"><p class="stat-label">Velocity increase</p><div class="stat-value">+19%</div><p class="stage-copy">Compared with the previous rolling week.</p></div>
-              </div>
-            </div>
-            <div class="hero-side">
-              <div class="panel">
-                <div class="panel-header"><div><p class="section-kicker">Stock pressure</p><h3 class="panel-title">Top moving categories</h3></div></div>
-                <div class="bars">
-                  <div class="bar-row"><span class="muted">Thread spools</span><div class="bar-track"><div class="bar-fill" style="--size:0.88;"></div></div><strong>88%</strong></div>
-                  <div class="bar-row"><span class="muted">Dye chemicals</span><div class="bar-track"><div class="bar-fill" style="--size:0.56;"></div></div><strong>56%</strong></div>
-                  <div class="bar-row"><span class="muted">Packaging</span><div class="bar-track"><div class="bar-fill" style="--size:0.49;"></div></div><strong>49%</strong></div>
-                  <div class="bar-row"><span class="muted">Needles</span><div class="bar-track"><div class="bar-fill" style="--size:0.72;"></div></div><strong>72%</strong></div>
-                </div>
-              </div>
-            </div>
+          <div class="toolbar"><div class="toolbar-group"><span class="pill active">Today</span><span class="pill">This week</span></div><div class="toolbar-group"><div class="search">Find SKU, color, supplier</div><button class="primary-button">Create PO</button></div></div>
+          <section class="page-header">
+            <p class="page-kicker">Inventory command center</p>
+            <h2 class="page-title">Monitor stock health, replenishment pressure, and warehouse throughput at a glance.</h2>
           </section>
+          <div class="kpi-grid">
+            <div class="kpi-card"><p class="section-kicker">Active SKUs</p><div class="kpi-value">642</div><p class="panel-copy">Across yarn, dyes, and packaging materials.</p></div>
+            <div class="kpi-card"><p class="section-kicker">Low stock items</p><div class="kpi-value">18</div><p class="panel-copy">Three need immediate reorder.</p></div>
+            <div class="kpi-card"><p class="section-kicker">Inbound today</p><div class="kpi-value">12</div><p class="panel-copy">Expected receiving arrivals.</p></div>
+            <div class="kpi-card"><p class="section-kicker">Fulfillment rate</p><div class="kpi-value">96%</div><p class="panel-copy">Orders shipped without stockouts.</p></div>
+          </div>
           <section class="content-grid">
             <div class="table-card">
-              <div class="table-header"><div><p class="section-kicker">SKU watchlist</p><h3 class="panel-title">Items requiring attention</h3></div><span class="badge">Receiving sync live</span></div>
+              <div class="table-header"><div><p class="section-kicker">Watch list</p><h3 class="panel-title">Items near reorder point</h3></div></div>
               <table class="table">
-                <tr><td><strong>TS-094 Cotton Spool</strong><div class="mini-copy">Warehouse A / Bin 3-19</div></td><td><span class="status risk">Reorder now</span></td></tr>
-                <tr><td><strong>DK-220 Indigo Dye</strong><div class="mini-copy">Chemical cage / Lot 28</div></td><td><span class="status warn">Low stock</span></td></tr>
-                <tr><td><strong>PK-044 Core Packaging</strong><div class="mini-copy">Outbound zone</div></td><td><span class="status ok">Stable</span></td></tr>
-                <tr><td><strong>ND-101 Precision Needle Set</strong><div class="mini-copy">Line support cabinet</div></td><td><span class="status warn">Fast moving</span></td></tr>
+                <tr><th>SKU</th><th>On hand</th><th>Status</th></tr>
+                <tr><td>THR-RED-20</td><td>84 cones</td><td><span class="status warn">Reorder soon</span></td></tr>
+                <tr><td>THR-BLK-40</td><td>22 cones</td><td><span class="status risk">Critical</span></td></tr>
+                <tr><td>DYE-NVY-12</td><td>19 drums</td><td><span class="status warn">Low</span></td></tr>
+                <tr><td>PKG-ROLL-03</td><td>310 units</td><td><span class="status ok">Stable</span></td></tr>
               </table>
             </div>
-            <div class="status-card"><p class="panel-label">Warehouse notes</p><div class="chip-row" style="margin-top:12px;"><span class="chip">Cycle count tonight</span><span class="chip">Supplier ETA 14:30</span><span class="chip">Audit trail clean</span></div><p class="stage-copy" style="margin-top:16px;">Critical lines are highlighted with context so operations can act without drilling through multiple screens.</p></div>
+            <div class="panel">
+              <div class="panel-header"><div><p class="section-kicker">Warehouse throughput</p><h3 class="panel-title">Daily movement</h3></div></div>
+              <div class="bar-list">
+                <div class="bar-row"><span class="muted">Receiving</span><div class="bar-track"><div class="bar-fill" style="--size:0.76;"></div></div><strong>76%</strong></div>
+                <div class="bar-row"><span class="muted">Picking</span><div class="bar-track"><div class="bar-fill" style="--size:0.68;"></div></div><strong>68%</strong></div>
+                <div class="bar-row"><span class="muted">Returns</span><div class="bar-track"><div class="bar-fill" style="--size:0.24;"></div></div><strong>24%</strong></div>
+              </div>
+              <div class="queue-list" style="margin-top:12px;">
+                <div class="queue-item"><strong class="doc-title">Lag in Warehouse 2</strong><p class="panel-copy">Inbound count reconciliation delayed 34 minutes.</p></div>
+                <div class="queue-item"><strong class="doc-title">PO 1042 arriving</strong><p class="panel-copy">Black thread replenishment scheduled by 4:00 PM.</p></div>
+              </div>
+            </div>
           </section>
         </main>
       </div>

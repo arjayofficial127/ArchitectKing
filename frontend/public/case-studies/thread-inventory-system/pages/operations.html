@@ -3,47 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manufacturing Operations Board</title>
+    <title>Inventory Operations Table</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#fff8f1; --surface:rgba(255,255,255,0.86); --accent:#ea580c; --accent-strong:#9a3412;">
+  <body style="--bg:#fbf8f3; --accent:#d97706; --accent-soft:rgba(217,119,6,0.12);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">OP</div><div class="brand-copy"><h1>Ops Board</h1><p>Line execution</p></div></div>
+          <div class="brand"><div class="brand-mark">OP</div><div class="brand-copy"><h1>Stock Ops</h1><p>SKU management</p></div></div>
           <div class="nav-group">
-            <div class="nav-item active"><span>Active lines</span><strong>09</strong></div>
-            <div class="nav-item"><span>Awaiting stock</span><strong>03</strong></div>
-            <div class="nav-item"><span>Rush orders</span><strong>05</strong></div>
-            <div class="nav-item"><span>Blockers</span><strong>02</strong></div>
+            <div class="nav-item active"><span>Stock table</span><strong>642</strong></div>
+            <div class="nav-item"><span>Cycle counts</span><strong>14</strong></div>
+            <div class="nav-item"><span>Transfers</span><strong>08</strong></div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">On-time start rate</p><div class="value">93%</div><p class="stage-copy">Production lines starting within planned windows after replenishment coordination.</p></div>
+          <div class="sidebar-footer"><p class="sidebar-label">On-time start rate</p><div class="value">93%</div><p class="small-note">Production lines starting within planned windows after replenishment coordination.</p></div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Operations Floor</p><p class="header-note">Keep lines moving by connecting inventory state, replenishment, and production urgency.</p></div><div class="pill-row"><span class="pill">Line status</span><span class="pill">Material pulls</span><span class="pill">Exception board</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Operations Board</p>
-              <h2 class="hero-title">A floor-ready view for dispatching materials and protecting manufacturing throughput.</h2>
-              <p class="hero-copy">This screen gives supervisors a single place to monitor line readiness, replenishment bottlenecks, and urgent work orders. The interface is tuned for fast scanning rather than heavy manipulation.</p>
-              <div class="board-columns" style="margin-top:18px;">
-                <div class="board-column"><p class="section-kicker">Ready</p><div class="board-card"><h4>Line 02</h4><p>Threading lot approved and staged.</p></div><div class="board-card"><h4>Line 04</h4><p>Packaging materials already pre-pulled.</p></div></div>
-                <div class="board-column"><p class="section-kicker">Waiting stock</p><div class="board-card"><h4>Line 01</h4><p>Needle set replenishment pending from support cage.</p></div><div class="board-card"><h4>Line 07</h4><p>Indigo dye lot awaiting QA sign-off.</p></div></div>
-                <div class="board-column"><p class="section-kicker">Escalate</p><div class="board-card"><h4>Rush Order 3391</h4><p>Outbound commitment at risk if spool transfer slips.</p></div><div class="board-card"><h4>Maintenance Hold</h4><p>Line 09 requires replacement roller before restart.</p></div></div>
-              </div>
-            </div>
-            <div class="hero-side">
-              <div class="table-card">
-                <div class="table-header"><div><p class="section-kicker">Live queue</p><h3 class="panel-title">Material pulls</h3></div></div>
-                <table class="table">
-                  <tr><td><strong>Transfer 1841</strong><div class="mini-copy">Spool rack to Line 01</div></td><td><span class="status warn">In progress</span></td></tr>
-                  <tr><td><strong>Pull 1847</strong><div class="mini-copy">Packaging to Outbound</div></td><td><span class="status ok">Complete</span></td></tr>
-                  <tr><td><strong>QA 223</strong><div class="mini-copy">Dye batch release</div></td><td><span class="status risk">Blocked</span></td></tr>
-                </table>
-              </div>
-              <div class="status-card"><p class="panel-label">Supervisor cues</p><div class="chip-row" style="margin-top:12px;"><span class="chip">2 rush orders</span><span class="chip">1 maintenance stop</span><span class="chip">3 lines waiting stock</span></div></div>
-            </div>
+          <div class="toolbar"><div class="toolbar-group"><span class="tab active">All SKUs</span><span class="tab">Low stock</span><span class="tab">Backordered</span></div><div class="toolbar-group"><div class="search">Search by SKU, supplier, warehouse</div></div></div>
+          <section class="page-header">
+            <p class="page-kicker">Stock table</p>
+            <h2 class="page-title">A dense operations page for warehouse teams managing levels, reorder points, and transfers.</h2>
           </section>
+          <div class="table-card">
+            <div class="table-header"><div><p class="section-kicker">Inventory records</p><h3 class="panel-title">Current stock by item</h3></div><div class="toolbar-group"><span class="chip">Warehouse 2</span><span class="chip">Supplier: all</span></div></div>
+            <table class="table">
+              <tr><th>SKU</th><th>Description</th><th>Warehouse</th><th>On hand</th><th>Reorder</th><th>Status</th></tr>
+              <tr><td>THR-RED-20</td><td>Red cotton thread 20wt</td><td>WH-1</td><td>84</td><td>60</td><td><span class="status ok">Healthy</span></td></tr>
+              <tr><td>THR-BLK-40</td><td>Black polyester thread 40wt</td><td>WH-2</td><td>22</td><td>45</td><td><span class="status risk">Critical</span></td></tr>
+              <tr><td>THR-WHT-20</td><td>White cotton thread 20wt</td><td>WH-2</td><td>51</td><td>50</td><td><span class="status warn">At threshold</span></td></tr>
+              <tr><td>DYE-NVY-12</td><td>Navy dye concentrate</td><td>WH-3</td><td>19</td><td>25</td><td><span class="status warn">Low</span></td></tr>
+              <tr><td>PKG-ROLL-03</td><td>Packaging roll</td><td>WH-1</td><td>310</td><td>150</td><td><span class="status ok">Healthy</span></td></tr>
+            </table>
+          </div>
         </main>
       </div>
     </div>

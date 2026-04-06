@@ -3,49 +3,164 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AiruNote AI Assistant</title>
+    <title>AI Wiki Team Hub Assisted Capture Workflow</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
+    <link rel="stylesheet" href="/case-studies/airunote/pages/airunote-showcase.css" />
   </head>
-  <body style="--bg:#f2fdf8; --surface:rgba(255,255,255,0.84); --accent:#10b981; --accent-strong:#047857;">
+  <body class="airu-body" style="--bg:#eef8f3; --accent:#10b981; --accent-soft:rgba(16,185,129,0.1);">
     <div class="frame">
-      <div class="app-shell">
-        <aside class="sidebar">
-          <div class="brand"><div class="brand-mark">AI</div><div class="brand-copy"><h1>Capture Assistant</h1><p>Structured extraction</p></div></div>
-          <div class="nav-group">
-            <div class="nav-item active"><span>Draft extraction</span><strong>03</strong></div>
-            <div class="nav-item"><span>Suggested tags</span><strong>12</strong></div>
-            <div class="nav-item"><span>Summary blocks</span><strong>06</strong></div>
-            <div class="nav-item"><span>Needs review</span><strong>02</strong></div>
-          </div>
-          <div class="sidebar-footer"><p class="section-kicker">Acceptance rate</p><div class="value">88%</div><p class="stage-copy">AI suggestions accepted with minor edits after human review.</p></div>
-        </aside>
-        <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Assisted workflow</p><p class="header-note">Capture raw material, extract structure, and publish with explicit review gates.</p></div><div class="pill-row"><span class="pill">Prompt guardrails</span><span class="pill">Human approval</span><span class="pill">Metadata first</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">AI Capture</p>
-              <h2 class="hero-title">Controlled AI assistance that accelerates note structuring without removing editorial ownership.</h2>
-              <p class="hero-copy">The assistant helps shape raw input into reusable knowledge objects: summary, tags, linked concepts, and next actions. Every extraction remains reviewable, and nothing becomes canonical until a person confirms it.</p>
-              <div class="timeline" style="margin-top:18px;">
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Input</p><h4 class="timeline-title">Paste meeting transcript</h4><p class="timeline-copy">Raw content enters the intake lane with source context and owner attribution.</p></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Extraction</p><h4 class="timeline-title">Generate summary and entities</h4><p class="timeline-copy">The assistant identifies decisions, unresolved items, and topic clusters.</p></div></div>
-                <div class="timeline-step"><div class="timeline-dot"></div><div><p class="timeline-label">Review</p><h4 class="timeline-title">Confirm structure before publish</h4><p class="timeline-copy">Editors accept, reject, or adjust suggestions before the note joins the graph.</p></div></div>
+      <div class="airu-shell airu-capture-shell">
+        <aside class="airu-capture-left">
+          <div class="airu-queue-card airu-card">
+            <div class="airu-panel-header">
+              <div>
+                <p class="airu-kicker">Draft queue</p>
+                <h3 class="airu-panel-title">Incoming captures</h3>
               </div>
             </div>
-            <div class="hero-side">
-              <div class="table-card">
-                <div class="table-header"><div><p class="section-kicker">Assistant output</p><h3 class="panel-title">Current extraction</h3></div></div>
-                <table class="table">
-                  <tr><td><strong>Summary confidence</strong></td><td>0.93</td></tr>
-                  <tr><td><strong>Entities detected</strong></td><td>17</td></tr>
-                  <tr><td><strong>Suggested collection</strong></td><td>Architecture Review</td></tr>
-                  <tr><td><strong>Recommended reviewers</strong></td><td>2 owners</td></tr>
-                </table>
+            <div class="airu-workset-list">
+              <div class="airu-queue-item is-active">
+                <strong class="airu-doc-title">Meeting transcript: Q2 planning</strong>
+                <p class="airu-small">24 paragraphs • imported 9m ago</p>
               </div>
-              <div class="status-card"><p class="panel-label">Guardrail status</p><div class="chip-row" style="margin-top:12px;"><span class="chip">Sensitive data filter on</span><span class="chip">Private workspace only</span><span class="chip">Source linked</span></div></div>
+              <div class="airu-queue-item">
+                <strong class="airu-doc-title">Client debrief audio</strong>
+                <p class="airu-small">Awaiting entity extraction</p>
+              </div>
+              <div class="airu-queue-item">
+                <strong class="airu-doc-title">Research clipping set</strong>
+                <p class="airu-small">Five excerpts with loose metadata</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="airu-source-card airu-card">
+            <div class="airu-panel-header">
+              <div>
+                <p class="airu-kicker">Source transcript</p>
+                <h3 class="airu-panel-title">Imported context</h3>
+              </div>
+            </div>
+            <div class="airu-transcript">
+              <div class="airu-transcript-block"><strong class="airu-doc-title">00:03</strong><p class="airu-small">"Queue ownership stays with the platform service so failure handling remains predictable."</p></div>
+              <div class="airu-transcript-block"><strong class="airu-doc-title">00:11</strong><p class="airu-small">"We need observability thresholds before the next feature wave enters production."</p></div>
+              <div class="airu-transcript-block"><strong class="airu-doc-title">00:18</strong><p class="airu-small">"Incident notes should resolve back into the architecture collection, not sit as isolated postmortems."</p></div>
+            </div>
+          </div>
+        </aside>
+
+        <main class="airu-capture-main">
+          <div class="airu-capture-topbar">
+            <div>
+              <p class="airu-kicker">Assisted capture workflow</p>
+              <h2 class="airu-title" style="font-size:1.42rem; color:#f8fafc;">Raw input to canonical note.</h2>
+            </div>
+            <div class="airu-chip-row">
+              <span class="airu-capture-chip">Source linked</span>
+              <span class="airu-capture-chip">Private scope</span>
+              <span class="airu-capture-chip">Markdown output</span>
+            </div>
+          </div>
+
+          <section class="airu-editor-wrap">
+            <div class="airu-editor-toolbar">
+              <div>
+                <p class="airu-label">Draft editor</p>
+                <h3 class="airu-panel-title">Q2 planning synthesis</h3>
+              </div>
+              <div class="airu-chip-row">
+                <span class="airu-chip">Version 7</span>
+                <span class="airu-chip">Canonical draft</span>
+              </div>
+            </div>
+
+            <div class="airu-editor-page">
+              <div class="airu-editor-head">
+                <div>
+                  <p class="airu-label">Summary confidence</p>
+                  <strong class="airu-doc-title" style="font-size:1rem;">0.93 with full source linkage</strong>
+                </div>
+                <span class="airu-inline-mark">AI assist reviewed</span>
+              </div>
+
+              <div class="airu-editor-body">
+                <div class="airu-editor-section">
+                  <h4>Summary</h4>
+                  <p class="airu-copy">The team aligned on tenancy boundaries, queue ownership, and the observability work required before the next release moves into production. Incident learnings will now resolve directly into the architecture collection.</p>
+                </div>
+                <div class="airu-editor-section">
+                  <h4>Decisions</h4>
+                  <p class="airu-copy">1. Queue ownership remains inside the platform service. 2. Moderation fallback stays synchronous in regulated flows. 3. Incident notes must attach to the originating architectural rule.</p>
+                </div>
+                <div class="airu-editor-section">
+                  <h4>Open items</h4>
+                  <p class="airu-copy">Define telemetry thresholds for delayed moderation, assign reviewer coverage for AI summaries, and validate the updated evidence-linking pattern against the next incident review.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="airu-editor-footer">
+              <div class="airu-chip-row">
+                <span class="airu-chip">3 linked entities added</span>
+                <span class="airu-chip">1 ownership check pending</span>
+              </div>
+              <div class="airu-chip-row">
+                <button class="airu-ghost-button">Convert to note</button>
+                <button class="airu-action-button">Publish canonical note</button>
+              </div>
             </div>
           </section>
         </main>
+
+        <aside class="airu-capture-right">
+          <div class="airu-assist-card airu-card">
+            <div class="airu-panel-header">
+              <div>
+                <p class="airu-kicker">AI assist</p>
+                <h3 class="airu-panel-title">Suggested structure</h3>
+              </div>
+            </div>
+            <div class="airu-confidence">
+              <div style="display:flex; justify-content:space-between; gap:12px;"><span class="airu-small">Summary fit</span><strong>93%</strong></div>
+              <div class="airu-confidence-bar"></div>
+            </div>
+            <div class="airu-tag-grid" style="margin-top:14px;">
+              <span class="airu-tag">Tenancy</span>
+              <span class="airu-tag">Queues</span>
+              <span class="airu-tag">Observability</span>
+              <span class="airu-tag">Incident links</span>
+            </div>
+          </div>
+
+          <div class="airu-summary-card airu-card">
+            <div class="airu-panel-header">
+              <div>
+                <p class="airu-kicker">Metadata suggestions</p>
+                <h3 class="airu-panel-title">Recommended fields</h3>
+              </div>
+            </div>
+            <div class="airu-meta-list">
+              <div><p class="airu-meta-label">Collection</p><p class="airu-meta">Architecture Review</p></div>
+              <div><p class="airu-meta-label">Owner</p><p class="airu-meta">Platform engineering</p></div>
+              <div><p class="airu-meta-label">Visibility</p><p class="airu-meta">Private org only</p></div>
+              <div><p class="airu-meta-label">Format</p><p class="airu-meta">Markdown note</p></div>
+            </div>
+          </div>
+
+          <div class="airu-assist-card airu-card">
+            <div class="airu-panel-header">
+              <div>
+                <p class="airu-kicker">Review actions</p>
+                <h3 class="airu-panel-title">Before publish</h3>
+              </div>
+            </div>
+            <div class="airu-suggestion-list">
+              <div class="airu-suggestion-item"><strong class="airu-doc-title">Confirm inferred owner</strong><p class="airu-small">Platform engineering selected from prior collection history.</p></div>
+              <div class="airu-suggestion-item"><strong class="airu-doc-title">Attach incident evidence</strong><p class="airu-small">Incident 2026-04-02 strengthens the decision trail.</p></div>
+              <div class="airu-suggestion-item"><strong class="airu-doc-title">Mark as canonical</strong><p class="airu-small">Draft is clean enough for collection-level publication.</p></div>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
     <script src="/case-studies/_shared/showcase.js"></script>

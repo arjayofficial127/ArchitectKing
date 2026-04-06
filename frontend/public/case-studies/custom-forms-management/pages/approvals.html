@@ -6,7 +6,7 @@
     <title>Forms Approvals Center</title>
     <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
   </head>
-  <body style="--bg:#faf5ff; --surface:rgba(255,255,255,0.86); --accent:#9333ea; --accent-strong:#6b21a8;">
+  <body style="--bg:#faf6ff; --accent:#9333ea; --accent-soft:rgba(147,51,234,0.1);">
     <div class="frame">
       <div class="app-shell">
         <aside class="sidebar">
@@ -17,26 +17,43 @@
             <div class="nav-item"><span>Escalated</span><strong>04</strong></div>
             <div class="nav-item"><span>Completed</span><strong>213</strong></div>
           </div>
-          <div class="sidebar-footer"><p class="section-kicker">Approval SLA</p><div class="value">91%</div><p class="stage-copy">Requests processed within service target after introducing clearer review queues.</p></div>
+          <div class="sidebar-footer"><p class="sidebar-label">Approval SLA</p><div class="value">91%</div><p class="small-note">Requests processed within service target after introducing clearer review queues.</p></div>
         </aside>
         <main class="main-shell">
-          <div class="topbar"><div><p class="section-kicker">Approvals Workspace</p><p class="header-note">A review surface for approvers to clear backlog with better context and less friction.</p></div><div class="pill-row"><span class="pill">Queue prioritization</span><span class="pill">SLA visibility</span><span class="pill">Decision history</span></div></div>
-          <section class="hero">
-            <div>
-              <p class="eyebrow">Approval Queue</p>
-              <h2 class="hero-title">Make high-volume approvals easier to process without losing decision quality.</h2>
-              <p class="hero-copy">The queue presents urgency, workflow stage, requester context, and downstream impact so approvers can move faster with better confidence. It turns a cluttered inbox into an operational decision board.</p>
-              <div class="board-columns" style="margin-top:18px;">
-                <div class="board-column"><p class="section-kicker">Urgent</p><div class="board-card"><h4>Expense exception</h4><p>Awaiting finance sign-off before payroll cutoff.</p></div><div class="board-card"><h4>Vendor onboarding</h4><p>Compliance confirmation overdue by 6 hours.</p></div></div>
-                <div class="board-column"><p class="section-kicker">In review</p><div class="board-card"><h4>Travel request batch</h4><p>Regional manager currently reviewing 7 submissions.</p></div><div class="board-card"><h4>Leave adjustment</h4><p>Needs department coverage confirmation.</p></div></div>
-                <div class="board-column"><p class="section-kicker">Ready to close</p><div class="board-card"><h4>Procurement request</h4><p>All approvals complete; awaiting final posting.</p></div><div class="board-card"><h4>Training enrollment</h4><p>Budget check passed and record synced.</p></div></div>
+          <div class="toolbar"><div class="toolbar-group"><span class="tab active">My queue</span><span class="tab">Due today</span><span class="tab">Escalated</span></div><div class="toolbar-group"><span class="chip">Priority sort</span><span class="chip">SLA visibility</span></div></div>
+          <section class="page-header">
+            <p class="page-kicker">Submission operations queue</p>
+            <h2 class="page-title">Review high-volume submissions in a queue that shows urgency, stage, and decision context.</h2>
+          </section>
+          <div class="content-grid">
+            <div class="table-card">
+              <div class="table-header"><div><p class="section-kicker">My approvals</p><h3 class="panel-title">Current queue</h3></div></div>
+              <table class="table">
+                <tr><th>Request</th><th>Stage</th><th>SLA</th><th>Status</th></tr>
+                <tr><td>Expense exception</td><td>Finance review</td><td>2h left</td><td><span class="status risk">Urgent</span></td></tr>
+                <tr><td>Vendor onboarding</td><td>Compliance review</td><td>6h left</td><td><span class="status warn">Due today</span></td></tr>
+                <tr><td>Travel request batch</td><td>Manager approval</td><td>18h left</td><td><span class="status info">In review</span></td></tr>
+                <tr><td>Procurement request</td><td>Final posting</td><td>24h left</td><td><span class="status ok">Ready</span></td></tr>
+              </table>
+            </div>
+            <div class="right-panel">
+              <div class="panel-header"><div><p class="section-kicker">Selected request</p><h3 class="panel-title">Expense exception</h3></div></div>
+              <div class="meta-stack">
+                <div class="meta-item"><p class="meta-label">Requester</p><p class="panel-copy">Melissa R. Cruz</p></div>
+                <div class="meta-item"><p class="meta-label">Department</p><p class="panel-copy">Operations</p></div>
+                <div class="meta-item"><p class="meta-label">Amount</p><p class="panel-copy">PHP 32,500</p></div>
+                <div class="meta-item"><p class="meta-label">Reason</p><p class="panel-copy">Emergency supplier replacement</p></div>
+              </div>
+              <div class="panel" style="margin-top:12px; padding:14px;">
+                <div class="panel-header"><div><p class="section-kicker">Decision aids</p><h3 class="panel-title">Review context</h3></div></div>
+                <div class="queue-list">
+                  <div class="queue-item"><strong class="doc-title">Prior approvals</strong><p class="panel-copy">Two similar exceptions approved last quarter.</p></div>
+                  <div class="queue-item"><strong class="doc-title">Budget impact</strong><p class="panel-copy">Within emergency procurement allowance.</p></div>
+                  <div class="queue-item"><strong class="doc-title">Downstream action</strong><p class="panel-copy">Posts to ERP after finance sign-off.</p></div>
+                </div>
               </div>
             </div>
-            <div class="hero-side">
-              <div class="status-card"><p class="panel-label">Backlog health</p><div class="metric-row" style="justify-content:space-between; align-items:center; margin-top:12px;"><div><div class="metric-value">84%</div><p class="metric-label">Items likely to clear within SLA</p></div><div class="progress-ring" style="--value:84;" data-label="84%"></div></div></div>
-              <div class="table-card"><div class="table-header"><div><p class="section-kicker">Queue split</p><h3 class="panel-title">Approval volume</h3></div></div><table class="table"><tr><td><strong>Manager approvals</strong></td><td>17</td></tr><tr><td><strong>Finance review</strong></td><td>9</td></tr><tr><td><strong>Executive sign-off</strong></td><td>4</td></tr><tr><td><strong>System handoff</strong></td><td>9</td></tr></table></div>
-            </div>
-          </section>
+          </div>
         </main>
       </div>
     </div>

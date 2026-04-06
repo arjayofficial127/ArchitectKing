@@ -6,7 +6,7 @@ import { DiagramCreator } from '@/components/case-studies/DiagramCreator';
 export default function AiruNoteCaseStudy() {
   return (
     <CaseStudyLayout
-      title="AiruNote"
+      title="AI Wiki Team Hub"
       subtitle="AI-Assisted TXT | MD | RTF Capture & Knowledge Management System"
       summary="AI-powered note capture, structured knowledge management, and document organization system. Built with privacy-first architecture and modular extensibility for enterprise knowledge workflows."
       problemContext={
