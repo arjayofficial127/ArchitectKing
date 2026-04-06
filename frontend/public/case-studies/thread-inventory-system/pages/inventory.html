@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manufacturing Inventory Overview</title>
+    <link rel="stylesheet" href="/case-studies/_shared/showcase.css" />
+  </head>
+  <body style="--bg:#fff5eb; --surface:rgba(255,255,255,0.86); --accent:#f97316; --accent-strong:#c2410c;">
+    <div class="frame">
+      <div class="app-shell">
+        <aside class="sidebar">
+          <div class="brand"><div class="brand-mark">IV</div><div class="brand-copy"><h1>Inventory Control</h1><p>Warehouse visibility</p></div></div>
+          <div class="nav-group">
+            <div class="nav-item active"><span>Tracked SKUs</span><strong>2,418</strong></div>
+            <div class="nav-item"><span>Low stock</span><strong>32</strong></div>
+            <div class="nav-item"><span>Receiving today</span><strong>14</strong></div>
+            <div class="nav-item"><span>Cycle counts</span><strong>06</strong></div>
+          </div>
+          <div class="sidebar-footer"><p class="section-kicker">Accuracy</p><div class="value">98.2%</div><p class="stage-copy">Inventory confidence after live stock synchronization and validation rules.</p></div>
+        </aside>
+        <main class="main-shell">
+          <div class="topbar"><div><p class="section-kicker">Stock Visibility</p><p class="header-note">Live inventory levels, movement velocity, and shortage pressure across the floor.</p></div><div class="pill-row"><span class="pill">Realtime sync</span><span class="pill">Threshold alerts</span><span class="pill">Warehouse ready</span></div></div>
+          <section class="hero">
+            <div>
+              <p class="eyebrow">Inventory Control</p>
+              <h2 class="hero-title">Track stock health before production and fulfillment feel the impact.</h2>
+              <p class="hero-copy">The goal of this screen is operational clarity. Warehouse and supply chain teams can immediately see which SKUs are at risk, where movement velocity is rising, and which bins require intervention or replenishment.</p>
+              <div class="stats-grid" style="margin-top:18px;">
+                <div class="metric-card"><p class="stat-label">Available units</p><div class="stat-value">184k</div><p class="stage-copy">Across active warehouse locations.</p></div>
+                <div class="metric-card"><p class="stat-label">Critical shortage lines</p><div class="stat-value">08</div><p class="stage-copy">Below reorder threshold and tied to active work orders.</p></div>
+                <div class="metric-card"><p class="stat-label">Velocity increase</p><div class="stat-value">+19%</div><p class="stage-copy">Compared with the previous rolling week.</p></div>
+              </div>
+            </div>
+            <div class="hero-side">
+              <div class="panel">
+                <div class="panel-header"><div><p class="section-kicker">Stock pressure</p><h3 class="panel-title">Top moving categories</h3></div></div>
+                <div class="bars">
+                  <div class="bar-row"><span class="muted">Thread spools</span><div class="bar-track"><div class="bar-fill" style="--size:0.88;"></div></div><strong>88%</strong></div>
+                  <div class="bar-row"><span class="muted">Dye chemicals</span><div class="bar-track"><div class="bar-fill" style="--size:0.56;"></div></div><strong>56%</strong></div>
+                  <div class="bar-row"><span class="muted">Packaging</span><div class="bar-track"><div class="bar-fill" style="--size:0.49;"></div></div><strong>49%</strong></div>
+                  <div class="bar-row"><span class="muted">Needles</span><div class="bar-track"><div class="bar-fill" style="--size:0.72;"></div></div><strong>72%</strong></div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="content-grid">
+            <div class="table-card">
+              <div class="table-header"><div><p class="section-kicker">SKU watchlist</p><h3 class="panel-title">Items requiring attention</h3></div><span class="badge">Receiving sync live</span></div>
+              <table class="table">
+                <tr><td><strong>TS-094 Cotton Spool</strong><div class="mini-copy">Warehouse A / Bin 3-19</div></td><td><span class="status risk">Reorder now</span></td></tr>
+                <tr><td><strong>DK-220 Indigo Dye</strong><div class="mini-copy">Chemical cage / Lot 28</div></td><td><span class="status warn">Low stock</span></td></tr>
+                <tr><td><strong>PK-044 Core Packaging</strong><div class="mini-copy">Outbound zone</div></td><td><span class="status ok">Stable</span></td></tr>
+                <tr><td><strong>ND-101 Precision Needle Set</strong><div class="mini-copy">Line support cabinet</div></td><td><span class="status warn">Fast moving</span></td></tr>
+              </table>
+            </div>
+            <div class="status-card"><p class="panel-label">Warehouse notes</p><div class="chip-row" style="margin-top:12px;"><span class="chip">Cycle count tonight</span><span class="chip">Supplier ETA 14:30</span><span class="chip">Audit trail clean</span></div><p class="stage-copy" style="margin-top:16px;">Critical lines are highlighted with context so operations can act without drilling through multiple screens.</p></div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="/case-studies/_shared/showcase.js"></script>
+  </body>
+</html>

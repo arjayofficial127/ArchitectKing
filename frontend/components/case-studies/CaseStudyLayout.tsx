@@ -1,8 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
+import { CaseStudyShowcaseGallery } from '@/components/case-studies/CaseStudyShowcaseGallery';
+import {
+  caseStudyGalleryConfig,
+  type CaseStudyGalleryId,
+} from '@/components/case-studies/caseStudyGalleryConfig';
 
 interface CaseStudyLayoutProps {
   title: string;
@@ -31,6 +37,11 @@ export function CaseStudyLayout({
   highLevelArchitectureDiagram,
   moduleBreakdownDiagram,
 }: CaseStudyLayoutProps) {
+  const pathname = usePathname();
+  const galleryId = (Object.keys(caseStudyGalleryConfig) as CaseStudyGalleryId[]).find((studyId) =>
+    pathname?.startsWith(`/case-studies/${studyId}`),
+  );
+
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
       {/* Subtle background */}
@@ -70,6 +81,14 @@ export function CaseStudyLayout({
             </p>
           </div>
         </section>
+
+        {galleryId ? (
+          <section className="relative mx-auto max-w-7xl px-6 pb-12 md:pb-16">
+            <div className="mx-auto max-w-5xl">
+              <CaseStudyShowcaseGallery studyId={galleryId} />
+            </div>
+          </section>
+        ) : null}
 
         {/* Content Sections */}
         <section className="relative mx-auto max-w-7xl px-6 pb-16 md:pb-24">
