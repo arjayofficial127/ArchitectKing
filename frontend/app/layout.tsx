@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://arvinjaysoncastro.com'),
   title: 'Arvin Jayson Castro | Senior Fullstack Architect | React Next.js .NET Node',
   description: '15 years experience. Senior Fullstack Architect specializing in React, Next.js, .NET, Node.js. Multi-tenant SaaS systems, production-grade architecture, system design. Available for architecture calls and consulting.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
   keywords: [
     'Senior Fullstack Developer Philippines',
     'React Next.js Architect',

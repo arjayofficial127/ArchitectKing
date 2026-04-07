@@ -29,6 +29,7 @@ export function FloatingAudioPlayer() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const selectedVolumeRef = useRef<VolumePreset>('mid');
   const soundUnlockedRef = useRef(false);
+  const userPausedRef = useRef(false);
 
   useEffect(() => {
     selectedVolumeRef.current = selectedVolume;
@@ -65,7 +66,21 @@ export function FloatingAudioPlayer() {
     audio.volume = VOLUME_LEVELS[selectedVolumeRef.current];
     audio.muted = !soundUnlockedRef.current;
 
+    const unlockAudio = () => {
+      if (!soundUnlockedRef.current) {
+        soundUnlockedRef.current = true;
+        setSoundUnlocked(true);
+      }
+
+      audio.muted = false;
+      audio.volume = VOLUME_LEVELS[selectedVolumeRef.current];
+    };
+
     const attemptPlay = () => {
+      if (userPausedRef.current) {
+        return;
+      }
+
       const playPromise = audio.play();
 
       if (playPromise && typeof playPromise.catch === 'function') {
@@ -108,12 +123,8 @@ export function FloatingAudioPlayer() {
         return;
       }
 
-      if (!soundUnlockedRef.current) {
-        setSoundUnlocked(true);
-        audio.muted = false;
-        audio.volume = VOLUME_LEVELS[selectedVolumeRef.current];
-      }
-
+      userPausedRef.current = false;
+      unlockAudio();
       attemptPlay();
     };
 
@@ -171,6 +182,7 @@ export function FloatingAudioPlayer() {
 
   const applySelectedVolume = (preset: VolumePreset) => {
     setSelectedVolume(preset);
+    selectedVolumeRef.current = preset;
 
     const audio = audioRef.current;
 
@@ -178,14 +190,19 @@ export function FloatingAudioPlayer() {
       return;
     }
 
-    if (!soundUnlocked) {
+    if (!soundUnlockedRef.current) {
+      soundUnlockedRef.current = true;
       setSoundUnlocked(true);
       audio.muted = false;
     }
 
     audio.volume = VOLUME_LEVELS[preset];
+    userPausedRef.current = false;
     setIsPlaying(true);
-    void audio.play();
+    void audio.play().catch(() => {
+      setIsPlaying(false);
+      setAutoplayBlocked(true);
+    });
   };
 
   const togglePlayback = () => {
@@ -195,13 +212,16 @@ export function FloatingAudioPlayer() {
       return;
     }
 
-    if (!soundUnlocked) {
-      setSoundUnlocked(true);
-      audio.muted = false;
-      audio.volume = VOLUME_LEVELS[selectedVolume];
-    }
+    if (audio.paused || !soundUnlockedRef.current) {
+      userPausedRef.current = false;
 
-    if (audio.paused) {
+      if (!soundUnlockedRef.current) {
+        soundUnlockedRef.current = true;
+        setSoundUnlocked(true);
+      }
+
+      audio.muted = false;
+      audio.volume = VOLUME_LEVELS[selectedVolumeRef.current];
       setIsPlaying(true);
       void audio.play().catch(() => {
         setIsPlaying(false);
@@ -210,6 +230,7 @@ export function FloatingAudioPlayer() {
       return;
     }
 
+    userPausedRef.current = true;
     setIsPlaying(false);
     audio.pause();
   };
