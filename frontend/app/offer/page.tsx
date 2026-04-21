@@ -174,7 +174,7 @@ export default function OfferPage() {
             </div>
             <div className="bg-slate-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Internal Tools</h3>
-              <p className="text-slate-400 text-sm">Custom software for your team's specific workflows.</p>
+              <p className="text-slate-400 text-sm">Custom software for your teams specific workflows.</p>
             </div>
             <div className="bg-slate-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Client Systems</h3>
@@ -249,7 +249,7 @@ export default function OfferPage() {
       <section className="px-6 py-20 bg-slate-800">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Need a Website Up Quickly?</h2>
-          <p className="text-xl text-slate-300 mb-8">Let's build it and get it live.</p>
+          <p className="text-xl text-slate-300 mb-8">Let uss build it and get it live.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact-me"
