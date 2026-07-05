@@ -12,6 +12,7 @@ export function SiteNavbar() {
   
   const isWorkingFundamentals = pathname?.startsWith('/working-fundamentals') ?? false;
   const isCaseStudies = pathname?.startsWith('/case-studies') ?? false;
+  const isArchitectureReview = pathname?.startsWith('/architecture-review') ?? false;
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
@@ -99,6 +100,16 @@ export function SiteNavbar() {
             Contact
           </button>
 
+          <Link href="/architecture-review">
+            <button
+              type="button"
+              aria-label="Architecture Review"
+              className={`text-sm font-medium transition-colors px-4 py-2 ${isArchitectureReview ? 'text-[#F4C430]' : 'text-slate-600 hover:text-[#F4C430]'}`}
+            >
+              Architecture Review
+            </button>
+          </Link>
+
           <Link href="/working-fundamentals">
             <button
               type="button"
@@ -133,9 +144,19 @@ export function SiteNavbar() {
             <button
               type="button"
               aria-label="Download CV"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-[#0F172A] px-3 py-2 text-sm font-medium text-white transition-all hover:opacity-90 focus:outline-none"
+              className="text-sm font-medium transition-colors text-slate-600 hover:text-[#F4C430] px-4 py-2"
             >
               Download CV
+            </button>
+          </Link>
+
+          <Link href="/schedule">
+            <button
+              type="button"
+              aria-label="Book a Call"
+              className="inline-flex items-center justify-center rounded-md border border-transparent bg-[#0F172A] px-3 py-2 text-sm font-medium text-white transition-all hover:opacity-90 focus:outline-none"
+            >
+              Book a Call
             </button>
           </Link>
 

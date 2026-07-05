@@ -5,25 +5,42 @@ import { DateTime } from 'luxon';
 import type { CalendarEvent } from '@/lib/api/superadmin';
 import { getMinutesFromMidnight, getDateFromMinutes, snapToInterval, formatTime } from '@/lib/utils/calendarUtils';
 import { getCalendarEventColor } from '@/config/superadminColors';
+import { useEventInteractions } from '@/hooks/superadmin/useEventInteractions';
+import { EventContextMenu } from './EventContextMenu';
 
 interface DayViewProps {
   date: Date;
   events: CalendarEvent[];
   onEventClick: (event: CalendarEvent) => void;
   onSlotClick: (start: Date, end: Date) => void;
+  onEventTimesChange: (event: CalendarEvent, newStart: Date, newEnd: Date, kind: 'move' | 'resize') => void;
+  onEventDuplicate: (event: CalendarEvent) => void;
+  onEventToggleOpenSlot: (event: CalendarEvent) => void;
+  onEventDelete: (event: CalendarEvent) => void;
   openSlotMode: boolean;
   timezone: string;
 }
 
-export function DayView({ date, events, onEventClick, onSlotClick, openSlotMode, timezone }: DayViewProps) {
+export function DayView({ date, events, onEventClick, onSlotClick, onEventTimesChange, onEventDuplicate, onEventToggleOpenSlot, onEventDelete, openSlotMode, timezone }: DayViewProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState<number | null>(null);
   const [dragEnd, setDragEnd] = useState<number | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
+  const GUTTER_PX = 64; // w-16 time label column
+
   const dt = DateTime.fromJSDate(date, { zone: timezone });
   const dayStart = dt.startOf('day').toJSDate();
   const dayEnd = dt.endOf('day').toJSDate();
+
+  const interactions = useEventInteractions({
+    gridRef,
+    days: [dayStart],
+    gutterPx: GUTTER_PX,
+    timezone,
+    onEventClick,
+    onCommitTimes: onEventTimesChange,
+  });
 
   // Filter events for this day
   const dayEvents = events.filter((event) => {
@@ -52,6 +69,7 @@ export function DayView({ date, events, onEventClick, onSlotClick, openSlotMode,
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
+      if (interactions.handleGridMouseMove(e)) return;
       if (!isDragging || dragStart === null || !gridRef.current) return;
 
       const rect = gridRef.current.getBoundingClientRect();
@@ -61,10 +79,11 @@ export function DayView({ date, events, onEventClick, onSlotClick, openSlotMode,
       const snapped = Math.round(minutes / 30) * 30;
       setDragEnd(snapped);
     },
-    [isDragging, dragStart]
+    [isDragging, dragStart, interactions]
   );
 
   const handleMouseUp = useCallback(() => {
+    if (interactions.handleGridMouseUp()) return;
     if (isDragging && dragStart !== null && dragEnd !== null) {
       const startMinutes = Math.min(dragStart, dragEnd);
       const endMinutes = Math.max(dragStart, dragEnd);
@@ -78,7 +97,7 @@ export function DayView({ date, events, onEventClick, onSlotClick, openSlotMode,
     setIsDragging(false);
     setDragStart(null);
     setDragEnd(null);
-  }, [isDragging, dragStart, dragEnd, dayStart, timezone, onSlotClick]);
+  }, [isDragging, dragStart, dragEnd, dayStart, timezone, onSlotClick, interactions]);
 
   const handleSlotClick = (minutes: number) => {
     const start = getDateFromMinutes(dayStart, minutes, timezone);
@@ -198,8 +217,9 @@ export function DayView({ date, events, onEventClick, onSlotClick, openSlotMode,
             return (
               <div
                 key={event.id}
-                onClick={() => onEventClick(event)}
-                className="absolute rounded px-2 py-1 text-xs cursor-pointer hover:shadow-md transition-shadow border-l-2"
+                onMouseDown={(e) => interactions.handleEventMouseDown(e, event, 'move')}
+                onContextMenu={(e) => interactions.handleEventContextMenu(e, event)}
+                className="absolute rounded px-1.5 py-0.5 text-xs cursor-grab active:cursor-grabbing select-none hover:shadow-md transition-shadow border-l-2 overflow-hidden"
                 style={{
                   ...position,
                   left: isOverlapping ? `${index * 5}%` : '0',
@@ -210,15 +230,45 @@ export function DayView({ date, events, onEventClick, onSlotClick, openSlotMode,
                   zIndex: 10,
                 }}
               >
-                <div className="font-medium truncate">{event.title}</div>
-                <div className="text-gray-600">
-                  {formatTime(new Date(event.startDatetime), timezone)} -{' '}
-                  {formatTime(new Date(event.endDatetime), timezone)}
+                <div
+                  className="absolute inset-x-0 top-0 h-1.5 cursor-ns-resize"
+                  onMouseDown={(e) => interactions.handleEventMouseDown(e, event, 'resize-start')}
+                />
+                <div className="flex items-center gap-1">
+                  <span className="min-w-0 basis-[70%] truncate font-medium">{event.title}</span>
+                  <span className="basis-[30%] shrink-0 text-right text-[10px] leading-tight text-gray-600">
+                    {formatTime(new Date(event.startDatetime), timezone)} –{' '}
+                    {formatTime(new Date(event.endDatetime), timezone)}
+                  </span>
                 </div>
+                <div
+                  className="absolute inset-x-0 bottom-0 h-1.5 cursor-ns-resize"
+                  onMouseDown={(e) => interactions.handleEventMouseDown(e, event, 'resize-end')}
+                />
               </div>
             );
           })}
         </div>
+
+        {/* Move/Resize Preview */}
+        {interactions.preview && gridRef.current && (() => {
+          const p = interactions.preview;
+          const fmt = (m: number) =>
+            `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+          return (
+            <div
+              className="absolute left-16 right-0 z-30 rounded border-2 border-emerald-400 bg-emerald-100/70 px-1 pointer-events-none"
+              style={{
+                top: `${(p.startMinutes / 1440) * 100}%`,
+                height: `${((p.endMinutes - p.startMinutes) / 1440) * 100}%`,
+              }}
+            >
+              <span className="text-[10px] font-semibold text-emerald-800">
+                {fmt(p.startMinutes)}–{fmt(p.endMinutes)}
+              </span>
+            </div>
+          );
+        })()}
 
         {/* Time Labels */}
         <div className="absolute left-0 top-0 bottom-0 w-16 border-r border-gray-200 bg-gray-50">
@@ -233,6 +283,15 @@ export function DayView({ date, events, onEventClick, onSlotClick, openSlotMode,
           ))}
         </div>
       </div>
+
+      <EventContextMenu
+        menu={interactions.contextMenu}
+        onClose={interactions.closeContextMenu}
+        onEdit={onEventClick}
+        onDuplicate={onEventDuplicate}
+        onToggleOpenSlot={onEventToggleOpenSlot}
+        onDelete={onEventDelete}
+      />
     </div>
   );
 }

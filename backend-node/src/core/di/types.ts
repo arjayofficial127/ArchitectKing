@@ -43,6 +43,7 @@ export const TYPES = {
   IBookingService: Symbol('IBookingService'),
   IProspectService: Symbol('IProspectService'),
   INotificationService: Symbol('INotificationService'),
+  IMailService: Symbol('IMailService'),
 
   // Use Cases
   IAuthUseCase: Symbol('IAuthUseCase'),

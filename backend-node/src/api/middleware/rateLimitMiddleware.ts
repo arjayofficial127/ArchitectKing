@@ -27,6 +27,21 @@ export const authRateLimit = rateLimit({
   },
 });
 
+// Booking rate limit — public POST /api/public/book is unauthenticated and
+// converts open slots to scheduled, so it needs a strict ceiling
+export const bookingRateLimit = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 10, // attempts per window per IP+email combination
+  message: 'Too many booking attempts, please try again later',
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req: Request) => {
+    const ip = req.ip || 'unknown';
+    const email = typeof req.body?.email === 'string' ? req.body.email.toLowerCase() : '';
+    return email ? `${ip}:${email}` : ip;
+  },
+});
+
 // API rate limit - for authenticated requests (user-based) and unauthenticated (IP-based)
 export const apiRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes

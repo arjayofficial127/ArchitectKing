@@ -13,18 +13,29 @@ export function CloseFoldFinal() {
         <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-sm mx-auto">I design and deliver systems built for real-world production.</p>
 
         <div className="mt-6">
-          <Link href="/contact-me">
-            <button
-              type="button"
-              aria-label="Discuss Your System"
-              className="bg-slate-900 text-white w-full md:w-auto px-6 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-3 shadow-md hover:shadow-lg transition hover:scale-[1.02]"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[#F4C430]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-              <span>Discuss Your System</span>
-            </button>
-          </Link>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-3">
+            <Link href="/schedule" className="w-full md:w-auto">
+              <button
+                type="button"
+                aria-label="Book a Call"
+                className="bg-slate-900 text-white w-full md:w-auto px-6 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-3 shadow-md hover:shadow-lg transition hover:scale-[1.02]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[#F4C430]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                <span>Book a Call</span>
+              </button>
+            </Link>
+            <Link href="/contact-me" className="w-full md:w-auto">
+              <button
+                type="button"
+                aria-label="Discuss Your System"
+                className="w-full md:w-auto px-6 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-3 border border-slate-300 text-slate-700 hover:border-slate-500 transition hover:scale-[1.02]"
+              >
+                <span>Discuss Your System</span>
+              </button>
+            </Link>
+          </div>
 
           <div className="mt-6 flex flex-col items-center gap-2 text-sm text-slate-500">
             <a href="mailto:arvinjaysoncastro@gmail.com" className="hover:text-slate-800 transition truncate">arvinjaysoncastro@gmail.com</a>

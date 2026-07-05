@@ -18,16 +18,41 @@ export interface CreateBookingRequest {
   timezone: string;
 }
 
+export interface ManagedBooking {
+  name: string;
+  email: string;
+  message: string | null;
+  status: string;
+  timezoneAtBooking: string | null;
+  event: {
+    title: string;
+    startDatetime: string;
+    endDatetime: string;
+    timezone: string;
+  };
+}
+
 export const publicApi = {
   getSchedule: async (start: string, end: string): Promise<PublicScheduleEvent[]> => {
     const response = await apiClient.get('/public/schedule', {
       params: { start, end },
+      timeout: 10000,
     });
     return response.data.data;
   },
 
   createBooking: async (input: CreateBookingRequest): Promise<any> => {
     const response = await apiClient.post('/public/book', input);
+    return response.data.data;
+  },
+
+  getManagedBooking: async (token: string): Promise<ManagedBooking> => {
+    const response = await apiClient.get(`/public/booking/${token}`, { timeout: 10000 });
+    return response.data.data;
+  },
+
+  cancelManagedBooking: async (token: string): Promise<ManagedBooking> => {
+    const response = await apiClient.post(`/public/booking/${token}/cancel`);
     return response.data.data;
   },
 };

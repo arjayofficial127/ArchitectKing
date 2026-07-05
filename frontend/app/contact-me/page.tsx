@@ -129,6 +129,12 @@ export default function ContactMePage() {
               <p className="text-lg font-semibold text-slate-900">
                 {"Sometimes a second set of eyes is all it takes."}
               </p>
+              <Link
+                href="/schedule"
+                className="inline-flex w-full md:w-auto items-center justify-center rounded-lg bg-[#0F172A] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-2"
+              >
+                Book a Call — pick a time
+              </Link>
               <a
                 href="mailto:arvinjaysoncastro@gmail.com?subject=Review%20Your%20System&body=Hi%20Arvin%2C%0A%0ACould%20you%20take%20a%20look%20at%20our%20system%3F%0A%0AThanks%2C"
                 className="inline-flex w-full md:w-auto items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-lg font-semibold text-[#0F172A] shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"

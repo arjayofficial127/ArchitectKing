@@ -4,11 +4,12 @@ import { TYPES } from '../../../core/di/types';
 import { BookingService } from '../../../infrastructure/services/public/booking.service';
 import { CreateBookingRequestDto } from '../../../application/dtos/booking.dto';
 import { ValidationError } from '../../../core/errors/AppError';
+import { bookingRateLimit } from '../../middleware/rateLimitMiddleware';
 
 const router: ReturnType<typeof Router> = Router();
 
 // POST /api/public/book
-router.post('/', async (req: Request, res: Response, next) => {
+router.post('/', bookingRateLimit, async (req: Request, res: Response, next) => {
   try {
     const bodyResult = CreateBookingRequestDto.safeParse(req.body);
 

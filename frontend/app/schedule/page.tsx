@@ -1,249 +1,308 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { DateTime } from 'luxon';
 import { publicApi, type PublicScheduleEvent } from '@/lib/api/public';
 import { BookingModal } from '@/components/public/BookingModal';
+import { SiteNavbar } from '@/components/shared/SiteNavbar';
+import { AmbientBackground } from '@/components/ui/AmbientBackground';
+
+const WINDOW_DAYS = 14;
+
+interface ConfirmedBooking {
+  event: PublicScheduleEvent;
+  name: string;
+  email: string;
+  cancelToken?: string;
+}
+
+interface DayGroup {
+  dayKey: string;
+  label: string;
+  relative: string | null;
+  events: PublicScheduleEvent[];
+}
 
 export default function SchedulePage() {
   const [visitorTimezone, setVisitorTimezone] = useState<string>('');
   const [events, setEvents] = useState<PublicScheduleEvent[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<PublicScheduleEvent | null>(null);
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const [confirmedBooking, setConfirmedBooking] = useState<ConfirmedBooking | null>(null);
 
   // Detect visitor timezone on load
   useEffect(() => {
-    const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    setVisitorTimezone(detected);
+    setVisitorTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone);
   }, []);
 
-  // Calculate week range (current week)
-  const weekRange = useMemo(() => {
-    const now = DateTime.now().setZone(visitorTimezone || 'UTC');
-    const weekStart = now.startOf('week');
-    const weekEnd = weekStart.endOf('week');
-    return {
-      start: weekStart.toISO()!,
-      end: weekEnd.toISO()!,
-    };
-  }, [visitorTimezone]);
+  const fetchSchedule = useCallback(async (options?: { silent?: boolean }) => {
+    if (!options?.silent) setLoading(true);
+    setError(false);
+    try {
+      const now = DateTime.now();
+      const start = now.toISO();
+      const end = now.plus({ days: WINDOW_DAYS }).endOf('day').toISO();
+      if (!start || !end) throw new Error('Invalid date range');
+      const data = await publicApi.getSchedule(start, end);
+      setEvents(data);
+    } catch {
+      setError(true);
+    } finally {
+      if (!options?.silent) setLoading(false);
+    }
+  }, []);
 
-  // Fetch schedule
   useEffect(() => {
     if (!visitorTimezone) return;
-
-    const fetchSchedule = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await publicApi.getSchedule(weekRange.start, weekRange.end);
-        setEvents(data);
-      } catch (err: any) {
-        setError(err.response?.data?.error?.message || 'Failed to load schedule');
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchSchedule();
-  }, [weekRange.start, weekRange.end, visitorTimezone]);
+  }, [visitorTimezone, fetchSchedule]);
 
-  // Group events by day
-  const eventsByDay = useMemo(() => {
-    const grouped: Record<string, PublicScheduleEvent[]> = {};
-    
-    events.forEach((event) => {
-      // Convert UTC to visitor timezone for display
-      const start = DateTime.fromISO(event.startDatetime, { zone: 'UTC' });
-      const visitorStart = start.setZone(visitorTimezone);
-      const dayKey = visitorStart.toFormat('yyyy-MM-dd');
-      
-      if (!grouped[dayKey]) {
-        grouped[dayKey] = [];
-      }
-      grouped[dayKey].push(event);
-    });
+  // Group available slots by day in the visitor's timezone; only days with slots
+  const days = useMemo<DayGroup[]>(() => {
+    if (!visitorTimezone) return [];
+    const grouped = new Map<string, PublicScheduleEvent[]>();
 
-    // Sort events within each day
-    Object.keys(grouped).forEach((day) => {
-      grouped[day].sort((a, b) => {
-        const aStart = DateTime.fromISO(a.startDatetime, { zone: 'UTC' }).setZone(visitorTimezone);
-        const bStart = DateTime.fromISO(b.startDatetime, { zone: 'UTC' }).setZone(visitorTimezone);
-        return aStart.toMillis() - bStart.toMillis();
-      });
-    });
+    for (const event of events) {
+      const dayKey = DateTime.fromISO(event.startDatetime, { zone: 'utc' })
+        .setZone(visitorTimezone)
+        .toFormat('yyyy-MM-dd');
+      const list = grouped.get(dayKey) ?? [];
+      list.push(event);
+      grouped.set(dayKey, list);
+    }
 
-    return grouped;
+    const today = DateTime.now().setZone(visitorTimezone).toFormat('yyyy-MM-dd');
+    const tomorrow = DateTime.now().setZone(visitorTimezone).plus({ days: 1 }).toFormat('yyyy-MM-dd');
+
+    return Array.from(grouped.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([dayKey, dayEvents]) => ({
+        dayKey,
+        label: DateTime.fromISO(dayKey, { zone: visitorTimezone }).toFormat('cccc, MMMM d'),
+        relative: dayKey === today ? 'Today' : dayKey === tomorrow ? 'Tomorrow' : null,
+        events: [...dayEvents].sort((a, b) => a.startDatetime.localeCompare(b.startDatetime)),
+      }));
   }, [events, visitorTimezone]);
 
-  // Get week days
-  const weekDays = useMemo(() => {
-    if (!visitorTimezone) return [];
-    const now = DateTime.now().setZone(visitorTimezone);
-    const weekStart = now.startOf('week');
-    const days: Date[] = [];
-    for (let i = 0; i < 7; i++) {
-      days.push(weekStart.plus({ days: i }).toJSDate());
-    }
-    return days;
-  }, [visitorTimezone]);
+  const formatTime = (isoString: string): string =>
+    DateTime.fromISO(isoString, { zone: 'utc' }).setZone(visitorTimezone).toFormat('h:mm a');
 
-  const handleBookClick = (event: PublicScheduleEvent) => {
-    setSelectedEvent(event);
-    setIsBookingModalOpen(true);
-    setBookingConfirmed(false);
+  const durationMinutes = (event: PublicScheduleEvent): number =>
+    Math.round(
+      DateTime.fromISO(event.endDatetime).diff(DateTime.fromISO(event.startDatetime), 'minutes').minutes
+    );
+
+  const googleCalendarUrl = (booking: ConfirmedBooking): string => {
+    const fmt = "yyyyMMdd'T'HHmmss'Z'";
+    const start = DateTime.fromISO(booking.event.startDatetime, { zone: 'utc' }).toFormat(fmt);
+    const end = DateTime.fromISO(booking.event.endDatetime, { zone: 'utc' }).toFormat(fmt);
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: 'Call with Arvin Jayson Castro',
+      dates: `${start}/${end}`,
+      details: 'Booked via arvinjaysoncastro.com/schedule',
+    });
+    return `https://calendar.google.com/calendar/render?${params.toString()}`;
   };
 
-  const handleBookingSuccess = () => {
-    setBookingConfirmed(true);
-    setIsBookingModalOpen(false);
-    // Refetch schedule to update available slots
-    const fetchSchedule = async () => {
-      try {
-        const data = await publicApi.getSchedule(weekRange.start, weekRange.end);
-        setEvents(data);
-      } catch (err: any) {
-        // Silent fail on refetch
-      }
-    };
+  const handleBookingSuccess = (details: { name: string; email: string; cancelToken?: string }) => {
+    if (selectedEvent) {
+      setConfirmedBooking({
+        event: selectedEvent,
+        name: details.name,
+        email: details.email,
+        cancelToken: details.cancelToken,
+      });
+    }
+    setSelectedEvent(null);
     fetchSchedule();
   };
 
-  const formatTime = (isoString: string): string => {
-    const dt = DateTime.fromISO(isoString, { zone: 'UTC' });
-    const visitorTime = dt.setZone(visitorTimezone);
-    return visitorTime.toFormat('h:mm a');
-  };
-
-  const formatDate = (date: Date): string => {
-    const dt = DateTime.fromJSDate(date, { zone: visitorTimezone });
-    return dt.toFormat('EEEE, MMMM d');
-  };
-
-  if (bookingConfirmed) {
+  // ---------- Confirmation view ----------
+  if (confirmedBooking) {
+    const start = DateTime.fromISO(confirmedBooking.event.startDatetime, { zone: 'utc' }).setZone(visitorTimezone);
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full text-center">
-          <div className="mb-4">
-            <svg
-              className="w-16 h-16 text-green-500 mx-auto"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
+      <div className="relative min-h-screen bg-white text-slate-800">
+        <AmbientBackground gridSize={64} lightCount={6} enableGradient gradientOpacity={0.05} enableGrain grainOpacity={0.03} />
+        <SiteNavbar />
+        <main className="relative mx-auto flex max-w-2xl flex-col items-center px-6 py-16 md:py-24">
+          <div className="w-full rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm md:p-10">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50">
+              <svg className="h-8 w-8 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">{"You're booked!"}</h1>
+
+            <div className="mx-auto mt-6 max-w-sm rounded-xl border border-slate-200 bg-slate-50/60 p-5 text-left">
+              <p className="text-sm font-semibold text-slate-900">{start.toFormat('cccc, MMMM d, yyyy')}</p>
+              <p className="mt-1 text-sm text-slate-700">
+                {formatTime(confirmedBooking.event.startDatetime)} – {formatTime(confirmedBooking.event.endDatetime)}
+                <span className="ml-2 text-xs text-slate-500">({durationMinutes(confirmedBooking.event)} min)</span>
+              </p>
+              <p className="mt-1 text-xs text-slate-500">{visitorTimezone}</p>
+            </div>
+
+            <p className="mx-auto mt-6 max-w-md text-sm leading-relaxed text-slate-600">
+              {"Thanks, "}{confirmedBooking.name.split(' ')[0]}{". I'll personally follow up at "}
+              <span className="font-medium text-slate-800">{confirmedBooking.email}</span>
+              {" to confirm the call and share the meeting link."}
+            </p>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href={googleCalendarUrl(confirmedBooking)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-lg bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition-all hover:opacity-90 sm:w-auto"
+              >
+                Add to Google Calendar
+              </a>
+              <button
+                type="button"
+                onClick={() => setConfirmedBooking(null)}
+                className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-[#FFFDF4] sm:w-auto"
+              >
+                Book another time
+              </button>
+            </div>
+
+            <div className="mt-6 flex items-center justify-center gap-4 text-sm">
+              {confirmedBooking.cancelToken && (
+                <Link
+                  href={`/booking/${confirmedBooking.cancelToken}`}
+                  className="text-slate-500 transition-colors hover:text-[#F4C430]"
+                >
+                  Manage booking
+                </Link>
+              )}
+              <Link href="/" className="text-slate-500 transition-colors hover:text-[#F4C430]">
+                Back to Home
+              </Link>
+            </div>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Your meeting has been confirmed.</h1>
-          <p className="text-gray-600 mb-6">We&apos;ll send you a confirmation email shortly.</p>
-          <button
-            onClick={() => {
-              setBookingConfirmed(false);
-              setSelectedEvent(null);
-            }}
-            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-          >
-            Book Another Meeting
-          </button>
-        </div>
+        </main>
       </div>
     );
   }
 
+  // ---------- Booking view ----------
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Book a Meeting</h1>
-          <p className="text-gray-600">Select an available time slot below</p>
-          {visitorTimezone && visitorTimezone !== 'Asia/Manila' && (
-            <div className="mt-4 inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-              Your Timezone: {visitorTimezone}
+    <div className="relative min-h-screen bg-white text-slate-800">
+      <AmbientBackground gridSize={64} lightCount={6} enableGradient gradientOpacity={0.05} enableGrain grainOpacity={0.03} />
+      <SiteNavbar />
+
+      <main className="relative mx-auto max-w-3xl px-6 py-12 md:py-16">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Book a Call</h1>
+          <p className="mx-auto mt-4 max-w-xl text-base text-slate-600 sm:text-lg">
+            Pick a time that works for you. We&apos;ll look at your system together and map out clear next steps.
+          </p>
+          {visitorTimezone && (
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm text-slate-600">
+              <svg className="h-4 w-4 text-[#F4C430]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0" />
+              </svg>
+              Times shown in {visitorTimezone.replace(/_/g, ' ')}
             </div>
           )}
         </div>
 
-        {/* Loading State */}
+        {/* Loading skeleton */}
         {loading && (
-          <div className="text-center py-12">
-            <div className="text-gray-600">Loading available slots...</div>
-          </div>
-        )}
-
-        {/* Error State */}
-        {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-            <p className="text-red-800">{error}</p>
-          </div>
-        )}
-
-        {/* Week View */}
-        {!loading && !error && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
-            {weekDays.map((day, index) => {
-              const dayKey = DateTime.fromJSDate(day, { zone: visitorTimezone }).toFormat('yyyy-MM-dd');
-              const dayEvents = eventsByDay[dayKey] || [];
-
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-sm border border-gray-200 p-4"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                    {formatDate(day)}
-                  </h3>
-                  {dayEvents.length === 0 ? (
-                    <p className="text-sm text-gray-500">No available slots</p>
-                  ) : (
-                    <div className="space-y-3">
-                      {dayEvents.map((event) => {
-                        const start = DateTime.fromISO(event.startDatetime, { zone: 'UTC' });
-                        const end = DateTime.fromISO(event.endDatetime, { zone: 'UTC' });
-                        const visitorStart = start.setZone(visitorTimezone);
-                        const visitorEnd = end.setZone(visitorTimezone);
-
-                        return (
-                          <div
-                            key={event.id}
-                            className="border border-gray-200 rounded-lg p-3 hover:border-blue-300 transition-colors"
-                          >
-                            <div className="text-sm font-medium text-gray-900 mb-1">
-                              {formatTime(event.startDatetime)} - {formatTime(event.endDatetime)}
-                            </div>
-                            <button
-                              onClick={() => handleBookClick(event)}
-                              className="w-full mt-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
-                            >
-                              Book
-                            </button>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
+          <div className="mt-10 space-y-8" aria-hidden>
+            {[0, 1].map((group) => (
+              <div key={group}>
+                <div className="h-5 w-48 animate-pulse rounded bg-slate-200" />
+                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {[0, 1, 2].map((slot) => (
+                    <div key={slot} className="h-16 animate-pulse rounded-xl bg-slate-100" />
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         )}
-      </div>
+
+        {/* Fallback: API error or no upcoming slots */}
+        {!loading && (error || days.length === 0) && (
+          <div className="mx-auto mt-10 max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+            <p className="text-slate-700">
+              No available times are visible right now. You can still email me directly.
+            </p>
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact-me"
+                className="inline-flex w-full items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 sm:w-auto"
+              >
+                Email Me Directly
+              </Link>
+              {error && (
+                <button
+                  type="button"
+                  onClick={() => fetchSchedule()}
+                  className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-[#FFFDF4] sm:w-auto"
+                >
+                  Try again
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Available days */}
+        {!loading && !error && days.length > 0 && (
+          <div className="mt-10 space-y-8">
+            {days.map((day) => (
+              <section key={day.dayKey} aria-label={day.label}>
+                <h2 className="flex items-baseline gap-2 text-lg font-semibold text-slate-900">
+                  {day.label}
+                  {day.relative && (
+                    <span className="rounded-full bg-[#FFF8E1] px-2.5 py-0.5 text-xs font-medium text-[#8a6d00]">
+                      {day.relative}
+                    </span>
+                  )}
+                </h2>
+                <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {day.events.map((event) => (
+                    <button
+                      key={event.id}
+                      type="button"
+                      onClick={() => setSelectedEvent(event)}
+                      className="group rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#F4C430] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-1"
+                    >
+                      <span className="block text-sm font-semibold text-slate-900 group-hover:text-[#8a6d00]">
+                        {formatTime(event.startDatetime)}
+                      </span>
+                      <span className="mt-0.5 block text-xs text-slate-500">
+                        {durationMinutes(event)} min
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            ))}
+
+            <p className="pt-2 text-center text-xs text-slate-400">
+              Can&apos;t find a time that works?{' '}
+              <Link href="/contact-me" className="underline transition-colors hover:text-[#F4C430]">
+                Email me
+              </Link>{' '}
+              and we&apos;ll sort something out.
+            </p>
+          </div>
+        )}
+      </main>
 
       {/* Booking Modal */}
       {selectedEvent && (
         <BookingModal
-          isOpen={isBookingModalOpen}
+          isOpen={selectedEvent !== null}
           onClose={() => {
-            setIsBookingModalOpen(false);
             setSelectedEvent(null);
+            fetchSchedule({ silent: true });
           }}
           event={selectedEvent}
           visitorTimezone={visitorTimezone}

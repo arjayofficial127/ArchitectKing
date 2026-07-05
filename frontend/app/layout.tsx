@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { FloatingAudioPlayer } from '@/components/landing/FloatingAudioPlayer';
+import { FEATURES } from '@/config/features';
 import { ToastContainer } from '@/lib/toast';
 import ConditionalFooter from '@/components/layout/ConditionalFooter';
 import { ErrorBoundary } from '@/components/errors/ErrorBoundary';
@@ -128,7 +129,7 @@ export default function RootLayout({
                       {children}
                       <ConditionalFooter />
                     </div>
-                    <FloatingAudioPlayer />
+                    {FEATURES.musicPlayer && <FloatingAudioPlayer />}
                     {/* ToastContainer must be here for toasts to show globally */}
                     <ToastContainer />
                   </ErrorBoundary>

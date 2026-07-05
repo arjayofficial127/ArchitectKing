@@ -22,6 +22,7 @@ import superadminNotificationsRoutes from './routes/superadmin/notifications.rou
 import superadminFilesRoutes from './routes/superadmin/files.routes';
 import publicScheduleRoutes from './routes/public/schedule.routes';
 import publicBookRoutes from './routes/public/book.routes';
+import publicBookingManageRoutes from './routes/public/booking-manage.routes';
 
 // Register services in DI container
 import '../core/di/container';
@@ -115,6 +116,8 @@ import { CalendarService } from '../infrastructure/services/superadmin/calendar.
 import { BookingService } from '../infrastructure/services/public/booking.service';
 import { ProspectService } from '../infrastructure/services/superadmin/prospect.service';
 import { NotificationService } from '../infrastructure/services/superadmin/notification.service';
+import { IMailService } from '../application/interfaces/IMailService';
+import { ResendMailService } from '../infrastructure/services/mail/ResendMailService';
 
 dotenv.config();
 
@@ -169,6 +172,7 @@ container.registerSingleton<CalendarService>(TYPES.ICalendarService, CalendarSer
 container.registerSingleton<BookingService>(TYPES.IBookingService, BookingService);
 container.registerSingleton<ProspectService>(TYPES.IProspectService, ProspectService);
 container.registerSingleton<NotificationService>(TYPES.INotificationService, NotificationService);
+container.registerSingleton<IMailService>(TYPES.IMailService, ResendMailService);
 
 container.register<IFileStorageService>(TYPES.IFileStorageService, {
   useFactory: () => StorageBackendFactory.create(),
@@ -277,6 +281,7 @@ export function createApp(): Express {
   // Public routes
   app.use('/api/public/schedule', publicScheduleRoutes);
   app.use('/api/public/book', publicBookRoutes);
+  app.use('/api/public/booking', publicBookingManageRoutes);
 
   // Error handling (must be last)
   app.use(errorMiddleware);

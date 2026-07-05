@@ -31,9 +31,11 @@ I help teams design and evolve systems that stay stable, scale cleanly, and hold
               <div className="mt-4 md:mt-10 text-left">
 <div className="flex flex-col items-center md:items-start gap-2 mt-4 max-w-sm md:max-w-none mx-auto md:mx-0 px-4 md:px-0">
 
-  <button className="w-full md:w-auto px-6 py-3 rounded-md bg-[#0F172A] text-white font-medium text-center md:text-left">
-    Let’s look at your system
-  </button>
+  <Link href="/architecture-review" className="w-full md:w-auto">
+    <button className="w-full md:w-auto px-6 py-3 rounded-md bg-[#0F172A] text-white font-medium text-center md:text-left">
+      Let’s look at your system
+    </button>
+  </Link>
 
   <p className="text-sm text-slate-500 text-center md:text-left max-w-xs md:max-w-none">
     No pressure. Just a quick look at what’s slowing things down.

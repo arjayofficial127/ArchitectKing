@@ -1,4 +1,5 @@
-import { injectable } from 'tsyringe';
+import { injectable, inject } from 'tsyringe';
+import { TYPES } from '../../../core/di/types';
 import { IProspectRepository } from '../../../application/interfaces/IProspectRepository';
 import { IProspectMeetingRepository } from '../../../application/interfaces/IProspectMeetingRepository';
 import { Prospect } from '../../../domain/entities/Prospect';
@@ -38,8 +39,8 @@ export interface ProspectFilter {
 @injectable()
 export class ProspectService {
   constructor(
-    private prospectRepo: IProspectRepository,
-    private prospectMeetingRepo: IProspectMeetingRepository
+    @inject(TYPES.IProspectRepository) private prospectRepo: IProspectRepository,
+    @inject(TYPES.IProspectMeetingRepository) private prospectMeetingRepo: IProspectMeetingRepository
   ) {}
 
   async createProspect(input: CreateProspectInput): Promise<Prospect> {

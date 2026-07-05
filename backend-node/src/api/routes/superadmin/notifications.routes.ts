@@ -18,8 +18,8 @@ router.get('/', async (req: Request, res: Response, next) => {
     const unreadOnly = req.query.unread === 'true';
     
     const notifications = unreadOnly
-      ? await notificationService.getUnreadNotifications()
-      : await notificationService.getAllNotifications();
+      ? await notificationService.getUnreadNotificationsDetailed()
+      : await notificationService.getAllNotificationsDetailed();
 
     res.json({
       success: true,

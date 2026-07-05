@@ -15,6 +15,10 @@ export class CalendarEvent {
     public readonly visibility: 'private' | 'public_open',
     public readonly recurrenceRule: Record<string, any> | null,
     public readonly recurrenceParentId: string | null,
+    /** For materialized occurrences: the rule-generated time, fixed even if the occurrence is moved */
+    public readonly recurrenceOriginalStart: Date | null,
+    /** Groups events created together in one action (multi-day / split); deleting can target the whole batch */
+    public readonly batchId: string | null,
     public readonly color: string | null,
     public readonly createdAt: Date,
     public readonly updatedAt: Date

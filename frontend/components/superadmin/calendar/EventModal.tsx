@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { DateTime } from 'luxon';
-import type { CalendarEvent, CreateCalendarEventInput, UpdateCalendarEventInput } from '@/lib/api/superadmin';
+import type { CalendarEvent, CreateCalendarEventInput, UpdateCalendarEventInput, BulkCreateCalendarEventsInput } from '@/lib/api/superadmin';
 import { formatTime, snapToInterval } from '@/lib/utils/calendarUtils';
+import { computeOccurrences, MAX_OCCURRENCES } from '@/lib/utils/selectionOccurrences';
 
 interface EventModalProps {
   isOpen: boolean;
@@ -13,7 +14,10 @@ interface EventModalProps {
   initialEnd?: Date;
   openSlotMode: boolean;
   onSave: (data: CreateCalendarEventInput | UpdateCalendarEventInput, mode?: 'single' | 'series') => Promise<void>;
-  onDelete?: (mode: 'single' | 'series') => Promise<void>;
+  onSaveBulk?: (data: BulkCreateCalendarEventsInput) => Promise<void>;
+  onDelete?: (mode: 'single' | 'series' | 'batch') => Promise<void>;
+  /** Number of events sharing this event's batch (for the delete-series prompt) */
+  batchSize?: number;
 }
 
 export function EventModal({
@@ -24,7 +28,9 @@ export function EventModal({
   initialEnd,
   openSlotMode,
   onSave,
+  onSaveBulk,
   onDelete,
+  batchSize,
 }: EventModalProps) {
   const timezone = 'Asia/Manila';
   const [title, setTitle] = useState('');
@@ -42,8 +48,13 @@ export function EventModal({
   const [recurrenceCount, setRecurrenceCount] = useState<number | undefined>();
   const [editMode, setEditMode] = useState<'single' | 'series' | undefined>(undefined);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [deleteMode, setDeleteMode] = useState<'single' | 'series'>('single');
+  const [deleteMode, setDeleteMode] = useState<'single' | 'series' | 'batch'>('single');
   const [loading, setLoading] = useState(false);
+  // Multi-day / split interpretation of the selection (create mode only)
+  const [multiMode, setMultiMode] = useState<'per-day' | 'continuous'>('per-day');
+  const [splitEnabled, setSplitEnabled] = useState(false);
+  const [splitMinutes, setSplitMinutes] = useState(60);
+  const [bufferMinutes, setBufferMinutes] = useState(0);
 
   // Initialize form from event or initial times
   useEffect(() => {
@@ -90,15 +101,43 @@ export function EventModal({
     }
   }, [event, initialStart, initialEnd, openSlotMode, timezone]);
 
-  // Update end time when duration changes
-  useEffect(() => {
-    if (startDate && startTime && !event) {
+  // Explicit quick-set: only rewrites the end when the user picks a duration
+  // (an effect here would clobber multi-day drag selections on mount)
+  const applyDuration = (minutes: 30 | 60 | 90 | 120) => {
+    setDuration(minutes);
+    if (startDate && startTime) {
       const start = DateTime.fromISO(`${startDate}T${startTime}`, { zone: timezone });
-      const end = start.plus({ minutes: duration });
+      const end = start.plus({ minutes });
       setEndDate(end.toFormat('yyyy-MM-dd'));
       setEndTime(end.toFormat('HH:mm'));
     }
-  }, [duration, startDate, startTime, event, timezone]);
+  };
+
+  // How many calendar days the selection covers
+  const daySpan = useMemo(() => {
+    const start = DateTime.fromISO(startDate, { zone: timezone });
+    const end = DateTime.fromISO(endDate, { zone: timezone });
+    if (!start.isValid || !end.isValid || end < start) return 1;
+    return Math.round(end.startOf('day').diff(start.startOf('day'), 'days').days) + 1;
+  }, [startDate, endDate, timezone]);
+
+  // Expand the selection into concrete occurrences (create mode only)
+  const occurrences = useMemo(() => {
+    if (event) return [];
+    return computeOccurrences(
+      startDate,
+      startTime,
+      endDate,
+      endTime,
+      {
+        mode: daySpan > 1 ? multiMode : 'per-day',
+        split: splitEnabled && !(daySpan > 1 && multiMode === 'continuous'),
+        splitMinutes,
+        bufferMinutes,
+      },
+      timezone
+    );
+  }, [event, startDate, startTime, endDate, endTime, daySpan, multiMode, splitEnabled, splitMinutes, bufferMinutes, timezone]);
 
   if (!isOpen) return null;
 
@@ -107,6 +146,33 @@ export function EventModal({
     setLoading(true);
 
     try {
+      // Batch path: the selection expands to several events sharing a batchId
+      if (!event && occurrences.length > 1 && onSaveBulk) {
+        if (occurrences.length > MAX_OCCURRENCES) {
+          alert(`This selection would create more than ${MAX_OCCURRENCES} events. Narrow it down.`);
+          setLoading(false);
+          return;
+        }
+        await onSaveBulk({
+          title,
+          agenda: agenda || undefined,
+          notes: notes || undefined,
+          timezone,
+          status: openSlotMode ? 'open_slot' : 'scheduled',
+          visibility: openSlotMode ? 'public_open' : 'private',
+          occurrences,
+        });
+        onClose();
+        setLoading(false);
+        return;
+      }
+
+      if (!event && occurrences.length === 0) {
+        alert("Each day's end time must be after its start time");
+        setLoading(false);
+        return;
+      }
+
       const start = DateTime.fromISO(`${startDate}T${startTime}`, { zone: timezone });
       const end = DateTime.fromISO(`${endDate}T${endTime}`, { zone: timezone });
 
@@ -116,16 +182,18 @@ export function EventModal({
         return;
       }
 
+      // A single occurrence may be shorter than the raw window (split quick-set)
+      const single = !event && occurrences.length === 1 ? occurrences[0] : null;
       const data: CreateCalendarEventInput | UpdateCalendarEventInput = {
         title,
         agenda: agenda || undefined,
         notes: notes || undefined,
-        startDatetime: start.toISO()!,
-        endDatetime: end.toISO()!,
+        startDatetime: single ? single.startDatetime : start.toISO()!,
+        endDatetime: single ? single.endDatetime : end.toISO()!,
         timezone,
         status: openSlotMode ? 'open_slot' : 'scheduled',
         visibility: openSlotMode ? 'public_open' : 'private',
-        recurrenceRule: isRecurring
+        recurrenceRule: isRecurring && (!!event || (daySpan === 1 && !splitEnabled))
           ? {
               frequency: recurrenceFrequency,
               interval: recurrenceInterval,
@@ -221,6 +289,30 @@ export function EventModal({
                       className="rounded border-gray-300"
                     />
                     <span className="text-sm text-gray-700">Delete entire series</span>
+                  </label>
+                </div>
+              )}
+              {!isRecurringEvent && event?.batchId && (
+                <div className="space-y-2">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      checked={deleteMode === 'single'}
+                      onChange={() => setDeleteMode('single')}
+                      className="rounded border-gray-300"
+                    />
+                    <span className="text-sm text-gray-700">Delete this event only</span>
+                  </label>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      checked={deleteMode === 'batch'}
+                      onChange={() => setDeleteMode('batch')}
+                      className="rounded border-gray-300"
+                    />
+                    <span className="text-sm text-gray-700">
+                      Delete the whole series{batchSize ? ` — ${batchSize} events` : ''} created together
+                    </span>
                   </label>
                 </div>
               )}
@@ -325,7 +417,7 @@ export function EventModal({
                   <label className="block text-sm font-medium text-gray-700 mb-1">Duration (Quick Set)</label>
                   <select
                     value={duration}
-                    onChange={(e) => setDuration(Number(e.target.value) as 30 | 60 | 90 | 120)}
+                    onChange={(e) => applyDuration(Number(e.target.value) as 30 | 60 | 90 | 120)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
                   >
                     <option value={30}>30 minutes</option>
@@ -336,6 +428,104 @@ export function EventModal({
                 </div>
               )}
 
+              {/* Multi-day interpretation */}
+              {!event && daySpan > 1 && (
+                <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg space-y-2">
+                  <p className="text-sm font-medium text-gray-900">
+                    Your selection covers {daySpan} days ({startTime}–{endTime} each day). Create:
+                  </p>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      checked={multiMode === 'per-day'}
+                      onChange={() => setMultiMode('per-day')}
+                      className="border-gray-300"
+                    />
+                    <span className="text-sm text-gray-700">
+                      One event per day — same title, {daySpan} entries, managed as a series
+                    </span>
+                  </label>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      checked={multiMode === 'continuous'}
+                      onChange={() => setMultiMode('continuous')}
+                      className="border-gray-300"
+                    />
+                    <span className="text-sm text-gray-700">One continuous event spanning all days</span>
+                  </label>
+                </div>
+              )}
+
+              {/* Split into smaller slots */}
+              {!event && !(daySpan > 1 && multiMode === 'continuous') && (
+                <div className="space-y-3">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={splitEnabled}
+                      onChange={(e) => setSplitEnabled(e.target.checked)}
+                      className="rounded border-gray-300"
+                    />
+                    <span className="text-sm font-medium text-gray-700">
+                      Split into smaller slots{openSlotMode ? ' (recommended for bookable time)' : ''}
+                    </span>
+                  </label>
+
+                  {splitEnabled && (
+                    <div className="pl-6 border-l-2 border-gray-200 grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Slot length</label>
+                        <select
+                          value={splitMinutes}
+                          onChange={(e) => setSplitMinutes(Number(e.target.value))}
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                        >
+                          <option value={30}>30 minutes</option>
+                          <option value={45}>45 minutes</option>
+                          <option value={60}>1 hour</option>
+                          <option value={90}>1.5 hours</option>
+                          <option value={120}>2 hours</option>
+                          <option value={180}>3 hours</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Break between slots</label>
+                        <select
+                          value={bufferMinutes}
+                          onChange={(e) => setBufferMinutes(Number(e.target.value))}
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+                        >
+                          <option value={0}>None</option>
+                          <option value={15}>15 minutes</option>
+                          <option value={30}>30 minutes</option>
+                        </select>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Live preview of what will be created */}
+              {!event && (occurrences.length > 1 || splitEnabled || daySpan > 1) && (
+                <div
+                  className={`rounded-lg border px-4 py-3 text-sm ${
+                    occurrences.length > MAX_OCCURRENCES
+                      ? 'bg-red-50 border-red-200 text-red-800'
+                      : 'bg-blue-50 border-blue-200 text-blue-900'
+                  }`}
+                >
+                  {occurrences.length === 0
+                    ? 'No events would be created — check that the end time is after the start time.'
+                    : occurrences.length > MAX_OCCURRENCES
+                    ? `This selection would create over ${MAX_OCCURRENCES} events — narrow it down.`
+                    : `Creates ${occurrences.length} event${occurrences.length === 1 ? '' : 's'}${
+                        occurrences.length > 1 ? ' (one title, grouped as a series — deletable together)' : ''
+                      }`}
+                </div>
+              )}
+
+              {(!!event || (daySpan === 1 && !splitEnabled)) && (
               <div>
                 <label className="flex items-center space-x-2">
                   <input
@@ -347,8 +537,9 @@ export function EventModal({
                   <span className="text-sm font-medium text-gray-700">Recurring Event</span>
                 </label>
               </div>
+              )}
 
-              {isRecurring && (
+              {isRecurring && (!!event || (daySpan === 1 && !splitEnabled)) && (
                 <div className="pl-6 border-l-2 border-gray-200 space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Frequency</label>

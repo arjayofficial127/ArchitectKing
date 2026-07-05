@@ -21,8 +21,10 @@ export class CalendarEventRepository implements ICalendarEventRepository {
         timezone: event.timezone,
         status: event.status,
         visibility: event.visibility,
-        recurrenceRule: event.recurrenceRule ? JSON.stringify(event.recurrenceRule) : null,
+        recurrenceRule: event.recurrenceRule ?? null,
         recurrenceParentId: event.recurrenceParentId ?? null,
+        recurrenceOriginalStart: event.recurrenceOriginalStart ?? null,
+        batchId: event.batchId ?? null,
         color: event.color ?? null,
         createdAt: now,
         updatedAt: now,
@@ -116,7 +118,7 @@ export class CalendarEventRepository implements ICalendarEventRepository {
     if (updates.status !== undefined) updateData.status = updates.status;
     if (updates.visibility !== undefined) updateData.visibility = updates.visibility;
     if (updates.recurrenceRule !== undefined) {
-      updateData.recurrenceRule = updates.recurrenceRule ? JSON.stringify(updates.recurrenceRule) : null;
+      updateData.recurrenceRule = updates.recurrenceRule ?? null;
     }
     if (updates.recurrenceParentId !== undefined) updateData.recurrenceParentId = updates.recurrenceParentId;
     if (updates.color !== undefined) updateData.color = updates.color;
@@ -143,6 +145,24 @@ export class CalendarEventRepository implements ICalendarEventRepository {
     return events.map((e) => this.mapToEntity(e));
   }
 
+  async findByBatchId(batchId: string): Promise<CalendarEvent[]> {
+    const events = await db
+      .select()
+      .from(calendarEventsTable)
+      .where(eq(calendarEventsTable.batchId, batchId));
+
+    return events.map((e) => this.mapToEntity(e));
+  }
+
+  async deleteByBatchId(batchId: string): Promise<number> {
+    const deleted = await db
+      .delete(calendarEventsTable)
+      .where(eq(calendarEventsTable.batchId, batchId))
+      .returning({ id: calendarEventsTable.id });
+
+    return deleted.length;
+  }
+
   private mapToEntity(row: any): CalendarEvent {
     return new CalendarEvent(
       row.id,
@@ -155,8 +175,15 @@ export class CalendarEventRepository implements ICalendarEventRepository {
       row.timezone,
       row.status,
       row.visibility,
-      row.recurrenceRule ? JSON.parse(row.recurrenceRule) : null,
+      // Tolerate both proper jsonb objects and legacy double-encoded strings
+      row.recurrenceRule
+        ? typeof row.recurrenceRule === 'string'
+          ? JSON.parse(row.recurrenceRule)
+          : row.recurrenceRule
+        : null,
       row.recurrenceParentId,
+      row.recurrenceOriginalStart ?? null,
+      row.batchId ?? null,
       row.color,
       row.createdAt,
       row.updatedAt

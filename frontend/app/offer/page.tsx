@@ -31,7 +31,7 @@ export default function OfferPage() {
               Message Me to Start
             </Link>
             <Link
-              href="/posts"
+              href="/case-studies"
               className="inline-flex items-center justify-center px-8 py-4 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors duration-200"
             >
               View Portfolio

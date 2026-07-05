@@ -8,4 +8,6 @@ export interface ICalendarEventRepository {
   update(id: string, updates: Partial<CalendarEvent>): Promise<CalendarEvent>;
   delete(id: string): Promise<void>;
   findRecurringInstances(parentId: string): Promise<CalendarEvent[]>;
+  findByBatchId(batchId: string): Promise<CalendarEvent[]>;
+  deleteByBatchId(batchId: string): Promise<number>;
 }

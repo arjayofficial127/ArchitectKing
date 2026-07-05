@@ -14,9 +14,22 @@ export interface CalendarEvent {
   visibility: 'private' | 'public_open';
   recurrenceRule: Record<string, any> | null;
   recurrenceParentId: string | null;
+  recurrenceOriginalStart?: string | null;
+  batchId?: string | null;
   color: string | null;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface BulkCreateCalendarEventsInput {
+  title: string;
+  agenda?: string;
+  notes?: string;
+  timezone?: string;
+  status: 'scheduled' | 'completed' | 'cancelled' | 'open_slot';
+  visibility: 'private' | 'public_open';
+  color?: string;
+  occurrences: Array<{ startDatetime: string; endDatetime: string }>;
 }
 
 export interface CreateCalendarEventInput {
@@ -100,12 +113,31 @@ export interface UpdateProspectInput {
 }
 
 // Notification Types
+export interface NotificationBookingDetails {
+  id: string;
+  name: string;
+  email: string;
+  message: string | null;
+  status: string;
+  timezoneAtBooking: string | null;
+  calendarEventId: string;
+  event: {
+    id: string;
+    title: string;
+    startDatetime: string;
+    endDatetime: string;
+    timezone: string;
+  } | null;
+}
+
 export interface SuperAdminNotification {
   id: string;
   type: 'booking_request' | 'system' | 'reminder';
   relatedId: string | null;
   read: boolean;
   createdAt: string;
+  /** Present when the notification points at a booking */
+  booking?: NotificationBookingDetails;
 }
 
 // Booking Request Types
@@ -177,6 +209,21 @@ export const superadminApi = {
     return response.data.data;
   },
 
+  createEventsBulk: async (input: BulkCreateCalendarEventsInput): Promise<CalendarEvent[]> => {
+    const response = await apiClient.post('/superadmin/calendar/bulk', input);
+    return response.data.data;
+  },
+
+  getBatchSize: async (batchId: string): Promise<number> => {
+    const response = await apiClient.get(`/superadmin/calendar/batch/${batchId}/size`);
+    return response.data.data.size;
+  },
+
+  materializeOccurrence: async (instanceId: string): Promise<CalendarEvent> => {
+    const response = await apiClient.post('/superadmin/calendar/materialize', { instanceId });
+    return response.data.data;
+  },
+
   updateEvent: async (id: string, input: UpdateCalendarEventInput, mode: 'single' | 'series' = 'single'): Promise<CalendarEvent> => {
     const response = await apiClient.patch(`/superadmin/calendar/${id}`, input, {
       params: { mode },
@@ -184,7 +231,7 @@ export const superadminApi = {
     return response.data.data;
   },
 
-  deleteEvent: async (id: string, mode: 'single' | 'series' = 'single'): Promise<void> => {
+  deleteEvent: async (id: string, mode: 'single' | 'series' | 'batch' = 'single'): Promise<void> => {
     await apiClient.delete(`/superadmin/calendar/${id}?mode=${mode}`);
   },
 

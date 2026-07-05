@@ -4,11 +4,17 @@ import { useState, useEffect } from 'react';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
 
+export interface ToastAction {
+  label: string;
+  onClick: () => void;
+}
+
 export interface Toast {
   id: string;
   message: string;
   type: ToastType;
   duration?: number;
+  action?: ToastAction;
 }
 
 let toastListeners: ((toasts: Toast[]) => void)[] = [];
@@ -18,7 +24,7 @@ function notify() {
   toastListeners.forEach((listener) => listener([...toasts]));
 }
 
-export function toast(message: string | unknown, type: ToastType = 'info', duration = 3000) {
+export function toast(message: string | unknown, type: ToastType = 'info', duration = 3000, action?: ToastAction) {
   // Ensure message is always a string
   let messageString: string;
   if (typeof message === 'string') {
@@ -36,7 +42,7 @@ export function toast(message: string | unknown, type: ToastType = 'info', durat
   }
 
   const id = Math.random().toString(36).substring(7);
-  const newToast: Toast = { id, message: messageString, type, duration };
+  const newToast: Toast = { id, message: messageString, type, duration, action };
 
   toasts = [...toasts, newToast];
   notify();
@@ -96,12 +102,25 @@ export function ToastContainer() {
           }`}
         >
           <p className="text-sm font-medium">{String(toast.message || '')}</p>
-          <button
-            onClick={() => dismissToast(toast.id)}
-            className="ml-4 text-gray-400 hover:text-gray-600"
-          >
-            ×
-          </button>
+          <div className="flex items-center">
+            {toast.action && (
+              <button
+                onClick={() => {
+                  toast.action?.onClick();
+                  dismissToast(toast.id);
+                }}
+                className="ml-4 rounded-md border border-current px-2 py-0.5 text-xs font-semibold hover:opacity-70"
+              >
+                {toast.action.label}
+              </button>
+            )}
+            <button
+              onClick={() => dismissToast(toast.id)}
+              className="ml-3 text-gray-400 hover:text-gray-600"
+            >
+              ×
+            </button>
+          </div>
         </div>
       ))}
     </div>

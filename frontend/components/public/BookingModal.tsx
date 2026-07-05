@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import { publicApi, type PublicScheduleEvent, type CreateBookingRequest } from '@/lib/api/public';
 
@@ -9,189 +9,210 @@ interface BookingModalProps {
   onClose: () => void;
   event: PublicScheduleEvent;
   visitorTimezone: string;
-  onSuccess: () => void;
+  onSuccess: (details: { name: string; email: string; cancelToken?: string }) => void;
 }
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function BookingModal({ isOpen, onClose, event, visitorTimezone, onSuccess }: BookingModalProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [slotTaken, setSlotTaken] = useState(false);
 
-  // Initialize form from event
+  // Close on Escape
   useEffect(() => {
-    if (event) {
-      const start = DateTime.fromISO(event.startDatetime, { zone: 'UTC' });
-      const visitorStart = start.setZone(visitorTimezone);
-      
-      setDate(visitorStart.toFormat('yyyy-MM-dd'));
-      setTime(visitorStart.toFormat('HH:mm'));
-    }
-  }, [event, visitorTimezone]);
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [onClose]);
 
   if (!isOpen) return null;
 
+  const start = DateTime.fromISO(event.startDatetime, { zone: 'utc' }).setZone(visitorTimezone);
+  const end = DateTime.fromISO(event.endDatetime, { zone: 'utc' }).setZone(visitorTimezone);
+  const duration = Math.round(end.diff(start, 'minutes').minutes);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address');
-      setLoading(false);
+    if (!name.trim()) {
+      setError('Please enter your name.');
+      return;
+    }
+    if (!EMAIL_RE.test(email)) {
+      setError('Please enter a valid email address.');
       return;
     }
 
-    // Validate time is within slot bounds
-    const slotStart = DateTime.fromISO(event.startDatetime, { zone: 'UTC' }).setZone(visitorTimezone);
-    const slotEnd = DateTime.fromISO(event.endDatetime, { zone: 'UTC' }).setZone(visitorTimezone);
-    const selectedDateTime = DateTime.fromISO(`${date}T${time}`, { zone: visitorTimezone });
-
-    if (selectedDateTime < slotStart || selectedDateTime >= slotEnd) {
-      setError('Selected time must be within the slot bounds');
-      setLoading(false);
-      return;
-    }
-
+    setSubmitting(true);
     try {
       const bookingData: CreateBookingRequest = {
         calendarEventId: event.id,
-        name,
-        email,
-        message: message || undefined,
+        name: name.trim(),
+        email: email.trim(),
+        message: message.trim() || undefined,
         timezone: visitorTimezone,
       };
-
-      await publicApi.createBooking(bookingData);
-      onSuccess();
+      const created = await publicApi.createBooking(bookingData);
+      onSuccess({ name: name.trim(), email: email.trim(), cancelToken: created?.cancelToken });
     } catch (err: any) {
-      const errorMessage = err.response?.data?.error?.message || 'Failed to book meeting';
-      if (errorMessage.includes('already booked') || errorMessage.includes('taken')) {
-        setError('Sorry, this time has just been booked. Please select another slot.');
+      const apiMessage: string = err.response?.data?.error?.message || '';
+      if (/already|taken|passed|not available/i.test(apiMessage)) {
+        setSlotTaken(true);
       } else {
-        setError(errorMessage);
+        setError(apiMessage || 'Something went wrong while booking. Please try again.');
       }
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   };
 
-  const slotStart = DateTime.fromISO(event.startDatetime, { zone: 'UTC' }).setZone(visitorTimezone);
-  const slotEnd = DateTime.fromISO(event.endDatetime, { zone: 'UTC' }).setZone(visitorTimezone);
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full m-4">
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Book Meeting</h2>
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                <p className="text-red-800 text-sm">{error}</p>
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Confirm your booking"
+    >
+      <div
+        className="w-full max-w-md rounded-2xl bg-white shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="p-6 md:p-7">
+          {slotTaken ? (
+            <div className="text-center">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50">
+                <svg className="h-6 w-6 text-[#F4C430]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0" />
+                </svg>
               </div>
-            )}
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Message (Optional)</label>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={3}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                min={slotStart.toFormat('yyyy-MM-dd')}
-                max={slotStart.toFormat('yyyy-MM-dd')}
-                required
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
-              />
-              <p className="text-xs text-gray-500 mt-1">
-                Available: {slotStart.toFormat('MMM d, yyyy')}
+              <h2 className="text-xl font-bold text-slate-900">That time was just taken</h2>
+              <p className="mt-2 text-sm text-slate-600">
+                Someone booked this slot moments ago. Pick another time — the list will refresh.
               </p>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Time</label>
-              <input
-                type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
-                min={slotStart.toFormat('HH:mm')}
-                max={slotEnd.toFormat('HH:mm')}
-                required
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
-              />
-              <p className="text-xs text-gray-500 mt-1">
-                Slot: {slotStart.toFormat('h:mm a')} - {slotEnd.toFormat('h:mm a')}
-              </p>
-            </div>
-
-            <div className="flex space-x-3 pt-4">
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors text-sm font-medium"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition-all hover:opacity-90"
               >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium disabled:opacity-50"
-              >
-                {loading ? 'Booking...' : 'Confirm Booking'}
+                Choose another time
               </button>
             </div>
-          </form>
+          ) : (
+            <>
+              <div className="flex items-start justify-between">
+                <h2 className="text-xl font-bold text-slate-900">Confirm your booking</h2>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Close"
+                  className="rounded-md p-1 text-slate-400 transition-colors hover:text-slate-600"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Slot summary */}
+              <div className="mt-4 flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white text-[#F4C430] shadow-sm">
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-semibold text-slate-900">{start.toFormat('cccc, MMMM d, yyyy')}</p>
+                  <p className="text-sm text-slate-600">
+                    {start.toFormat('h:mm a')} – {end.toFormat('h:mm a')}
+                    <span className="ml-1.5 text-xs text-slate-400">({duration} min)</span>
+                  </p>
+                  <p className="truncate text-xs text-slate-400">{visitorTimezone.replace(/_/g, ' ')}</p>
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="mt-5 space-y-4" noValidate>
+                {error && (
+                  <div className="rounded-lg border border-red-200 bg-red-50 p-3">
+                    <p className="text-sm text-red-800">{error}</p>
+                  </div>
+                )}
+
+                <div>
+                  <label htmlFor="booking-name" className="mb-1 block text-sm font-medium text-slate-700">
+                    Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="booking-name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    autoFocus
+                    autoComplete="name"
+                    placeholder="Your full name"
+                    className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#F4C430] focus:outline-none focus:ring-2 focus:ring-[#F4C430]/40"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="booking-email" className="mb-1 block text-sm font-medium text-slate-700">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="booking-email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    autoComplete="email"
+                    placeholder="you@company.com"
+                    className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#F4C430] focus:outline-none focus:ring-2 focus:ring-[#F4C430]/40"
+                  />
+                  <p className="mt-1 text-xs text-slate-400">The meeting confirmation goes here.</p>
+                </div>
+
+                <div>
+                  <label htmlFor="booking-message" className="mb-1 block text-sm font-medium text-slate-700">
+                    What would you like to discuss? <span className="text-slate-400">(optional)</span>
+                  </label>
+                  <textarea
+                    id="booking-message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    rows={3}
+                    placeholder="A sentence or two about your system and what's on your mind."
+                    className="w-full resize-none rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-[#F4C430] focus:outline-none focus:ring-2 focus:ring-[#F4C430]/40"
+                  />
+                </div>
+
+                <div className="flex gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    disabled={submitting}
+                    className="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:border-slate-400 disabled:opacity-50"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="flex-1 rounded-lg bg-[#F4C430] px-4 py-2.5 text-sm font-semibold text-[#0F172A] shadow-md shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 disabled:opacity-60"
+                  >
+                    {submitting ? 'Booking…' : 'Confirm Booking'}
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -40,4 +40,23 @@ export const GetEventsRangeDto = z.object({
   end: z.string(),
 });
 
-export const DeleteEventModeDto = z.enum(['single', 'series']);
+export const DeleteEventModeDto = z.enum(['single', 'series', 'batch']);
+
+export const BulkCreateCalendarEventsDto = z.object({
+  title: z.string().min(1).max(255),
+  agenda: z.string().optional(),
+  notes: z.string().optional(),
+  timezone: z.string().optional().default('Asia/Manila'),
+  status: z.enum(['scheduled', 'completed', 'cancelled', 'open_slot']),
+  visibility: z.enum(['private', 'public_open']),
+  color: z.string().max(50).optional(),
+  occurrences: z
+    .array(
+      z.object({
+        startDatetime: z.string(),
+        endDatetime: z.string(),
+      })
+    )
+    .min(1)
+    .max(200),
+});

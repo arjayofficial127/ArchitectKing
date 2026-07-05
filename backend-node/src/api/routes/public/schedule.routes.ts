@@ -31,25 +31,43 @@ router.get('/', async (req: Request, res: Response, next) => {
       (e) => e.visibility === 'public_open' && e.status === 'open_slot'
     );
 
+    // Times where a recurring instance was already materialized into a
+    // concrete child event (booked or pending) must not be offered again.
+    const materializedTimes = new Set(
+      allEvents
+        .filter((e) => e.recurrenceParentId)
+        .map((e) => `${e.recurrenceParentId}|${(e.recurrenceOriginalStart ?? e.startDatetime).getTime()}`)
+    );
+
     // Expand recurring events
     const calendarService = container.resolve<CalendarService>(TYPES.ICalendarService);
     const expandedEvents: any[] = [];
-    
+
     for (const event of publicEvents) {
       if (event.recurrenceRule && !event.recurrenceParentId) {
-        const instances = calendarService.generateRecurringInstances(event, rangeStart, rangeEnd);
+        const instances = calendarService
+          .generateRecurringInstances(event, rangeStart, rangeEnd)
+          .filter((i) => !materializedTimes.has(`${i.parentId}|${i.startDatetime.getTime()}`));
         expandedEvents.push(...instances);
-      } else if (!event.recurrenceParentId) {
+      } else {
+        // Standalone slots and still-open materialized children
         expandedEvents.push(event);
       }
     }
 
+    // Only offer future times, with a minimum booking notice
+    const MIN_NOTICE_MS = 60 * 60 * 1000; // 1 hour
+    const cutoff = Date.now() + MIN_NOTICE_MS;
+    const bookableEvents = expandedEvents.filter(
+      (e) => e.startDatetime.getTime() >= cutoff
+    );
+
     // Sort by start_datetime
-    expandedEvents.sort((a, b) => a.startDatetime.getTime() - b.startDatetime.getTime());
+    bookableEvents.sort((a, b) => a.startDatetime.getTime() - b.startDatetime.getTime());
 
     res.json({
       success: true,
-      data: expandedEvents,
+      data: bookableEvents,
     });
   } catch (error) {
     next(error);

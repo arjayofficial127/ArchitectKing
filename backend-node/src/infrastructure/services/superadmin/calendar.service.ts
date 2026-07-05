@@ -1,5 +1,7 @@
-import { injectable } from 'tsyringe';
+import { injectable, inject } from 'tsyringe';
 import { DateTime } from 'luxon';
+import { v4 as uuidv4 } from 'uuid';
+import { TYPES } from '../../../core/di/types';
 import { ICalendarEventRepository } from '../../../application/interfaces/ICalendarEventRepository';
 import { CalendarEvent } from '../../../domain/entities/CalendarEvent';
 import { BadRequestError, NotFoundError, ConflictError } from '../../../core/errors/AppError';
@@ -61,7 +63,7 @@ export interface VirtualEventInstance {
 
 @injectable()
 export class CalendarService {
-  constructor(private calendarEventRepo: ICalendarEventRepository) {}
+  constructor(@inject(TYPES.ICalendarEventRepository) private calendarEventRepo: ICalendarEventRepository) {}
 
   async createEvent(ownerUserId: string, input: CreateEventInput): Promise<CalendarEvent> {
     const timezone = input.timezone || 'Asia/Manila';
@@ -94,10 +96,77 @@ export class CalendarService {
       visibility: input.visibility,
       recurrenceRule: input.recurrenceRule || null,
       recurrenceParentId: null,
+      recurrenceOriginalStart: null,
+      batchId: null,
       color: input.color || null,
     });
 
     return event;
+  }
+
+  /**
+   * Create several events in one action (multi-day selection or slot splitting).
+   * All created rows share a batchId so they can be managed as a series.
+   */
+  async createBatch(
+    ownerUserId: string,
+    input: Omit<CreateEventInput, 'startDatetime' | 'endDatetime' | 'recurrenceRule'>,
+    occurrences: Array<{ startDatetime: string; endDatetime: string }>
+  ): Promise<CalendarEvent[]> {
+    if (occurrences.length === 0) {
+      throw new BadRequestError('At least one occurrence is required');
+    }
+    if (occurrences.length > 200) {
+      throw new BadRequestError('Too many occurrences in one batch (max 200)');
+    }
+
+    const timezone = input.timezone || 'Asia/Manila';
+
+    // Validate everything before inserting anything
+    const parsed = occurrences.map((occ) => {
+      const startDt = DateTime.fromISO(occ.startDatetime, { zone: timezone });
+      const endDt = DateTime.fromISO(occ.endDatetime, { zone: timezone });
+      if (!startDt.isValid || !endDt.isValid) {
+        throw new BadRequestError('Invalid datetime format in occurrences');
+      }
+      if (startDt >= endDt) {
+        throw new BadRequestError('Each occurrence must start before it ends');
+      }
+      return { start: startDt.toUTC().toJSDate(), end: endDt.toUTC().toJSDate() };
+    });
+
+    const batchId = parsed.length > 1 ? uuidv4() : null;
+    const created: CalendarEvent[] = [];
+    for (const occ of parsed) {
+      created.push(
+        await this.calendarEventRepo.create({
+          ownerUserId,
+          title: input.title,
+          agenda: input.agenda || null,
+          notes: input.notes || null,
+          startDatetime: occ.start,
+          endDatetime: occ.end,
+          timezone,
+          status: input.status,
+          visibility: input.visibility,
+          recurrenceRule: null,
+          recurrenceParentId: null,
+          recurrenceOriginalStart: null,
+          batchId,
+          color: input.color || null,
+        })
+      );
+    }
+    return created;
+  }
+
+  async getBatchSize(batchId: string): Promise<number> {
+    const events = await this.calendarEventRepo.findByBatchId(batchId);
+    return events.length;
+  }
+
+  async deleteBatch(batchId: string): Promise<number> {
+    return this.calendarEventRepo.deleteByBatchId(batchId);
   }
 
   async updateEvent(
@@ -146,6 +215,8 @@ export class CalendarService {
           visibility: input.visibility || existingEvent.visibility,
           recurrenceRule: null,
           recurrenceParentId: null,
+          recurrenceOriginalStart: existingEvent.recurrenceOriginalStart,
+          batchId: existingEvent.batchId,
           color: input.color ?? existingEvent.color,
         });
 
@@ -215,10 +286,20 @@ export class CalendarService {
     return this.calendarEventRepo.update(eventId, updates);
   }
 
-  async deleteEvent(eventId: string, mode: 'single' | 'series'): Promise<void> {
+  async deleteEvent(eventId: string, mode: 'single' | 'series' | 'batch'): Promise<void> {
     const event = await this.calendarEventRepo.findById(eventId);
     if (!event) {
       throw new NotFoundError('Calendar Event', eventId);
+    }
+
+    if (mode === 'batch') {
+      // Delete every event created together with this one
+      if (event.batchId) {
+        await this.calendarEventRepo.deleteByBatchId(event.batchId);
+      } else {
+        await this.calendarEventRepo.delete(eventId);
+      }
+      return;
     }
 
     if (mode === 'single') {
@@ -376,18 +457,27 @@ export class CalendarService {
     // Fetch base events
     const baseEvents = await this.calendarEventRepo.findByOwnerUserId(ownerUserId, rangeStart, rangeEnd);
 
+    // Times already materialized into concrete child events (booked or moved
+    // occurrences) must not also be rendered as virtual instances
+    const materializedTimes = new Set(
+      baseEvents
+        .filter((e) => e.recurrenceParentId)
+        .map((e) => `${e.recurrenceParentId}|${(e.recurrenceOriginalStart ?? e.startDatetime).getTime()}`)
+    );
+
     const allEvents: (CalendarEvent | VirtualEventInstance)[] = [];
 
     for (const event of baseEvents) {
       if (event.recurrenceRule && !event.recurrenceParentId) {
         // This is a master recurring event, expand it
-        const instances = this.generateRecurringInstances(event, rangeStart, rangeEnd);
+        const instances = this
+          .generateRecurringInstances(event, rangeStart, rangeEnd)
+          .filter((i) => !materializedTimes.has(`${i.parentId}|${i.startDatetime.getTime()}`));
         allEvents.push(...instances);
-      } else if (!event.recurrenceParentId) {
-        // Standalone event
+      } else {
+        // Standalone events AND materialized children (booked/moved occurrences)
         allEvents.push(event);
       }
-      // Skip instances (they're generated from masters)
     }
 
     // Sort by start_datetime
@@ -400,6 +490,10 @@ export class CalendarService {
     const slot = await this.calendarEventRepo.findById(slotId);
     if (!slot) {
       throw new NotFoundError('Calendar Event', slotId);
+    }
+
+    if (slot.startDatetime.getTime() <= Date.now()) {
+      throw new ConflictError('This time has already passed');
     }
 
     if (slot.status !== 'open_slot') {
@@ -431,6 +525,107 @@ export class CalendarService {
     }
 
     return slot;
+  }
+
+  /**
+   * Virtual recurring instances are offered publicly with ids of the form
+   * `<parentUuid>-<startISO>`. Returns null when the id is a plain event uuid.
+   */
+  static parseInstanceId(id: string): { parentId: string; startISO: string } | null {
+    const UUID_LEN = 36;
+    if (id.length <= UUID_LEN + 1) return null;
+    const parentId = id.slice(0, UUID_LEN);
+    const startISO = id.slice(UUID_LEN + 1);
+    const uuidRe = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (!uuidRe.test(parentId)) return null;
+    if (!DateTime.fromISO(startISO).isValid) return null;
+    return { parentId, startISO };
+  }
+
+  /**
+   * Turn a virtual recurring instance into a concrete, bookable child event.
+   * Idempotent: if a child already exists at that time it is returned (or a
+   * conflict is raised when it is no longer an open slot).
+   */
+  async materializeInstance(instanceId: string): Promise<CalendarEvent> {
+    return this.materializeFromInstanceId(instanceId, true);
+  }
+
+  /**
+   * Superadmin variant: materialize any recurring occurrence (regardless of
+   * status/visibility) so it can be edited, moved, or deleted individually.
+   */
+  async materializeOccurrence(instanceId: string): Promise<CalendarEvent> {
+    return this.materializeFromInstanceId(instanceId, false);
+  }
+
+  private async materializeFromInstanceId(
+    instanceId: string,
+    requirePublicBookable: boolean
+  ): Promise<CalendarEvent> {
+    const parsed = CalendarService.parseInstanceId(instanceId);
+    if (!parsed) {
+      throw new BadRequestError('Invalid slot instance id');
+    }
+
+    const parent = await this.calendarEventRepo.findById(parsed.parentId);
+    if (!parent) {
+      throw new NotFoundError('Calendar Event', parsed.parentId);
+    }
+    if (!parent.recurrenceRule || parent.recurrenceParentId) {
+      throw new BadRequestError('Slot is not a recurring series');
+    }
+    if (requirePublicBookable && (parent.status !== 'open_slot' || parent.visibility !== 'public_open')) {
+      throw new ConflictError('Slot is not available for booking');
+    }
+
+    const start = DateTime.fromISO(parsed.startISO).toUTC();
+    if (!start.isValid) {
+      throw new BadRequestError('Invalid slot instance time');
+    }
+    const duration =
+      parent.endDatetime.getTime() - parent.startDatetime.getTime();
+    const startDate = start.toJSDate();
+    const endDate = new Date(startDate.getTime() + duration);
+
+    // The requested time must be one the recurrence rule actually generates.
+    const generated = this.generateRecurringInstances(parent, startDate, endDate);
+    const isRealInstance = generated.some(
+      (i) => i.startDatetime.getTime() === startDate.getTime()
+    );
+    if (!isRealInstance) {
+      throw new ConflictError('Slot is not available for booking');
+    }
+
+    // Idempotency: reuse the child already materialized for this occurrence
+    // (matched by original rule time — the child may have been moved since)
+    const children = await this.calendarEventRepo.findRecurringInstances(parent.id);
+    const existingChild = children.find(
+      (e) => (e.recurrenceOriginalStart ?? e.startDatetime).getTime() === startDate.getTime()
+    );
+    if (existingChild) {
+      if (requirePublicBookable && existingChild.status !== 'open_slot') {
+        throw new ConflictError('Slot is already booked');
+      }
+      return existingChild;
+    }
+
+    return this.calendarEventRepo.create({
+      ownerUserId: parent.ownerUserId,
+      title: parent.title,
+      agenda: parent.agenda,
+      notes: parent.notes,
+      startDatetime: startDate,
+      endDatetime: endDate,
+      timezone: parent.timezone,
+      status: parent.status,
+      visibility: parent.visibility,
+      recurrenceRule: null,
+      recurrenceParentId: parent.id,
+      recurrenceOriginalStart: startDate,
+      batchId: null,
+      color: parent.color,
+    });
   }
 
   async convertOpenSlotToScheduled(slotId: string): Promise<CalendarEvent> {

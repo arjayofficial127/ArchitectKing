@@ -7,7 +7,7 @@ import { BookingRequest } from '../../domain/entities/BookingRequest';
 
 @injectable()
 export class BookingRequestRepository implements IBookingRequestRepository {
-  async create(booking: Omit<BookingRequest, 'id' | 'createdAt'>): Promise<BookingRequest> {
+  async create(booking: Omit<BookingRequest, 'id' | 'createdAt' | 'cancelToken'>): Promise<BookingRequest> {
     const [created] = await db
       .insert(bookingRequestsTable)
       .values({
@@ -20,16 +20,7 @@ export class BookingRequestRepository implements IBookingRequestRepository {
       })
       .returning();
 
-    return new BookingRequest(
-      created.id,
-      created.calendarEventId,
-      created.name,
-      created.email,
-      created.message,
-      created.timezoneAtBooking,
-      created.status,
-      created.createdAt
-    );
+    return this.mapToEntity(created);
   }
 
   async findById(id: string): Promise<BookingRequest | null> {
@@ -39,18 +30,17 @@ export class BookingRequestRepository implements IBookingRequestRepository {
       .where(eq(bookingRequestsTable.id, id))
       .limit(1);
 
-    if (!booking) return null;
+    return booking ? this.mapToEntity(booking) : null;
+  }
 
-    return new BookingRequest(
-      booking.id,
-      booking.calendarEventId,
-      booking.name,
-      booking.email,
-      booking.message,
-      booking.timezoneAtBooking,
-      booking.status,
-      booking.createdAt
-    );
+  async findByCancelToken(cancelToken: string): Promise<BookingRequest | null> {
+    const [booking] = await db
+      .select()
+      .from(bookingRequestsTable)
+      .where(eq(bookingRequestsTable.cancelToken, cancelToken))
+      .limit(1);
+
+    return booking ? this.mapToEntity(booking) : null;
   }
 
   async findByCalendarEventId(calendarEventId: string): Promise<BookingRequest[]> {
@@ -59,19 +49,7 @@ export class BookingRequestRepository implements IBookingRequestRepository {
       .from(bookingRequestsTable)
       .where(eq(bookingRequestsTable.calendarEventId, calendarEventId));
 
-    return bookings.map(
-      (b) =>
-        new BookingRequest(
-          b.id,
-          b.calendarEventId,
-          b.name,
-          b.email,
-          b.message,
-          b.timezoneAtBooking,
-          b.status,
-          b.createdAt
-        )
-    );
+    return bookings.map((b) => this.mapToEntity(b));
   }
 
   async findByEmail(email: string): Promise<BookingRequest[]> {
@@ -80,22 +58,34 @@ export class BookingRequestRepository implements IBookingRequestRepository {
       .from(bookingRequestsTable)
       .where(eq(bookingRequestsTable.email, email));
 
-    return bookings.map(
-      (b) =>
-        new BookingRequest(
-          b.id,
-          b.calendarEventId,
-          b.name,
-          b.email,
-          b.message,
-          b.timezoneAtBooking,
-          b.status,
-          b.createdAt
-        )
-    );
+    return bookings.map((b) => this.mapToEntity(b));
+  }
+
+  async updateStatus(id: string, status: string): Promise<BookingRequest> {
+    const [updated] = await db
+      .update(bookingRequestsTable)
+      .set({ status })
+      .where(eq(bookingRequestsTable.id, id))
+      .returning();
+
+    return this.mapToEntity(updated);
   }
 
   async delete(id: string): Promise<void> {
     await db.delete(bookingRequestsTable).where(eq(bookingRequestsTable.id, id));
+  }
+
+  private mapToEntity(row: any): BookingRequest {
+    return new BookingRequest(
+      row.id,
+      row.calendarEventId,
+      row.name,
+      row.email,
+      row.message,
+      row.timezoneAtBooking,
+      row.status,
+      row.cancelToken,
+      row.createdAt
+    );
   }
 }

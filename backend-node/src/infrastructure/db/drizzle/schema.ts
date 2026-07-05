@@ -476,6 +476,10 @@ export const calendarEventsTable = pgTable('calendar_events', {
   visibility: calendarEventVisibilityEnum('visibility').notNull(),
   recurrenceRule: jsonb('recurrence_rule'),
   recurrenceParentId: uuid('recurrence_parent_id').references((): any => calendarEventsTable.id, { onDelete: 'cascade' }),
+  // For materialized occurrences of a recurring series: the instance time the
+  // rule originally generated (stays fixed even if the occurrence is moved)
+  recurrenceOriginalStart: timestamp('recurrence_original_start', { withTimezone: true }),
+  batchId: uuid('batch_id'),
   color: varchar('color', { length: 50 }),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
@@ -484,6 +488,7 @@ export const calendarEventsTable = pgTable('calendar_events', {
   startDatetimeIdx: index('calendar_events_start_datetime_idx').on(table.startDatetime),
   statusIdx: index('calendar_events_status_idx').on(table.status),
   recurrenceParentIdIdx: index('calendar_events_recurrence_parent_id_idx').on(table.recurrenceParentId),
+  batchIdIdx: index('calendar_events_batch_id_idx').on(table.batchId),
 }));
 
 // 2. Entities table
@@ -514,10 +519,12 @@ export const bookingRequestsTable = pgTable('booking_requests', {
   message: text('message'),
   timezoneAtBooking: varchar('timezone_at_booking', { length: 100 }),
   status: varchar('status', { length: 50 }).notNull().default('confirmed'),
+  cancelToken: uuid('cancel_token').notNull().defaultRandom(),
   createdAt: timestamp('created_at').notNull().defaultNow(),
 }, (table) => ({
   calendarEventIdIdx: index('booking_requests_calendar_event_id_idx').on(table.calendarEventId),
   createdAtIdx: index('booking_requests_created_at_idx').on(table.createdAt),
+  cancelTokenIdx: index('booking_requests_cancel_token_idx').on(table.cancelToken),
 }));
 
 // 4. Prospects table

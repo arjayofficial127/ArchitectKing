@@ -1,0 +1,2 @@
+ALTER TABLE "booking_requests" ADD COLUMN "cancel_token" uuid DEFAULT gen_random_uuid() NOT NULL;--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "booking_requests_cancel_token_idx" ON "booking_requests" ("cancel_token");

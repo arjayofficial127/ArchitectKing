@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { container } from '../../../core/di/container';
 import { TYPES } from '../../../core/di/types';
 import { CalendarService } from '../../../infrastructure/services/superadmin/calendar.service';
-import { CreateCalendarEventDto, UpdateCalendarEventDto, GetEventsRangeDto, DeleteEventModeDto } from '../../../application/dtos/calendar.dto';
+import { CreateCalendarEventDto, UpdateCalendarEventDto, GetEventsRangeDto, DeleteEventModeDto, BulkCreateCalendarEventsDto } from '../../../application/dtos/calendar.dto';
 import { authMiddleware } from '../../middleware/authMiddleware';
 import { requireSuperAdmin } from '../../middleware/requireSuperAdmin';
 import { ValidationError } from '../../../core/errors/AppError';
@@ -72,7 +72,8 @@ router.patch('/:id', async (req: Request, res: Response, next) => {
       return next(new ValidationError('Invalid request body', bodyResult.error.flatten().fieldErrors));
     }
 
-    const mode = modeResult.success ? modeResult.data : 'single';
+    // Batch-wide updates are not supported yet; treat as single
+    const mode = modeResult.success && modeResult.data !== 'batch' ? modeResult.data : 'single';
     const calendarService = container.resolve<CalendarService>(TYPES.ICalendarService);
     const event = await calendarService.updateEvent(id, bodyResult.data, mode);
 
@@ -85,7 +86,62 @@ router.patch('/:id', async (req: Request, res: Response, next) => {
   }
 });
 
-// DELETE /api/superadmin/calendar/:id?mode=single|series
+// POST /api/superadmin/calendar/bulk — create several events sharing one batchId
+router.post('/bulk', async (req: Request, res: Response, next) => {
+  try {
+    const userId = req.user!.userId;
+    const bodyResult = BulkCreateCalendarEventsDto.safeParse(req.body);
+
+    if (!bodyResult.success) {
+      return next(new ValidationError('Invalid request body', bodyResult.error.flatten().fieldErrors));
+    }
+
+    const { occurrences, ...template } = bodyResult.data;
+    const calendarService = container.resolve<CalendarService>(TYPES.ICalendarService);
+    const events = await calendarService.createBatch(userId, template, occurrences);
+
+    res.status(201).json({
+      success: true,
+      data: events,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// POST /api/superadmin/calendar/materialize — turn a virtual recurring
+// instance into a concrete child event so it can be edited individually
+router.post('/materialize', async (req: Request, res: Response, next) => {
+  try {
+    const instanceId = typeof req.body?.instanceId === 'string' ? req.body.instanceId : '';
+    if (!instanceId) {
+      return next(new ValidationError('instanceId is required', {}));
+    }
+
+    const calendarService = container.resolve<CalendarService>(TYPES.ICalendarService);
+    const event = await calendarService.materializeOccurrence(instanceId);
+
+    res.status(201).json({
+      success: true,
+      data: event,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET /api/superadmin/calendar/batch/:batchId/size — how many events share this batch
+router.get('/batch/:batchId/size', async (req: Request, res: Response, next) => {
+  try {
+    const calendarService = container.resolve<CalendarService>(TYPES.ICalendarService);
+    const size = await calendarService.getBatchSize(req.params.batchId);
+    res.json({ success: true, data: { size } });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// DELETE /api/superadmin/calendar/:id?mode=single|series|batch
 router.delete('/:id', async (req: Request, res: Response, next) => {
   try {
     const { id } = req.params;
