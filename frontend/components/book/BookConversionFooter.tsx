@@ -18,7 +18,7 @@ export function BookConversionFooter() {
             Discuss Your System
           </a>
           <div className={styles.secondaryLinks}>
-            <Link href="/pdf/ARVIN_JAYSON_CASTRO_-_Solutions_Architect.pdf" target="_blank" rel="noopener noreferrer" className={styles.subtleLink}>
+            <Link href="/pdf/ARVIN_JAYSON_CASTRO_-_Solutions_Architect_2026.pdf" target="_blank" rel="noopener noreferrer" className={styles.subtleLink}>
               Resume
             </Link>
             <span className={styles.linkSeparator}>·</span>

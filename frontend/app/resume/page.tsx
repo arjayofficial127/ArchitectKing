@@ -3,7 +3,7 @@
 import React from "react";
 
 export default function ResumePage() {
-  const pdfUrl = "/pdf/ARVIN_JAYSON_CASTRO_-_Solutions_Architect.pdf";
+  const pdfUrl = "/pdf/ARVIN_JAYSON_CASTRO_-_Solutions_Architect_2026.pdf";
 
   return (
     <main className="min-h-screen bg-white text-slate-900 antialiased">
