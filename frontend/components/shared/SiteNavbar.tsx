@@ -140,7 +140,7 @@ export function SiteNavbar() {
             </button>
           </Link>
 
-          <Link href="/pdf/ARVIN_JAYSON_CASTRO_-_Solutions_Architect_2026.pdf" target="_blank" rel="noopener noreferrer">
+          <Link href="/pdf/ARVIN JAYSON CASTRO - Solutions Architect Lead.pdf" target="_blank" rel="noopener noreferrer">
             <button
               type="button"
               aria-label="Download CV"
