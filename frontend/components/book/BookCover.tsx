@@ -178,7 +178,7 @@ export function BookCover() {
             fontWeight="400"
             fill="#333333"
           >
-            predicatable
+            predictable
           </text>
 
           <g transform="translate(800, 1780) scale(1,-1)">

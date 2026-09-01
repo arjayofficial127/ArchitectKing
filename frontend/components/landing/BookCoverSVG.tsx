@@ -141,7 +141,7 @@ export function BookCoverSVG({ className }: { className?: string }) {
         fontWeight="400"
         fill="#333333"
       >
-        predicatable
+        predictable
       </text>
 
       {/* Squiggle + Yarn */}

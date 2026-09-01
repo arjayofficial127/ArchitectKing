@@ -162,6 +162,11 @@ export function CaseStudyLayout({
               <div className="text-slate-700 leading-relaxed">
                 {outcomeImpact}
               </div>
+              <aside className="mt-6 rounded-xl border border-slate-200 bg-slate-50/70 p-4 text-sm leading-relaxed text-slate-600">
+                <span className="font-semibold text-slate-800">Evidence boundary:</span>{' '}
+                Client identity and confidential operational metrics are intentionally omitted. Outcomes are
+                described qualitatively unless a measurement is approved for public use.
+              </aside>
             </div>
 
             {/* Section 7: Module Breakdown Diagram */}

@@ -8,7 +8,7 @@ import { BookingModal } from '@/components/public/BookingModal';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 
-const WINDOW_DAYS = 14;
+const WINDOW_DAYS = 30;
 
 interface ConfirmedBooking {
   event: PublicScheduleEvent;
@@ -212,9 +212,12 @@ export default function SchedulePage() {
 
         {/* Loading skeleton */}
         {loading && (
-          <div className="mt-10 space-y-8" aria-hidden>
+          <div className="mt-10 space-y-8" role="status" aria-live="polite">
+            <p className="text-center text-sm font-medium text-slate-600">
+              Checking the next {WINDOW_DAYS} days for available times…
+            </p>
             {[0, 1].map((group) => (
-              <div key={group}>
+              <div key={group} aria-hidden="true">
                 <div className="h-5 w-48 animate-pulse rounded bg-slate-200" />
                 <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                   {[0, 1, 2].map((slot) => (
@@ -228,26 +231,32 @@ export default function SchedulePage() {
 
         {/* Fallback: API error or no upcoming slots */}
         {!loading && (error || days.length === 0) && (
-          <div className="mx-auto mt-10 max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-            <p className="text-slate-700">
-              No available times are visible right now. You can still email me directly.
+          <div
+            className="mx-auto mt-10 max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm"
+            role={error ? 'alert' : 'status'}
+          >
+            <h2 className="text-lg font-semibold text-slate-900">
+              {error ? 'The booking calendar is temporarily unavailable' : 'No open times in the next 30 days'}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              {error
+                ? 'You can retry the calendar or discuss your system with me directly.'
+                : 'Send me a note and we’ll arrange a time that works.'}
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href="/contact-me"
                 className="inline-flex w-full items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 sm:w-auto"
               >
-                Email Me Directly
+                Discuss Your System
               </Link>
-              {error && (
-                <button
-                  type="button"
-                  onClick={() => fetchSchedule()}
-                  className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-[#FFFDF4] sm:w-auto"
-                >
-                  Try again
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={() => fetchSchedule()}
+                className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-[#FFFDF4] sm:w-auto"
+              >
+                Check again
+              </button>
             </div>
           </div>
         )}

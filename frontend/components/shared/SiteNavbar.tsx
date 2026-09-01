@@ -2,40 +2,13 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import { QuickContactPanel } from '@/components/ui/QuickContactPanel';
 
 export function SiteNavbar() {
   const pathname = usePathname();
-  const [showContact, setShowContact] = useState(false);
-  const rightRef = useRef<HTMLDivElement | null>(null);
-  
+
   const isWorkingFundamentals = pathname?.startsWith('/working-fundamentals') ?? false;
   const isCaseStudies = pathname?.startsWith('/case-studies') ?? false;
   const isArchitectureReview = pathname?.startsWith('/architecture-review') ?? false;
-
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const el = rightRef.current;
-      if (!el) return;
-      if (!el.contains(e.target as Node)) {
-        setShowContact(false);
-      }
-    };
-
-    if (showContact) window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
-  }, [showContact]);
-
-  // Close on Escape key
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShowContact(false);
-    };
-
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, []);
 
   return (
     <header
@@ -90,16 +63,7 @@ export function SiteNavbar() {
         </div>
 
         {/* Row 3 - actions (centered on mobile, right on desktop) */}
-        <div className="flex items-center gap-3 relative w-full md:w-auto justify-center md:justify-end mt-3 md:mt-0" ref={rightRef}>
-          <button
-            onClick={() => setShowContact(prev => !prev)}
-            aria-expanded={showContact}
-            aria-haspopup="dialog"
-            className={`text-sm font-medium transition-colors text-slate-600 hover:text-[#F4C430] px-4 py-2`}
-          >
-            Contact
-          </button>
-
+        <div className="relative mt-3 flex w-full items-center justify-center gap-3 md:mt-0 md:w-auto md:justify-end">
           <Link href="/architecture-review">
             <button
               type="button"
@@ -124,7 +88,7 @@ export function SiteNavbar() {
             <button
               type="button"
               aria-label="Case Studies"
-              className="text-sm font-medium transition-colors text-slate-600 hover:text-[#F4C430] px-4 py-2"
+              className={`px-4 py-2 text-sm font-medium transition-colors ${isCaseStudies ? 'text-[#F4C430]' : 'text-slate-600 hover:text-[#F4C430]'}`}
             >
               Case Studies
             </button>
@@ -159,8 +123,6 @@ export function SiteNavbar() {
               Book a Call
             </button>
           </Link>
-
-          <QuickContactPanel open={showContact} />
         </div>
       </div>
     </header>

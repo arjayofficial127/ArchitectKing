@@ -11,12 +11,9 @@ export function BookConversionFooter() {
           and protects long-term velocity.
         </p>
         <div className={styles.conversionActions}>
-          <a
-            href="mailto:arvinjaysoncastro@gmail.com?subject=Architecture%20Discussion&body=Hi%20Arvin%2C%0A%0AI'd%20like%20to%20discuss%20system%20architecture%20for%20[your%20project%2Frole].%0A%0ABest%2C"
-            className={styles.primaryCTA}
-          >
-            Discuss Your System
-          </a>
+          <Link href="/schedule" className={styles.primaryCTA}>
+            Book a Call
+          </Link>
           <div className={styles.secondaryLinks}>
             <Link href="/pdf/ARVIN JAYSON CASTRO - Solutions Architect Lead.pdf" target="_blank" rel="noopener noreferrer" className={styles.subtleLink}>
               Resume
