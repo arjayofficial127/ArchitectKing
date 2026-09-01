@@ -35,9 +35,12 @@ export function HeroFoldCloser() {
           <div className="relative mx-auto aspect-[4/4.6] max-w-sm overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-2xl shadow-slate-900/15">
             <Image src="/architectking/profile_recent.png" alt="Arvin Jayson Castro, Software Architect and Product Builder" fill priority sizes="(max-width: 1024px) 384px, 420px" className="object-cover" />
           </div>
-          <div className="absolute bottom-0 left-1/2 flex w-max -translate-x-1/2 items-center gap-4 rounded-xl border border-slate-800 bg-slate-950 px-5 py-4 text-white shadow-2xl shadow-slate-950/25 sm:left-4 sm:translate-x-0">
-            <p className="text-3xl font-bold leading-none tracking-tight text-[#F4C430]">16 years</p>
-            <p className="max-w-32 text-xs font-semibold leading-snug text-slate-200">designing, building, and fixing software</p>
+          <div className="absolute bottom-0 left-3 flex items-center rounded-xl border border-slate-200 bg-white/95 px-4 py-3 text-slate-950 shadow-[0_16px_32px_-20px_rgba(15,23,42,0.55)] backdrop-blur sm:left-4">
+            <p className="text-4xl font-bold leading-none tracking-[-0.05em] text-[#C39400]">16</p>
+            <div className="ml-3 border-l border-slate-200 pl-3">
+              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Years in software</p>
+              <p className="mt-0.5 text-sm font-semibold text-slate-800">Still hands-on.</p>
+            </div>
           </div>
         </div>
       </div>
