@@ -1,28 +1,22 @@
+const credibilityAreas = [
+  { icon: '◇', title: 'Architecture Judgment', description: 'Seeing risks early, making tradeoffs clear, and protecting the path forward.' },
+  { icon: '</>', title: 'Hands-on Product Building', description: 'Turning decisions into working software without losing intent in translation.' },
+  { icon: '▣', title: 'Reliable Delivery', description: 'Owning the details through testing, release, and real production use.' },
+] as const;
+
 export function TechStrip() {
   return (
-    <section 
-      className="relative w-full border-t border-b transition-all duration-400 ease-in-out" 
-      style={{ 
-        background: '#0f172a',
-        borderTopColor: 'transparent',
-        borderBottomColor: 'transparent',
-        transition: 'background 0.4s ease, border-color 0.3s ease, color 0.3s ease'
-      }}
-    >
-      <div className="w-full px-6" style={{ paddingTop: '30px', paddingBottom: '30px' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px' }}>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm md:text-base font-medium" style={{ letterSpacing: '0.5px', color: '#e2e8f0' }}>
-            <span>Distributed Systems</span>
-            <span style={{ color: '#94a3b8' }}>•</span>
-            <span>High-scale Architectures</span>
-            <span style={{ color: '#94a3b8' }}>•</span>
-            <span>Reliability</span>
-            <span style={{ color: '#94a3b8' }}>•</span>
-            <span>Performance</span>
-            <span style={{ color: '#94a3b8' }}>•</span>
-            <span>Clean Architecture</span>
-          </div>
-        </div>
+    <section className="relative w-full bg-slate-950 text-white" aria-label="Core credibility areas">
+      <div className="mx-auto grid max-w-7xl px-6 py-6 md:grid-cols-3 md:py-7">
+        {credibilityAreas.map((area, index) => (
+          <article key={area.title} className={`flex gap-4 py-4 md:px-7 md:py-1 ${index > 0 ? 'border-t border-slate-700/80 md:border-l md:border-t-0' : ''}`}>
+            <span aria-hidden="true" className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#F4C430]/60 font-mono text-sm font-bold text-[#F4C430]">{area.icon}</span>
+            <div>
+              <h2 className="text-xs font-bold uppercase tracking-[0.12em] text-white">{area.title}</h2>
+              <p className="mt-1 text-sm leading-relaxed text-slate-300">{area.description}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

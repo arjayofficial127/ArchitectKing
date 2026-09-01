@@ -1,78 +1,46 @@
-'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function HeroFoldCloser() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-12 md:py-20 mt-8 md:mt-12 overflow-x-hidden">
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-white/3 to-white/5 bg-float" />
-      <div className="mx-auto w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
-          <div className="mx-auto max-w-sm md:max-w-none text-center md:text-left">
-            {/* <p className="text-sm text-gray-500 mb-3 opacity-0 animate-fade-in-up delay-0">Solutions Architect — Scalable SaaS Systems</p> */}
-            <p className="text-sm text-gray-500 mb-3 opacity-0 animate-fade-in-up delay-0">For growing products that can’t afford to break.</p>
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl leading-[1.05] mt-0 opacity-0 animate-fade-in-up delay-100">
-              {/* <span className="block">For growing products that can’t afford to break.</span> */}
-              <span className="block">Built to scale.</span>
-              <span className="block">Never break.</span>
-            </h1>
-
-            <p className="mt-4 text-base md:text-xl text-slate-600 opacity-0 animate-fade-in-up delay-150 leading-relaxed text-center md:text-left">
-As systems grow, they become harder to maintain, slower to change, and more likely to break under pressure.
-
-I help teams design and evolve systems that stay stable, scale cleanly, and hold up in real production.       </p>
-
-              <ul className="mt-6 space-y-2 text-slate-700 text-center md:text-left">
-                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-250"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">15+ years building production systems</span></li>
-                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-350"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">20+ systems designed and shipped</span></li>
-                <li className="flex items-start justify-center md:justify-start opacity-0 animate-fade-in-up delay-450"><span className="text-[#F4C430] mr-3">✔</span><span className="font-semibold text-slate-800 text-sm">Multi-tenant • RBAC • High-scale platforms</span></li>
-              </ul>
-              <p className="mt-4 text-base text-slate-700 font-medium text-center md:text-left opacity-0 animate-fade-in-up delay-550">Trusted across critical systems and production environments</p>
-
-              <div className="mt-4 md:mt-10 text-left">
-<div className="flex flex-col items-center md:items-start gap-2 mt-4 max-w-sm md:max-w-none mx-auto md:mx-0 px-4 md:px-0">
-
-  <Link href="/schedule" className="w-full md:w-auto">
-    <button className="w-full md:w-auto px-6 py-3 rounded-md bg-[#0F172A] text-white font-medium text-center md:text-left">
-      Book a Call
-    </button>
-  </Link>
-
-  <p className="text-sm text-slate-500 text-center md:text-left max-w-xs md:max-w-none">
-    No pressure. Just a quick look at what’s slowing things down.
-  </p>
-
-</div>
-              </div>
+    <section className="relative mx-auto w-full max-w-7xl overflow-hidden px-6 py-16 md:py-24 lg:py-28">
+      <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
+        <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 sm:text-sm">
+            Hands-on technical partner for founders and CEOs
+          </p>
+          <h1 className="mt-5 text-4xl font-bold leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl">
+            You lead the company. I&apos;ll make sure the technology can carry the vision
+            <span className="text-[#F4C430]">.</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0">
+            I work directly with founders and CEOs as the technical partner in the room—turning business intent into clear decisions, dependable systems, and software we can confidently put in front of customers. I&apos;ll tell you what is risky, what matters now, and help build it.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <Link href="/schedule" className="inline-flex items-center justify-center rounded-md bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800">
+              Discuss What You&apos;re Building
+            </Link>
+            <Link href="#selected-systems" className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-500">
+              Inspect What I&apos;ve Built <span aria-hidden="true">→</span>
+            </Link>
           </div>
+          <p className="mt-6 text-sm font-medium leading-relaxed text-slate-500">
+            Straight answers <span className="px-2 text-[#F4C430]">•</span> Calm ownership
+            <span className="px-2 text-[#F4C430]">•</span> Architecture and execution in one partner
+          </p>
+        </div>
 
-            <div className="flex justify-center md:justify-end">
-              <div className="max-w-xs w-full mx-auto md:w-[440px] mt-6 mb-6 md:mt-0 rounded-2xl shadow-2xl overflow-hidden border border-slate-200/60">
-                <img src="/architectking/profile_recent.png" alt="Arvin Jayson Castro" className="w-full h-full object-cover" />
-              </div>
-            </div>
+        <div className="relative mx-auto w-full max-w-md pb-8">
+          <div aria-hidden="true" className="absolute -inset-8 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(244,196,48,0.13),transparent_68%)]" />
+          <div className="relative mx-auto aspect-[4/4.6] max-w-sm overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-2xl shadow-slate-900/15">
+            <Image src="/architectking/profile_recent.png" alt="Arvin Jayson Castro, Software Architect and Product Builder" fill priority sizes="(max-width: 1024px) 384px, 420px" className="object-cover" />
+          </div>
+          <div className="absolute bottom-0 left-1/2 flex w-max -translate-x-1/2 items-center gap-4 rounded-xl border border-slate-800 bg-slate-950 px-5 py-4 text-white shadow-2xl shadow-slate-950/25 sm:left-4 sm:translate-x-0">
+            <p className="text-3xl font-bold leading-none tracking-tight text-[#F4C430]">16 years</p>
+            <p className="max-w-32 text-xs font-semibold leading-snug text-slate-200">building systems that have to work</p>
+          </div>
         </div>
       </div>
-      <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(8px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up { animation: fadeInUp 420ms cubic-bezier(.2,.9,.2,1) forwards; }
-        .delay-0 { animation-delay: 0ms; }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-150 { animation-delay: 150ms; }
-        .delay-250 { animation-delay: 250ms; }
-        .delay-350 { animation-delay: 350ms; }
-        .delay-450 { animation-delay: 450ms; }
-        .delay-550 { animation-delay: 550ms; }
-        .delay-650 { animation-delay: 650ms; }
-        .delay-750 { animation-delay: 750ms; }
-        .delay-850 { animation-delay: 850ms; }
-        .btn-hover-scale { transition: transform 220ms ease, box-shadow 220ms ease; }
-        .btn-hover-scale:hover { transform: scale(1.02); }
-        @keyframes floatY { 0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)} }
-        .bg-float { animation: floatY 6s ease-in-out infinite; will-change: transform; }
-      `}</style>
     </section>
   );
 }

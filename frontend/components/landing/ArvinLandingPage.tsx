@@ -7,6 +7,7 @@ import { HeroFoldCloser } from './sections/HeroFoldCloser';
 import { ProofFoldCloser } from './sections/ProofFoldCloser';
 // CloseFoldCloser section removed per request
 import { TechStrip } from './sections/TechStrip';
+import { SelectedSystemsSection } from './sections/SelectedSystemsSection';
 import { CloseFoldFinal } from './sections/CloseFoldFinal';
 
 export function ArvinLandingPage() {
@@ -31,14 +32,16 @@ export function ArvinLandingPage() {
       <main className="relative">
 
         {/* 3-FOLD LAYOUT - Fold 1: Hero + TechStrip combined into one full-height fold */}
-        <section className="min-h-[calc(100vh-59px)]  flex flex-col justify-between">
+        <section className="flex min-h-[calc(100vh-82px)] flex-col justify-between">
           <div className="flex-1 flex items-center justify-center">
             <HeroFoldCloser />
           </div>
           <TechStrip />
         </section>
 
-        <section className="min-h-screen flex flex-col justify-center">
+        <SelectedSystemsSection />
+
+        <section id="approach" className="scroll-mt-28">
           <ProofFoldCloser />
         </section>
 

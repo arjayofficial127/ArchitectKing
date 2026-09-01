@@ -1,130 +1,37 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
+const navigationItems = [
+  { href: '/#selected-systems', label: 'Systems' },
+  { href: '/#approach', label: 'Approach' },
+  { href: '/architecture-review', label: 'Architecture Review' },
+  { href: '/working-fundamentals', label: 'Working Fundamentals' },
+] as const;
+
 export function SiteNavbar() {
-  const pathname = usePathname();
-
-  const isWorkingFundamentals = pathname?.startsWith('/working-fundamentals') ?? false;
-  const isCaseStudies = pathname?.startsWith('/case-studies') ?? false;
-  const isArchitectureReview = pathname?.startsWith('/architecture-review') ?? false;
-
   return (
-    <header
-      className="z-50"
-      style={{
-        position: 'sticky',
-        // top: 12, 
-        zIndex: 50,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '12px 18px',
-        borderRadius: 12,
-        background: 'rgba(255,255,255,0.55)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        border: '1px solid rgba(255,255,255,0.4)',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06)',
-        transition: 'all 200ms ease',
-      }}
-      onMouseEnter={e => {
-        const el = e.currentTarget;
-        el.style.background = 'rgba(255,255,255,0.65)';
-        el.style.borderColor = 'rgba(255,255,255,0.6)';
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget;
-        el.style.background = 'rgba(255,255,255,0.55)';
-        el.style.borderColor = 'rgba(255,255,255,0.4)';
-      }}
-    >
-      <div className="mx-auto flex w-full max-w-7xl flex-col md:flex-row items-center md:justify-between px-6 py-3">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 shadow-[0_8px_30px_rgba(15,23,42,0.06)] backdrop-blur-xl">
+      <nav aria-label="Primary navigation" className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-4 lg:flex-row lg:items-center lg:justify-between">
+        <Link href="/" className="flex shrink-0 flex-col text-center lg:text-left">
+          <span className="text-base font-bold tracking-tight text-slate-950">Arvin Jayson Castro</span>
+          <span className="mt-0.5 text-xs font-medium text-slate-500">Software Architect &amp; Product Builder</span>
+        </Link>
 
-        {/* Row 1 + Row 2 (mobile stacked, desktop inline) */}
-        <div className="flex flex-col items-center md:items-start md:flex-row md:items-center md:gap-2">
-          <div className="text-center md:text-left">
-            <Link href="/" className="text-base font-semibold tracking-tight text-slate-900 hover:text-slate-700 transition-colors">
-              Arvin Jayson Castro
+        <div className="flex items-center gap-1 overflow-x-auto pb-1 lg:justify-end lg:overflow-visible lg:pb-0">
+          {navigationItems.map((item) => (
+            <Link key={item.href} href={item.href} className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:text-slate-950">
+              {item.label}
             </Link>
-          </div>
-
-          {/* Desktop inline separator + title */}
-          <div className="hidden md:flex items-center gap-2">
-            <span className="text-sm text-slate-400">|</span>
-            <span className="text-sm text-slate-500">Architect of Scalable Systems</span>
-          </div>
-
-          {/* Mobile stacked title */}
-          <div className="md:hidden mt-1">
-            <span className="text-sm text-slate-500">Architect of Scalable Systems</span>
-          </div>
-        </div>
-
-        {/* Row 3 - actions (centered on mobile, right on desktop) */}
-        <div className="relative mt-3 flex w-full items-center justify-center gap-3 md:mt-0 md:w-auto md:justify-end">
-          <Link href="/architecture-review">
-            <button
-              type="button"
-              aria-label="Architecture Review"
-              className={`text-sm font-medium transition-colors px-4 py-2 ${isArchitectureReview ? 'text-[#F4C430]' : 'text-slate-600 hover:text-[#F4C430]'}`}
-            >
-              Architecture Review
-            </button>
+          ))}
+          <Link href="/contact-me" className="ml-1 inline-flex shrink-0 items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-950 hover:bg-slate-50">
+            Discuss Your System
           </Link>
-
-          <Link href="/working-fundamentals">
-            <button
-              type="button"
-              aria-label="Working Fundamentals"
-              className={`text-sm font-medium transition-colors px-4 py-2 ${isWorkingFundamentals ? 'text-[#F4C430]' : 'text-slate-600 hover:text-[#F4C430]'}`}
-            >
-              Working Fundamentals
-            </button>
-          </Link>
-
-          <Link href="/case-studies">
-            <button
-              type="button"
-              aria-label="Case Studies"
-              className={`px-4 py-2 text-sm font-medium transition-colors ${isCaseStudies ? 'text-[#F4C430]' : 'text-slate-600 hover:text-[#F4C430]'}`}
-            >
-              Case Studies
-            </button>
-          </Link>
-
-          <Link href="/contact-me">
-            <button
-              type="button"
-              aria-label="Discuss Your System"
-              className="inline-flex items-center justify-center rounded-md border border-[#0F172A] bg-transparent px-4 py-2 text-sm font-medium text-[#0F172A] transition-all hover:bg-[#0F172A] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-1 hover:scale-[1.02]"
-            >
-              Discuss Your System
-            </button>
-          </Link>
-
-          <Link href="/pdf/ARVIN JAYSON CASTRO - Solutions Architect Lead.pdf" target="_blank" rel="noopener noreferrer">
-            <button
-              type="button"
-              aria-label="Download CV"
-              className="text-sm font-medium transition-colors text-slate-600 hover:text-[#F4C430] px-4 py-2"
-            >
-              Download CV
-            </button>
-          </Link>
-
-          <Link href="/schedule">
-            <button
-              type="button"
-              aria-label="Book a Call"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-[#0F172A] px-3 py-2 text-sm font-medium text-white transition-all hover:opacity-90 focus:outline-none"
-            >
-              Book a Call
-            </button>
+          <Link href="/schedule" className="ml-1 inline-flex shrink-0 items-center justify-center rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800">
+            Book a Call
           </Link>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
