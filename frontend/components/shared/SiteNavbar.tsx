@@ -25,10 +25,10 @@ export function SiteNavbar() {
             </Link>
           ))}
           <Link href="/contact-me" className="ml-1 inline-flex shrink-0 items-center justify-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-slate-950 hover:bg-slate-50">
-            Discuss Your System
+            Tell Me What&apos;s Going On
           </Link>
           <Link href="/schedule" className="ml-1 inline-flex shrink-0 items-center justify-center rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800">
-            Book a Call
+            Find a Time
           </Link>
         </div>
       </nav>

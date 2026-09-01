@@ -32,33 +32,33 @@ export function WorkingFundamentalsPage() {
               Systems That Hold Under Pressure
             </h1>
             <p className={styles.tagline}>
-              Most systems don’t fail loudly - they fail slowly, then all at once.
+              Notes on the principles I keep returning to when software gets complicated.
             </p>
             <p className={styles.subtext}>
-              These principles help you build systems that remain stable, scalable, and maintainable in real-world production environments.
+              This is what has helped me reason about systems, make tradeoffs, and leave code easier for the next person to understand.
             </p>
 
             <div className={styles.whyMatters}>
-              <h2 className={styles.whyMattersTitle}>Where Systems Break</h2>
+              <h2 className={styles.whyMattersTitle}>Where Systems Get Difficult</h2>
               <ul className={styles.whyMattersList}>
-                <li>Systems don’t break because of bugs - they break because of wrong assumptions</li>
-                <li>Complexity doesn’t explode - it accumulates quietly until it slows everything down</li>
-                <li>Speed without structure always turns into friction later</li>
+                <li>Important assumptions stay unwritten</li>
+                <li>Responsibilities and ownership become unclear</li>
+                <li>Short-term decisions quietly make later changes harder</li>
               </ul>
             </div>
 
             <div className={styles.valueBlock}>
-              <h2 className={styles.whyMattersTitle}>What This Gives You</h2>
+              <h2 className={styles.whyMattersTitle}>What the Guide Covers</h2>
               <ul className={styles.whyMattersList}>
-                <li>Clarity on how to design systems that scale without degrading</li>
-                <li>A way to reduce hidden complexity before it becomes a problem</li>
-                <li>A foundation for building production systems that actually hold</li>
+                <li>Inputs, state, data, boundaries, interfaces, and failure</li>
+                <li>How to notice complexity before it spreads through the system</li>
+                <li>How to make changes that the team can still reason about later</li>
               </ul>
             </div>
 
             <div className={styles.meta}>
               <div>
-                <strong>Built By</strong>
+                <strong>Written By</strong>
                 <br />
                 Arvin Jayson Castro
               </div>
@@ -67,11 +67,10 @@ export function WorkingFundamentalsPage() {
             <div className={styles.connectsSection}>
               <h2 className={styles.connectsTitle}>How To Use This</h2>
               <p className={styles.connectsText}>
-                Use these principles as a lens when designing, reviewing, or scaling systems. 
-                They help identify weak points early, reduce long-term complexity, and guide better architectural decisions.
+                Read it from the beginning or open the chapter closest to the problem in front of you. Use what is helpful and test it against the system you actually have.
               </p>
               <p className={styles.subtext}>
-                If you are building something that needs to scale and hold, this way of thinking will help you get there.
+                These are working notes, not rules. I expect them to keep improving as I learn.
               </p>
             </div>
           </section>

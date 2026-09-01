@@ -37,7 +37,7 @@ export default function Chapter8Page() {
         Persistence is the moment software stops being temporary.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Code forgets. Data remembers.

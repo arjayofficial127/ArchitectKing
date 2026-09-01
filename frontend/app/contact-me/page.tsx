@@ -49,16 +49,16 @@ export default function ContactMePage() {
             {/* Main Content */}
             <div className="text-center">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-3">
-                Is your system becoming slow, fragile, or harder to scale?
+                Tell me what&apos;s going on.
               </h1>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-2">
-                {"If things are getting harder to maintain, slower under load, or difficult to extend — you're not alone."}
+                {"A short note is enough. Tell me what you're building, what is getting in the way, or what you are unsure about."}
               </p>
             </div>
 
             {/* Problem Section */}
             <div className="bg-slate-50/60 border border-slate-200 rounded-xl p-4 md:p-6">
-              <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">What might be happening:</h2>
+              <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">It might be something like this:</h2>
               <ul className="grid grid-cols-1 gap-2 text-sm text-slate-700 mb-2">
                 <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Pages are getting slower as usage grows</span></li>
                 <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Small changes cause unexpected issues</span></li>
@@ -121,7 +121,7 @@ export default function ContactMePage() {
 
             {/* Pre-CTA context line */}
             <div className="text-sm text-slate-500 text-center mt-4">
-              These patterns tend to repeat across different systems.
+              You do not need to have the technical diagnosis before getting in touch.
             </div>
 
             {/* CTA Section */}
@@ -133,19 +133,19 @@ export default function ContactMePage() {
                 href="/schedule"
                 className="inline-flex w-full md:w-auto items-center justify-center rounded-lg bg-[#0F172A] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-2"
               >
-                Book a Call
+                Find a Time
               </Link>
               <a
                 href="mailto:arvinjaysoncastro@gmail.com?subject=Review%20Your%20System&body=Hi%20Arvin%2C%0A%0ACould%20you%20take%20a%20look%20at%20our%20system%3F%0A%0AThanks%2C"
                 className="inline-flex w-full md:w-auto items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-lg font-semibold text-[#0F172A] shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
               >
-                Take a closer look at your system
+                Send Me a Note
               </a>
               <p className="text-sm text-slate-500">
-                {"We’ll go through what’s happening, what might be causing it, and what options you have."}
+                {"We’ll talk through what is happening and what a sensible next step might be."}
               </p>
               <p className="text-sm text-slate-500">
-                {"No pressure — just a quick look at what might be going on."}
+                {"If I do not think I am the right person to help, I will say so."}
               </p>
               <p className="text-xs text-slate-500">
                 {"I usually respond within a few hours."}
@@ -164,8 +164,8 @@ export default function ContactMePage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
               <p className="font-semibold text-base text-slate-700">Arvin Jayson Castro</p>
-              <p className="text-sm text-slate-500 mt-1">Architect of Scalable Systems</p>
-              <p className="mt-1 text-xs text-slate-400">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
+              <p className="text-sm text-slate-500 mt-1">Software Architect &amp; Product Builder</p>
+              <p className="mt-1 text-xs text-slate-400">Architecture • Product Building • Production Support</p>
               <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
 
@@ -179,7 +179,7 @@ export default function ContactMePage() {
         </div>
       </footer>
 
-      <div className="text-xs text-slate-400 text-center mt-6">Built for systems that scale.</div>
+      <div className="text-xs text-slate-400 text-center mt-6">Practical help, directly from me.</div>
     </div>
   );
 }

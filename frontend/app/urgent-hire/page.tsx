@@ -39,10 +39,10 @@
                     {/* Main Content */}
                     <div className="text-center">
                       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-3">
-                        Need help fixing your React / Next.js app fast?
+                        Something broken or blocking a release?
                       </h1>
                       <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-2">
-                        I jump into broken or slow systems and get them working again — quickly.
+                        Send me the symptoms and the context. I&apos;ll take a focused look and tell you what I think the next step is.
                       </p>
                     </div>
 
@@ -58,7 +58,7 @@
 
                     {/* Proof Section */}
                     <div className="bg-slate-50/60 border border-slate-200 rounded-xl p-4 md:p-6">
-                      <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">Selected Work:</h2>
+                      <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">Relevant experience:</h2>
                       <ul className="grid grid-cols-1 gap-2 text-sm text-slate-700 mb-2">
                         <li className="flex items-start"><span className="text-[#22c55e] mr-2">•</span><span>Stabilized multi-tenant platforms (RBAC, payments)</span></li>
                         <li className="flex items-start"><span className="text-[#22c55e] mr-2">•</span><span>Fixed production issues in React / Next.js apps</span></li>
@@ -68,7 +68,7 @@
 
                     {/* Speed + Risk */}
                     <div className="text-center text-base text-slate-700">
-                      Available to start immediately. If I can’t help, I’ll tell you upfront.
+                      If I can take it on quickly, I will. If I cannot help, I&apos;ll tell you upfront.
                     </div>
 
                     {/* Price Signal */}
@@ -82,9 +82,9 @@
                         href="mailto:arvinjaysoncastro@gmail.com"
                         className="inline-flex w-full md:w-auto items-center justify-center rounded-lg bg-black px-8 py-4 text-lg font-semibold text-white shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                       >
-                        Send me the issue — I’ll reply with a fix plan today
+                        Send Me the Issue
                       </a>
-                      <p className="text-xs text-slate-500 mt-2">Response within a few hours.</p>
+                      <p className="text-xs text-slate-500 mt-2">Include the error, what changed, and what is currently blocked if you can.</p>
                     </div>
                   </div>
                 </div>

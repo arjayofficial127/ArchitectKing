@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Fast Website Setup | Arvin Jayson Castro',
-  description: 'Professional websites for freelancers, small businesses, and professionals. Simple, clean, ready to go live. Built by a systems architect with 15+ years experience.',
+  title: 'Straightforward Website Setup | Arvin Jayson Castro',
+  description: 'Simple websites for freelancers, small businesses, and professionals. Built, reviewed with you, and put online without unnecessary complexity.',
 };
 
 export default function OfferPage() {
@@ -13,15 +13,15 @@ export default function OfferPage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <span className="inline-block px-4 py-2 bg-slate-800 rounded-full text-sm font-medium text-slate-300 uppercase tracking-wide">
-              Fast Website Setup
+              Small websites and useful web apps
             </span>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
-            Simple. Clean.
-            <span className="block text-indigo-400">Ready to go live.</span>
+            A straightforward website,
+            <span className="block text-indigo-400">built and put online.</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            For freelancers, small businesses, and professionals who need a polished website quickly — with room to grow into dashboards and custom systems later.
+            If you need a clear place to explain what you do and let people contact you, I can help you get it built without making the job bigger than it needs to be.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Link
@@ -38,7 +38,7 @@ export default function OfferPage() {
             </Link>
           </div>
           <p className="text-sm text-slate-400">
-            Built by a systems architect with 15+ years of experience.
+            You work directly with me from the first conversation through launch.
           </p>
         </div>
       </section>
@@ -46,35 +46,35 @@ export default function OfferPage() {
       {/* What You Get Section */}
       <section className="px-6 py-16 bg-slate-800">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What You Get</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What I Can Take Care Of</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-slate-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">1-Page Website</h3>
-              <p className="text-slate-300">Clean, professional single-page design focused on your message and call-to-action.</p>
+              <h3 className="text-xl font-semibold mb-3">A Clear One-Page Site</h3>
+              <p className="text-slate-300">A simple page that explains what you do and gives people a clear way to respond.</p>
             </div>
             <div className="bg-slate-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Mobile-Friendly</h3>
-              <p className="text-slate-300">Responsive design that looks great on all devices, from phones to desktops.</p>
+              <h3 className="text-xl font-semibold mb-3">Works on Phones and Desktops</h3>
+              <p className="text-slate-300">A layout that remains readable and useful across common screen sizes.</p>
             </div>
             <div className="bg-slate-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Polished Modern Design</h3>
-              <p className="text-slate-300">Elegant typography, subtle animations, and professional styling.</p>
+              <h3 className="text-xl font-semibold mb-3">A Design That Fits the Business</h3>
+              <p className="text-slate-300">Straightforward typography and styling based on your content and audience.</p>
             </div>
             <div className="bg-slate-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Deployed Live</h3>
-              <p className="text-slate-300">Hosted and ready to share with your audience immediately.</p>
+              <h3 className="text-xl font-semibold mb-3">Hosting and Launch</h3>
+              <p className="text-slate-300">I can handle the practical work needed to put the finished site online.</p>
             </div>
             <div className="bg-slate-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Fast Turnaround</h3>
-              <p className="text-slate-300">From concept to live in 3-5 business days.</p>
+              <h3 className="text-xl font-semibold mb-3">A Short, Defined Job</h3>
+              <p className="text-slate-300">Most small sites can be completed in 3–5 business days once the content is ready.</p>
             </div>
             <div className="bg-slate-700 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Direct Collaboration</h3>
-              <p className="text-slate-300">Work directly with me for revisions and refinements.</p>
+              <h3 className="text-xl font-semibold mb-3">Direct Communication</h3>
+              <p className="text-slate-300">You send feedback to me, and I make the changes.</p>
             </div>
           </div>
           <div className="mt-8 text-center">
-            <p className="text-slate-400">Optional: Expand to multi-page sites or add custom features later.</p>
+            <p className="text-slate-400">If the job needs more pages or custom features, we can scope those separately.</p>
           </div>
         </div>
       </section>
@@ -82,7 +82,7 @@ export default function OfferPage() {
       {/* Pricing Section */}
       <section className="px-6 py-16">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">Simple Pricing</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Starting Points</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-800 p-8 rounded-lg border border-slate-700">
               <h3 className="text-2xl font-bold mb-4">Starter Page</h3>
@@ -97,7 +97,7 @@ export default function OfferPage() {
             </div>
             <div className="bg-slate-800 p-8 rounded-lg border-2 border-indigo-500 relative">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                Most Popular
+                Common choice
               </div>
               <h3 className="text-2xl font-bold mb-4">Business Page</h3>
               <div className="text-4xl font-black text-indigo-400 mb-4">₱8,000</div>
@@ -123,14 +123,14 @@ export default function OfferPage() {
               </ul>
             </div>
           </div>
-          <p className="mt-8 text-slate-400">Rush delivery available for urgent projects. Payment plans can be arranged.</p>
+          <p className="mt-8 text-slate-400">The final scope and price are agreed before I start. Urgent work depends on availability.</p>
         </div>
       </section>
 
       {/* Who This Is For Section */}
       <section className="px-6 py-16 bg-slate-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">Who This Is For</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Who This May Suit</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="text-left">
               <h3 className="text-xl font-semibold mb-2">Small Businesses</h3>
@@ -142,15 +142,15 @@ export default function OfferPage() {
             </div>
             <div className="text-left">
               <h3 className="text-xl font-semibold mb-2">Consultants</h3>
-              <p className="text-slate-300">Experts in various fields establishing credibility and attracting clients.</p>
+              <p className="text-slate-300">People who need a clear place to explain their work and receive inquiries.</p>
             </div>
             <div className="text-left">
               <h3 className="text-xl font-semibold mb-2">Creators</h3>
-              <p className="text-slate-300">Artists, influencers, and content creators building their personal brand.</p>
+              <p className="text-slate-300">Artists and content creators who need a home for their work and links.</p>
             </div>
             <div className="text-left">
               <h3 className="text-xl font-semibold mb-2">Personal Brands</h3>
-              <p className="text-slate-300">Professionals and thought leaders creating a strong online identity.</p>
+              <p className="text-slate-300">Professionals who want one reliable place for their background and services.</p>
             </div>
             <div className="text-left">
               <h3 className="text-xl font-semibold mb-2">Service Providers</h3>
@@ -165,16 +165,16 @@ export default function OfferPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Need More Than a Website?</h2>
           <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            Start simple now. If your business grows, I can build more advanced systems later.
+            If the real need is a workflow, portal, dashboard, or internal tool, we can talk about that instead of forcing it into a website.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-slate-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Admin Dashboards</h3>
-              <p className="text-slate-400 text-sm">Manage your business data and operations efficiently.</p>
+              <p className="text-slate-400 text-sm">A focused place to view and manage the information your team uses.</p>
             </div>
             <div className="bg-slate-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Internal Tools</h3>
-              <p className="text-slate-400 text-sm">Custom software for your teams specific workflows.</p>
+              <p className="text-slate-400 text-sm">Small tools built around a workflow your team already understands.</p>
             </div>
             <div className="bg-slate-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Client Systems</h3>
@@ -190,7 +190,7 @@ export default function OfferPage() {
             </div>
             <div className="bg-slate-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Custom Web Apps</h3>
-              <p className="text-slate-400 text-sm">Tailored applications for your unique business needs.</p>
+              <p className="text-slate-400 text-sm">An application shaped around a real business process and its users.</p>
             </div>
           </div>
         </div>
@@ -199,23 +199,23 @@ export default function OfferPage() {
       {/* Why Work With Me Section */}
       <section className="px-6 py-16 bg-slate-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">Why Work With Me</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">What Working With Me Is Like</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="text-left">
-              <h3 className="text-xl font-semibold mb-3">15+ Years Experience</h3>
-              <p className="text-slate-300">Building production systems for startups and enterprises alike.</p>
+              <h3 className="text-xl font-semibold mb-3">16 Years Doing the Work</h3>
+              <p className="text-slate-300">I have worked on small products, internal tools, and larger production systems.</p>
             </div>
             <div className="text-left">
-              <h3 className="text-xl font-semibold mb-3">Fullstack & Systems Thinking</h3>
-              <p className="text-slate-300">Frontend, backend, databases, and deployment — I handle it all.</p>
+              <h3 className="text-xl font-semibold mb-3">Comfortable Across the Stack</h3>
+              <p className="text-slate-300">I can work through the interface, backend, data, integration, and deployment details.</p>
             </div>
             <div className="text-left">
               <h3 className="text-xl font-semibold mb-3">Practical Delivery</h3>
-              <p className="text-slate-300">Focus on what works in the real world, not just fancy features.</p>
+              <p className="text-slate-300">The goal is something useful and dependable, not a long list of features.</p>
             </div>
             <div className="text-left">
-              <h3 className="text-xl font-semibold mb-3">Start Simple, Scale Later</h3>
-              <p className="text-slate-300">Begin with what you need now, expand as your business grows.</p>
+              <h3 className="text-xl font-semibold mb-3">Keep the First Step Sensible</h3>
+              <p className="text-slate-300">We can build what is needed now and leave room for later without overbuilding.</p>
             </div>
           </div>
         </div>
@@ -228,8 +228,8 @@ export default function OfferPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">1</div>
-              <h3 className="text-xl font-semibold mb-3">Send Your Needs</h3>
-              <p className="text-slate-300">Share your content, goals, and any specific requirements.</p>
+              <h3 className="text-xl font-semibold mb-3">Tell Me What You Need</h3>
+              <p className="text-slate-300">Share the content, goal, deadline, and anything you are unsure about.</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">2</div>
@@ -238,8 +238,8 @@ export default function OfferPage() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">3</div>
-              <h3 className="text-xl font-semibold mb-3">Build & Launch</h3>
-              <p className="text-slate-300">I develop, you review, we iterate, and go live quickly.</p>
+              <h3 className="text-xl font-semibold mb-3">Build, Review, and Launch</h3>
+              <p className="text-slate-300">I build it, you review it, and we make the agreed changes before launch.</p>
             </div>
           </div>
         </div>
@@ -248,8 +248,8 @@ export default function OfferPage() {
       {/* Final CTA Section */}
       <section className="px-6 py-20 bg-slate-800">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Need a Website Up Quickly?</h2>
-          <p className="text-xl text-slate-300 mb-8">Let uss build it and get it live.</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Need Something Online?</h2>
+          <p className="text-xl text-slate-300 mb-8">Send me what you have. I&apos;ll tell you what I think the job involves.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact-me"
@@ -278,11 +278,11 @@ export default function OfferPage() {
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-3">Can you build dashboards later?</h3>
-              <p className="text-slate-300">Absolutely. Many clients start with a simple website and expand to custom systems as their business grows.</p>
+              <p className="text-slate-300">Yes. A simple website can stay simple while a separate dashboard or tool is added when there is a real need for it.</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-3">Do you help with deployment?</h3>
-              <p className="text-slate-300">Yes, I handle hosting setup and deployment. Your site will be live and ready to share immediately.</p>
+              <p className="text-slate-300">Yes. I can handle the hosting setup, deployment, and the checks needed before you share it.</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-3">What do you need from me to start?</h3>

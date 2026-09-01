@@ -37,7 +37,7 @@ export default function Chapter2Page() {
         Data structures are not implementation details. They are <strong>behavioral decisions</strong>.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         A data structure is not just a way to store data.

@@ -45,7 +45,7 @@ export default function Chapter4Page() {
         If you misunderstand flow, you misunderstand behavior.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Programs do not execute lines. They <strong>travel through possibilities</strong>.

@@ -46,7 +46,7 @@ export default function OrgRoleBillingCaseStudy() {
             <div>
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Overview</h2>
               <p className="text-slate-700 leading-relaxed">
-                Architected and delivered organization-based access control, role management, and time-entry billing system for enterprise clients.
+                I designed and delivered organization-based access control, role management, time entry, and billing for client teams.
               </p>
             </div>
 
@@ -106,11 +106,11 @@ export default function OrgRoleBillingCaseStudy() {
 
             {/* Impact */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">Impact</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">What Changed</h2>
               <ul className="space-y-2 text-slate-700">
                 <li className="flex items-start">
                   <span className="text-[#F4C430] mr-2 mt-1">•</span>
-                  <span>Improved internal operations</span>
+                  <span>Put access, time entry, and billing into one consistent workflow</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#F4C430] mr-2 mt-1">•</span>
@@ -144,7 +144,7 @@ export default function OrgRoleBillingCaseStudy() {
                 href="/case-studies"
                 className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
               >
-                View All Case Studies
+                See the Other Systems
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -160,7 +160,7 @@ export default function OrgRoleBillingCaseStudy() {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div>
               <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
-              <p className="mt-1 text-xs text-slate-500">Senior Full-Stack Engineer</p>
+              <p className="mt-1 text-xs text-slate-500">Software Architect &amp; Product Builder</p>
               <p className="mt-1 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
             <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">

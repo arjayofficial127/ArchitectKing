@@ -37,7 +37,7 @@ export default function Chapter3Page() {
         Algorithms are not about speed. They are about <strong>tradeoffs you cannot escape</strong>.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Every operation has a cost.

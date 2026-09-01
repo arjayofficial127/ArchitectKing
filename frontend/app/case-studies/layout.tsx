@@ -2,9 +2,9 @@ import type { ReactNode } from 'react';
 import { createMarketingMetadata } from '@/lib/marketingMetadata';
 
 export const metadata = createMarketingMetadata({
-  title: 'Production Systems Case Studies | Arvin Jayson Castro',
+  title: 'Systems I Have Worked On | Arvin Jayson Castro',
   description:
-    'Explore production systems designed for knowledge management, enterprise monitoring, manufacturing, public-sector compliance, and complex workflows.',
+    'Notes on systems for knowledge work, resource monitoring, manufacturing, public-sector compliance, and configurable workflows.',
   path: '/case-studies',
 });
 

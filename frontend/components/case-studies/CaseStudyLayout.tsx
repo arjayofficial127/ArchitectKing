@@ -95,7 +95,7 @@ export function CaseStudyLayout({
           <div className="mx-auto max-w-4xl space-y-16">
             {/* Section 1: Problem Context */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">Problem Context</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">What Needed Attention</h2>
               <div className="text-slate-700 leading-relaxed">
                 {problemContext}
               </div>
@@ -142,7 +142,7 @@ export function CaseStudyLayout({
 
             {/* Section 4: My Contributions */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">My Contributions</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">What I Worked On</h2>
               <div className="text-slate-700 leading-relaxed">
                 {myContributions}
               </div>
@@ -150,7 +150,7 @@ export function CaseStudyLayout({
 
             {/* Section 5: Implementation Highlights */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">Implementation Highlights</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">Implementation Notes</h2>
               <div className="text-slate-700 leading-relaxed">
                 {implementationHighlights}
               </div>
@@ -158,14 +158,13 @@ export function CaseStudyLayout({
 
             {/* Section 6: Outcome / Impact */}
             <div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">Outcome & Impact</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">What Changed</h2>
               <div className="text-slate-700 leading-relaxed">
                 {outcomeImpact}
               </div>
               <aside className="mt-6 rounded-xl border border-slate-200 bg-slate-50/70 p-4 text-sm leading-relaxed text-slate-600">
-                <span className="font-semibold text-slate-800">Evidence boundary:</span>{' '}
-                Client identity and confidential operational metrics are intentionally omitted. Outcomes are
-                described qualitatively unless a measurement is approved for public use.
+                Client names and confidential operating figures are left out. I only include measurements when
+                they have been approved for public use.
               </aside>
             </div>
 
@@ -194,7 +193,7 @@ export function CaseStudyLayout({
                 href="/case-studies"
                 className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-sm transition-all hover:bg-[#F4C430]/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
               >
-                View All Case Studies
+                See the Other Systems
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -213,8 +212,8 @@ export function CaseStudyLayout({
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div>
               <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
-              <p className="mt-1 text-xs text-slate-500">Architect of Scalable Systems</p>
-              <p className="mt-1 text-xs text-slate-600">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
+              <p className="mt-1 text-xs text-slate-500">Software Architect &amp; Product Builder</p>
+              <p className="mt-1 text-xs text-slate-600">Architecture • Product Building • Production Support</p>
               <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
             <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">

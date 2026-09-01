@@ -37,7 +37,7 @@ export default function Chapter6Page() {
         They were not invented by committees. They were <strong>discovered through failure</strong>.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Design principles are <strong>damage control mechanisms</strong>.

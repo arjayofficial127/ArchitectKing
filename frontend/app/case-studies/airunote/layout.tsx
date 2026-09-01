@@ -2,9 +2,9 @@ import type { ReactNode } from 'react';
 import { createMarketingMetadata } from '@/lib/marketingMetadata';
 
 export const metadata = createMarketingMetadata({
-  title: 'AI Wiki Team Hub Case Study | Arvin Jayson Castro',
+  title: 'AiruNote Knowledge Workspace | Arvin Jayson Castro',
   description:
-    'A privacy-first knowledge management system for AI-assisted capture, document organization, and modular enterprise workflows.',
+    'A knowledge workspace for notes, documents, boards, canvases, assessments, and AI-assisted capture.',
   path: '/case-studies/airunote',
 });
 

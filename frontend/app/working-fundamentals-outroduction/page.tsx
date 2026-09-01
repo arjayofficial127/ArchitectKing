@@ -20,65 +20,57 @@ export default function OutroductionPage() {
       }}
     >
       <p>
-        If you reached this point, something important already happened.
+        Thanks for reading this far.
       </p>
 
       <p>
-        You stopped treating programming as a collection of tricks and started seeing it as a system.
+        The goal of these chapters was simple: give you a few stable ideas to return to when the tools, code, or situation are unfamiliar.
       </p>
 
       <p>
-        Not a framework. Not a language. Not a career ladder.
+        They are not a replacement for experience, context, or careful work. They are a way to organize the questions you ask.
       </p>
 
       <p>
-        A system of thinking.
+        You may notice different things now when you read a system: where data enters, where state changes, who owns a decision, and how failure is handled.
       </p>
 
       <p>
-        The chapters you just read were not meant to impress you. They were meant to <em>stabilize you</em>. To give you a mental ground that does not shift when tools change, trends cycle, or complexity increases.
-      </p>
-
-      <p>
-        Most developers spend years accumulating knowledge. Very few spend time strengthening the structure that holds that knowledge.
-      </p>
-
-      <p>
-        You now have that structure.
+        That is enough to begin.
       </p>
 
       <h3>What you should notice now</h3>
 
       <p>
-        Code should feel quieter.
+        Unfamiliar code may feel a little less unfamiliar.
       </p>
 
       <p>
-        When you read unfamiliar systems, you should feel less lost—even if the details are new. You can recognize inputs, transformations, state, and failure paths without effort. You can sense when something is overcomplicated before you can fully explain why.
+        You can look for inputs, transformations, state, boundaries, and failure paths before you know every implementation detail.
       </p>
 
       <p>
-        That instinct is not intuition. It is alignment.
+        With practice, those questions become easier to ask.
       </p>
 
       <h3>What this book did <em>not</em> do</h3>
 
       <p>
-        It did not teach you how to write code faster. It did not give you shortcuts. It did not promise mastery.
+        It did not teach a particular language or framework, and it did not cover every part of building software.
       </p>
 
       <p>
-        Those are not foundations. Those are accelerants.
+        Those subjects still matter. They simply sit outside this guide.
       </p>
 
       <p>
-        Foundations exist so acceleration does not break the system.
+        Use the chapters as a starting point, not as a complete answer.
       </p>
 
       <h3>What comes next</h3>
 
       <p>
-        From here, everything becomes legitimate:
+        From here, keep learning the things the work requires:
       </p>
 
       <ul>
@@ -91,41 +83,41 @@ export default function OutroductionPage() {
       </ul>
 
       <p>
-        But now, when you learn them, they will <em>attach cleanly</em>.
+        Try to connect each new technique to a real problem and a clear tradeoff.
       </p>
 
       <p>
-        You won&apos;t memorize as much. You won&apos;t cargo-cult patterns. You won&apos;t fear refactors.
+        Keep the useful parts, question what does not fit, and revisit your decisions when the context changes.
       </p>
 
       <p>
-        You will recognize when a solution is correct—even if it is unfamiliar.
+        Good judgment grows from doing this repeatedly, not from getting every decision right the first time.
       </p>
 
       <h3>A final reminder</h3>
 
       <p>
-        Good software is not clever. Good software is <strong>predictable</strong>.
+        Good software does not need to be clever. It needs to be understandable enough for people to change it safely.
       </p>
 
       <p>
-        Predictability is not limitation. It is freedom.
+        Predictability helps.
       </p>
 
       <p>
-        It allows teams to move without fear. It allows systems to grow without collapse. It allows you to trust your own work.
+        So do clear ownership, small feedback loops, honest tests, and people willing to ask simple questions.
       </p>
 
       <p>
-        This book was not an endpoint.
+        These notes are not finished.
       </p>
 
       <p>
-        It was the ground.
+        I expect them to change as I keep working and learning.
       </p>
 
       <p>
-        Stand on it.
+        I hope they help with something you are building.
       </p>
     </ChapterPage>
   );

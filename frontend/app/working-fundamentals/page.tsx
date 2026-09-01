@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { WorkingFundamentalsPage } from '@/components/book/WorkingFundamentalsPage';
 
 export const metadata: Metadata = {
-  title: 'Working Fundamentals — Systems Architecture Guide by Arvin Jayson Castro',
-  description: 'A concise, practical guide to building software that lasts — patterns, checklists, and pragmatic examples from a senior software architect.',
+  title: 'Working Fundamentals — Notes on Building Software by Arvin Jayson Castro',
+  description: 'Working notes on state, data, boundaries, failure, testing, performance, and keeping software understandable as it changes.',
   openGraph: {
-    title: 'Working Fundamentals — Systems Architecture Guide',
-    description: 'A concise, practical guide to building software that lasts — patterns, checklists, and pragmatic examples.',
+    title: 'Working Fundamentals — Notes on Building Software',
+    description: 'Working notes on state, data, boundaries, failure, testing, performance, and keeping software understandable as it changes.',
     type: 'website',
   },
 };

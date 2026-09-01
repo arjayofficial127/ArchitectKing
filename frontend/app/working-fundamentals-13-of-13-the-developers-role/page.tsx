@@ -37,7 +37,7 @@ export default function Chapter13Page() {
         Not what it looks like. Not what it is marketed as. What it <strong>demands</strong>.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         A developer is not paid to write code.

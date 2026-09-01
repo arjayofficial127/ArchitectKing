@@ -8,7 +8,7 @@ export default function ThreadInventorySystemCaseStudy() {
     <CaseStudyLayout
       title="Manufacturing Inventory & Operations Platform"
       subtitle="Global Manufacturing Environment"
-      summary="Production-grade inventory tracking and management system for manufacturing operations, enabling real-time stock monitoring, automated reordering, and comprehensive reporting for supply chain optimization."
+      summary="An inventory and operations system for stock movement, reordering, and manufacturing reports."
       problemContext={
         <>
           <p className="mb-4">
@@ -32,7 +32,7 @@ export default function ThreadInventorySystemCaseStudy() {
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Need for comprehensive reporting supporting supply chain optimization</span>
+              <span>Need for consistent reports to support reordering and capacity planning</span>
             </li>
           </ul>
         </>
@@ -144,11 +144,11 @@ export default function ThreadInventorySystemCaseStudy() {
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Enhanced operational efficiency with automated inventory tracking and transaction logging</span>
+              <span>Reduced manual inventory tracking through consistent transaction records</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Comprehensive reporting supporting supply chain optimization and capacity planning</span>
+              <span>Reporting that supported reordering and capacity planning</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>

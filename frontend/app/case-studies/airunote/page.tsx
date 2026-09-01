@@ -6,9 +6,9 @@ import { DiagramCreator } from '@/components/case-studies/DiagramCreator';
 export default function AiruNoteCaseStudy() {
   return (
     <CaseStudyLayout
-      title="AI Wiki Team Hub"
+      title="AiruNote Knowledge Workspace"
       subtitle="AI-Assisted TXT | MD | RTF Capture & Knowledge Management System"
-      summary="AI-powered note capture, structured knowledge management, and document organization system. Built with privacy-first architecture and modular extensibility for enterprise knowledge workflows."
+      summary="A workspace for notes, documents, boards, canvases, assessments, and AI-assisted capture, built around clear content ownership and flexible organization."
       problemContext={
         <>
           <p className="mb-4">
@@ -148,7 +148,7 @@ export default function AiruNoteCaseStudy() {
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Modular architecture enables seamless integration within larger platform ecosystems</span>
+              <span>Modular architecture allows the workspace to fit into a larger platform without changing its core</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>

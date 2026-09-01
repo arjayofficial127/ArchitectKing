@@ -2,9 +2,9 @@ import type { ReactNode } from 'react';
 import { createMarketingMetadata } from '@/lib/marketingMetadata';
 
 export const metadata = createMarketingMetadata({
-  title: 'Book a Systems Architecture Call | Arvin Jayson Castro',
+  title: 'Find a Time to Talk | Arvin Jayson Castro',
   description:
-    'Choose a time to discuss your system architecture, scaling risks, reliability concerns, and practical next steps with Arvin Jayson Castro.',
+    'Choose a time to talk through what you are working on and see whether Arvin can help.',
   path: '/schedule',
 });
 

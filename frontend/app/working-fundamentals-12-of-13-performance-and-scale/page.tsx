@@ -37,7 +37,7 @@ export default function Chapter12Page() {
         Performance problems do not appear randomly. They surface when a system is asked to do more than it was designed to do.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Scale does not create problems. It <strong>reveals them</strong>.

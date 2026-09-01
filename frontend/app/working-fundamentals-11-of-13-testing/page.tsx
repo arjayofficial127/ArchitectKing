@@ -37,7 +37,7 @@ export default function Chapter11Page() {
         Testing exists so you can change a system <strong>without fear</strong>.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Tests do not prove correctness.

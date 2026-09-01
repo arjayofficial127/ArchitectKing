@@ -6,13 +6,13 @@ import { DiagramCreator } from '@/components/case-studies/DiagramCreator';
 export default function ResourceMonitoringSystemCaseStudy() {
   return (
     <CaseStudyLayout
-      title="Enterprise Resource Assessment & Monitoring Platform"
+      title="Resource Assessment & Monitoring Platform"
       subtitle="Global Insurance & Advisory Environment"
-      summary="Enterprise-grade resource assessment and monitoring platform enabling real-time visibility into organizational resources, capacity planning, and operational metrics across distributed teams."
+      summary="A resource assessment and monitoring system for allocation, capacity planning, and reporting across distributed teams."
       problemContext={
         <>
           <p className="mb-4">
-            A global enterprise client in the insurance and advisory sector required comprehensive visibility into resource allocation, utilization, and capacity across multiple departments and projects. Manual tracking and fragmented reporting systems created gaps in decision-making.
+            A large insurance and advisory organization needed a clearer view of resource allocation, utilization, and capacity across departments and projects. Manual tracking and separate reports made that difficult.
           </p>
           <p className="mb-4">
             Key challenges included:
@@ -131,7 +131,7 @@ export default function ResourceMonitoringSystemCaseStudy() {
       outcomeImpact={
         <>
           <p className="mb-4">
-            The system successfully addresses enterprise resource monitoring needs:
+            The system gave the teams a shared way to monitor resources:
           </p>
           <ul className="space-y-2">
             <li className="flex items-start">
@@ -152,7 +152,7 @@ export default function ResourceMonitoringSystemCaseStudy() {
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Enhanced operational efficiency with automated reporting and data visualization</span>
+              <span>Reduced manual reporting work through shared dashboards and data visualization</span>
             </li>
           </ul>
         </>

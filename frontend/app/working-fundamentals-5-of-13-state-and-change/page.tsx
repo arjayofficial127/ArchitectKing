@@ -37,7 +37,7 @@ export default function Chapter5Page() {
         State is memory inside a system. And memory always changes how reasoning works.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         State means <strong>the past is still present</strong>.

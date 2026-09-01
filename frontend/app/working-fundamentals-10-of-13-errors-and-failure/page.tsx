@@ -37,7 +37,7 @@ export default function Chapter10Page() {
         Errors exist because reality did not match your assumptions.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Failure is not an accident.

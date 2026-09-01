@@ -17,8 +17,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://arvinjaysoncastro.com'),
-  title: 'Arvin Jayson Castro | Senior Fullstack Architect | React Next.js .NET Node',
-  description: '15 years experience. Senior Fullstack Architect specializing in React, Next.js, .NET, Node.js. Multi-tenant SaaS systems, production-grade architecture, system design. Available for architecture calls and consulting.',
+  title: 'Arvin Jayson Castro | Software Architect & Product Builder',
+  description: 'I design, build, and help fix software systems. Sixteen years working across product development, architecture, delivery, and production.',
   icons: {
     icon: '/icon.svg',
     shortcut: '/icon.svg',
@@ -41,22 +41,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://arvinjaysoncastro.com',
     siteName: 'Arvin Jayson Castro',
-    title: 'Arvin Jayson Castro | Senior Fullstack Architect',
-    description: '15 years experience. Senior Fullstack Architect specializing in React, Next.js, .NET, Node.js. Multi-tenant SaaS systems, production-grade architecture.',
+    title: 'Arvin Jayson Castro | Software Architect & Product Builder',
+    description: 'I design, build, and help fix software systems. Practical, hands-on help from architecture through production.',
     images: [
       {
         url: '/og-image.jpg', // Placeholder - should be added
         width: 1200,
         height: 630,
-        alt: 'Arvin Jayson Castro - Senior Fullstack Architect',
+        alt: 'Arvin Jayson Castro - Software Architect and Product Builder',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arvin Jayson Castro | Senior Fullstack Architect',
-    description: '15 years experience. Senior Fullstack Architect specializing in React, Next.js, .NET, Node.js.',
-    creator: '@arvinjaysoncastro', // Placeholder - update if available
+    title: 'Arvin Jayson Castro | Software Architect & Product Builder',
+    description: 'I design, build, and help fix software systems—from architecture through production.',
   },
   robots: {
     index: true,
@@ -90,8 +89,8 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Arvin Jayson Castro',
-              jobTitle: 'Senior Fullstack Architect',
-              description: '15 years experience. Senior Fullstack Architect specializing in React, Next.js, .NET, Node.js. Multi-tenant SaaS systems, production-grade architecture.',
+              jobTitle: 'Software Architect and Product Builder',
+              description: 'Sixteen years designing, building, and helping fix software systems across product development, architecture, delivery, and production.',
               email: 'arvinjaysoncastro@gmail.com',
               alumniOf: {
                 '@type': 'EducationalOrganization',

@@ -37,7 +37,7 @@ export default function Chapter9Page() {
         An interface is the moment a system stops being private.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         An interface is a <strong>promise about behavior</strong>.

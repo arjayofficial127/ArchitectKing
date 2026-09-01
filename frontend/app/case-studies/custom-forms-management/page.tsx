@@ -6,9 +6,9 @@ import { DiagramCreator } from '@/components/case-studies/DiagramCreator';
 export default function CustomFormsManagementCaseStudy() {
   return (
     <CaseStudyLayout
-      title="Enterprise Workflow & Forms Management System"
+      title="Workflow & Forms Management System"
       subtitle="Large-Scale Organizational Deployment"
-      summary="Enterprise-grade dynamic forms platform enabling organizations to create, configure, and manage complex form workflows with conditional logic, validation rules, and seamless backend integration."
+      summary="A configurable forms system with conditional fields, validation rules, approvals, and backend integrations."
       problemContext={
         <>
           <p className="mb-4">
@@ -140,7 +140,7 @@ export default function CustomFormsManagementCaseStudy() {
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Increased business agility enabling faster form deployment and workflow changes</span>
+              <span>Allowed teams to change forms and workflows without waiting for a new hard-coded form</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
@@ -148,7 +148,7 @@ export default function CustomFormsManagementCaseStudy() {
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Improved data quality through comprehensive validation rules and secure backend integration</span>
+              <span>Made submitted data more consistent through shared validation rules and backend checks</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>

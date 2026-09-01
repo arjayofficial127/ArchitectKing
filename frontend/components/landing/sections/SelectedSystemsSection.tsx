@@ -118,7 +118,7 @@ function LiveSystemCard({ system }: { system: LiveSystem }) {
         </div>
         <p className="mt-4 text-sm leading-relaxed text-slate-600">{system.description}</p>
         <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-800">
-          <span className="text-[#B68900]">Built:</span> {system.built}
+          <span className="text-[#B68900]">What I worked on:</span> {system.built}
         </p>
       </div>
     </article>
@@ -171,10 +171,10 @@ function CoachBrowserCard() {
         </div>
       </div>
       <div className="flex flex-col justify-center p-7 lg:p-10">
-        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F4C430]">Working Windows pre-release · Lattice</p>
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F4C430]">Work in progress · Windows pre-release</p>
         <h3 className="mt-3 text-3xl font-bold tracking-tight">Coach Browser</h3>
         <p className="mt-3 text-base leading-relaxed text-slate-300">A local-first research browser where web exploration, notes, canvases, and focused tools stay organized by desktop.</p>
-        <p className="mt-5 text-sm font-semibold leading-relaxed text-slate-200"><span className="text-[#F4C430]">Built:</span> Electron and React shell, isolated website tabs, local workspaces, Obsidian-compatible capture, keyboard navigation, packaging, and smoke validation.</p>
+        <p className="mt-5 text-sm font-semibold leading-relaxed text-slate-200"><span className="text-[#F4C430]">What I&apos;ve worked on:</span> Electron and React shell, isolated website tabs, local workspaces, Obsidian-compatible capture, keyboard navigation, packaging, and smoke validation.</p>
         <div className="mt-6 flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-wider text-slate-300">
           {['Local-first', 'Isolated tabs', 'Markdown', 'JSON Canvas'].map((label) => <span key={label} className="rounded-full border border-slate-700 px-3 py-1.5">{label}</span>)}
         </div>
@@ -188,9 +188,9 @@ export function SelectedSystemsSection() {
     <section id="selected-systems" className="relative scroll-mt-28 px-6 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9A7400]">Working proof</p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">Systems I&apos;ve built</h2>
-          <p className="mt-3 text-base text-slate-600">Two live systems and one working desktop prototype. Inspect the work directly.</p>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9A7400]">Some of my work</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">A few things I&apos;ve built</h2>
+          <p className="mt-3 text-base text-slate-600">The first two are live and open to explore. The third is still taking shape.</p>
         </div>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-8">
           {liveSystems.map((system) => <LiveSystemCard key={system.name} system={system} />)}

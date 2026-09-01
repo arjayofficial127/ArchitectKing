@@ -1,7 +1,7 @@
 const credibilityAreas = [
-  { icon: '◇', title: 'Architecture Judgment', description: 'Seeing risks early, making tradeoffs clear, and protecting the path forward.' },
-  { icon: '</>', title: 'Hands-on Product Building', description: 'Turning decisions into working software without losing intent in translation.' },
-  { icon: '▣', title: 'Reliable Delivery', description: 'Owning the details through testing, release, and real production use.' },
+  { icon: '◇', title: 'Understand it first', description: 'Learn how the product, team, and existing system actually work.' },
+  { icon: '</>', title: 'Keep the answer practical', description: 'Choose the smallest sound change that moves the work forward.' },
+  { icon: '▣', title: 'Help make it happen', description: 'Work through the code, testing, release, and production details.' },
 ] as const;
 
 export function TechStrip() {

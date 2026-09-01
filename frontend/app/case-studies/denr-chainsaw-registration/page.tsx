@@ -8,7 +8,7 @@ export default function DenrChainsawRegistrationCaseStudy() {
     <CaseStudyLayout
       title="Government Equipment Registration Platform"
       subtitle="Public Sector Compliance System"
-      summary="Secure government compliance system for equipment registration and permit processing, enabling citizens to register equipment, track permit status, and maintain compliance with regulatory requirements."
+      summary="A public-sector system for equipment registration, permit processing, application tracking, and compliance records."
       problemContext={
         <>
           <p className="mb-4">
@@ -74,7 +74,7 @@ export default function DenrChainsawRegistrationCaseStudy() {
           <ul className="space-y-2">
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>
-              <span>Developed registration forms and validation workflows with comprehensive error handling</span>
+              <span>Developed registration forms, validation workflows, and clear error handling</span>
             </li>
             <li className="flex items-start">
               <span className="text-[#F4C430] mr-2 mt-1">•</span>

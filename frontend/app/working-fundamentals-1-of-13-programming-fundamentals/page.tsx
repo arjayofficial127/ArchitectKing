@@ -37,7 +37,7 @@ export default function Chapter1Page() {
         If you understand this chapter, you can learn any programming language faster. If you skip it, every abstraction you learn later will feel fragile.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Every program-regardless of language, framework, or scale-reduces to the same shape:

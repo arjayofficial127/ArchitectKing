@@ -5,7 +5,7 @@ import { SiteNavbar } from '@/components/shared/SiteNavbar';
 
 export const metadata: Metadata = {
   title: 'Architecture Review for SaaS Systems | Arvin Jayson Castro',
-  description: 'Get a structured review of your SaaS architecture, codebase, and system design. I provide clear recommendations for improving reliability, scalability, and maintainability. Starting from $350.',
+  description: 'A practical second look at your architecture, codebase, and current risks, with clear priorities and next steps. Starting from $350.',
   keywords: [
     'Architecture Review',
     'SaaS Architecture',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: 'https://arvinjaysoncastro.com/architecture-review',
     siteName: 'Arvin Jayson Castro',
     title: 'Architecture Review for SaaS Systems',
-    description: 'Get a structured review of your SaaS architecture, codebase, and system design. Clear recommendations for reliability, scalability, and maintainability.',
+    description: 'A practical second look at your architecture, codebase, and current risks, with clear priorities and next steps.',
     images: [
       {
         url: '/og-image.jpg',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Architecture Review for SaaS Systems',
-    description: 'Structured SaaS architecture review with actionable recommendations for improvement.',
+    description: 'A practical architecture review with clear priorities and next steps.',
   },
   alternates: {
     canonical: 'https://arvinjaysoncastro.com/architecture-review',
@@ -43,24 +43,24 @@ export const metadata: Metadata = {
 
 export default function ArchitectureReviewPage() {
   const audiences = [
-    'SaaS founders building or evolving their product architecture',
-    'Startup teams preparing to scale traffic, features, and engineering velocity',
-    'Product and engineering teams inheriting complex or legacy systems',
-    'Companies needing a clear architecture direction before major development work',
+    'Founders making an important technical decision',
+    'Teams whose product has become harder to change or operate',
+    'Engineers taking responsibility for an unfamiliar or older system',
+    'Companies that want another set of eyes before a major piece of work',
   ];
 
   const commonProblems = [
-    'Slow APIs and backend bottlenecks affecting product experience',
-    'Messy codebases that are hard to change safely',
-    'Technical debt that slows delivery and increases risk',
-    'Architecture decisions causing reliability or scalability issues',
+    'Slow APIs or bottlenecks affecting the product',
+    'Code that has become difficult to change safely',
+    'Old decisions that now slow delivery or create risk',
+    'Unclear boundaries, ownership, or responsibilities',
   ];
 
   const deliverables = [
-    'Architecture assessment of system boundaries and technical structure',
-    'Performance and scalability recommendations based on current risk points',
-    'Codebase maintainability feedback and refactoring priorities',
-    'System improvement roadmap with practical next steps',
+    'A plain-language view of the system and its main risks',
+    'A closer look at boundaries, performance, reliability, and maintainability',
+    'Priorities for what to address now and what can wait',
+    'Practical next steps that fit the team and current constraints',
   ];
 
   return (
@@ -90,10 +90,10 @@ export default function ArchitectureReviewPage() {
             </Link>
 
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-[1.05]">
-              Architecture Review for SaaS Systems
+              A Practical Architecture Review
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
-              I analyze your system architecture and provide a clear plan to improve reliability, scalability, and maintainability.
+              I take a careful look at the system, explain what I see, and help you decide what is worth doing next.
             </p>
 
             <div className="mt-10">
@@ -101,7 +101,7 @@ export default function ArchitectureReviewPage() {
                 href="/schedule"
                 className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
               >
-                Book a Call
+                Talk Through the System
               </Link>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function ArchitectureReviewPage() {
         <section className="border-y border-slate-200/70 bg-slate-50/60">
           <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
             <div className="mx-auto max-w-4xl">
-              <h2 className="mb-8 text-center text-3xl font-bold text-slate-900 sm:text-4xl">Who This Is For</h2>
+              <h2 className="mb-8 text-center text-3xl font-bold text-slate-900 sm:text-4xl">When a Review Can Help</h2>
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
                 <ul className="space-y-3 text-sm text-slate-700 md:text-base">
                   {audiences.map((item) => (
@@ -127,7 +127,7 @@ export default function ArchitectureReviewPage() {
 
         <section className="mx-auto max-w-7xl px-6 py-20 md:py-24">
           <div className="mx-auto max-w-4xl">
-            <h2 className="mb-8 text-center text-3xl font-bold text-slate-900 sm:text-4xl">Common Problems I Review</h2>
+            <h2 className="mb-8 text-center text-3xl font-bold text-slate-900 sm:text-4xl">Things We Can Look At</h2>
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
               <ul className="space-y-3 text-sm text-slate-700 md:text-base">
                 {commonProblems.map((item) => (
@@ -144,7 +144,7 @@ export default function ArchitectureReviewPage() {
         <section className="border-y border-slate-200/70 bg-slate-50/60">
           <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
             <div className="mx-auto max-w-4xl">
-              <h2 className="mb-8 text-center text-3xl font-bold text-slate-900 sm:text-4xl">What You Receive</h2>
+              <h2 className="mb-8 text-center text-3xl font-bold text-slate-900 sm:text-4xl">What You Will Leave With</h2>
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
                 <ul className="space-y-3 text-sm text-slate-700 md:text-base">
                   {deliverables.map((item) => (
@@ -166,19 +166,19 @@ export default function ArchitectureReviewPage() {
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Starter</p>
                 <p className="mt-3 text-2xl font-bold text-slate-900">From $350</p>
-                <p className="mt-3 text-sm text-slate-600">High-level architecture review for early-stage SaaS systems.</p>
+                <p className="mt-3 text-sm text-slate-600">A focused look at one system or an early-stage product.</p>
               </div>
 
               <div className="rounded-xl border-2 border-[#F4C430] bg-white p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Core Review</p>
                 <p className="mt-3 text-2xl font-bold text-slate-900">From $750</p>
-                <p className="mt-3 text-sm text-slate-600">Detailed technical assessment with prioritized recommendations.</p>
+                <p className="mt-3 text-sm text-slate-600">A closer assessment with findings and a clear order of work.</p>
               </div>
 
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Deep Dive</p>
                 <p className="mt-3 text-2xl font-bold text-slate-900">From $1,500</p>
-                <p className="mt-3 text-sm text-slate-600">Comprehensive architecture review with implementation planning.</p>
+                <p className="mt-3 text-sm text-slate-600">A deeper review that includes planning how to make the changes.</p>
               </div>
             </div>
             <p className="mt-4 text-center text-xs text-slate-500">Final pricing depends on system size, codebase scope, and review depth.</p>
@@ -188,22 +188,22 @@ export default function ArchitectureReviewPage() {
         <section className="border-y border-slate-200/70 bg-slate-50/60">
           <div className="mx-auto max-w-7xl px-6 py-20 md:py-24">
             <div className="mx-auto max-w-4xl rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm md:p-10">
-              <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Ready for a Clear Technical Direction?</h2>
+              <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Not Sure What the System Needs Next?</h2>
               <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base">
-                If you want practical architecture feedback and a focused improvement plan, let&apos;s discuss your system and choose the right review scope.
+                Tell me what is happening. I&apos;ll ask a few questions and we can decide whether a review would actually help.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link
                   href="/schedule"
                   className="inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-base font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 hover:shadow-xl hover:shadow-[#F4C430]/40 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                 >
-                  Book a Call
+                  Find a Time
                 </Link>
                 <Link
                   href="/contact-me"
                   className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-[#F4C430] hover:bg-[#FFFDF4] hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
                 >
-                  Discuss Your System
+                  Send Me the Context
                 </Link>
               </div>
             </div>
@@ -216,8 +216,8 @@ export default function ArchitectureReviewPage() {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div>
               <p className="text-xs font-medium text-slate-700">Arvin Jayson Castro</p>
-              <p className="mt-1 text-xs text-slate-500">Architect of Scalable Systems</p>
-              <p className="mt-1 text-xs text-slate-600">Architecture Reviews • SaaS Platforms • Admin Dashboards</p>
+              <p className="mt-1 text-xs text-slate-500">Software Architect &amp; Product Builder</p>
+              <p className="mt-1 text-xs text-slate-600">Architecture • Product Building • Production Support</p>
               <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
             <div className="flex flex-col items-center gap-3 md:flex-row md:items-start">

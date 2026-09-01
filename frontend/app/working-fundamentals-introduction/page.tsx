@@ -20,11 +20,11 @@ export default function IntroductionPage() {
       }}
     >
       <p>
-        This book is not a course. It is not a reference. It is not a collection of tricks.
+        This is not intended to be a complete programming course or reference.
       </p>
 
       <p>
-        It is a <strong>record of orientation</strong>.
+        It is a set of notes on how I orient myself when software becomes difficult to reason about.
       </p>
 
       <p>
@@ -39,29 +39,25 @@ export default function IntroductionPage() {
       </ul>
 
       <p>
-        Accumulation creates capability. It does not guarantee stability.
+        Learning more tools creates capability, but it does not automatically make a system easier to understand.
       </p>
 
       <p>
-        This book is written for a different purpose:
+        I wrote this guide for a narrower purpose:
       </p>
 
       <blockquote>
-        to explain what must remain <strong>true</strong> for software to hold together over time.
+        to describe some of the conditions that help software remain understandable as it changes.
       </blockquote>
 
       <h2>Why this book exists</h2>
 
       <p>
-        Software rarely fails suddenly.
+        Software often becomes difficult a little at a time.
       </p>
 
       <p>
-        It decays.
-      </p>
-
-      <p>
-        It decays through:
+        It often becomes difficult through:
       </p>
 
       <ul>
@@ -73,11 +69,11 @@ export default function IntroductionPage() {
       </ul>
 
       <p>
-        These failures are not dramatic. They are quiet.
+        These changes are easy to miss while everyone is busy delivering the next thing.
       </p>
 
       <p>
-        This book exists to name those quiet forces.
+        The chapters try to name them and offer a useful way to think about them.
       </p>
 
       <h2>Who this book is for</h2>
@@ -87,9 +83,9 @@ export default function IntroductionPage() {
       </p>
 
       <ul>
-        <li>beginners who want ground, not tricks</li>
+        <li>beginners who want a dependable way to reason about code</li>
         <li>experienced developers who feel systems growing heavy</li>
-        <li>architects who care about longevity more than novelty</li>
+        <li>architects who want systems to remain understandable after the design work is done</li>
       </ul>
 
       <p>
@@ -103,7 +99,7 @@ export default function IntroductionPage() {
       </ul>
 
       <p>
-        This book will disappoint you.
+        This may not be the guide you need.
       </p>
 
       <p>
@@ -113,39 +109,29 @@ export default function IntroductionPage() {
       <ul>
         <li>clarity</li>
         <li>stability</li>
-        <li>reasoning you can reuse for decades</li>
+        <li>reasoning that stays useful when tools change</li>
       </ul>
 
       <p>
-        Then you are in the right place.
+        I hope you find something useful here.
       </p>
 
       <h2>How to read this book</h2>
 
       <p>
-        Read slowly.
+        Read it in whatever way helps.
       </p>
 
       <p>
-        Do not skim for techniques. Read for <strong>shape</strong>.
+        You can go chapter by chapter or start with the subject closest to your current problem.
       </p>
 
       <p>
-        If something feels obvious, keep reading. Obvious truths are often the most neglected.
+        Some ideas may feel obvious. Those are often the ones worth checking against the work in front of you.
       </p>
 
       <p>
-        If something feels familiar, pause. Recognition is a sign of alignment.
-      </p>
-
-      <h2>The promise</h2>
-
-      <p>
-        This book will not make you faster immediately. It will make you <strong>harder to break</strong>.
-      </p>
-
-      <p>
-        And in software, that matters more.
+        I do not expect every principle to fit every system. Use your judgment, keep the context, and change your mind when the evidence asks you to.
       </p>
     </ChapterPage>
   );

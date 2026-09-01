@@ -37,7 +37,7 @@ export default function Chapter7Page() {
         Architecture exists because some decisions, once made, reshape everything that follows.
       </p>
 
-      <h2>The core truth</h2>
+      <h2>Core idea</h2>
 
       <p>
         Architecture is not what you build first. Architecture is what you <strong>cannot easily undo</strong>.

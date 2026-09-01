@@ -198,7 +198,7 @@ export default function SchedulePage() {
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">Book a Call</h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-slate-600 sm:text-lg">
-            Pick a time that works for you. We&apos;ll look at your system together and map out clear next steps.
+            Pick a time that works for you. We&apos;ll talk through what you&apos;re working on and see whether I can help.
           </p>
           {visitorTimezone && (
             <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm text-slate-600">
@@ -240,7 +240,7 @@ export default function SchedulePage() {
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-600">
               {error
-                ? 'You can retry the calendar or discuss your system with me directly.'
+                ? 'You can retry the calendar or send me a note directly.'
                 : 'Send me a note and we’ll arrange a time that works.'}
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -248,7 +248,7 @@ export default function SchedulePage() {
                 href="/contact-me"
                 className="inline-flex w-full items-center justify-center rounded-lg bg-[#F4C430] px-6 py-3 text-sm font-semibold text-[#0F172A] shadow-lg shadow-[#F4C430]/30 transition-all hover:bg-[#F4C430]/90 sm:w-auto"
               >
-                Discuss Your System
+                Send Me a Note
               </Link>
               <button
                 type="button"
