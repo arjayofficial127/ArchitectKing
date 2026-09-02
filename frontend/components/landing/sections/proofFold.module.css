@@ -1,0 +1,180 @@
+.root {
+  --proof-ink: var(--color-navy);
+  --proof-gold: var(--color-gold-ink);
+  --proof-line: var(--color-proof-border);
+  position: relative;
+  padding: 96px 24px 112px;
+  color: var(--proof-ink);
+}
+
+.container { max-width: 1280px; margin-inline: auto; }
+.centerHeader { max-width: 850px; margin-inline: auto; text-align: center; }
+.eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--proof-gold); }
+.heading { margin-top: 16px; font-size: clamp(28px, 3.2vw, 42px); font-weight: 650; line-height: 1.16; letter-spacing: -.038em; text-wrap: balance; }
+.intro { margin-top: 24px; font-size: 16px; line-height: 1.8; color: #536174; text-wrap: pretty; }
+.centerHeader .intro { max-width: 700px; margin-inline: auto; }
+.section { margin-top: 112px; }
+.sectionHeader { max-width: 960px; }
+.sectionHeader .heading { font-size: clamp(28px, 2.7vw, 36px); }
+
+.pressureMap { position: relative; margin-top: 44px; }
+.signals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-inline: 32px; }
+.signal {
+  position: relative;
+  display: flex;
+  min-height: 170px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px 30px;
+  border: 1px solid var(--proof-line);
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 550;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+.signal > span:first-of-type { max-width: 225px; text-wrap: balance; }
+.signalIcon { width: 44px; height: 44px; color: #56606c; transition: color 180ms ease; }
+.signal[data-active='true'] { background: #fffcf3; border-color: #bd921e; box-shadow: 0 5px 24px -18px #ac872c66; }
+.signal[data-active='true'] .signalIcon { color: var(--proof-gold); }
+.signalMark { position: absolute; right: 14px; bottom: 10px; font-size: 16px; color: #a0a7b0; transition: color 180ms ease; }
+.signal[data-active='true'] .signalMark { color: var(--proof-gold); }
+.root button:focus-visible, .root a:focus-visible { outline: 3px solid #947000; outline-offset: 5px; }
+.connections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 2; fill: none; }
+.connections path { stroke: #bf9424; stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; animation: traceConnection 350ms ease-out both; }
+.connections circle { fill: #ecc251; }
+.capabilities { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 64px; border-radius: 12px; background: #070f20; box-shadow: 0 14px 35px -25px #0f172a55; }
+.capability { position: relative; padding: 34px 25px 36px; text-align: center; transition: background 200ms ease; }
+.capability::before { content: ''; position: absolute; top: 32px; bottom: 32px; left: 0; width: 1px; background: #ffffff22; }
+.capability:first-child::before { display: none; }
+.capability::after { content: ''; position: absolute; inset: 0 18px auto; height: 2px; background: var(--color-gold); opacity: 0; transition: opacity 200ms ease; }
+.capability[data-active='true'] { background: #ffffff04; }
+.capability[data-active='true']::after { opacity: 1; }
+.capabilityIcon { display: block; width: 52px; height: 52px; margin: 0 auto 22px; color: #acb5c6; transition: color 200ms ease; }
+.capability h3 { color: #fff; font-size: 16px; font-weight: 600; transition: color 200ms ease; }
+.capability p { max-width: 230px; margin: 12px auto 0; color: #c0c7d3; font-size: 14px; line-height: 1.7; text-wrap: pretty; }
+.capability[data-active='true'] .capabilityIcon, .capability[data-active='true'] h3 { color: #f2ca60; }
+
+.timeline { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin: 48px 0 0; padding: 0; list-style: none; }
+.timeline::before, .timeline::after { content: ''; position: absolute; left: 0; right: 0; top: 57px; height: 1px; background: #d4d8dd; }
+.timeline::after { background: #b38b28; transform: scaleX(0); transform-origin: left; transition: transform 1300ms cubic-bezier(.22, 1, .36, 1); }
+.timeline[data-revealed='true']::after { transform: scaleX(1); }
+.step { position: relative; min-width: 0; text-align: center; padding: 0 16px; }
+.stepNumber { display: block; margin-bottom: 13px; font-size: 32px; font-weight: 500; letter-spacing: -.05em; line-height: 1; }
+.stepNode { position: relative; z-index: 1; display: block; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #77808e; background: #fff; margin: 16px auto 46px; transition: border-color 300ms ease, background 300ms ease; }
+.stepNode::after { content: ''; position: absolute; top: 25px; left: 8px; height: 27px; border-left: 1px dashed #a6acb7; }
+.timeline[data-revealed='true'] .stepNode { border-color: #ad8523; background: #fffbef; }
+.step:nth-child(2) .stepNode { transition-delay: 320ms; }
+.step:nth-child(3) .stepNode { transition-delay: 650ms; }
+.step h3 { max-width: 270px; margin-inline: auto; font-size: 19px; line-height: 1.4; letter-spacing: -.025em; font-weight: 650; text-wrap: balance; }
+.step p { max-width: 305px; margin: 14px auto 0; font-size: 14px; line-height: 1.85; color: #536174; text-wrap: pretty; }
+
+.engagements { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 40px; }
+.engagement { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--proof-line); border-radius: 10px; background: #fff; color: var(--proof-ink); text-decoration: none; box-shadow: 0 2px 3px #0f172a03; transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+.engagement[data-featured='true'] { border-color: #cba446; }
+.engagementBody { flex: 1; padding: 28px 25px 32px; text-align: center; }
+.engagementEyebrow { display: inline-block; padding: 5px 12px; border: 1px solid #e2ddd1; border-radius: 30px; font-size: 10px; font-weight: 650; letter-spacing: .07em; line-height: 1.4; text-transform: uppercase; color: #6b6251; }
+.engagementIcon { display: block; width: 44px; height: 44px; margin: 28px auto 12px; color: #536174; transition: color 200ms ease; }
+.engagement[data-featured='true'] .engagementIcon { color: var(--proof-gold); }
+.recommendation { min-height: 27px; font-size: 11px; line-height: 20px; color: var(--proof-gold); }
+.engagement h3 { max-width: 310px; min-height: 54px; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -.035em; text-wrap: balance; }
+.engagementDescription { margin: 16px auto 0; font-size: 14px; line-height: 1.8; color: #536174; text-wrap: pretty; }
+.engagementFooter { display: flex; min-height: 90px; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 22px; border-top: 1px solid #ebe9e4; font-size: 11px; line-height: 1.5; }
+.engagementFooter > p { max-width: 118px; color: #647083; }
+.cardAction { display: inline-flex; flex-shrink: 0; align-items: center; gap: 9px; font-weight: 650; }
+.cardAction > span { font-size: 19px; transition: transform 200ms ease; }
+.engagement[data-featured='true'] .cardAction { color: var(--proof-gold); }
+.engagement:focus-visible { transform: translateY(-6px); box-shadow: 0 18px 26px -18px #5f50396b; }
+.engagement:focus-visible .cardAction > span { transform: translateX(4px); }
+
+.bookSection { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 40px; margin-top: 56px; border: 1px solid #e4d8bd; border-radius: 12px; background: var(--color-paper); padding: 30px 56px 30px 30px; }
+.bookLink { display: block; min-width: 0; border-radius: 8px; }
+.bookImage { display: block; width: 100%; height: auto; max-height: 470px; object-fit: contain; mix-blend-mode: darken; transition: transform 450ms cubic-bezier(.22, 1, .36, 1); }
+.bookCopy { padding-block: 30px; }
+.bookCopy .heading { max-width: 480px; font-size: clamp(28px, 2.7vw, 38px); }
+.bookCopy .intro { font-size: 15px; }
+.bookActions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.primaryAction, .secondaryAction { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 12px 20px; border-radius: 6px; font-size: 13px; font-weight: 650; transition: background 180ms ease, border-color 180ms ease; }
+.primaryAction { background: #080f20; border: 1px solid #080f20; color: white; }
+.secondaryAction { border: 1px solid #9eabbc; background: transparent; }
+.primaryAction:hover { background: #243147; }
+.secondaryAction:hover { border-color: var(--proof-gold); background: #fff9e9; }
+.bookLink:focus-visible .bookImage { transform: translateY(-5px) rotate(-1deg); }
+
+@media (hover: hover) and (pointer: fine) {
+  .engagement:hover { transform: translateY(-7px); border-color: #cba446; box-shadow: 0 20px 30px -18px #5f503955; }
+  .engagement:hover .engagementIcon, .engagement:hover .cardAction { color: var(--proof-gold); }
+  .engagement:hover .cardAction > span { transform: translateX(4px); }
+  .bookLink:hover .bookImage { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@media (max-width: 1023px) {
+  .root { padding-block: 72px 80px; }
+  .signals { padding-inline: 12px; }
+  .signal { padding: 24px 18px; }
+  .capability { padding-inline: 18px; }
+  .engagements { gap: 16px; }
+  .engagementBody { padding: 26px 18px; }
+  .engagement h3 { font-size: 20px; }
+  .engagementFooter { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
+  .engagementFooter > p { max-width: none; min-height: 33px; }
+  .bookSection { padding: 24px; gap: 24px; }
+}
+
+@media (max-width: 767px) {
+  .root { padding-inline: 20px; }
+  .section { margin-top: 80px; }
+  .signals { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding-inline: 0; }
+  .signal { min-height: 158px; padding: 20px 14px 28px; font-size: 13px; gap: 15px; }
+  .signalIcon { width: 36px; height: 36px; }
+  .connections { display: none; }
+  .capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 28px; overflow: hidden; }
+  .capability { padding: 27px 18px; }
+  .capability:nth-child(3)::before { display: none; }
+  .capability:nth-child(n+3) { border-top: 1px solid #ffffff22; }
+  .capability h3 { font-size: 14px; }
+  .capability p { font-size: 12px; }
+  .capabilityIcon { width: 40px; height: 40px; margin-bottom: 16px; }
+  .timeline { display: block; margin-top: 36px; }
+  .timeline::before, .timeline::after { top: 8px; bottom: 0; left: 8px; right: auto; height: auto; width: 1px; }
+  .timeline::after { transform: scaleY(0); transform-origin: top; }
+  .timeline[data-revealed='true']::after { transform: scaleY(1); }
+  .step { padding: 0 0 36px 48px; text-align: left; }
+  .step:last-child { padding-bottom: 0; }
+  .stepNumber { font-size: 26px; margin-bottom: 14px; }
+  .stepNode { position: absolute; top: 3px; left: -1px; margin: 0; }
+  .stepNode::after { display: none; }
+  .step h3, .step p { max-width: none; margin-inline: 0; }
+  .step h3 { text-wrap: pretty; }
+  .engagements { grid-template-columns: 1fr; gap: 24px; }
+  .engagementBody { padding: 28px; }
+  .engagement h3 { min-height: 0; font-size: 23px; }
+  .engagementDescription { max-width: 440px; }
+  .engagementFooter { flex-direction: row; align-items: center; min-height: 80px; padding: 20px 24px; }
+  .engagementFooter > p { min-height: 0; max-width: 130px; }
+  .bookSection { grid-template-columns: 1fr; gap: 0; margin-top: 40px; padding: 20px 24px 32px; }
+  .bookLink { width: min(100%, 310px); margin-inline: auto; }
+  .bookCopy { padding: 12px 0 0; }
+  .bookCopy .intro { margin-top: 18px; }
+}
+
+@media (max-width: 379px) {
+  .root { padding-inline: 16px; }
+  .signal { padding-inline: 10px; }
+  .capability { padding-inline: 12px; }
+  .engagementFooter { flex-wrap: wrap; }
+  .bookActions { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root *, .root *::before, .root *::after { animation: none !important; transition: none !important; }
+  .timeline::after { transform: none; }
+  .engagement:hover, .engagement:focus-visible, .bookLink:hover .bookImage, .bookLink:focus-visible .bookImage, .cardAction > span { transform: none; }
+}
+
+@keyframes traceConnection { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
