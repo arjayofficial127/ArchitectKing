@@ -17,8 +17,8 @@ export function HeroFoldCloser() {
             I listen, find what is getting in the way, and work with the team until there is something reliable in production. Sometimes that means architecture. Sometimes it means getting into the code. Usually both.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
-            <Link href="/schedule" className="inline-flex items-center justify-center rounded-md bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800">
-              Tell Me What You&apos;re Working On
+            <Link href="/contact-me" className="inline-flex items-center justify-center rounded-md bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800">
+              Tell Me About It <span aria-hidden="true" className="ml-2">→</span>
             </Link>
             <Link href="#selected-systems" className="inline-flex items-center justify-center gap-2 rounded-md border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-slate-500">
               See Some of My Work <span aria-hidden="true">→</span>

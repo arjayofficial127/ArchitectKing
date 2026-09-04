@@ -7,6 +7,7 @@ const logos = [
   { name: 'Pointwest Technologies', src: '/architectking/companies/pointwest_technologies.png' },
   { name: 'Trinko', src: '/architectking/companies/trinko.png' },
   { name: 'Visa', src: '/architectking/companies/visa.png' },
+  { name: 'Starbucks', src: '/architectking/companies/starbucks.svg' },
   { name: 'Willis Towers Watson', src: '/architectking/companies/willis_towers_watson.png' },
 ] as const;
 

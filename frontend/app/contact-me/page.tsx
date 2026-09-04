@@ -2,12 +2,29 @@
 
 
 import Link from 'next/link';
+import { Suspense, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
 import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { contactMethods } from '@/lib/contactMethods';
+import { getJourneyContext } from '@/lib/helpJourney';
 
 export default function ContactMePage() {
+  return <Suspense fallback={<div className="p-10 text-center">Loading contact details…</div>}><ContactMeContent /></Suspense>;
+}
 
+function ContactMeContent() {
+  const searchParams = useSearchParams();
+  const context = getJourneyContext(searchParams.get('problem'), searchParams.get('help'));
+  const hasContext = Boolean(context.problem || context.engagement);
+  const initialNote = hasContext
+    ? ['Hi Arvin,', '', context.problem ? `What we are running into: ${context.problem}.` : '', context.engagement ? `I would like to discuss ${context.engagement}.` : '', '', 'Here is a little more context:', ''].filter((line) => line !== undefined).join('\n')
+    : '';
+  const [note, setNote] = useState(initialNote);
+  useEffect(() => { setNote(initialNote); }, [initialNote]);
+  const emailHref = hasContext
+    ? `mailto:arvinjaysoncastro@gmail.com?subject=${encodeURIComponent('A conversation about our software')}&body=${encodeURIComponent(note)}`
+    : 'mailto:arvinjaysoncastro@gmail.com?subject=Let%27s%20talk&body=Hi%20Arvin%2C%0A%0A';
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
       {/* Subtle background */}
@@ -56,8 +73,19 @@ export default function ContactMePage() {
               </p>
             </div>
 
-            {/* Problem Section */}
-            <div className="bg-slate-50/60 border border-slate-200 rounded-xl p-4 md:p-6">
+            {hasContext && (
+              <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-5">
+                <h2 className="text-lg font-semibold text-slate-900">Picking up where we left off</h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {[context.problem, context.engagement].filter(Boolean).join(' · ')}
+                </p>
+                <label htmlFor="journey-note" className="mt-4 block text-sm font-medium text-slate-700">Your note — edit or add anything you like</label>
+                <textarea id="journey-note" value={note} onChange={(event) => setNote(event.target.value)} rows={7} className="mt-2 w-full rounded-lg border border-slate-300 bg-white p-3 text-sm leading-relaxed text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+                <p className="mt-2 text-xs text-slate-500">The email link includes this note. Nothing is sent until you send it from your email app.</p>
+              </div>
+            )}
+            {/* Examples remain useful for visitors arriving without funnel context. */}
+            {!hasContext && <div className="bg-slate-50/60 border border-slate-200 rounded-xl p-4 md:p-6">
               <h2 className="text-lg font-semibold text-slate-900 mb-2 text-center">It might be something like this:</h2>
               <ul className="grid grid-cols-1 gap-2 text-sm text-slate-700 mb-2">
                 <li className="flex items-start"><span className="text-[#F4C430] mr-2">•</span><span>Pages are getting slower as usage grows</span></li>
@@ -74,6 +102,7 @@ export default function ContactMePage() {
               </div>
             </div>
 
+            }
             {/* Contact Methods */}
             <div className="space-y-4">
               {contactMethods.map((method, index) => {
@@ -88,7 +117,7 @@ export default function ContactMePage() {
                 return (
                   <a
                     key={method.label}
-                    href={method.href}
+                    href={hasContext && method.href.startsWith('mailto:') ? emailHref : method.href}
                     target={method.href.startsWith('http') ? '_blank' : undefined}
                     rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="group relative block p-6 bg-white rounded-2xl border border-slate-200 hover:border-slate-400 transition-all duration-200 hover:shadow-md cursor-pointer active:scale-[0.98] w-full"
@@ -136,7 +165,7 @@ export default function ContactMePage() {
                 Find a Time
               </Link>
               <a
-                href="mailto:arvinjaysoncastro@gmail.com?subject=Review%20Your%20System&body=Hi%20Arvin%2C%0A%0ACould%20you%20take%20a%20look%20at%20our%20system%3F%0A%0AThanks%2C"
+                href={emailHref}
                 className="inline-flex w-full md:w-auto items-center justify-center rounded-lg bg-[#F4C430] px-8 py-4 text-lg font-semibold text-[#0F172A] shadow-lg transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#F4C430] focus:ring-offset-2"
               >
                 Send Me a Note

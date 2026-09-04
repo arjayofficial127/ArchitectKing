@@ -1,0 +1,62 @@
+.assembly { transform-style: preserve-3d; }
+
+.mount {
+  background: linear-gradient(180deg, #1a2334, #0b1120);
+  box-shadow: inset 0 1px 0 #ffffff1a, 0 3px 6px -3px #00000080;
+}
+
+.upperArm {
+  position: relative;
+  transform-origin: top center;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #050914, #4a5872 42%, #0e1524);
+  box-shadow: 0 6px 10px -7px #00000090;
+  animation: armSway 8.6s ease-in-out infinite alternate;
+}
+.upperArm::after {
+  content: '';
+  position: absolute;
+  inset: 1px 40% 1px auto;
+  width: 1px;
+  background: #ffffff35;
+}
+
+.elbow {
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #7c8aa0, #0c111d 68%);
+  box-shadow: 0 2px 4px -1px #00000090, inset 0 0 0 1px #ffffff20;
+}
+
+.lowerArm {
+  position: relative;
+  transform-origin: top center;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #0b0f19, #445067 46%, #050810);
+  box-shadow: 0 8px 14px -9px #00000095;
+  animation: armCounterSway 8.6s ease-in-out infinite alternate;
+}
+.lowerArm::after {
+  content: '';
+  position: absolute;
+  inset: 2px auto 2px 44%;
+  width: 1px;
+  background: #ffffff30;
+}
+
+.sideLeft .upperArm, .sideLeft .lowerArm { animation-duration: 8.2s; }
+.sideRight .upperArm, .sideRight .lowerArm { animation-duration: 9.4s; animation-delay: -2.6s; }
+
+@keyframes armSway {
+  0% { transform: rotate(-1.7deg); }
+  52% { transform: rotate(1.3deg); }
+  100% { transform: rotate(-0.3deg); }
+}
+@keyframes armCounterSway {
+  0% { transform: rotate(1.2deg); }
+  52% { transform: rotate(-1deg); }
+  100% { transform: rotate(0.2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .upperArm, .lowerArm { animation: none; }
+}

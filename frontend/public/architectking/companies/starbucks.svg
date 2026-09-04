@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" role="img" aria-labelledby="title">
+  <title id="title">Starbucks</title>
+  <circle cx="40" cy="40" r="28" fill="#00704a"/>
+  <path d="M40 19l4.6 11.2 12 .9-9.2 7.8 2.9 11.7L40 44.9l-10.3 5.7 2.9-11.7-9.2-7.8 12-.9L40 19z" fill="#fff"/>
+  <text x="82" y="49" fill="#00704a" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700" letter-spacing="1">STARBUCKS</text>
+</svg>

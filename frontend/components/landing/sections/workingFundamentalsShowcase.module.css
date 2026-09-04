@@ -1,0 +1,164 @@
+.showcase {
+  --book-navy: #091327;
+  --book-gold: #aa7a22;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid #ddd1bb;
+  border-radius: 25px;
+  background:
+    linear-gradient(#bba8790a 1px, transparent 1px),
+    linear-gradient(90deg, #bba8790a 1px, transparent 1px),
+    #fbf9f4;
+  background-size: 34px 34px;
+  box-shadow: 0 26px 70px -56px #55452f99;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+.showcase:hover { border-color: #cdb98f; box-shadow: 0 28px 74px -55px #55452fb3; }
+
+.installation {
+  --book-x: 0;
+  --book-y: 0;
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  /* matched to the book render's own backdrop (#fbf9f4) so the photo's edges disappear */
+  background: #fbf9f4;
+  isolation: isolate;
+}
+.installation::after { content: ''; position: absolute; inset: 0; z-index: -1; opacity: .28; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E"); mix-blend-mode: multiply; }
+.fieldSeal { position: absolute; top: 30px; left: 26px; z-index: 4; width: 90px; height: 90px; }
+.sealRing { object-fit: contain; animation: sealSpin 26s linear infinite; transform-origin: 50% 50%; }
+
+.bookStage { position: absolute; left: 6%; right: 4%; top: 6%; bottom: 22%; z-index: 2; display: grid; align-items: end; justify-items: center; perspective: 1400px; }
+.bookFloat {
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  animation: bookHover 13s ease-in-out infinite alternate;
+}
+.bookParallax { width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(calc(var(--book-y) * 1deg)) rotateY(calc(var(--book-x) * 1deg)); transition: transform 80ms linear; }
+.bookBox {
+  position: relative; width: 100%; height: 100%;
+  transform: rotateY(calc(var(--book-spin, 4) * 1deg));
+}
+.bookImage { object-fit: contain; object-position: center bottom; }
+
+/* soft shadow where the book meets the stone, drawn above the pedestal */
+.contactShadow {
+  position: absolute; z-index: 4;
+  left: 34%; bottom: 21%; width: 30%; height: 4%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #4a3a2166, #4a3a2124 60%, transparent);
+  filter: blur(9px);
+  animation: contactShadow 13s ease-in-out infinite alternate;
+}
+
+/* above the book so the book's base tucks behind the stone and reads as standing on it.
+   height keeps the box near the slab's own 1.33 aspect so `cover` barely crops it. */
+.pedestal { position: absolute; z-index: 3; left: 6%; right: -12%; bottom: -14%; height: 66%; }
+.pedestalImage { object-fit: cover; object-position: left top; }
+
+/* above the stand (z-index 3) so the stalks read as standing in front of the stone */
+.botanical { position: absolute; left: -30px; bottom: 0; z-index: 5; width: 125px; height: 260px; overflow: visible; }
+.windGroup { position: relative; width: 100%; height: 100%; transform: rotate(calc(var(--wind, 0) * 1deg)); transform-origin: 50% 100%; transition: transform 70ms linear; }
+.stalk { position: absolute; bottom: -20px; aspect-ratio: 1024 / 1536; }
+.stalkSway { width: 100%; height: 100%; transform-origin: 50% 100%; }
+.stalkScale { width: 100%; height: 100%; transform: scale(6); transform-origin: 0% 100%; }
+.stalkImage { object-fit: contain; object-position: bottom; }
+.stalkOne { animation: plantSwayOne 5.6s ease-in-out infinite alternate; }
+.stalkTwo { animation: plantSwayTwo 6.7s cubic-bezier(.45,0,.55,1) .7s infinite alternate; }
+.stalkThree { animation: plantSwayOne 6.1s ease-in-out .35s infinite alternate; }
+
+.editorial { position: relative; display: flex; min-width: 0; flex-direction: column; justify-content: center; padding: 58px 56px 42px; background: #fcfaf5e8; }
+.editorial > *:not(.orbit):not(.chapterSignature) { position: relative; z-index: 2; }
+.orbit { position: absolute; z-index: 0; width: 450px; height: 450px; right: -205px; top: 18px; fill: none; stroke: #a9926940; stroke-width: .75; }
+.orbitOuter { transform-origin: 210px 210px; animation: orbitClockwise 56s linear infinite; }
+.orbitInner { transform-origin: 210px 210px; animation: orbitCounter 72s linear infinite; }
+.orbitNode { fill: #ab7c27; stroke: none; opacity: .7; }
+.chapterSignature { position: absolute; z-index: 1; right: 28px; top: 170px; display: grid; justify-items: center; color: #aa7a22; }
+.chapterSignature strong { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(54px, 6vw, 82px); font-weight: 400; line-height: .85; }
+.chapterSignature span { margin-top: 12px; font-size: 9px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+.eyebrow { width: fit-content; padding-bottom: 10px; border-bottom: 1px solid #cda95b80; color: #9b7328; font-size: 10px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
+.editorial h3 { max-width: 490px; margin-top: 23px; color: var(--book-navy); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(38px, 4.5vw, 62px); font-weight: 400; line-height: .91; letter-spacing: -.045em; text-wrap: balance; }
+.goldDash { width: 31px; height: 2px; margin: 26px 0 18px; background: #b88727; }
+.description { max-width: 440px; color: #5e6b7d; font-size: 13px; line-height: 1.75; }
+.description + .description { margin-top: 2px; }
+.editorial blockquote { max-width: 430px; margin-top: 22px; padding: 5px 0 5px 18px; border-left: 1px solid #b88727; color: #66758a; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-style: italic; line-height: 1.6; }
+.chapterBlock { margin-top: 26px; }
+.chapterBlock > p { margin-bottom: 9px; color: #9b7328; font-size: 8px; font-weight: 700; letter-spacing: .23em; text-transform: uppercase; }
+.chapterList { display: flex; gap: 7px; overflow-x: auto; padding: 2px 2px 5px; scrollbar-width: none; }
+.chapterList::-webkit-scrollbar { display: none; }
+.chapterList a { flex: 0 0 auto; padding: 8px 10px; border: 1px solid #ded8cb; border-radius: 7px; background: #fffefaad; color: #263247; font-size: 9px; font-weight: 600; transition: transform 190ms ease, border-color 190ms ease, background 190ms ease; }
+.chapterList a:hover { transform: translateY(-2px); border-color: #b9954e; background: #fff; }
+.chapterList a span { margin-right: 6px; color: #a47a26; }
+.actions { display: flex; gap: 12px; margin-top: 24px; }
+.primaryAction, .secondaryAction { display: inline-flex; min-height: 50px; align-items: center; justify-content: space-between; gap: 30px; border-radius: 8px; padding: 0 19px; font-size: 12px; font-weight: 700; transition: background 210ms ease, border-color 210ms ease; }
+.primaryAction { min-width: 180px; background: var(--book-navy); color: #fff; }
+.primaryAction:hover { background: #152238; }
+.secondaryAction { min-width: 190px; border: 1px solid #b9954e; background: #fffefa90; color: #263247; }
+.secondaryAction:hover { border-color: #8e6923; background: #fff; }
+.primaryAction span, .secondaryAction span { transition: transform 210ms ease; }
+.primaryAction:hover span, .secondaryAction:hover span { transform: translateX(4px); }
+.secondaryAction span { color: #a47a26; }
+.meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 28px; padding-top: 16px; border-top: 1px solid #dfdbd1; }
+.meta > div { display: flex; min-width: 0; align-items: center; gap: 8px; padding-inline: 10px; border-left: 1px solid #e4e0d7; }
+.meta > div:first-child { padding-left: 0; border-left: 0; }
+.meta svg { width: 19px; height: 19px; flex: 0 0 auto; fill: none; stroke: #b58a38; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.4; }
+.meta dd { color: #596679; font-size: 8px; line-height: 1.45; }
+
+@keyframes bookHover { 0% { transform: translate3d(0,4px,0) rotateZ(-.7deg); } 52% { transform: translate3d(0,-11px,11px) rotateZ(.55deg); } 100% { transform: translate3d(2px,-3px,3px) rotateZ(-.25deg); } }
+@keyframes contactShadow { from { opacity: .68; transform: scaleX(.9); } to { opacity: .3; transform: scaleX(1.08); } }
+@keyframes plantSwayOne { 0% { transform: rotate(-1.7deg) translateX(0); } 58% { transform: rotate(1.2deg) translateX(1px); } 100% { transform: rotate(.2deg) translateX(-1px); } }
+@keyframes plantSwayTwo { from { transform: rotate(1.2deg); } to { transform: rotate(-1.4deg) translateX(2px); } }
+@keyframes orbitClockwise { to { transform: rotate(360deg); } }
+@keyframes orbitCounter { to { transform: rotate(-360deg); } }
+@keyframes sealSpin { to { transform: rotate(360deg); } }
+
+@media (max-width: 1180px) {
+  .showcase { grid-template-columns: .88fr 1.12fr; min-height: 570px; }
+  .installation { min-height: 570px; }
+  .editorial { padding: 46px 38px 34px; }
+  .chapterSignature { right: 16px; top: 160px; }
+  .editorial h3 { font-size: clamp(36px, 4.4vw, 52px); max-width: 400px; }
+  .description, .editorial blockquote { max-width: 370px; }
+  .meta > div { padding-inline: 7px; }
+}
+
+@media (max-width: 900px) {
+  .showcase { grid-template-columns: 1fr; }
+  .installation { min-height: 520px; }
+  .bookStage { left: 18%; right: 12%; }
+  .pedestal { left: 10%; right: -10%; }
+  .editorial { padding: 44px 36px 36px; }
+  .chapterSignature { top: 126px; right: 28px; }
+  .editorial h3 { font-size: 50px; max-width: 500px; }
+  .description, .editorial blockquote { max-width: 480px; }
+}
+
+@media (max-width: 580px) {
+  .showcase { border-radius: 18px; }
+  .installation { min-height: 410px; }
+  .fieldSeal { top: 20px; left: 18px; width: 72px; height: 72px; }
+  .bookStage { left: 17%; right: 5%; top: 14%; bottom: 30%; }
+  .botanical { width: 90px; height: 200px; }
+  .pedestal { left: 4%; right: -18%; bottom: -12%; height: 58%; }
+  .editorial { padding: 36px 22px 26px; }
+  .orbit { right: -270px; opacity: .7; }
+  .chapterSignature { position: relative; inset: auto; display: flex; width: fit-content; align-items: baseline; gap: 9px; margin-bottom: 17px; }
+  .chapterSignature strong { font-size: 52px; }
+  .chapterSignature span { margin-top: 0; }
+  .editorial h3 { margin-top: 18px; font-size: 39px; line-height: .95; }
+  .description { font-size: 12px; }
+  .editorial blockquote { font-size: 14px; }
+  .actions { display: grid; grid-template-columns: 1fr; }
+  .primaryAction, .secondaryAction { width: 100%; }
+  .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 14px; }
+  .meta > div:nth-child(3) { padding-left: 0; border-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookFloat, .contactShadow, .stalkOne, .stalkTwo, .stalkThree, .orbitOuter, .orbitInner, .sealRing { animation: none; }
+  .bookParallax, .windGroup { transform: none; transition: none; }
+}

@@ -3,19 +3,26 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import { LogoStripFinalBoss } from '../../LogoStripFinalBoss';
+import { WorkingFundamentalsShowcase } from './WorkingFundamentalsShowcase';
+import armStyles from './monitorArm.module.css';
+
 interface LiveSystem {
   name: string;
   category: string;
   description: string;
   built: string;
   previewUrl: string;
-  siteUrl: string;
+  siteUrl?: string;
   standSide: 'left' | 'right';
+  previewKind?: 'live' | 'image';
+  screenshotAlt?: string;
+  capabilities?: readonly string[];
 }
 
 const liveSystems: LiveSystem[] = [
   {
-    name: 'AiruNote',
+    name: 'airunote',
     category: 'Knowledge workspace',
     description: 'One content system for nested notes, boards, canvases, study views, and public assessments.',
     built: 'Product model, workspace behavior, editor flows, permissions, and full-stack delivery.',
@@ -24,7 +31,7 @@ const liveSystems: LiveSystem[] = [
     standSide: 'left',
   },
   {
-    name: 'BaseOfUI',
+    name: 'baseofui',
     category: 'Multi-tenant workspace platform',
     description: 'A configurable system for websites, forms, files, publishing, portfolios, client workflows, and team operations.',
     built: 'Page builder, tenant isolation, RBAC, installable apps, public portals, and per-organization admin workspaces.',
@@ -32,20 +39,43 @@ const liveSystems: LiveSystem[] = [
     siteUrl: 'https://www.baseofui.com/',
     standSide: 'right',
   },
+  {
+    name: 'Coach Browser',
+    category: 'Local-first research workspace',
+    description: 'Keep research, browser tabs, notes, canvases, files, and next steps together inside focused desktop workspaces.',
+    built: 'Windows desktop shell, isolated browser tabs, local files, Markdown notes, canvas pages, capture flows, keyboard navigation, and packaging.',
+    previewUrl: '/architectking/coach-browser/new-tab.png',
+    standSide: 'left',
+    previewKind: 'image',
+    screenshotAlt: 'Coach Browser research workspace with desktop workspaces, browser tabs, notes, and local files.',
+    capabilities: ['Research', 'Capture', 'Organize', 'Local files'],
+  },
 ];
-
-const coachScreenshots = [
-  { src: '/architectking/coach-browser/new-tab.png', label: 'Research workspace' },
-  { src: '/architectking/coach-browser/canvas.png', label: 'Connected canvas' },
-  { src: '/architectking/coach-browser/daily-flow.png', label: 'Local tools' },
-] as const;
 
 function MonitorFeet({ side = 'left' }: { side?: 'left' | 'right' }) {
   const position = side === 'left' ? 'left-[18%]' : 'left-[82%]';
+  const sideClass = side === 'left' ? armStyles.sideLeft : armStyles.sideRight;
 
   return (
-    <div className="relative mx-auto h-11 w-[90%]" aria-hidden="true">
-      <div className={`absolute ${position} top-[-1px] h-11 w-6 -translate-x-1/2 rounded-b-sm border-x border-black/70 bg-gradient-to-r from-slate-950 via-slate-800 to-slate-950 shadow-[0_7px_10px_-7px_rgba(15,23,42,0.75)]`} />
+    <div className="relative mx-auto h-28 w-full" aria-hidden="true">
+      <div className={`absolute ${position} top-0 -translate-x-1/2 ${armStyles.assembly} ${sideClass}`}>
+        {/* VESA mount plate — bolted to the screen's back */}
+        <span className={`mx-auto block h-1.5 w-6 rounded-t-sm ${armStyles.mount}`} />
+
+        {/* Upper arm — pivots at the mount */}
+        <span className={`mx-auto block h-[34px] w-[7px] ${armStyles.upperArm}`} />
+
+        {/* Elbow joint */}
+        <span className={`mx-auto block h-2.5 w-2.5 ${armStyles.elbow}`} />
+
+        {/* Lower arm / gas-spring pole — counter-pivots at the elbow */}
+        <span className={`mx-auto block h-[34px] w-2 ${armStyles.lowerArm}`} />
+
+        {/* Desk clamp base — stays put */}
+        <span className="relative mx-auto block h-2.5 w-20 -translate-y-px rounded-b-md bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 shadow-[0_5px_8px_-5px_rgba(15,23,42,0.9)]">
+          <span className="absolute bottom-[-5px] left-1/2 h-2.5 w-12 -translate-x-1/2 rounded-full border border-black/60 bg-gradient-to-b from-slate-700 to-slate-950 shadow-[0_8px_12px_-7px_rgba(15,23,42,0.9)]" />
+        </span>
+      </div>
     </div>
   );
 }
@@ -74,17 +104,21 @@ function LivePreview({ system }: { system: LiveSystem }) {
           <span className="h-1 w-1 rounded-full bg-emerald-400/80" />
         </div>
         <div ref={screenRef} className="relative aspect-video overflow-hidden rounded-[0.95rem] bg-white ring-1 ring-white/15">
-          <iframe
-            src={system.previewUrl}
-            title={`${system.name} live product preview at 1920 by 1080 pixels`}
-            width="1920"
-            height="1080"
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-            sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
-            className="absolute left-0 top-0 border-0 bg-white"
-            style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left' }}
-          />
+          {system.previewKind === 'image' ? (
+            <Image src={system.previewUrl} alt={system.screenshotAlt ?? `${system.name} product preview`} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-top" />
+          ) : (
+            <iframe
+              src={system.previewUrl}
+              title={`${system.name} live product preview at 1920 by 1080 pixels`}
+              width="1920"
+              height="1080"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
+              className="absolute left-0 top-0 border-0 bg-white"
+              style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left' }}
+            />
+          )}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/10 to-transparent" />
         </div>
         <div className="relative flex h-5 items-center justify-center" aria-hidden="true">
@@ -98,8 +132,42 @@ function LivePreview({ system }: { system: LiveSystem }) {
 }
 
 function LiveSystemCard({ system }: { system: LiveSystem }) {
+  const cardRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const viewport = window.innerHeight;
+      const rect = card.getBoundingClientRect();
+      const start = viewport * 1.02;
+      const finish = viewport * 0.48;
+      const progress = Math.max(0, Math.min(1, (start - rect.top) / (start - finish)));
+      const distance = Math.min(window.innerWidth * 0.34, 460);
+      const direction = system.standSide === 'left' ? -1 : 1;
+      card.style.transform = `translate3d(${direction * distance * (1 - progress)}px, 0, 0)`;
+      card.style.opacity = `${0.45 + progress * 0.55}`;
+    };
+
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      cancelAnimationFrame(frame);
+    };
+  }, [system.standSide]);
+
   return (
-    <article className="min-w-0">
+    <article ref={cardRef} className="min-w-0 will-change-transform motion-reduce:!transform-none motion-reduce:!opacity-100">
       <LivePreview system={system} />
       <div className="px-1 pt-5">
         <div className="flex items-start justify-between gap-4">
@@ -107,77 +175,21 @@ function LiveSystemCard({ system }: { system: LiveSystem }) {
             <h3 className="text-2xl font-bold tracking-tight text-slate-950">{system.name}</h3>
             <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-500">{system.category}</p>
           </div>
-          <a
-            href={system.siteUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="shrink-0 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-slate-800 transition hover:border-slate-950 hover:bg-slate-950 hover:text-white"
-          >
-            Open live <span aria-hidden="true">↗</span>
-          </a>
+          {system.siteUrl ? (
+            <a href={system.siteUrl} target="_blank" rel="noreferrer" className="shrink-0 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-slate-800 transition hover:border-slate-950 hover:bg-slate-950 hover:text-white">
+              Open live <span aria-hidden="true">↗</span>
+            </a>
+          ) : null}
         </div>
         <p className="mt-4 text-sm leading-relaxed text-slate-600">{system.description}</p>
         <p className="mt-3 text-sm font-semibold leading-relaxed text-slate-800">
           <span className="text-[#B68900]">What I worked on:</span> {system.built}
         </p>
-      </div>
-    </article>
-  );
-}
-
-function CoachBrowserCard() {
-  const [activeScreenshot, setActiveScreenshot] = useState(0);
-  const screenshot = coachScreenshots[activeScreenshot];
-
-  return (
-    <article className="mt-12 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 text-white shadow-2xl lg:grid lg:grid-cols-[1.25fr_0.75fr]">
-      <div className="relative overflow-hidden border-b border-slate-800 p-5 sm:p-7 lg:border-b-0 lg:border-r">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(124,101,217,0.18),transparent_42%)]" />
-        <div className="relative">
-          <div className="rounded-[1.15rem] bg-gradient-to-b from-slate-500 via-slate-800 to-black p-[6px] shadow-[0_28px_55px_-26px_rgba(0,0,0,0.9)] ring-1 ring-white/15">
-            <div className="pointer-events-none absolute left-1/2 top-[2px] z-10 -translate-x-1/2 rounded-b-lg bg-slate-950 px-4 py-1" aria-hidden="true">
-              <span className="block h-1.5 w-1.5 rounded-full bg-slate-700 ring-1 ring-slate-500" />
-            </div>
-            <div className="relative aspect-video overflow-hidden rounded-[0.8rem] bg-white ring-1 ring-black/60">
-              <Image
-                key={screenshot.src}
-                src={screenshot.src}
-                alt={`Coach Browser ${screenshot.label.toLowerCase()} interface`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="flex h-4 items-center justify-center" aria-hidden="true"><span className="h-0.5 w-8 rounded-full bg-slate-400/70" /></div>
+        {system.capabilities && (
+          <div className="mt-4 flex flex-wrap gap-2" aria-label={`${system.name} capabilities`}>
+            {system.capabilities.map((capability) => <span key={capability} className="rounded-full border border-violet-200 bg-violet-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-violet-800">{capability}</span>)}
           </div>
-          <MonitorFeet />
-
-          <div className="mt-5 grid grid-cols-3 gap-2" role="group" aria-label="Coach Browser screenshots">
-            {coachScreenshots.map((item, index) => (
-              <button
-                key={item.src}
-                type="button"
-                onClick={() => setActiveScreenshot(index)}
-                aria-pressed={activeScreenshot === index}
-                className={`overflow-hidden rounded-lg border text-left transition ${activeScreenshot === index ? 'border-[#F4C430] ring-2 ring-[#F4C430]/25' : 'border-slate-700 opacity-60 hover:border-slate-500 hover:opacity-100'}`}
-              >
-                <span className="relative block aspect-video bg-slate-900">
-                  <Image src={item.src} alt="" fill sizes="20vw" className="object-cover" />
-                </span>
-                <span className="block truncate bg-slate-900 px-2 py-1.5 text-[10px] font-semibold text-slate-300">{item.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col justify-center p-7 lg:p-10">
-        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#F4C430]">Work in progress · Windows pre-release</p>
-        <h3 className="mt-3 text-3xl font-bold tracking-tight">Coach Browser</h3>
-        <p className="mt-3 text-base leading-relaxed text-slate-300">A local-first research browser where web exploration, notes, canvases, and focused tools stay organized by desktop.</p>
-        <p className="mt-5 text-sm font-semibold leading-relaxed text-slate-200"><span className="text-[#F4C430]">What I&apos;ve worked on:</span> Electron and React shell, isolated website tabs, local workspaces, Obsidian-compatible capture, keyboard navigation, packaging, and smoke validation.</p>
-        <div className="mt-6 flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-wider text-slate-300">
-          {['Local-first', 'Isolated tabs', 'Markdown', 'JSON Canvas'].map((label) => <span key={label} className="rounded-full border border-slate-700 px-3 py-1.5">{label}</span>)}
-        </div>
+        )}
       </div>
     </article>
   );
@@ -185,17 +197,23 @@ function CoachBrowserCard() {
 
 export function SelectedSystemsSection() {
   return (
-    <section id="selected-systems" className="relative scroll-mt-28 px-6 py-16 md:py-24">
+    <section id="selected-systems" className="relative overflow-x-clip scroll-mt-28 px-6 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9A7400]">Some of my work</p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">A few things I&apos;ve built</h2>
-          <p className="mt-3 text-base text-slate-600">The first two are live and open to explore. The third is still taking shape.</p>
+          <p className="mt-3 text-base text-slate-600">Two live products, one Windows prototype, and the notes behind how I build.</p>
         </div>
-        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-8">
+        <div className="mt-10 grid gap-10 lg:grid-cols-3 lg:gap-8">
           {liveSystems.map((system) => <LiveSystemCard key={system.name} system={system} />)}
         </div>
-        <CoachBrowserCard />
+        <div className="mt-10">
+          <WorkingFundamentalsShowcase />
+        </div>
+        <div className="mt-20 border-t border-slate-200 pt-12">
+          <p className="text-center text-sm font-semibold text-slate-500">Some of the teams and environments I&apos;ve had the chance to learn from.</p>
+          <LogoStripFinalBoss />
+        </div>
       </div>
     </section>
   );

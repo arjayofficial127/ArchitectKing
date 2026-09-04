@@ -8,7 +8,6 @@ import { ProofFoldCloser } from './sections/ProofFoldCloser';
 // CloseFoldCloser section removed per request
 import { TechStrip } from './sections/TechStrip';
 import { SelectedSystemsSection } from './sections/SelectedSystemsSection';
-import { CloseFoldFinal } from './sections/CloseFoldFinal';
 
 export function ArvinLandingPage() {
 
@@ -44,8 +43,6 @@ export function ArvinLandingPage() {
         <section id="approach" className="scroll-mt-28">
           <ProofFoldCloser />
         </section>
-
-        <CloseFoldFinal />
 
       </main>
 
