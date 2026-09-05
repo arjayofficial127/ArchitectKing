@@ -33,7 +33,7 @@ export function HeroFoldCloser() {
         <div className="relative mx-auto w-full max-w-md pb-8">
           <div aria-hidden="true" className="absolute -inset-8 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(244,196,48,0.13),transparent_68%)]" />
           <div className="relative mx-auto aspect-[4/4.6] max-w-sm overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-2xl shadow-slate-900/15">
-            <Image src="/architectking/profile_recent.png" alt="Arvin Jayson Castro, Software Architect and Product Builder" fill priority sizes="(max-width: 1024px) 384px, 420px" className="object-cover" />
+            <Image src="/architectking/pogi.png" alt="Arvin Jayson Castro, Software Architect and Product Builder" fill priority sizes="(max-width: 1024px) 384px, 420px" className="object-cover" />
           </div>
           <div className="absolute bottom-0 left-3 flex items-center rounded-xl border border-slate-200 bg-white/95 px-4 py-3 text-slate-950 shadow-[0_16px_32px_-20px_rgba(15,23,42,0.55)] backdrop-blur sm:left-4">
             <p className="text-4xl font-bold leading-none tracking-[-0.05em] text-[#C39400]">16</p>
