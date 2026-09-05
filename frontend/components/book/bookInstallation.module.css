@@ -1,0 +1,407 @@
+/* Working Fundamentals book installation.
+   The book is a genuine CSS 3D box built from flat cover artwork, standing on granite. */
+
+.installation {
+  --bw: clamp(138px, 13vw, 208px);
+  --bh: calc(var(--bw) * 1.384);
+  --bd: calc(var(--bw) * 0.175);
+  /* stand.png is 4:3 and its top plane sits at ~54.5% up from the image's bottom.
+     The stone is sized by HEIGHT and its width derives from the aspect ratio. Keep
+     these three in step or the book floats / sinks:
+       --plane (book base) === --stone-bottom + 0.545 * --stone-h */
+  --stone-h: 54%;
+  --stone-bottom: -6%;
+  --plane: 23.4%;
+
+  position: relative;
+  min-height: clamp(440px, 42vw, 600px);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* ---------- architectural geometry ---------- */
+
+.orbit {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 12%;
+  width: min(112%, 520px);
+  height: auto;
+  aspect-ratio: 1;
+  transform: translateX(calc(-50% + var(--book-x, 0px)));
+  fill: none;
+  stroke: rgba(156, 116, 45, 0.16);
+  stroke-width: 0.7;
+  pointer-events: none;
+}
+
+.orbitOuter {
+  transform-origin: 210px 210px;
+  animation: orbitForward 60s linear infinite;
+}
+
+.orbitInner {
+  transform-origin: 210px 210px;
+  animation: orbitBack 84s linear infinite;
+}
+
+.orbitNode {
+  fill: #9c742d;
+  stroke: none;
+  opacity: 0.55;
+}
+
+/* ---------- 3D stage ---------- */
+
+.stage {
+  position: absolute;
+  inset: 0;
+  /* above the granite: the book stands ON the top plane, so its base must draw
+     over the stone rather than being clipped by the stone's back edge */
+  z-index: 3;
+  display: grid;
+  place-items: end center;
+  padding-bottom: var(--plane);
+  /* --book-x moves the book across the scene; the contact shadow tracks it below */
+  transform: translateX(var(--book-x, 0px));
+  perspective: 1000px;
+  perspective-origin: 50% 22%;
+}
+
+.tilt {
+  transform-style: preserve-3d;
+  transform: rotateX(calc(var(--tilt-y, 0) * 1deg)) rotateY(calc(var(--tilt-x, 0) * 1deg));
+  will-change: transform;
+}
+
+.yaw {
+  transform-style: preserve-3d;
+  animation: bookYaw 16s ease-in-out infinite alternate;
+}
+
+.book {
+  position: relative;
+  width: var(--bw);
+  height: var(--bh);
+  transform-style: preserve-3d;
+  transform: rotateX(1.5deg) rotateY(23deg);
+}
+
+.face {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+/* front cover — real approved artwork, kept flat */
+.faceFront {
+  inset: 0;
+  transform: translateZ(calc(var(--bd) / 2));
+  border-radius: 1px 4px 4px 1px;
+  overflow: hidden;
+  background: #f7f4ee;
+  box-shadow:
+    inset 0 0 0 1px rgba(120, 106, 82, 0.16),
+    0 0 22px rgba(58, 46, 26, 0.06);
+}
+
+.coverArt {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* matte sheen: light reads from the upper left, matching the granite render */
+.faceFront::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    /* hinge groove where the cover meets the spine */
+    linear-gradient(90deg, rgba(84, 72, 50, 0.3) 0, rgba(84, 72, 50, 0.05) 5px, rgba(84, 72, 50, 0) 11px),
+    linear-gradient(108deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 34%, rgba(96, 84, 62, 0.09) 88%);
+  pointer-events: none;
+}
+
+.faceBack {
+  inset: 0;
+  transform: rotateY(180deg) translateZ(calc(var(--bd) / 2));
+  border-radius: 4px 1px 1px 4px;
+  background: linear-gradient(255deg, #f6f2ea, #efeade 62%, #e6e0d1);
+  box-shadow: inset 0 0 0 1px rgba(120, 106, 82, 0.18);
+}
+
+/* spine — set in real text so the title stays crisp at every size */
+.faceSpine {
+  top: 0;
+  left: calc(50% - var(--bd) / 2);
+  width: var(--bd);
+  height: 100%;
+  transform: rotateY(-90deg) translateZ(calc(var(--bw) / 2));
+  border-radius: 3px 0 0 3px;
+  /* the spine turns away from the key light, so it reads a shade below the cover */
+  background: linear-gradient(90deg, #c4baa6 0%, #ded7c8 20%, #e9e3d6 52%, #d9d1c0 84%, #c0b6a1 100%);
+  box-shadow:
+    inset -1px 0 0 rgba(88, 76, 52, 0.28),
+    inset 0 0 0 1px rgba(120, 106, 82, 0.16);
+}
+
+.spineInner {
+  position: absolute;
+  inset: 7% 0;
+  display: flex;
+  /* vertical-rl + rotate(180deg) reads bottom-to-top, so reverse to put the
+     title at the head of the spine and the author at the foot */
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+.spineTitle {
+  font-size: calc(var(--bd) * 0.3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #14181d;
+}
+
+.spineTitle b {
+  font-weight: 700;
+}
+
+.hueF { color: #2f7de1; }
+.hueU { color: #e2372b; }
+.hueN { color: #f2b304; }
+
+.spineAuthor {
+  font-size: calc(var(--bd) * 0.17);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5c6270;
+}
+
+/* page block edges */
+.faceFore,
+.faceBottom {
+  background:
+    repeating-linear-gradient(90deg, rgba(196, 184, 160, 0.5) 0 1px, rgba(252, 250, 245, 0) 1px 3px),
+    linear-gradient(90deg, #e4ddcd, #fbf9f3 34%, #efe9dc);
+}
+
+.faceFore {
+  top: 0;
+  left: calc(50% - var(--bd) / 2);
+  width: var(--bd);
+  height: 100%;
+  transform: rotateY(90deg) translateZ(calc(var(--bw) / 2));
+  border-radius: 0 3px 3px 0;
+}
+
+.faceTop {
+  left: 0;
+  top: calc(50% - var(--bd) / 2);
+  width: 100%;
+  height: var(--bd);
+  transform: rotateX(90deg) translateZ(calc(var(--bh) / 2));
+  overflow: hidden;
+  border-radius: 2px;
+  background: #f4f0e7;
+}
+
+.pageTopArt {
+  object-fit: cover;
+  object-position: center;
+}
+
+.faceBottom {
+  left: 0;
+  top: calc(50% - var(--bd) / 2);
+  width: 100%;
+  height: var(--bd);
+  transform: rotateX(-90deg) translateZ(calc(var(--bh) / 2));
+  filter: brightness(0.9);
+}
+
+/* ---------- granite, shadow, botanical ---------- */
+
+.contactShadow {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: calc(var(--plane) - 9px);
+  width: calc(var(--bw) * 1.12);
+  height: calc(var(--bw) * 0.11);
+  transform: translateX(calc(-48% + var(--book-x, 0px)));
+  border-radius: 50%;
+  filter: blur(8px);
+  background: radial-gradient(closest-side, rgba(62, 48, 26, 0.52), rgba(62, 48, 26, 0.18) 62%, transparent);
+  animation: contactBreathe 16s ease-in-out infinite alternate;
+}
+
+.pedestal {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: var(--stone-bottom);
+  height: var(--stone-h);
+  width: auto;
+  aspect-ratio: 1448 / 1086;
+  /* --stone-x nudges the slab horizontally without moving the book */
+  transform: translateX(calc(-50% + var(--stone-x, 0px)));
+}
+
+.pedestalArt {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.botanical {
+  position: absolute;
+  z-index: 5;
+  left: -34px;
+  bottom: 0;
+  width: clamp(78px, 8.4vw, 104px);
+  height: clamp(150px, 17vw, 214px);
+  pointer-events: none;
+}
+
+.stalk {
+  position: absolute;
+  bottom: -10px;
+  aspect-ratio: 1024 / 1536;
+}
+
+.stalkSway {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+
+.stalkScale {
+  width: 100%;
+  height: 100%;
+  transform: scale(3.2);
+  transform-origin: 0% 100%;
+}
+
+.stalkImage {
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.stalkOne { animation: swayA 7.4s ease-in-out infinite alternate; }
+.stalkTwo { animation: swayB 8.9s cubic-bezier(0.45, 0, 0.55, 1) 0.8s infinite alternate; }
+.stalkThree { animation: swayA 8.1s ease-in-out 0.4s infinite alternate; }
+
+/* ---------- motion control ---------- */
+
+.motionToggle {
+  position: absolute;
+  z-index: 6;
+  right: 14px;
+  bottom: 12px;
+  padding: 6px 11px;
+  border: 1px solid rgba(156, 116, 45, 0.28);
+  border-radius: 999px;
+  background: rgba(250, 248, 243, 0.82);
+  color: #7c705c;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.motionToggle:hover {
+  color: #3c3527;
+  border-color: rgba(156, 116, 45, 0.6);
+  background: #fffdf8;
+}
+
+.motionToggle:focus-visible {
+  outline: 2px solid #9c742d;
+  outline-offset: 2px;
+}
+
+/* ---------- keyframes ---------- */
+
+@keyframes bookYaw {
+  from { transform: rotateY(-2.6deg); }
+  to { transform: rotateY(2.6deg); }
+}
+
+@keyframes contactBreathe {
+  from { opacity: 0.9; transform: translateX(calc(-46% + var(--book-x, 0px))) scaleX(0.97); }
+  to { opacity: 0.72; transform: translateX(calc(-46% + var(--book-x, 0px))) scaleX(1.04); }
+}
+
+@keyframes swayA {
+  0% { transform: rotate(-1.5deg); }
+  58% { transform: rotate(1.1deg); }
+  100% { transform: rotate(0.2deg); }
+}
+
+@keyframes swayB {
+  from { transform: rotate(1.2deg); }
+  to { transform: rotate(-1.3deg); }
+}
+
+@keyframes orbitForward { to { transform: rotate(360deg); } }
+@keyframes orbitBack { to { transform: rotate(-360deg); } }
+
+/* paused: offscreen, tab hidden, or the visitor asked for stillness */
+.installation[data-motion='paused'] .yaw,
+.installation[data-motion='paused'] .contactShadow,
+.installation[data-motion='paused'] .stalkOne,
+.installation[data-motion='paused'] .stalkTwo,
+.installation[data-motion='paused'] .stalkThree,
+.installation[data-motion='paused'] .orbitOuter,
+.installation[data-motion='paused'] .orbitInner {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yaw,
+  .contactShadow,
+  .stalkOne,
+  .stalkTwo,
+  .stalkThree,
+  .orbitOuter,
+  .orbitInner {
+    animation: none;
+  }
+
+  .tilt {
+    transform: none;
+  }
+}
+
+/* Desktop: the granite sits lower and reads bigger. The book's own Y is unchanged —
+   --plane stays put and --stone-bottom / --stone-h move together to meet it. */
+@media (min-width: 860px) {
+  .installation {
+    --stone-h: 75.2%;
+    --book-x: 68px;
+    --stone-bottom: -23.2%;
+    --stone-x: 120px;
+    --plane: 27%;
+    /* extra height so a low stone still has room to show its body before the
+       installation clips — without it, lowering just crops the slab away */
+    min-height: clamp(430px, 33vw, 470px);
+  }
+}
+
+@media (max-width: 640px) {
+  .installation {
+    --bw: clamp(146px, 38vw, 200px);
+    --stone-h: 58%;
+    --plane: 25.6%;
+    min-height: 372px;
+  }
+
+  .orbit { display: none; }
+  .botanical { left: -20px; }
+}

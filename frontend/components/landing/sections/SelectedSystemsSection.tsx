@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import { LogoStripFinalBoss } from '../../LogoStripFinalBoss';
-import { WorkingFundamentalsShowcase } from './WorkingFundamentalsShowcase';
-import armStyles from './monitorArm.module.css';
 
 interface LiveSystem {
   name: string;
@@ -50,35 +48,16 @@ const liveSystems: LiveSystem[] = [
     screenshotAlt: 'Coach Browser research workspace with desktop workspaces, browser tabs, notes, and local files.',
     capabilities: ['Research', 'Capture', 'Organize', 'Local files'],
   },
+  {
+    name: 'Working Fundamentals',
+    category: 'Book & reading site',
+    description: 'A practical, unhurried guide to building software that stays understandable as the users, rules, data, and stakes keep changing.',
+    built: 'Thirteen chapters, book structure, and the reading site built to go with it.',
+    previewUrl: '/working-fundamentals',
+    siteUrl: '/working-fundamentals',
+    standSide: 'right',
+  },
 ];
-
-function MonitorFeet({ side = 'left' }: { side?: 'left' | 'right' }) {
-  const position = side === 'left' ? 'left-[18%]' : 'left-[82%]';
-  const sideClass = side === 'left' ? armStyles.sideLeft : armStyles.sideRight;
-
-  return (
-    <div className="relative mx-auto h-28 w-full" aria-hidden="true">
-      <div className={`absolute ${position} top-0 -translate-x-1/2 ${armStyles.assembly} ${sideClass}`}>
-        {/* VESA mount plate — bolted to the screen's back */}
-        <span className={`mx-auto block h-1.5 w-6 rounded-t-sm ${armStyles.mount}`} />
-
-        {/* Upper arm — pivots at the mount */}
-        <span className={`mx-auto block h-[34px] w-[7px] ${armStyles.upperArm}`} />
-
-        {/* Elbow joint */}
-        <span className={`mx-auto block h-2.5 w-2.5 ${armStyles.elbow}`} />
-
-        {/* Lower arm / gas-spring pole — counter-pivots at the elbow */}
-        <span className={`mx-auto block h-[34px] w-2 ${armStyles.lowerArm}`} />
-
-        {/* Desk clamp base — stays put */}
-        <span className="relative mx-auto block h-2.5 w-20 -translate-y-px rounded-b-md bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 shadow-[0_5px_8px_-5px_rgba(15,23,42,0.9)]">
-          <span className="absolute bottom-[-5px] left-1/2 h-2.5 w-12 -translate-x-1/2 rounded-full border border-black/60 bg-gradient-to-b from-slate-700 to-slate-950 shadow-[0_8px_12px_-7px_rgba(15,23,42,0.9)]" />
-        </span>
-      </div>
-    </div>
-  );
-}
 
 function LivePreview({ system }: { system: LiveSystem }) {
   const screenRef = useRef<HTMLDivElement>(null);
@@ -97,7 +76,7 @@ function LivePreview({ system }: { system: LiveSystem }) {
   }, []);
 
   return (
-    <div className="group/device pb-8">
+    <div className="group/device">
       <div className="relative rounded-[1.35rem] bg-gradient-to-b from-slate-600 via-slate-900 to-black p-[7px] shadow-[0_24px_50px_-24px_rgba(15,23,42,0.75),0_8px_18px_-10px_rgba(15,23,42,0.55)] ring-1 ring-black/40">
         <div className="pointer-events-none absolute left-1/2 top-[2px] z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-b-lg bg-slate-950 px-3 py-1 shadow-sm" aria-hidden="true">
           <span className="h-1.5 w-1.5 rounded-full bg-slate-700 ring-1 ring-slate-500" />
@@ -126,7 +105,6 @@ function LivePreview({ system }: { system: LiveSystem }) {
           <span className="absolute right-2 flex items-center gap-1 text-[8px] font-bold tracking-wider text-emerald-400"><span className="h-1 w-1 rounded-full bg-emerald-400" /> LIVE</span>
         </div>
       </div>
-      <MonitorFeet side={system.standSide} />
     </div>
   );
 }
@@ -202,13 +180,13 @@ export function SelectedSystemsSection() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9A7400]">Some of my work</p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">A few things I&apos;ve built</h2>
-          <p className="mt-3 text-base text-slate-600">Two live products, one Windows prototype, and the notes behind how I build.</p>
+          <p className="mt-3 text-base text-slate-600">Two live products, one Windows prototype, and the book that holds the notes behind how I build.</p>
         </div>
-        <div className="mt-10 grid gap-10 lg:grid-cols-3 lg:gap-8">
-          {liveSystems.map((system) => <LiveSystemCard key={system.name} system={system} />)}
+        <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-8">
+          {liveSystems.slice(0, 2).map((system) => <LiveSystemCard key={system.name} system={system} />)}
         </div>
-        <div className="mt-10">
-          <WorkingFundamentalsShowcase />
+        <div className="mt-10 grid items-start gap-10 lg:grid-cols-2 lg:gap-8">
+          {liveSystems.slice(2, 4).map((system) => <LiveSystemCard key={system.name} system={system} />)}
         </div>
         <div className="mt-20 border-t border-slate-200 pt-12">
           <p className="text-center text-sm font-semibold text-slate-500">Some of the teams and environments I&apos;ve had the chance to learn from.</p>
