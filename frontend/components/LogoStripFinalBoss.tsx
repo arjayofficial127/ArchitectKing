@@ -1,5 +1,9 @@
 'use client';
 
+type LogoStripFinalBossProps = {
+  className?: string;
+};
+
 const logos = [
   { name: 'Aotech', src: '/architectking/companies/aotech.png' },
   { name: 'Kinetic Innovative Staffing', src: '/architectking/companies/kinetic_innovative_staffing.png' },
@@ -11,20 +15,20 @@ const logos = [
   { name: 'Willis Towers Watson', src: '/architectking/companies/willis_towers_watson.png' },
 ] as const;
 
-export function LogoStripFinalBoss() {
+export function LogoStripFinalBoss({ className = 'mt-12' }: LogoStripFinalBossProps) {
   return (
-    <div className="relative mt-12 overflow-hidden">
+    <div className={`hero-marquee relative w-full max-w-full min-w-0 overflow-hidden ${className}`}>
       <p className="sr-only">
         Experience across {logos.map((logo) => logo.name).join(', ')}.
       </p>
 
       {/* 🔥 LEFT FADE */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+      <div className="hero-marquee__fade hero-marquee__fade-left pointer-events-none absolute left-0 top-0 h-full z-10" />
 
       {/* 🔥 RIGHT FADE */}
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+      <div className="hero-marquee__fade hero-marquee__fade-right pointer-events-none absolute right-0 top-0 h-full z-10" />
 
-      <div className="flex items-center gap-x-16 animate-marquee" aria-hidden="true">
+      <div className="hero-marquee__track flex min-w-[100%] items-center gap-x-16 animate-marquee" aria-hidden="true">
         {[...logos, ...logos].map((logo, index) => (
           <div key={`${logo.name}-${index}`} className="h-16 w-40 flex items-center justify-center">
             <img
@@ -50,6 +54,31 @@ export function LogoStripFinalBoss() {
 
         @media (max-width: 640px) {
           .animate-marquee { animation-duration: 24s; }
+        }
+
+        .hero-marquee__fade {
+          width: 4rem;
+        }
+
+        .hero-marquee__fade-left {
+          background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0));
+        }
+
+        .hero-marquee__fade-right {
+          background: linear-gradient(270deg, rgba(255,255,255,1), rgba(255,255,255,0));
+        }
+
+        @media (max-width: 640px) {
+          .hero-marquee__fade {
+            width: 2.5rem;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-marquee__track {
+            animation: none;
+            transform: translate3d(0, 0, 0);
+          }
         }
       `}</style>
     </div>
