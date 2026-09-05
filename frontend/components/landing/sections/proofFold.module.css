@@ -106,7 +106,7 @@
   .engagement:hover { border-color: #b28a22; background: #fffaf0; }
 }
 @media (max-width: 1023px) {
-  .root { padding: 56px 20px 24px; }
+  .root { padding: 56px 20px 0; }
   .journey { padding: 30px 20px; }
   .signals { gap: 8px; }
   .signal { font-size: 12px; }
