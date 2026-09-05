@@ -4,7 +4,7 @@ import { LogoStripFinalBoss } from '../../LogoStripFinalBoss';
 
 export function HeroFoldCloser() {
   return (
-    <section className="hero-layout relative mx-auto w-full max-w-7xl overflow-hidden px-6 py-16 md:py-24 lg:py-28">
+    <section className="relative mx-auto w-full max-w-7xl overflow-hidden px-6 py-16 md:py-24 lg:py-28">
       <div className="hero-layout grid items-center gap-14 min-h-0 min-w-0 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
         <div className="hero-copy mx-auto w-full max-w-3xl min-w-0 text-center lg:mx-0 lg:max-w-full lg:text-left">
           <p className="hero-eyebrow text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500 sm:text-sm">
