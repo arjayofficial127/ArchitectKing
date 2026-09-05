@@ -4,17 +4,17 @@ import { LogoStripFinalBoss } from '../../LogoStripFinalBoss';
 
 export function HeroFoldCloser() {
   return (
-    <section className="hero-layout relative mx-auto w-full max-w-7xl overflow-hidden px-4 py-0 pt-10 sm:px-6 sm:pt-[56px] lg:pt-[64px] lg:pb-24">
-      <div className="hero-layout grid items-center gap-12 min-h-0 min-w-0 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+    <section className="hero-layout relative mx-auto w-full max-w-7xl overflow-hidden px-6 py-16 md:py-24 lg:py-28">
+      <div className="hero-layout grid items-center gap-14 min-h-0 min-w-0 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
         <div className="hero-copy mx-auto w-full max-w-3xl min-w-0 text-center lg:mx-0 lg:text-left">
           <p className="hero-eyebrow text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500 sm:text-sm">
             Software architect &amp; product builder
           </p>
-          <h1 className="hero-title mt-4 text-4xl font-bold leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-5xl lg:text-6xl">
+          <h1 className="hero-title mt-5 text-4xl font-bold leading-[1.04] tracking-[-0.045em] text-slate-950 sm:text-6xl lg:text-7xl">
             I help teams make difficult software work<span className="text-[#F4C430]">.</span>
           </h1>
           <p className="hero-description mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0">I find what's blocking delivery, help your team make the right architecture decisions, and stay hands-on until the software is reliable in production.</p>
-          <div className="mt-8 flex w-full flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+          <div className="mt-8 flex w-full flex-col justify-center gap-3 text-left lg:justify-start lg:text-left sm:flex-row">
             <Link href="/contact-me" className="hero-cta inline-flex w-full items-center justify-center rounded-md bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800 sm:w-auto">
               Discuss your project <span aria-hidden="true" className="ml-2">→</span>
             </Link>
@@ -22,13 +22,13 @@ export function HeroFoldCloser() {
               View selected work <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <div className="hero-proof mt-8 w-full max-w-full">
+          <div className="hero-proof mt-8 w-full max-w-full text-left">
             <p className="mb-3 text-sm font-semibold tracking-[0.08em] text-slate-500">Selected teams</p>
             <LogoStripFinalBoss className="mt-4" />
           </div>
         </div>
 
-        <div className="hero-media relative mx-auto mt-4 w-full max-w-[320px] min-w-0 pb-16 lg:mt-0 lg:max-w-md lg:pb-8">
+        <div className="hero-media relative mx-auto mt-4 w-[min(369px,100%)] min-w-0 pb-16 lg:mt-0 lg:w-[369px] lg:pb-8">
           <div aria-hidden="true" className="absolute -inset-8 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(244,196,48,0.13),transparent_68%)]" />
           <div className="hero-media-frame relative mx-auto aspect-[4/4.6] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-2xl shadow-slate-900/15">
             <Image src="/architectking/pogi.png" alt="Arvin Jayson Castro, Software Architect and Product Builder" fill priority sizes="(max-width: 1024px) 384px, 420px" className="object-cover" />
@@ -49,7 +49,6 @@ export function HeroFoldCloser() {
           width: 100%;
           max-width: 100%;
           min-width: 0;
-          grid-template-columns: minmax(0, 1fr);
         }
 
         .hero-copy,
@@ -61,6 +60,12 @@ export function HeroFoldCloser() {
 
         .hero-cta {
           min-height: 52px;
+        }
+
+        @media (max-width: 1023px) {
+          .hero-layout {
+            grid-template-columns: minmax(0, 1fr);
+          }
         }
 
         @media (max-width: 640px) {
