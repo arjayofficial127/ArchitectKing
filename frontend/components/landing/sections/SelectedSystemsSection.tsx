@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+
+// Fractal-noise data URI for a matte, grained bezel — a flat black frame reads
+// as plastic-render-fake; a little grain sells it as a real physical surface.
+const BEZEL_NOISE =
+  'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 140 140\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")';
 
 
 interface LiveSystem {
@@ -45,15 +50,15 @@ const liveSystems: LiveSystem[] = [
     previewUrl: '/architectking/coach-browser/new-tab.png',
     standSide: 'left',
     previewKind: 'image',
-    typeLabel: 'Windows prototype',
+    // typeLabel: 'Windows browser app',
     screenshotAlt: 'Coach Browser research workspace with desktop workspaces, browser tabs, notes, and local files.',
-    capabilities: ['Research', 'Capture', 'Organize', 'Local files'],
+    // capabilities: ['Research', 'Capture', 'Organize', 'Local files'],
   },
   {
     name: 'Working Fundamentals',
     category: 'Book & reading site',
     description: 'A practical, unhurried guide to building software that stays understandable as the users, rules, data, and stakes keep changing.',
-    built: 'Thirteen chapters, book structure, and the reading site built to go with it.',
+    built: 'Thirteen chapters, book structure, and the reading site built to go with it for architects, builders and product owners.',
     previewUrl: '/working-fundamentals',
     siteUrl: '/working-fundamentals',
     standSide: 'right',
@@ -61,9 +66,113 @@ const liveSystems: LiveSystem[] = [
 ];
 
 function LivePreview({ system }: { system: LiveSystem }) {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  // null = "not measured yet": the frame stays invisible instead of flashing
+  // at native size before we know the real scale.
+  const [scale, setScale] = useState<number | null>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  // useLayoutEffect (not useEffect) measures and applies the scale before the
+  // browser paints, so the first frame the user sees is already correctly
+  // sized — no "zoomed in for a blink" flash.
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport || system.previewKind === 'image') return;
+
+    const applyZoom = () => {
+      const width = viewport.clientWidth || 1;
+      const safeScale = Math.max(0.2, Math.min(1, width / 1920));
+      setScale(safeScale);
+    };
+
+    const observer = new ResizeObserver(applyZoom);
+    observer.observe(viewport);
+    applyZoom();
+
+    return () => observer.disconnect();
+  }, [system.previewKind]);
+
+  // React's synthetic onLoad is unreliable on <iframe> (confirmed it never
+  // fires on this exact element), so bind the real DOM event directly. A
+  // same-origin frame's src starts fetching as soon as the server-rendered
+  // markup is parsed — often before hydration even runs — so the 'load'
+  // event can fire before this effect ever attaches a listener. Check
+  // whether it already finished navigating past about:blank first; only
+  // fall back to waiting on the event for whatever hasn't loaded yet.
+  useLayoutEffect(() => {
+    const frame = iframeRef.current;
+    if (!frame || system.previewKind === 'image') return;
+
+    const handleLoad = () => setLoaded(true);
+
+    try {
+      const href = frame.contentWindow?.location.href;
+      if (href && href !== 'about:blank') {
+        handleLoad();
+        return;
+      }
+    } catch {
+      // Cross-origin frame: can't introspect it, so just wait on the event.
+    }
+
+    frame.addEventListener('load', handleLoad);
+
+    // Safety net: a cross-origin frame can't be checked up front the way
+    // same-origin ones are above, and a fast/cached response can finish
+    // loading before this listener even attaches — the exact same race,
+    // just one we can't detect for cross-origin content. Without a fallback
+    // that leaves the preview stuck on the loading gradient forever. Timing
+    // out and revealing the frame is safe even if the 'load' event really
+    // hasn't fired yet, since the guest page keeps rendering regardless.
+    const timeout = window.setTimeout(handleLoad, 4000);
+
+    return () => {
+      frame.removeEventListener('load', handleLoad);
+      window.clearTimeout(timeout);
+    };
+  }, [system.previewKind]);
+
+  // Rendering the guest site at its real desktop width (1920) and scaling the
+  // whole frame down keeps its own layout intact and shrinks its native
+  // scrollbar to a sliver instead of showing a full-size one in a small box.
+  const ready = system.previewKind === 'image' ? loaded : scale !== null && loaded;
+
+  const iframeStyle: CSSProperties = {
+    width: 1920,
+    height: 1080,
+    transform: `scale(${scale ?? 0.001})`,
+    transformOrigin: 'top left',
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    opacity: ready ? 1 : 0,
+    transition: 'opacity 400ms ease',
+  };
+
   return (
-    <div className="rounded-lg border border-slate-200/80 bg-white shadow-sm">
-      <div className="relative aspect-video overflow-hidden rounded-lg">
+    <div className="relative isolate rounded-xl bg-neutral-950 p-2 shadow-[0_1px_0_rgba(255,255,255,0.06)_inset,0_36px_70px_-24px_rgba(15,23,42,0.55),0_16px_30px_-14px_rgba(15,23,42,0.4)]">
+      {/* Matte, grained bezel — sits under the screen so the noise only shows
+          in the frame itself, never over the content. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-xl opacity-40 mix-blend-overlay"
+        style={{ backgroundImage: BEZEL_NOISE }}
+      />
+
+      <div ref={viewportRef} className="relative aspect-video overflow-hidden rounded-[calc(0.75rem_-_8px)] bg-slate-950">
+        {/* Generic loading gradient — shown until the live preview has both a
+            measured scale and has finished loading, so nothing zoomed-in or
+            blank ever flashes on screen. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 transition-opacity duration-500"
+          style={{
+            background: 'linear-gradient(135deg, #1e2937 0%, #334155 45%, #0f172a 100%)',
+            opacity: ready ? 0 : 1,
+          }}
+        />
+
         {system.previewKind === 'image' ? (
           <Image
             src={system.previewUrl}
@@ -71,17 +180,33 @@ function LivePreview({ system }: { system: LiveSystem }) {
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover object-top"
+            onLoad={() => setLoaded(true)}
+            style={{ opacity: ready ? 1 : 0, transition: 'opacity 400ms ease' }}
           />
         ) : (
           <iframe
+            ref={iframeRef}
             src={system.previewUrl}
             title={`${system.name} product preview`}
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
-            className="absolute inset-0 h-full w-full border-0 bg-white"
+            className="border-0 bg-white"
+            style={iframeStyle}
           />
         )}
+
+        {/* Glass screen sheen — purely decorative, sits above the content but never
+            intercepts pointer events so scrolling/clicking inside the preview still works. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 16%, rgba(255,255,255,0) 34%, rgba(8,15,32,0.04) 72%, rgba(8,15,32,0.15) 100%)',
+          }}
+        />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/20" />
       </div>
     </div>
   );

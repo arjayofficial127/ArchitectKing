@@ -23,10 +23,10 @@ export function LogoStripFinalBoss({ className = 'mt-12' }: LogoStripFinalBossPr
       </p>
 
       {/* 🔥 LEFT FADE */}
-      <div className="hero-marquee__fade hero-marquee__fade-left pointer-events-none absolute left-0 top-0 h-full z-10" />
+      {/* <div className="hero-marquee__fade hero-marquee__fade-left pointer-events-none absolute left-0 top-0 h-full z-10" /> */}
 
       {/* 🔥 RIGHT FADE */}
-      <div className="hero-marquee__fade hero-marquee__fade-right pointer-events-none absolute right-0 top-0 h-full z-10" />
+      {/* <div className="hero-marquee__fade hero-marquee__fade-right pointer-events-none absolute right-0 top-0 h-full z-10" /> */}
 
       <div className="hero-marquee__track flex min-w-[100%] items-center gap-x-16 animate-marquee" aria-hidden="true">
         {[...logos, ...logos].map((logo, index) => (
