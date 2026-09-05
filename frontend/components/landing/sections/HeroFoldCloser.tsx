@@ -23,7 +23,7 @@ export function HeroFoldCloser() {
             </Link>
           </div>
           <div className="hero-proof mt-8 w-full max-w-full text-left">
-            <p className="mb-3 text-sm font-semibold tracking-[0.08em] text-slate-500">Selected teams</p>
+            <p className="mb-3 text-sm font-semibold tracking-[0.08em] text-slate-500">Selected experience</p>
             <LogoStripFinalBoss className="mt-4" />
           </div>
         </div>
