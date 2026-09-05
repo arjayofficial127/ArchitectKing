@@ -5,7 +5,7 @@ import { SiteNavbar } from '@/components/shared/SiteNavbar';
 
 export const metadata: Metadata = {
   title: 'Architecture Review for SaaS Systems | Arvin Jayson Castro',
-  description: 'A practical second look at your architecture, codebase, and current risks, with clear priorities and next steps. Starting from $350.',
+  description: 'A practical second look at your architecture, codebase, and current risks, with clear priorities and next steps.',
   keywords: [
     'Architecture Review',
     'SaaS Architecture',
@@ -165,19 +165,19 @@ export default function ArchitectureReviewPage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Starter</p>
-                <p className="mt-3 text-2xl font-bold text-slate-900">From $350</p>
+                {/* <p className="mt-3 text-2xl font-bold text-slate-900">From $350</p> */}
                 <p className="mt-3 text-sm text-slate-600">A focused look at one system or an early-stage product.</p>
               </div>
 
               <div className="rounded-xl border-2 border-[#F4C430] bg-white p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Core Review</p>
-                <p className="mt-3 text-2xl font-bold text-slate-900">From $750</p>
+                {/* <p className="mt-3 text-2xl font-bold text-slate-900">From $750</p> */}
                 <p className="mt-3 text-sm text-slate-600">A closer assessment with findings and a clear order of work.</p>
               </div>
 
               <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Deep Dive</p>
-                <p className="mt-3 text-2xl font-bold text-slate-900">From $1,500</p>
+                {/* <p className="mt-3 text-2xl font-bold text-slate-900">From $1,500</p> */}
                 <p className="mt-3 text-sm text-slate-600">A deeper review that includes planning how to make the changes.</p>
               </div>
             </div>

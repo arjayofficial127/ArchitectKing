@@ -15,7 +15,7 @@ export const responsibilities = [
 ] as const;
 
 export const engagements = [
-  { id: 'review', title: 'Architecture Review', eyebrow: 'A second look', description: 'Get another set of eyes on your system, clarify the risks, and leave with a clear path forward.', reasons: ['Permissions are hard to trust', 'The same rule lives in five places', 'Ownership of key parts is unclear'], detail: 'From $350', icon: 'review' },
+  { id: 'review', title: 'Architecture Review', eyebrow: 'A second look', description: 'Get another set of eyes on your system, clarify the risks, and leave with a clear path forward.', reasons: ['Permissions are hard to trust', 'The same rule lives in five places', 'Ownership of key parts is unclear'], detail: 'Architecture review, hardening and documentation', icon: 'review' },
   { id: 'stabilization', title: 'System Stabilization', eyebrow: 'Short-term help', description: 'Restore momentum when delivery has slowed, failures repeat, or changes have become harder than they should be.', reasons: ['Delivery slows as the product grows', 'The same incidents keep returning', 'Complex workflows block progress'], detail: 'Scoped around what is needed', icon: 'stabilize' },
   { id: 'alongside', title: 'Work Alongside Your Team', eyebrow: 'Ongoing help', description: 'Embed with your team to guide decisions, work through details, and build systems you can be proud of.', reasons: ['You need senior guidance in the flow of work', 'Complex decisions need a partner', 'Team bandwidth is already stretched'], detail: 'Directly with you and the team', icon: 'team' },
 ] as const;
