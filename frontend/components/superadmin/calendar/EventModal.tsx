@@ -311,7 +311,7 @@ export function EventModal({
                       className="rounded border-gray-300"
                     />
                     <span className="text-sm text-gray-700">
-                      Delete the whole series{batchSize ? ` — ${batchSize} events` : ''} created together
+                      Delete the whole series{batchSize ? ` - ${batchSize} events` : ''} created together
                     </span>
                   </label>
                 </div>
@@ -442,7 +442,7 @@ export function EventModal({
                       className="border-gray-300"
                     />
                     <span className="text-sm text-gray-700">
-                      One event per day — same title, {daySpan} entries, managed as a series
+                      One event per day - same title, {daySpan} entries, managed as a series
                     </span>
                   </label>
                   <label className="flex items-center space-x-2">
@@ -516,11 +516,11 @@ export function EventModal({
                   }`}
                 >
                   {occurrences.length === 0
-                    ? 'No events would be created — check that the end time is after the start time.'
+                    ? 'No events would be created - check that the end time is after the start time.'
                     : occurrences.length > MAX_OCCURRENCES
-                    ? `This selection would create over ${MAX_OCCURRENCES} events — narrow it down.`
+                    ? `This selection would create over ${MAX_OCCURRENCES} events - narrow it down.`
                     : `Creates ${occurrences.length} event${occurrences.length === 1 ? '' : 's'}${
-                        occurrences.length > 1 ? ' (one title, grouped as a series — deletable together)' : ''
+                        occurrences.length > 1 ? ' (one title, grouped as a series - deletable together)' : ''
                       }`}
                 </div>
               )}

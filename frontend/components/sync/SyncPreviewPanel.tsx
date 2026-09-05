@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Feb042026.6.1 — Manual Sync UI (Read-Only Preview)
+ * Feb042026.6.1 - Manual Sync UI (Read-Only Preview)
  * 
  * READ-ONLY sync preview panel that shows:
  * - Drafts vs server state

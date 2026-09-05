@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 10: Errors & Failure — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Designing for broken assumptions — Chapter 10 of Working Fundamentals',
+  title: 'Chapter 10: Errors & Failure - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Designing for broken assumptions - Chapter 10 of Working Fundamentals',
 };
 
 export default function Chapter10Page() {

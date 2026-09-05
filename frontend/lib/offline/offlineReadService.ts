@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Offline read path (Step 3.4).
+ * Phase 3 - Offline read path (Step 3.4).
  * Read priority: 1) Draft (active) 2) Offline-saved 3) In-memory cache 4) Server (if online).
  * Explicitly saved offline content MUST open offline. Never throw; return fallback state when nothing found.
  * NO providers, NO UI, NO blocking, NO forced refresh, NO background sync, NO API changes.

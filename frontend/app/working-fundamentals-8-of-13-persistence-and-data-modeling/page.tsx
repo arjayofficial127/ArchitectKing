@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 8: Persistence & Data Modeling — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Time, identity, durability — Chapter 8 of Working Fundamentals',
+  title: 'Chapter 8: Persistence & Data Modeling - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Time, identity, durability - Chapter 8 of Working Fundamentals',
 };
 
 export default function Chapter8Page() {
@@ -44,7 +44,7 @@ export default function Chapter8Page() {
       </p>
 
       <p>
-        Once data is written, it becomes part of history — and history is hard to change.
+        Once data is written, it becomes part of history - and history is hard to change.
       </p>
 
       <p>

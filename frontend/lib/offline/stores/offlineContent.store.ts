@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Offline content store (saved-for-offline items).
+ * Phase 3 - Offline content store (saved-for-offline items).
  * Generic access only: get, put, delete, listByOrgAndApp, clearByOrg.
  * NO domain-specific helpers, NO sync.
  */
@@ -50,7 +50,7 @@ export async function put(entity: OfflineContentEntity): Promise<void> {
   });
 }
 
-/** delete(id) — reserved word in JS, so named deleteById. */
+/** delete(id) - reserved word in JS, so named deleteById. */
 export async function deleteById(id: string): Promise<void> {
   return withStore('readwrite', (store) => {
     return new Promise<void>((resolve, reject) => {

@@ -1,7 +1,7 @@
 MODE: CODE
 MODE: SAFE
 PROJECT: ArchitectKing (AK)
-PHASE: 1 — SuperAdmin Control OS — Core Schema
+PHASE: 1 - SuperAdmin Control OS - Core Schema
 
 OBJECTIVE:
 Add database schema for SuperAdmin Control OS without breaking existing architecture.
@@ -18,7 +18,7 @@ CONTEXT:
 - Recurring events generated dynamically (do NOT materialize instances)
 
 -------------------------------------------------------
-STEP 1 — CREATE ENUMS
+STEP 1 - CREATE ENUMS
 -------------------------------------------------------
 
 Add enums:
@@ -54,7 +54,7 @@ NotificationType:
   reminder
 
 -------------------------------------------------------
-STEP 2 — CREATE TABLES
+STEP 2 - CREATE TABLES
 -------------------------------------------------------
 
 1️⃣ calendar_events
@@ -194,7 +194,7 @@ INDEX:
 
 -------------------------------------------------------
 
-STEP 3 — DRIZZLE IMPLEMENTATION
+STEP 3 - DRIZZLE IMPLEMENTATION
 
 - Add schema definitions in drizzle schema folder.
 - Generate migration file.
@@ -206,7 +206,7 @@ STEP 3 — DRIZZLE IMPLEMENTATION
 
 -------------------------------------------------------
 
-STEP 4 — MIGRATION SAFETY
+STEP 4 - MIGRATION SAFETY
 
 - Generate migration.
 - Do NOT run destructive migration.

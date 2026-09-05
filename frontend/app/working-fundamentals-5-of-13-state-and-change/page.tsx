@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 5: State & Change — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Why history complicates everything — Chapter 5 of Working Fundamentals',
+  title: 'Chapter 5: State & Change - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Why history complicates everything - Chapter 5 of Working Fundamentals',
 };
 
 export default function Chapter5Page() {
@@ -185,7 +185,7 @@ export default function Chapter5Page() {
       </ul>
 
       <p>
-        🧠 <strong>Mental Model</strong> If order matters, order must be enforced — not assumed.
+        🧠 <strong>Mental Model</strong> If order matters, order must be enforced - not assumed.
       </p>
 
       <h2>Reentrancy reveals state problems</h2>
@@ -308,7 +308,7 @@ export default function Chapter5Page() {
       </p>
 
       <p>
-        ⚠️ <strong>Common Drift</strong> Most legacy systems are not complex — they are over-remembering.
+        ⚠️ <strong>Common Drift</strong> Most legacy systems are not complex - they are over-remembering.
       </p>
 
       <h2>Minimal practice (still no code)</h2>
@@ -386,7 +386,7 @@ export default function Chapter5Page() {
       </p>
 
       <p>
-        Design state as if time were your enemy — because eventually, it is.
+        Design state as if time were your enemy - because eventually, it is.
       </p>
     </ChapterPage>
   );

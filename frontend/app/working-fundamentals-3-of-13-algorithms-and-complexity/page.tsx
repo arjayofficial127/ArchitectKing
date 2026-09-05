@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 3: Algorithms & Complexity — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Cost is behavior made visible — Chapter 3 of Working Fundamentals',
+  title: 'Chapter 3: Algorithms & Complexity - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Cost is behavior made visible - Chapter 3 of Working Fundamentals',
 };
 
 export default function Chapter3Page() {

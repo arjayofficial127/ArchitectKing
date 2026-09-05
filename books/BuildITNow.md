@@ -25,7 +25,7 @@ CONTINUOUSLY REBUILD and EVOLVE into THREE FINAL BOOKS.
 
 ## TARGET OUTPUT (FINAL STRUCTURE)
 
-BOOK 1 — THE PEOPLE BOOK
+BOOK 1 - THE PEOPLE BOOK
 Purpose:
 Teach architecture thinking to humans (developers → architects).
 
@@ -46,7 +46,7 @@ Contains:
 
 ---
 
-BOOK 2 — THE SYSTEM CONTEXT BOOK
+BOOK 2 - THE SYSTEM CONTEXT BOOK
 Purpose:
 A HIGH-PRECISION context framework that can be fed to ANY AI.
 
@@ -68,7 +68,7 @@ Precise, mechanical, deterministic, AI-readable.
 
 ---
 
-BOOK 3 — THE ARCHITECT FICTION MANUAL (NON-FICTION STYLE)
+BOOK 3 - THE ARCHITECT FICTION MANUAL (NON-FICTION STYLE)
 Purpose:
 Personal learning manual that reads like fiction but is technically real.
 
@@ -120,30 +120,30 @@ Projection
 
 After generating output, ALWAYS run:
 
-STEP 1 — SELF REVIEW
+STEP 1 - SELF REVIEW
 
 * What is weak?
 * What is repetitive?
 * What lacks depth?
 * What lacks examples?
 
-STEP 2 — EXPAND
+STEP 2 - EXPAND
 
 * Add missing depth.
 * Add examples.
 * Add diagrams (ASCII if needed).
 
-STEP 3 — RESTRUCTURE
+STEP 3 - RESTRUCTURE
 
 * Improve flow.
 * Reorder chapters if needed.
 
-STEP 4 — SIMPLIFY
+STEP 4 - SIMPLIFY
 
 * Remove fluff.
 * Preserve precision.
 
-STEP 5 — REPEAT.
+STEP 5 - REPEAT.
 
 Continue looping until:
 

@@ -1,5 +1,5 @@
 /**
- * Phase 3.6 — Reconnect awareness. Read-only.
+ * Phase 3.6 - Reconnect awareness. Read-only.
  * Detects offline ↔ online; summarizes draft/offline counts; emits non-blocking signals.
  * NO syncing, saving, merging, deletion, providers, UI, or hooks.
  */

@@ -1,4 +1,4 @@
-# Working Fundamentals Book Integration — Summary
+# Working Fundamentals Book Integration - Summary
 
 ## ✅ Completed Integration
 
@@ -11,17 +11,17 @@
 ### 2. Book Components Created
 
 #### Core Components:
-- `BookCover.tsx` — Interactive 3D book cover with mouse tracking
-- `ChapterSidebar.tsx` — Navigation sidebar with all 13 chapters + intro/outro
-- `BookConversionFooter.tsx` — Conversion footer with CTAs
-- `ChapterPage.tsx` — Reusable template for individual chapter pages
+- `BookCover.tsx` - Interactive 3D book cover with mouse tracking
+- `ChapterSidebar.tsx` - Navigation sidebar with all 13 chapters + intro/outro
+- `BookConversionFooter.tsx` - Conversion footer with CTAs
+- `ChapterPage.tsx` - Reusable template for individual chapter pages
 
 #### CSS Modules:
-- `book.module.css` — Main book page styles
-- `bookCover.module.css` — Book cover 3D effects
-- `chapterSidebar.module.css` — Sidebar navigation styles
-- `bookConversionFooter.module.css` — Footer conversion styles
-- `chapterPage.module.css` — Chapter page template styles
+- `book.module.css` - Main book page styles
+- `bookCover.module.css` - Book cover 3D effects
+- `chapterSidebar.module.css` - Sidebar navigation styles
+- `bookConversionFooter.module.css` - Footer conversion styles
+- `chapterPage.module.css` - Chapter page template styles
 
 ### 3. Homepage Integration
 
@@ -34,7 +34,7 @@
 - **Location:** Between Authority Strip and Problem Statement sections
 - **Features:**
   - Small book cover placeholder
-  - "Author — Working Fundamentals" label
+  - "Author - Working Fundamentals" label
   - One-sentence description
   - Two CTAs: "Read the Preface" and "View Chapter 1"
 
@@ -54,15 +54,15 @@
 ### 5. SEO Implementation
 
 #### Book Page Metadata:
-- Title: "Working Fundamentals — Systems Architecture Guide by Arvin Jayson Castro"
+- Title: "Working Fundamentals - Systems Architecture Guide by Arvin Jayson Castro"
 - Description: Optimized for search
 - OpenGraph tags: Complete
 
 ### 6. Chapter Routes Structure
 
 #### Example Routes Created:
-- `/working-fundamentals-introduction` — Introduction/Preface
-- `/working-fundamentals-1-of-13-programming-fundamentals` — Chapter 1 example
+- `/working-fundamentals-introduction` - Introduction/Preface
+- `/working-fundamentals-1-of-13-programming-fundamentals` - Chapter 1 example
 
 #### Chapter Route Pattern:
 All chapter routes follow this structure:

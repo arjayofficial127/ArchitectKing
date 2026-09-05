@@ -12,7 +12,7 @@ export function BookAuthorityStrip() {
           </div>
         </div>
         <div className={styles.authorityText}>
-          <div className={styles.authorityLabel}>Author — Working Fundamentals</div>
+          <div className={styles.authorityLabel}>Author - Working Fundamentals</div>
           <p className={styles.authorityDescription}>
             A practical guide to building software that holds under pressure.
           </p>

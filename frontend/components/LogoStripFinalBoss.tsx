@@ -4,14 +4,20 @@ type LogoStripFinalBossProps = {
   className?: string;
 };
 
+/**
+ * Only organisations named in the résumé (public/pdf, served at /resume).
+ *
+ * Visa and Starbucks were removed: neither appears anywhere in the résumé, so
+ * showing their marks under "teams I've worked with" would assert a working
+ * relationship that isn't supported. The Starbucks entry was also hot-linked
+ * from Wikipedia rather than served from this app.
+ */
 const logos = [
-  { name: 'Aotech', src: '/architectking/companies/aotech.png' },
+  { name: 'AOTXnologies', src: '/architectking/companies/aotech.png' },
   { name: 'Kinetic Innovative Staffing', src: '/architectking/companies/kinetic_innovative_staffing.png' },
   { name: 'Optimum Innovatus', src: '/architectking/companies/optimum_innovatus.png' },
   { name: 'Pointwest Technologies', src: '/architectking/companies/pointwest_technologies.png' },
   { name: 'Trinko', src: '/architectking/companies/trinko.png' },
-  { name: 'Visa', src: '/architectking/companies/visa.png' },
-  { name: 'Starbucks', src: 'https://upload.wikimedia.org/wikipedia/en/d/d3/Starbucks_Corporation_Logo_2011.svg' },
   { name: 'Willis Towers Watson', src: '/architectking/companies/willis_towers_watson.png' },
 ] as const;
 

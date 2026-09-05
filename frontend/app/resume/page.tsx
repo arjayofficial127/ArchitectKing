@@ -10,7 +10,7 @@ export default function ResumePage() {
       <div className="max-w-5xl mx-auto px-6 pt-12 pb-6">
         <header className="text-center">
           <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-            Arvin Jayson Castro — Software Architect &amp; Product Builder
+            Arvin Jayson Castro - Software Architect &amp; Technical Lead
           </h1>
           <p className="sr-only">Resume of Arvin Jayson Castro</p>
 

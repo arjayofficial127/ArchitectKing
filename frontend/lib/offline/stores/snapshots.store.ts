@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Snapshots store (opaque payloads).
+ * Phase 3 - Snapshots store (opaque payloads).
  * Generic access only: get, put, delete, listByOrgAndApp, clearByOrg.
  * NO domain-specific helpers, NO sync.
  */
@@ -50,7 +50,7 @@ export async function put(entity: SnapshotEntity): Promise<void> {
   });
 }
 
-/** delete(id) — reserved word in JS, so named deleteById. */
+/** delete(id) - reserved word in JS, so named deleteById. */
 export async function deleteById(id: string): Promise<void> {
   return withStore('readwrite', (store) => {
     return new Promise<void>((resolve, reject) => {

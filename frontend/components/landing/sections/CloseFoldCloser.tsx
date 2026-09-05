@@ -5,7 +5,7 @@ export function CloseFoldCloser() {
   return (
     <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
       <div className="mx-auto max-w-4xl text-center">
-        <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">I Fix Slow, Fragile Systems — So You Can Scale Without Breaking</h2>
+        <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">I Fix Slow, Fragile Systems - So You Can Scale Without Breaking</h2>
 
         <div className="mt-4 flex flex-col sm:flex-row items-stretch justify-center gap-6">
           <div className="p-4 border rounded-md w-48 text-center flex flex-col">

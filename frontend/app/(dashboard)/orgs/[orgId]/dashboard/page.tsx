@@ -105,7 +105,7 @@ export default function OrgDashboardPage() {
 
       // Show feedback based on result
       if (result.reason === 'offline') {
-        toast('Offline — cannot check right now.', 'warning');
+        toast('Offline - cannot check right now.', 'warning');
       } else if (result.reason === 'network_error') {
         toast('Could not check for updates.', 'error');
       } else if (result.hasUpdates) {

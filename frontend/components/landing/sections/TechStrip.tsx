@@ -1,7 +1,7 @@
 const credibilityAreas = [
-  { icon: '◇', title: 'Understand it first', description: 'Learn how the product, team, and existing system actually work.' },
-  { icon: '</>', title: 'Keep the answer practical', description: 'Choose the smallest sound change that moves the work forward.' },
-  { icon: '▣', title: 'Help make it happen', description: 'Work through the code, testing, release, and production details.' },
+  { icon: '◇', title: 'Understand the problem', description: 'Learn how the product, team, and constraints actually work.' },
+  { icon: '</>', title: 'Make the right decisions', description: 'Turn complexity into clear, maintainable architecture.' },
+  { icon: '▣', title: 'Deliver and stay involved', description: 'Work through design, build, testing, and release - with the team.' },
 ] as const;
 
 export function TechStrip() {

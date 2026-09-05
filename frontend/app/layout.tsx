@@ -17,8 +17,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://arvinjaysoncastro.com'),
-  title: 'Arvin Jayson Castro | Software Architect & Product Builder',
-  description: 'I design, build, and help fix software systems. Sixteen years working across product development, architecture, delivery, and production.',
+  title: 'Arvin Jayson Castro | Software Architect & Technical Lead',
+  description: 'Hands-on software architect and technical lead with 16+ years building production systems. Open to architecture, technical leadership, and senior engineering roles.',
   icons: {
     icon: '/icon.svg',
     shortcut: '/icon.svg',
@@ -41,21 +41,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://arvinjaysoncastro.com',
     siteName: 'Arvin Jayson Castro',
-    title: 'Arvin Jayson Castro | Software Architect & Product Builder',
-    description: 'I design, build, and help fix software systems. Practical, hands-on help from architecture through production.',
+    title: 'Arvin Jayson Castro | Software Architect & Technical Lead',
+    description: 'Hands-on software architect and technical lead. I work with product and engineering teams to make clear technical decisions and deliver reliable systems.',
     images: [
       {
         url: '/og-image.jpg', // Placeholder - should be added
         width: 1200,
         height: 630,
-        alt: 'Arvin Jayson Castro - Software Architect and Product Builder',
+        alt: 'Arvin Jayson Castro - Software Architect and Technical Lead',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arvin Jayson Castro | Software Architect & Product Builder',
-    description: 'I design, build, and help fix software systems—from architecture through production.',
+    title: 'Arvin Jayson Castro | Software Architect & Technical Lead',
+    description: 'Hands-on software architect and technical lead, open to architecture, technical leadership, and senior engineering roles.',
   },
   robots: {
     index: true,
@@ -94,7 +94,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Arvin Jayson Castro',
-              jobTitle: 'Software Architect and Product Builder',
+              jobTitle: 'Software Architect and Technical Lead',
               description: 'Sixteen years designing, building, and helping fix software systems across product development, architecture, delivery, and production.',
               email: 'arvinjaysoncastro@gmail.com',
               alumniOf: {

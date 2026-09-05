@@ -95,7 +95,7 @@ export function BookingModal({ isOpen, onClose, event, visitorTimezone, onSucces
               </div>
               <h2 className="text-xl font-bold text-slate-900">That time was just taken</h2>
               <p className="mt-2 text-sm text-slate-600">
-                Someone booked this slot moments ago. Pick another time — the list will refresh.
+                Someone booked this slot moments ago. Pick another time - the list will refresh.
               </p>
               <button
                 type="button"

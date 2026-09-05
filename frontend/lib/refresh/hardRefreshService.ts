@@ -1,5 +1,5 @@
 /**
- * Feb042026.5 — Context-Aware Hard Refresh Capability
+ * Feb042026.5 - Context-Aware Hard Refresh Capability
  * 
  * Provides a HARD refresh mechanism that:
  * - Clears memory-only caches

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 9: Interfaces & APIs — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Contracts between humans and systems — Chapter 9 of Working Fundamentals',
+  title: 'Chapter 9: Interfaces & APIs - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Contracts between humans and systems - Chapter 9 of Working Fundamentals',
 };
 
 export default function Chapter9Page() {

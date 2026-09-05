@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Draft mechanics (Step 3.2) + save-time conflict (Step 3.3).
+ * Phase 3 - Draft mechanics (Step 3.2) + save-time conflict (Step 3.3).
  * Builds on IndexedDB drafts + snapshots stores.
  * NO server save here; conflict detection at save-time only (guard).
  *

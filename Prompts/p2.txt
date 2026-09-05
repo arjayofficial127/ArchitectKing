@@ -1,7 +1,7 @@
 MODE: CODE
 MODE: SAFE
 PROJECT: ArchitectKing (AK)
-PHASE: 2 — SuperAdmin Control OS — API & Business Logic
+PHASE: 2 - SuperAdmin Control OS - API & Business Logic
 
 OBJECTIVE:
 Implement backend logic for SuperAdmin Control OS.
@@ -18,7 +18,7 @@ Store internally as UTC.
 Recurring events MUST be dynamically expanded (do NOT materialize instances).
 
 -------------------------------------------------------
-SECTION 1 — CALENDAR SERVICE
+SECTION 1 - CALENDAR SERVICE
 -------------------------------------------------------
 
 Create:
@@ -67,7 +67,7 @@ Functions:
 7) convertOpenSlotToScheduled(slotId)
 
 -------------------------------------------------------
-SECTION 2 — PUBLIC BOOKING
+SECTION 2 - PUBLIC BOOKING
 -------------------------------------------------------
 
 Create:
@@ -85,7 +85,7 @@ createBookingRequest(input)
    - return success
 
 -------------------------------------------------------
-SECTION 3 — PROSPECT SERVICE
+SECTION 3 - PROSPECT SERVICE
 -------------------------------------------------------
 
 services/superadmin/prospect.service.ts
@@ -111,7 +111,7 @@ getProspects(filter)
    - filter by swimlane
 
 -------------------------------------------------------
-SECTION 4 — NOTIFICATION SERVICE
+SECTION 4 - NOTIFICATION SERVICE
 -------------------------------------------------------
 
 services/superadmin/notification.service.ts
@@ -123,7 +123,7 @@ getUnreadNotifications()
 markAsRead(notificationId)
 
 -------------------------------------------------------
-SECTION 5 — SUPERADMIN ROUTE GUARD
+SECTION 5 - SUPERADMIN ROUTE GUARD
 -------------------------------------------------------
 
 Create middleware:
@@ -139,7 +139,7 @@ Do NOT modify auth system.
 Just plug into routes.
 
 -------------------------------------------------------
-SECTION 6 — ROUTES
+SECTION 6 - ROUTES
 -------------------------------------------------------
 
 Create routes:
@@ -166,7 +166,7 @@ GET /schedule?start=...&end=...
 POST /book
 
 -------------------------------------------------------
-SECTION 7 — TIMEZONE HANDLING
+SECTION 7 - TIMEZONE HANDLING
 
 Use:
 - luxon or date-fns-tz (whichever project already uses)
@@ -178,7 +178,7 @@ Manila → UTC on save
 UTC → visitor timezone on public response
 
 -------------------------------------------------------
-SECTION 8 — OVERLAP LOGIC
+SECTION 8 - OVERLAP LOGIC
 
 Overlap rule:
 

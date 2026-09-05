@@ -15,7 +15,7 @@ export class ResendMailService implements IMailService {
 
   async send(message: MailMessage): Promise<boolean> {
     if (!this.apiKey) {
-      console.log(`[Mail] RESEND_API_KEY not set — skipped email to ${message.to}: "${message.subject}"`);
+      console.log(`[Mail] RESEND_API_KEY not set - skipped email to ${message.to}: "${message.subject}"`);
       return false;
     }
 

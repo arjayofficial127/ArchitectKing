@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Outroduction — Working Fundamentals by Arvin Jayson Castro',
-  description: 'What Comes After Fundamentals — Outroduction to Working Fundamentals',
+  title: 'Outroduction - Working Fundamentals by Arvin Jayson Castro',
+  description: 'What Comes After Fundamentals - Outroduction to Working Fundamentals',
 };
 
 export default function OutroductionPage() {

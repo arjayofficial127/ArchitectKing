@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 7: Architecture — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Decisions that are expensive to change — Chapter 7 of Working Fundamentals',
+  title: 'Chapter 7: Architecture - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Decisions that are expensive to change - Chapter 7 of Working Fundamentals',
 };
 
 export default function Chapter7Page() {
@@ -99,7 +99,7 @@ export default function Chapter7Page() {
       <h2>Boundaries are the real architecture</h2>
 
       <p>
-        Files, folders, layers, services — these are expressions. <strong>Boundaries</strong> are the substance.
+        Files, folders, layers, services - these are expressions. <strong>Boundaries</strong> are the substance.
       </p>
 
       <p>
@@ -239,7 +239,7 @@ export default function Chapter7Page() {
       <h2>Monolith vs microservices is a false start</h2>
 
       <p>
-        The debate is seductive — and shallow.
+        The debate is seductive - and shallow.
       </p>
 
       <p>
@@ -273,7 +273,7 @@ export default function Chapter7Page() {
       </ul>
 
       <p>
-        🧠 <strong>Perspective</strong> Distribution magnifies structure — good or bad.
+        🧠 <strong>Perspective</strong> Distribution magnifies structure - good or bad.
       </p>
 
       <h2>Architecture and time</h2>
@@ -428,7 +428,7 @@ export default function Chapter7Page() {
       </p>
 
       <p>
-        Design so the system can grow beyond you — without collapsing under its own weight.
+        Design so the system can grow beyond you - without collapsing under its own weight.
       </p>
     </ChapterPage>
   );

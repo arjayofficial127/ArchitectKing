@@ -1,7 +1,7 @@
 MODE: CODE
 MODE: SAFE
 PROJECT: ArchitectKing (AK)
-PHASE: 3 — SuperAdmin Control OS — Route Protection + Layout Shell
+PHASE: 3 - SuperAdmin Control OS - Route Protection + Layout Shell
 
 OBJECTIVE:
 Create protected SuperAdmin UI structure.
@@ -12,7 +12,7 @@ Add additive routes under:
 /superadmin/*
 
 -------------------------------------------------------
-SECTION 1 — ROUTE STRUCTURE
+SECTION 1 - ROUTE STRUCTURE
 -------------------------------------------------------
 
 Create new route group:
@@ -34,7 +34,7 @@ If using Pages Router:
 DO NOT touch root layout.
 
 -------------------------------------------------------
-SECTION 2 — SUPERADMIN GUARD (FRONTEND)
+SECTION 2 - SUPERADMIN GUARD (FRONTEND)
 
 Create:
 
@@ -48,7 +48,7 @@ Logic:
 Wrap entire superadmin layout with this guard.
 
 -------------------------------------------------------
-SECTION 3 — SUPERADMIN LAYOUT SHELL
+SECTION 3 - SUPERADMIN LAYOUT SHELL
 
 Create:
 
@@ -76,7 +76,7 @@ Do NOT modify global theme.
 Respect AtomicFuel styling.
 
 -------------------------------------------------------
-SECTION 4 — DASHBOARD PAGE (SKELETON)
+SECTION 4 - DASHBOARD PAGE (SKELETON)
 
 Create:
 
@@ -98,7 +98,7 @@ For now:
 - No heavy styling yet
 
 -------------------------------------------------------
-SECTION 5 — COLOR CONFIG
+SECTION 5 - COLOR CONFIG
 
 Create:
 
@@ -113,7 +113,7 @@ swimlaneColors (default mapping fallback)
 Keep centralized.
 
 -------------------------------------------------------
-SECTION 6 — API HOOKS
+SECTION 6 - API HOOKS
 
 Create:
 
@@ -124,14 +124,14 @@ hooks/superadmin/useNotifications.ts
 Use fetch or existing API client.
 
 -------------------------------------------------------
-SECTION 7 — FILES PAGE (STUB)
+SECTION 7 - FILES PAGE (STUB)
 
 Create placeholder page with:
 
-"Knowledge Vault — Coming in Phase 7"
+"Knowledge Vault - Coming in Phase 7"
 
 -------------------------------------------------------
-SECTION 8 — CALENDAR + PROSPECT PAGE PLACEHOLDERS
+SECTION 8 - CALENDAR + PROSPECT PAGE PLACEHOLDERS
 
 For now:
 

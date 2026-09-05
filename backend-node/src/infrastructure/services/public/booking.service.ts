@@ -32,7 +32,7 @@ export class BookingService {
   ) {}
 
   async createBookingRequest(input: CreateBookingRequestInput): Promise<BookingRequest> {
-    // Recurring slots arrive as virtual instance ids — materialize a concrete
+    // Recurring slots arrive as virtual instance ids - materialize a concrete
     // child event first so the booking has a real row to attach to.
     const isVirtualInstance =
       CalendarService.parseInstanceId(input.calendarEventId) !== null;
@@ -173,7 +173,7 @@ export class BookingService {
 
     await this.mailService.send({
       to: booking.email,
-      subject: `Booking cancelled — ${startLocal.toFormat('MMM d, h:mm a')}`,
+      subject: `Booking cancelled - ${startLocal.toFormat('MMM d, h:mm a')}`,
       html: `
         <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#0f172a">
           <h2 style="margin-bottom:4px">Your booking has been cancelled.</h2>
@@ -186,7 +186,7 @@ export class BookingService {
 
     await this.mailService.send({
       to: ownerEmail,
-      subject: `Booking cancelled: ${booking.name} — ${startLocal.toFormat('MMM d, h:mm a')}`,
+      subject: `Booking cancelled: ${booking.name} - ${startLocal.toFormat('MMM d, h:mm a')}`,
       html: `
         <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#0f172a">
           <h2 style="margin-bottom:4px">Booking cancelled</h2>
@@ -227,7 +227,7 @@ export class BookingService {
     // Visitor confirmation
     await this.mailService.send({
       to: input.email,
-      subject: `Booking received — ${startLocal.toFormat('MMM d, h:mm a')} (${visitorZone})`,
+      subject: `Booking received - ${startLocal.toFormat('MMM d, h:mm a')} (${visitorZone})`,
       html: `
         <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#0f172a">
           <h2 style="margin-bottom:4px">Your booking is in, ${escapeHtml(input.name.split(' ')[0])}.</h2>
@@ -245,7 +245,7 @@ export class BookingService {
     // Owner alert
     await this.mailService.send({
       to: ownerEmail,
-      subject: `New booking: ${input.name} — ${startLocal.toFormat('MMM d, h:mm a')}`,
+      subject: `New booking: ${input.name} - ${startLocal.toFormat('MMM d, h:mm a')}`,
       html: `
         <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#0f172a">
           <h2 style="margin-bottom:4px">New booking request</h2>

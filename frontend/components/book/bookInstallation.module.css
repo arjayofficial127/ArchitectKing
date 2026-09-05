@@ -93,7 +93,7 @@
   backface-visibility: hidden;
 }
 
-/* front cover — real approved artwork, kept flat */
+/* front cover - real approved artwork, kept flat */
 .faceFront {
   inset: 0;
   transform: translateZ(calc(var(--bd) / 2));
@@ -130,7 +130,7 @@
   box-shadow: inset 0 0 0 1px rgba(120, 106, 82, 0.18);
 }
 
-/* spine — set in real text so the title stays crisp at every size */
+/* spine - set in real text so the title stays crisp at every size */
 .faceSpine {
   top: 0;
   left: calc(50% - var(--bd) / 2);
@@ -389,7 +389,7 @@
     --stone-x: 120px;
     --plane: 27%;
     /* extra height so a low stone still has room to show its body before the
-       installation clips — without it, lowering just crops the slab away */
+       installation clips - without it, lowering just crops the slab away */
     min-height: clamp(430px, 33vw, 470px);
   }
 }

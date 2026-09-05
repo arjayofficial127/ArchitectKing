@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 6: Design Principles — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Why boundaries matter more than cleverness — Chapter 6 of Working Fundamentals',
+  title: 'Chapter 6: Design Principles - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Why boundaries matter more than cleverness - Chapter 6 of Working Fundamentals',
 };
 
 export default function Chapter6Page() {

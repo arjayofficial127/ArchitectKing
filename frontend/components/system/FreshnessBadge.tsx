@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Feb042026.2 — Freshness Badge
+ * Feb042026.2 - Freshness Badge
  * 
  * Small, subtle badge showing "Last checked: X ago"
  * Read-only awareness signal.

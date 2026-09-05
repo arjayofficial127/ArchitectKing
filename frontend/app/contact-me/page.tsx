@@ -69,7 +69,7 @@ function ContactMeContent() {
                 Tell me what&apos;s going on.
               </h1>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-2">
-                {"A short note is enough. Tell me what you're building, what is getting in the way, or what you are unsure about."}
+                {"A short note is enough. Tell me about the role and your team, or what you're building and where it's getting difficult."}
               </p>
             </div>
 
@@ -79,7 +79,7 @@ function ContactMeContent() {
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
                   {[context.problem, context.engagement].filter(Boolean).join(' · ')}
                 </p>
-                <label htmlFor="journey-note" className="mt-4 block text-sm font-medium text-slate-700">Your note — edit or add anything you like</label>
+                <label htmlFor="journey-note" className="mt-4 block text-sm font-medium text-slate-700">Your note - edit or add anything you like</label>
                 <textarea id="journey-note" value={note} onChange={(event) => setNote(event.target.value)} rows={7} className="mt-2 w-full rounded-lg border border-slate-300 bg-white p-3 text-sm leading-relaxed text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500" />
                 <p className="mt-2 text-xs text-slate-500">The email link includes this note. Nothing is sent until you send it from your email app.</p>
               </div>
@@ -193,7 +193,7 @@ function ContactMeContent() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
               <p className="font-semibold text-base text-slate-700">Arvin Jayson Castro</p>
-              <p className="text-sm text-slate-500 mt-1">Software Architect &amp; Product Builder</p>
+              <p className="text-sm text-slate-500 mt-1">Software Architect &amp; Technical Lead</p>
               <p className="mt-1 text-xs text-slate-400">Architecture • Product Building • Production Support</p>
               <p className="mt-2 text-xs text-slate-400">BS Computer Science, University of Santo Tomas</p>
             </div>
@@ -208,7 +208,7 @@ function ContactMeContent() {
         </div>
       </footer>
 
-      <div className="text-xs text-slate-400 text-center mt-6">Practical help, directly from me.</div>
+      <div className="text-xs text-slate-400 text-center mt-6">You’ll speak and work directly with me.</div>
     </div>
   );
 }

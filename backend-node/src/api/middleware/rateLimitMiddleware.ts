@@ -27,7 +27,7 @@ export const authRateLimit = rateLimit({
   },
 });
 
-// Booking rate limit — public POST /api/public/book is unauthenticated and
+// Booking rate limit - public POST /api/public/book is unauthenticated and
 // converts open slots to scheduled, so it needs a strict ceiling
 export const bookingRateLimit = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour

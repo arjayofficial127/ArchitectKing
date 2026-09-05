@@ -1,7 +1,7 @@
 MODE: CODE
 MODE: SAFE
 PROJECT: ArchitectKing (AK)
-PHASE: 7 — SuperAdmin Knowledge Vault
+PHASE: 7 - SuperAdmin Knowledge Vault
 
 OBJECTIVE:
 Replace placeholder /superadmin/files page with full folder + file management system.
@@ -17,7 +17,7 @@ Scope:
 - No org integration
 
 -------------------------------------------------------
-SECTION 1 — PAGE STRUCTURE
+SECTION 1 - PAGE STRUCTURE
 
 Route:
 /superadmin/files
@@ -33,7 +33,7 @@ Right Panel:
 - File Viewer / Editor
 
 -------------------------------------------------------
-SECTION 2 — ROOT LOGIC
+SECTION 2 - ROOT LOGIC
 
 Invisible root:
 - parent_folder_id = null
@@ -43,7 +43,7 @@ When creating:
 If no folder selected → create in root.
 
 -------------------------------------------------------
-SECTION 3 — FOLDER TREE
+SECTION 3 - FOLDER TREE
 
 Recursive tree component.
 
@@ -65,7 +65,7 @@ Deleting folder:
 - Deletes child folders/files via backend cascade
 
 -------------------------------------------------------
-SECTION 4 — FILE CREATION
+SECTION 4 - FILE CREATION
 
 Modal fields:
 
@@ -78,7 +78,7 @@ POST /api/superadmin/files
 Load file into editor.
 
 -------------------------------------------------------
-SECTION 5 — FILE EDITOR ROUTING
+SECTION 5 - FILE EDITOR ROUTING
 
 If fileType:
 
@@ -99,7 +99,7 @@ rtf:
     "RTF is view-only in v1"
 
 -------------------------------------------------------
-SECTION 6 — SAVE LOGIC
+SECTION 6 - SAVE LOGIC
 
 For txt + md:
 - Save button
@@ -110,21 +110,21 @@ For txt + md:
 No auto-save.
 
 -------------------------------------------------------
-SECTION 7 — RENAME LOGIC
+SECTION 7 - RENAME LOGIC
 
 Renaming file:
 - Must be unique within folder
 - If conflict → show error
 
 -------------------------------------------------------
-SECTION 8 — DELETE LOGIC
+SECTION 8 - DELETE LOGIC
 
 Deleting file:
 - Confirmation modal
 - Hard delete (no trash system v1)
 
 -------------------------------------------------------
-SECTION 9 — STATE MANAGEMENT
+SECTION 9 - STATE MANAGEMENT
 
 Maintain:
 
@@ -138,7 +138,7 @@ When selecting file:
 Load content.
 
 -------------------------------------------------------
-SECTION 10 — STYLING
+SECTION 10 - STYLING
 
 Minimal.
 Professional.
@@ -148,7 +148,7 @@ No heavy theme changes.
 Keep within SuperAdmin layout.
 
 -------------------------------------------------------
-SECTION 11 — FUTURE-PROOF
+SECTION 11 - FUTURE-PROOF
 
 Add comment in code:
 

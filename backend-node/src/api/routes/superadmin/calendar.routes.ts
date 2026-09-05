@@ -86,7 +86,7 @@ router.patch('/:id', async (req: Request, res: Response, next) => {
   }
 });
 
-// POST /api/superadmin/calendar/bulk — create several events sharing one batchId
+// POST /api/superadmin/calendar/bulk - create several events sharing one batchId
 router.post('/bulk', async (req: Request, res: Response, next) => {
   try {
     const userId = req.user!.userId;
@@ -109,7 +109,7 @@ router.post('/bulk', async (req: Request, res: Response, next) => {
   }
 });
 
-// POST /api/superadmin/calendar/materialize — turn a virtual recurring
+// POST /api/superadmin/calendar/materialize - turn a virtual recurring
 // instance into a concrete child event so it can be edited individually
 router.post('/materialize', async (req: Request, res: Response, next) => {
   try {
@@ -130,7 +130,7 @@ router.post('/materialize', async (req: Request, res: Response, next) => {
   }
 });
 
-// GET /api/superadmin/calendar/batch/:batchId/size — how many events share this batch
+// GET /api/superadmin/calendar/batch/:batchId/size - how many events share this batch
 router.get('/batch/:batchId/size', async (req: Request, res: Response, next) => {
   try {
     const calendarService = container.resolve<CalendarService>(TYPES.ICalendarService);

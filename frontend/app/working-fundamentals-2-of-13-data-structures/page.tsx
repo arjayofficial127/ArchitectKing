@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 2: Data Structures — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Containers shape behavior — Chapter 2 of Working Fundamentals',
+  title: 'Chapter 2: Data Structures - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Containers shape behavior - Chapter 2 of Working Fundamentals',
 };
 
 export default function Chapter2Page() {

@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const navigationItems = [
-  { href: '/#selected-systems', label: 'Systems' },
-  { href: '/#approach', label: 'Approach' },
-  { href: '/architecture-review', label: 'Architecture Review' },
-  { href: '/working-fundamentals', label: 'Working Fundamentals' },
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#selected-systems', label: 'Selected Work' },
+  { href: '/#how-i-work', label: 'How I Work' },
+  { href: '/#writing', label: 'Writing' },
 ] as const;
 
 const MENU_ID = 'site-primary-menu';
@@ -31,23 +31,23 @@ export function SiteNavbar() {
         aria-label="Primary navigation"
         className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-x-3 gap-y-0 px-4 py-3 sm:px-5 lg:flex-nowrap lg:gap-x-4 lg:px-6 lg:py-4"
       >
-        {/* flex-1 (basis 0) so the brand shrinks to fit — with flex-wrap, an auto-basis
+        {/* flex-1 (basis 0) so the brand shrinks to fit - with flex-wrap, an auto-basis
             item pushes siblings onto a second row instead of giving up width. */}
         <Link href="/" className="order-1 flex min-w-0 flex-1 flex-col lg:order-1">
           <span className="truncate text-[15px] font-bold tracking-tight text-slate-950 lg:text-base">
             Arvin Jayson Castro
           </span>
           <span className="truncate text-[11px] font-medium text-slate-500 lg:mt-0.5 lg:text-xs">
-            Software Architect &amp; Product Builder
+            Software Architect &amp; Technical Lead
           </span>
         </Link>
 
-        {/* Primary action stays reachable on every screen — it never goes behind the menu. */}
+        {/* Primary action stays reachable on every screen - it never goes behind the menu. */}
         <Link
           href="/contact-me"
           className="order-2 hidden sm:inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-md bg-slate-950 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 lg:order-4 lg:px-4 lg:text-sm"
         >
-          Discuss your project <span aria-hidden="true" className="ml-1.5 lg:ml-2">→</span>
+          Discuss a role <span aria-hidden="true" className="ml-1.5 lg:ml-2">→</span>
         </Link>
 
         <button
@@ -63,7 +63,7 @@ export function SiteNavbar() {
           </svg>
         </button>
 
-        {/* One list for both layouts — a stacked panel under lg, an inline row above it. */}
+        {/* One list for both layouts - a stacked panel under lg, an inline row above it. */}
         <div
           id={MENU_ID}
           className={`${open ? 'flex' : 'hidden'} order-4 w-full flex-col gap-0.5 border-t border-slate-200/70 pb-1 pt-2 lg:order-3 lg:flex lg:w-auto lg:flex-row lg:items-center lg:gap-1 lg:border-0 lg:pb-0 lg:pt-0`}

@@ -1,5 +1,5 @@
 /**
- * Feb042026.2 — Freshness Markers (Metadata-Only Awareness)
+ * Feb042026.2 - Freshness Markers (Metadata-Only Awareness)
  * 
  * Shows users HOW FRESH their data is WITHOUT refetching full lists or content.
  * This builds trust and sets up future manual sync / merge.

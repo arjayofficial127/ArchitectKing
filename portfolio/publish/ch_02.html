@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Working Fundamentals — Arvin Jayson Castro</title>
+  <title>Working Fundamentals - Arvin Jayson Castro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- =====================
@@ -2101,7 +2101,7 @@
     const intensity = Math.abs(lx) + Math.abs(ly);
 
     /* ---------------------------
-       SLAB 1 — KEY CAST SHADOW
+       SLAB 1 - KEY CAST SHADOW
     ---------------------------- */
     slab1.style.transform =
       `translate(${(sx * 38).toFixed(2)}px, ${(sy * 38).toFixed(2)}px)`;
@@ -2111,7 +2111,7 @@
       (0.28 + intensity * 0.14).toFixed(2);
 
     /* ---------------------------
-       SLAB 2 — BOUNCE / COLOR BLEED
+       SLAB 2 - BOUNCE / COLOR BLEED
     ---------------------------- */
     slab2.style.transform =
       `translate(${(sx * 14).toFixed(2)}px, ${(sy * 14).toFixed(2)}px)`;
@@ -2121,7 +2121,7 @@
       (0.16 + intensity * 0.10).toFixed(2);
 
     /* ---------------------------
-       SLAB 3 — CONTACT SHADOW
+       SLAB 3 - CONTACT SHADOW
     ---------------------------- */
     slab3.style.transform =
       `translate(${(sx * 6).toFixed(2)}px, ${(sy * 6).toFixed(2)}px)`;
@@ -2130,7 +2130,7 @@
       (0.24 + Math.abs(lx) * 0.06).toFixed(2);
 
     /* ---------------------------
-       SLAB 4 — AMBIENT DEPTH
+       SLAB 4 - AMBIENT DEPTH
     ---------------------------- */
     slab4.style.transform =
       `translate(${(sx * 3).toFixed(2)}px, ${(sy * 3).toFixed(2)}px)`;
@@ -2139,7 +2139,7 @@
       (0.16 + Math.abs(ly) * 0.04).toFixed(2);
 
     /* ---------------------------
-       FRONT SLAB — SPECULAR RESPONSE
+       FRONT SLAB - SPECULAR RESPONSE
        (moves TOWARD light)
     ---------------------------- */
 if (front) {

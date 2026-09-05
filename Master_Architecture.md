@@ -214,31 +214,31 @@ UI calculates business rules.
 
 When analyzing ANY project:
 
-## Step 1 — Identify North Star
+## Step 1 - Identify North Star
 
 What truth does system protect?
 
-## Step 2 — Locate State
+## Step 2 - Locate State
 
 Where is real truth stored?
 
-## Step 3 — Locate Engine
+## Step 3 - Locate Engine
 
 Where do rules live?
 
-## Step 4 — Detect UI-owned logic
+## Step 4 - Detect UI-owned logic
 
 Mark for future extraction.
 
-## Step 5 — Detect Missing IR
+## Step 5 - Detect Missing IR
 
 Are multiple UIs recalculating logic?
 
-## Step 6 — Identify Meta opportunities
+## Step 6 - Identify Meta opportunities
 
 What behavior is hardcoded but could be metadata?
 
-## Step 7 — Detect Conscious opportunities
+## Step 7 - Detect Conscious opportunities
 
 What repeated user patterns exist?
 

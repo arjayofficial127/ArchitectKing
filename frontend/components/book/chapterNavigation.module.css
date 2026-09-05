@@ -42,7 +42,7 @@
   white-space: nowrap;
 }
 
-/* Disclosure control — narrow screens only. */
+/* Disclosure control - narrow screens only. */
 .toggle {
   display: flex;
   width: 100%;

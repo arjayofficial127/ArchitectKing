@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Introduction — Working Fundamentals by Arvin Jayson Castro',
-  description: 'On Building Software That Holds — Introduction to Working Fundamentals',
+  title: 'Introduction - Working Fundamentals by Arvin Jayson Castro',
+  description: 'On Building Software That Holds - Introduction to Working Fundamentals',
 };
 
 export default function IntroductionPage() {

@@ -1,5 +1,5 @@
 /**
- * Feb042026.3 — Manual Refresh Hooks (Metadata-Only)
+ * Feb042026.3 - Manual Refresh Hooks (Metadata-Only)
  * 
  * Allows the user to INTENTIONALLY refresh data WITHOUT:
  * - Auto refresh

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Phase 3 — Offline control panel page (Step 3.5).
+ * Phase 3 - Offline control panel page (Step 3.5).
  * Authority: activeOrgId from OrgSessionProvider only.
  */
 

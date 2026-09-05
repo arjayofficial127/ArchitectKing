@@ -1,7 +1,7 @@
 MODE: CODE
 MODE: SAFE
 PROJECT: ArchitectKing (AK)
-PHASE: 4 — SuperAdmin Calendar UI Engine
+PHASE: 4 - SuperAdmin Calendar UI Engine
 
 OBJECTIVE:
 Replace placeholder calendar page with full interactive scheduling system.
@@ -11,7 +11,7 @@ DO NOT break existing APIs.
 Use existing /api/superadmin/calendar endpoints.
 
 -------------------------------------------------------
-SECTION 1 — CALENDAR CORE STRUCTURE
+SECTION 1 - CALENDAR CORE STRUCTURE
 -------------------------------------------------------
 
 On /superadmin/calendar implement:
@@ -29,7 +29,7 @@ currentStartDate
 openSlotMode (boolean)
 
 -------------------------------------------------------
-SECTION 2 — 24-HOUR GRID (DAY VIEW)
+SECTION 2 - 24-HOUR GRID (DAY VIEW)
 
 Implement vertical time grid:
 
@@ -55,7 +55,7 @@ Manual override:
   - But snapping default is 30
 
 -------------------------------------------------------
-SECTION 3 — WEEK + BIWEEK VIEW
+SECTION 3 - WEEK + BIWEEK VIEW
 
 7-column grid (week)
 14-column grid (bi-week)
@@ -71,7 +71,7 @@ Allow overlapping events for SuperAdmin.
 Stack visually with slight horizontal offset.
 
 -------------------------------------------------------
-SECTION 4 — MONTH VIEW
+SECTION 4 - MONTH VIEW
 
 Grid calendar.
 
@@ -83,7 +83,7 @@ Display:
 Click day → switch to Day view.
 
 -------------------------------------------------------
-SECTION 5 — YEAR VIEW
+SECTION 5 - YEAR VIEW
 
 Simplified summary:
 - Month blocks
@@ -91,7 +91,7 @@ Simplified summary:
 - Click month → go to Month view
 
 -------------------------------------------------------
-SECTION 6 — EVENT MODAL
+SECTION 6 - EVENT MODAL
 
 When creating/editing event:
 
@@ -119,7 +119,7 @@ End Date
 Save sends recurrenceRule JSON.
 
 -------------------------------------------------------
-SECTION 7 — EDITING MODE
+SECTION 7 - EDITING MODE
 
 When clicking event:
 
@@ -139,7 +139,7 @@ Deleting:
 - Same dual option
 
 -------------------------------------------------------
-SECTION 8 — OPEN SLOT MODE
+SECTION 8 - OPEN SLOT MODE
 
 When openSlotMode = true:
 
@@ -153,7 +153,7 @@ Prevent overlapping with scheduled/private events.
 Allow overlapping open slots only if non-conflicting.
 
 -------------------------------------------------------
-SECTION 9 — COLOR CODING
+SECTION 9 - COLOR CODING
 
 Use superadminColors config:
 
@@ -163,7 +163,7 @@ Event color priority:
 3. Default calendar color
 
 -------------------------------------------------------
-SECTION 10 — TIMEZONE LABEL
+SECTION 10 - TIMEZONE LABEL
 
 Top bar:
 
@@ -173,7 +173,7 @@ Timezone: Asia/Manila
 All display times Manila in SuperAdmin view.
 
 -------------------------------------------------------
-SECTION 11 — API INTEGRATION
+SECTION 11 - API INTEGRATION
 
 On view change:
 Call:
@@ -183,7 +183,7 @@ GET /api/superadmin/calendar/range?start=...&end=...
 Recurring instances already expanded by backend.
 
 -------------------------------------------------------
-SECTION 12 — PERFORMANCE
+SECTION 12 - PERFORMANCE
 
 - Memoize events per range
 - Avoid re-rendering entire grid

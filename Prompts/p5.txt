@@ -1,7 +1,7 @@
 MODE: CODE
 MODE: SAFE
 PROJECT: ArchitectKing (AK)
-PHASE: 5 — Public Booking System
+PHASE: 5 - Public Booking System
 
 OBJECTIVE:
 Create public scheduling page that allows outside users to book available open slots.
@@ -13,7 +13,7 @@ This must:
 - Be fully decoupled from superadmin UI
 
 -------------------------------------------------------
-SECTION 1 — ROUTE
+SECTION 1 - ROUTE
 
 Create:
 
@@ -22,7 +22,7 @@ Create:
 Public route (no auth required).
 
 -------------------------------------------------------
-SECTION 2 — TIMEZONE DETECTION
+SECTION 2 - TIMEZONE DETECTION
 
 On load:
 
@@ -50,7 +50,7 @@ If timezone = Asia/Manila:
 Do not show badge.
 
 -------------------------------------------------------
-SECTION 3 — VIEW
+SECTION 3 - VIEW
 
 Keep simple and conversion-focused.
 
@@ -75,7 +75,7 @@ Do NOT show:
 - Private events
 
 -------------------------------------------------------
-SECTION 4 — BOOKING MODAL
+SECTION 4 - BOOKING MODAL
 
 When clicking Book:
 
@@ -101,7 +101,7 @@ Body:
 }
 
 -------------------------------------------------------
-SECTION 5 — AFTER SUBMIT
+SECTION 5 - AFTER SUBMIT
 
 On success:
 
@@ -113,7 +113,7 @@ No email integration yet.
 No pending state (auto-confirm).
 
 -------------------------------------------------------
-SECTION 6 — VALIDATION
+SECTION 6 - VALIDATION
 
 Frontend validation:
 - Name required
@@ -128,7 +128,7 @@ Backend enforces:
 - Creates Notification
 
 -------------------------------------------------------
-SECTION 7 — DESIGN
+SECTION 7 - DESIGN
 
 Keep style aligned with AtomicFuel:
 
@@ -142,7 +142,7 @@ This is revenue surface.
 Make it feel premium.
 
 -------------------------------------------------------
-SECTION 8 — EDGE CASES
+SECTION 8 - EDGE CASES
 
 If slot already taken:
 Return error:

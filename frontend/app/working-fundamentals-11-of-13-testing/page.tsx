@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 11: Testing — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Confidence, not coverage — Chapter 11 of Working Fundamentals',
+  title: 'Chapter 11: Testing - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Confidence, not coverage - Chapter 11 of Working Fundamentals',
 };
 
 export default function Chapter11Page() {
@@ -292,7 +292,7 @@ export default function Chapter11Page() {
       </ul>
 
       <p>
-        Write tests for those answers — not the steps.
+        Write tests for those answers - not the steps.
       </p>
 
       <h2>What beginners gain here</h2>

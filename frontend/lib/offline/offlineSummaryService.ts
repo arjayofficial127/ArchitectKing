@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Offline control panel data + actions (Step 3.5).
+ * Phase 3 - Offline control panel data + actions (Step 3.5).
  * User visibility and control; user-initiated cleanup only. No automation, no punishment.
  * Reuses existing stores only.
  */

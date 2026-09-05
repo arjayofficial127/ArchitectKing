@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Offline storage foundation.
+ * Phase 3 - Offline storage foundation.
  * IndexedDB bootstrap and versioning only.
  * NO APIs, NO providers, NO sync, NO conflict logic.
  * Org-scoped, app-scoped, user-device owned.

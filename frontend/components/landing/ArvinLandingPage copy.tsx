@@ -43,7 +43,7 @@ export function ArvinLandingPage2() {
         
         {isFastConversionMode && (
           <>
-            {/* FOLD 1 — EXECUTION HERO */}
+            {/* FOLD 1 - EXECUTION HERO */}
             <section className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
               <div className="mx-auto max-w-4xl text-center">
                 <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-tight">
@@ -268,7 +268,7 @@ export function ArvinLandingPage2() {
               <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
                 <div className="mx-auto max-w-6xl">
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                    {/* LEFT COLUMN — Urgency Block */}
+                    {/* LEFT COLUMN - Urgency Block */}
                     <div>
                       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
                         <h3 className="text-xl font-bold text-slate-900 mb-4">
@@ -311,7 +311,7 @@ export function ArvinLandingPage2() {
                       </div>
                     </div>
 
-                    {/* RIGHT COLUMN — CV Card */}
+                    {/* RIGHT COLUMN - CV Card */}
                     <div>
                       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
                         <h3 className="text-xl font-bold text-slate-900 mb-4">
@@ -392,7 +392,7 @@ export function ArvinLandingPage2() {
                         HOW I THINK ABOUT SOFTWARE
                       </h3>
                       <p className="text-lg text-[#EAEAEA] mb-4 leading-relaxed">
-                        &quot;Every program — regardless of language, framework, or scale — reduces to the same shape.&quot;
+                        &quot;Every program - regardless of language, framework, or scale - reduces to the same shape.&quot;
                       </p>
                       <p className="text-2xl font-bold text-[#EAEAEA] mb-5">
                         Input → Transform → Output
@@ -430,7 +430,7 @@ export function ArvinLandingPage2() {
                 </h2>
                 
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                  {/* LEFT COLUMN — Featured System (Oyeroyee) */}
+                  {/* LEFT COLUMN - Featured System (Oyeroyee) */}
                   <div>
                     {/* UI Preview */}
                     <div className="mb-6 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden shadow-sm">
@@ -487,7 +487,7 @@ export function ArvinLandingPage2() {
                     </div>
                   </div>
 
-                  {/* RIGHT COLUMN — Other Systems List */}
+                  {/* RIGHT COLUMN - Other Systems List */}
                   <div>
                     <h3 className="text-xl font-bold text-slate-900 mb-6">Other Systems</h3>
                     <ul className="space-y-4">

@@ -1,7 +1,7 @@
 MODE: CODE
 MODE: SAFE
 PROJECT: ArchitectKing (AK)
-PHASE: 6 — SuperAdmin Prospect Intelligence System
+PHASE: 6 - SuperAdmin Prospect Intelligence System
 
 OBJECTIVE:
 Replace placeholder prospects page with full CRM-style prospect management system.
@@ -11,7 +11,7 @@ DO NOT modify calendar logic.
 Use existing /api/superadmin/prospects endpoints.
 
 -------------------------------------------------------
-SECTION 1 — PAGE STRUCTURE
+SECTION 1 - PAGE STRUCTURE
 
 Route:
 /superadmin/prospects
@@ -28,7 +28,7 @@ selectedStatus
 selectedTags
 
 -------------------------------------------------------
-SECTION 2 — PROSPECT CARD COMPONENT
+SECTION 2 - PROSPECT CARD COMPONENT
 
 Create reusable:
 
@@ -50,7 +50,7 @@ Color logic:
 Use prospectStatusColors from config.
 
 -------------------------------------------------------
-SECTION 3 — LIST VIEW
+SECTION 3 - LIST VIEW
 
 Simple vertical list of ProspectCard.
 
@@ -60,7 +60,7 @@ Supports:
 - Combined filtering
 
 -------------------------------------------------------
-SECTION 4 — SWIMLANE BOARD VIEW
+SECTION 4 - SWIMLANE BOARD VIEW
 
 Dynamic swimlanes based on:
 
@@ -74,7 +74,7 @@ Prospects with no swimlane:
 Show in "Unassigned" lane.
 
 -------------------------------------------------------
-SECTION 5 — DRAG & DROP
+SECTION 5 - DRAG & DROP
 
 Implement lightweight drag-and-drop.
 
@@ -91,7 +91,7 @@ No external heavy library.
 Use minimal drag API.
 
 -------------------------------------------------------
-SECTION 6 — ADD / EDIT PROSPECT MODAL
+SECTION 6 - ADD / EDIT PROSPECT MODAL
 
 Fields:
 
@@ -107,7 +107,7 @@ Fields:
 Save via POST/PATCH API.
 
 -------------------------------------------------------
-SECTION 7 — TAG FILTERING
+SECTION 7 - TAG FILTERING
 
 Tag filter multi-select:
 - Populate unique tags from loaded prospects
@@ -117,7 +117,7 @@ If selectedTags.length > 0:
 Prospect must include ALL selected tags.
 
 -------------------------------------------------------
-SECTION 8 — LINKING MEETINGS
+SECTION 8 - LINKING MEETINGS
 
 Inside ProspectCard:
 "Meetings" button
@@ -129,7 +129,7 @@ Calls:
 linkMeeting(prospectId, calendarEventId)
 
 -------------------------------------------------------
-SECTION 9 — PERFORMANCE
+SECTION 9 - PERFORMANCE
 
 - Memoize filtered results
 - Do not refetch unnecessarily
@@ -137,11 +137,11 @@ SECTION 9 — PERFORMANCE
 - Avoid heavy dependencies
 
 -------------------------------------------------------
-SECTION 10 — EMPTY STATES
+SECTION 10 - EMPTY STATES
 
 If no prospects:
 Show centered message:
-"No prospects yet — add your first opportunity."
+"No prospects yet - add your first opportunity."
 
 -------------------------------------------------------
 ACCEPTANCE CRITERIA

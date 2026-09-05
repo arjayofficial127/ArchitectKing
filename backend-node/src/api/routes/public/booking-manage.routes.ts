@@ -24,7 +24,7 @@ function toPublicPayload(booking: any, event: any) {
   };
 }
 
-// GET /api/public/booking/:token — view a booking via its secret token
+// GET /api/public/booking/:token - view a booking via its secret token
 router.get('/:token', async (req: Request, res: Response, next) => {
   try {
     const { token } = req.params;

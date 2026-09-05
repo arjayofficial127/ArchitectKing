@@ -5,7 +5,7 @@ export function BookConversionFooter() {
   return (
     <section className={styles.conversionFooter}>
       <div className={styles.conversionContent}>
-        <h2 className={styles.conversionTitle}>Systems either hold — or they decay.</h2>
+        <h2 className={styles.conversionTitle}>Systems either hold - or they decay.</h2>
         <p className={styles.conversionSubtitle}>
           Architecture-first thinking prevents silent fragility
           and protects long-term velocity.
@@ -34,7 +34,7 @@ export function BookConversionFooter() {
           </div>
         </div>
         <p className={styles.signatureLine}>
-          If you&apos;re responsible for systems that must hold under pressure — we should talk.
+          If you&apos;re responsible for systems that must hold under pressure - we should talk.
         </p>
       </div>
     </section>

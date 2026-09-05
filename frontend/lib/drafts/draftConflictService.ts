@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Save-time conflict detection (Step 3.3).
+ * Phase 3 - Save-time conflict detection (Step 3.3).
  * Conflict checks happen ONLY on save. Metadata-only (revision, updatedAt, hash).
  * No auto-merge; no API calls; no provider changes.
  */

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Feb042026.1 — Online Indicator
+ * Feb042026.1 - Online Indicator
  * 
  * Small, non-intrusive indicator showing online status.
  * Hidden when offline (offline state is handled by banner).

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 4: Control & Flow — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Execution is a path, not a script — Chapter 4 of Working Fundamentals',
+  title: 'Chapter 4: Control & Flow - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Execution is a path, not a script - Chapter 4 of Working Fundamentals',
 };
 
 export default function Chapter4Page() {
@@ -208,7 +208,7 @@ export default function Chapter4Page() {
       </ul>
 
       <p>
-        A loop without a clear exit condition is not unfinished — it is dangerous.
+        A loop without a clear exit condition is not unfinished - it is dangerous.
       </p>
 
       <p>

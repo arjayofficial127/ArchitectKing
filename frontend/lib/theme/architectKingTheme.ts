@@ -1,5 +1,5 @@
 /**
- * Architect-King 2026 — Deep Teal UI System
+ * Architect-King 2026 - Deep Teal UI System
  * 
  * Persona: Architect-King
  * Essence: Calm authority · clarity · systems · long-term thinking

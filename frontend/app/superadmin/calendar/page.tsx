@@ -75,7 +75,7 @@ export default function SuperAdminCalendarPage() {
         'single'
       );
       const when = DateTime.fromJSDate(newStart).setZone(timezone).toFormat('ccc, MMM d h:mm a');
-      toast(`${kind === 'move' ? 'Moved' : 'Resized'} "${event.title}" — ${when}`, 'success', 6000, {
+      toast(`${kind === 'move' ? 'Moved' : 'Resized'} "${event.title}" - ${when}`, 'success', 6000, {
         label: 'Undo',
         onClick: () => {
           updateEvent(id, { startDatetime: prevStart, endDatetime: prevEnd, timezone }, 'single').catch(() =>
@@ -101,7 +101,7 @@ export default function SuperAdminCalendarPage() {
         visibility: event.visibility,
         color: event.color || undefined,
       });
-      toast('Duplicated — drag the copy to reposition', 'success');
+      toast('Duplicated - drag the copy to reposition', 'success');
     } catch (err: any) {
       toast(err.message || 'Failed to duplicate event', 'error');
     }

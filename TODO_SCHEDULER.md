@@ -34,4 +34,4 @@ Hardcoded values that should come from app settings / env:
 - `backend-node/.env` has TWO `DATABASE_URL` lines (Docker + Neon; the last one wins → Neon). Delete the unused line.
 - Remove `[TEST]`-titled calendar events, the test booking (`test-visitor@example.com`), and its entity row from Neon.
 - Series title edit: renaming one batch event could offer "rename whole series" (batch-wide PATCH is currently coerced to single).
-- Series-level drag for recurring events (dragging one occurrence only moves that occurrence; rebasing the whole series via drag is deferred — use the Edit modal's "Edit Series" instead).
+- Series-level drag for recurring events (dragging one occurrence only moves that occurrence; rebasing the whole series via drag is deferred - use the Edit modal's "Edit Series" instead).

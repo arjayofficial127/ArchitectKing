@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Phase 3 — Offline control panel (Step 3.5). Minimal UI.
+ * Phase 3 - Offline control panel (Step 3.5). Minimal UI.
  * User visibility and control; user-initiated cleanup only. No automation, no punishment.
  */
 

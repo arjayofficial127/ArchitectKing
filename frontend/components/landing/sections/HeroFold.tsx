@@ -7,7 +7,7 @@ export function HeroFold() {
     <section className="relative mx-auto max-w-7xl px-6 pt-20 pb-16 md:pt-28 md:pb-24">
       <div className="mx-auto max-w-4xl text-center">
         <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-[1.05]">
-          I Help Teams Fix Slow, Fragile SaaS Systems — So They Can Scale Without Breaking Production
+          I Help Teams Fix Slow, Fragile SaaS Systems - So They Can Scale Without Breaking Production
           <span className="block mt-5 text-slate-700 font-normal text-lg sm:text-xl md:text-2xl leading-relaxed">
             I fix slow, fragile SaaS systems so teams can ship faster and scale without breaking production.
           </span>
@@ -39,10 +39,10 @@ export function HeroFold() {
               Get Expert Feedback on Your System
             </Link>
             <p className="mt-2 text-center text-xs text-slate-500">
-              Quick architecture discussion — no preparation needed.
+              Quick architecture discussion - no preparation needed.
             </p>
             <p className="text-center text-xs text-slate-500">
-              ⚠️ Limited availability — I only take 2–3 architecture reviews per week.
+              ⚠️ Limited availability - I only take 2–3 architecture reviews per week.
             </p>
           </div>
           <Link

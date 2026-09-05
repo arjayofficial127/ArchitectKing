@@ -1,5 +1,5 @@
 /**
- * Feb042026.6.1 — Manual Sync UI (Read-Only Preview)
+ * Feb042026.6.1 - Manual Sync UI (Read-Only Preview)
  * 
  * Provides a READ-ONLY preview of sync state:
  * - Lists drafts vs server state

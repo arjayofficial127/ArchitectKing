@@ -1,5 +1,5 @@
 /**
- * Phase 3 — Offline drafts store.
+ * Phase 3 - Offline drafts store.
  * Generic access only: get, put, delete, listByOrgAndApp, clearByOrg.
  * NO domain-specific helpers, NO sync, NO conflict logic.
  */
@@ -55,7 +55,7 @@ export async function put(entity: DraftEntity): Promise<void> {
   });
 }
 
-/** delete(id) — reserved word in JS, so named deleteById. */
+/** delete(id) - reserved word in JS, so named deleteById. */
 export async function deleteById(id: string): Promise<void> {
   return withStore('readwrite', (store) => {
     return new Promise<void>((resolve, reject) => {

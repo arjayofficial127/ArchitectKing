@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Feb042026.1 — Awareness Surface (READ-ONLY UI SIGNALS)
+ * Feb042026.1 - Awareness Surface (READ-ONLY UI SIGNALS)
  * 
  * Provides CLEAR, READ-ONLY awareness of:
  * - Offline / online state

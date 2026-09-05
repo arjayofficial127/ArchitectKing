@@ -37,7 +37,7 @@ export function AppSidebar({ isOpen, onClose, appCode, appName }: AppSidebarProp
     return names[detectedAppCode] || detectedAppCode.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   })();
 
-  // Check for app sidebar state (like PostApp's __postAppSidebarState) — must run before any conditional return
+  // Check for app sidebar state (like PostApp's __postAppSidebarState) - must run before any conditional return
   useEffect(() => {
     if (typeof window === 'undefined') return;
 

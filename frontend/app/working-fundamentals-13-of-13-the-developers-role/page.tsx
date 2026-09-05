@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 13: The Developer\'s Role — Working Fundamentals by Arvin Jayson Castro',
-  description: 'Judgment, responsibility, longevity — Chapter 13 of Working Fundamentals',
+  title: 'Chapter 13: The Developer\'s Role - Working Fundamentals by Arvin Jayson Castro',
+  description: 'Judgment, responsibility, longevity - Chapter 13 of Working Fundamentals',
 };
 
 export default function Chapter13Page() {
@@ -317,7 +317,7 @@ export default function Chapter13Page() {
       </p>
 
       <p>
-        If you build toward that, your work will outlast you — and that is enough.
+        If you build toward that, your work will outlast you - and that is enough.
       </p>
     </ChapterPage>
   );

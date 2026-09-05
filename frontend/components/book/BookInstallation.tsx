@@ -58,7 +58,7 @@ function Book() {
     <div
       className={styles.book}
       role="img"
-      aria-label="Working Fundamentals by Arvin Jayson Castro — cover and spine of the printed guide"
+      aria-label="Working Fundamentals by Arvin Jayson Castro - cover and spine of the printed guide"
     >
       <div className={`${styles.face} ${styles.faceFront}`}>
         <Image
@@ -109,7 +109,7 @@ export function BookInstallation({ className }: { className?: string } = {}) {
   const [paused, setPaused] = useState(false);
   const pausedRef = useRef(false);
 
-  /** rAF only smooths pointer parallax — it never touches React state. */
+  /** rAF only smooths pointer parallax - it never touches React state. */
   const startLoop = useCallback(() => {
     if (running.current) return;
     running.current = true;

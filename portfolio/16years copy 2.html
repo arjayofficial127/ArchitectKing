@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Resume — Arvin Jayson Castro</title>
+<title>Resume - Arvin Jayson Castro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <style>
@@ -562,7 +562,7 @@ function render() {
       title.textContent = job.position;
       const meta = document.createElement('div');
       meta.className = 'job-meta';
-      meta.textContent = `${job.workplace}  ·  ${job.fromYear} — ${job.toYear}`;
+      meta.textContent = `${job.workplace}  ·  ${job.fromYear} - ${job.toYear}`;
 
       const ul = document.createElement('ul');
       ul.className = 'bullets';
@@ -585,7 +585,7 @@ function render() {
     for (const e of resumeData.education) {
       const top = document.createElement('div');
       top.style.marginBottom = '10px';
-      top.innerHTML = `<div style="font-weight:900;">${e.degree}</div><div style="color: var(--muted);">${e.institution} · ${e.fromYear} — ${e.toYear}</div>`;
+      top.innerHTML = `<div style="font-weight:900;">${e.degree}</div><div style="color: var(--muted);">${e.institution} · ${e.fromYear} - ${e.toYear}</div>`;
       edu.appendChild(top);
       if (e.bullets?.length) {
         const ul = document.createElement('ul');

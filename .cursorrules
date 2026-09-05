@@ -1,5 +1,5 @@
 # ================================
-# CURSOR RULES — GLOBAL CONTRACT
+# CURSOR RULES - GLOBAL CONTRACT
 # ================================
 
 ALWAYS read /_tools/CURSOR_RULES/CURSOR_RULES.md.
@@ -23,7 +23,7 @@ If ambiguity exists:
 
 ---
 
-## INTENT GATING (MANDATORY — DEFAULT SAFE MODE)
+## INTENT GATING (MANDATORY - DEFAULT SAFE MODE)
 
 All user requests MUST be classified into exactly ONE mode:
 
@@ -116,7 +116,7 @@ When MODE: CODE is active:
 
 ---
 
-## PRE-FLIGHT CHECK (MANDATORY — MODE: CODE ONLY)
+## PRE-FLIGHT CHECK (MANDATORY - MODE: CODE ONLY)
 
 Before presenting final output:
 
@@ -146,13 +146,13 @@ No excuses.
 
 ---
 
-# 🔒 PHASE 1 — SECURE APP SHELL (REGRESSION LOCK)
+# 🔒 PHASE 1 - SECURE APP SHELL (REGRESSION LOCK)
 
 The following architectural rules are FINAL and IMMUTABLE.
 If a requested change would violate ANY rule below:
 
 → **DO NOT APPLY THE CHANGE**  
-→ Report the file as: **MULTI-BUCKET — DEFERRED**
+→ Report the file as: **MULTI-BUCKET - DEFERRED**
 
 ## AUTHORITY (NON-NEGOTIABLE)
 
@@ -180,7 +180,7 @@ If a file violates MORE THAN ONE bucket:
 - DO NOT partially fix
 - DO NOT refactor incrementally
 - DO NOT move calls blindly
-- Mark as **MULTI-BUCKET — DEFERRED**
+- Mark as **MULTI-BUCKET - DEFERRED**
 - Skip modification entirely
 
 ## FIX SCOPE DISCIPLINE

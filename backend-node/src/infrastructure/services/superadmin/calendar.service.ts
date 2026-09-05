@@ -598,7 +598,7 @@ export class CalendarService {
     }
 
     // Idempotency: reuse the child already materialized for this occurrence
-    // (matched by original rule time — the child may have been moved since)
+    // (matched by original rule time - the child may have been moved since)
     const children = await this.calendarEventRepo.findRecurringInstances(parent.id);
     const existingChild = children.find(
       (e) => (e.recurrenceOriginalStart ?? e.startDatetime).getTime() === startDate.getTime()

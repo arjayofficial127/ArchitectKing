@@ -1,5 +1,5 @@
 /**
- * Feature flags — flip to enable/disable UI features without removing code.
+ * Feature flags - flip to enable/disable UI features without removing code.
  */
 
 export const FEATURES = {

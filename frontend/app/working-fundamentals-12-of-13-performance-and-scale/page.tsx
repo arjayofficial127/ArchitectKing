@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { ChapterPage } from '@/components/book/ChapterPage';
 
 export const metadata: Metadata = {
-  title: 'Chapter 12: Performance & Scale — Working Fundamentals by Arvin Jayson Castro',
-  description: 'When systems meet reality — Chapter 12 of Working Fundamentals',
+  title: 'Chapter 12: Performance & Scale - Working Fundamentals by Arvin Jayson Castro',
+  description: 'When systems meet reality - Chapter 12 of Working Fundamentals',
 };
 
 export default function Chapter12Page() {
@@ -375,7 +375,7 @@ export default function Chapter12Page() {
       </ul>
 
       <p>
-        Design for pressure while calm — because pressure will arrive.
+        Design for pressure while calm - because pressure will arrive.
       </p>
     </ChapterPage>
   );

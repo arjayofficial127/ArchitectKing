@@ -4,19 +4,20 @@ import { AmbientBackground } from '@/components/ui/AmbientBackground';
 import { SiteNavbar } from '@/components/shared/SiteNavbar';
 
 import { HeroFoldCloser } from './sections/HeroFoldCloser';
-import { ProofFoldCloser } from './sections/ProofFoldCloser';
-// CloseFoldCloser section removed per request
 import { TechStrip } from './sections/TechStrip';
+import { CareerTimelineSection } from './sections/CareerTimelineSection';
+import { StrengthsSection } from './sections/StrengthsSection';
 import { SelectedSystemsSection } from './sections/SelectedSystemsSection';
+import { WritingSection } from './sections/WritingSection';
+import { HiringCloseSection } from './sections/HiringCloseSection';
 
 export function ArvinLandingPage() {
-
   return (
     <div className="relative min-h-screen bg-white text-slate-800">
       {/* Background */}
-      <AmbientBackground 
-        gridSize={64} 
-        lightCount={8} 
+      <AmbientBackground
+        gridSize={64}
+        lightCount={8}
         enableGradient
         gradientOpacity={0.08}
         enableGrain
@@ -29,23 +30,27 @@ export function ArvinLandingPage() {
       </div>
 
       <main className="relative">
-
-        {/* 3-FOLD LAYOUT - Fold 1: Hero + TechStrip combined into one full-height fold */}
+        {/* Fold 1: hero + working-principles strip */}
         <section className="flex min-h-[calc(100vh-82px)] flex-col justify-between">
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex flex-1 items-center justify-center">
             <HeroFoldCloser />
           </div>
           <TechStrip />
         </section>
 
-        <SelectedSystemsSection />
+        <CareerTimelineSection />
 
+        {/* #approach is kept as an anchor: other pages still link to /#approach. */}
         <section id="approach" className="scroll-mt-28">
-          <ProofFoldCloser />
+          <StrengthsSection />
         </section>
 
+        <SelectedSystemsSection />
+
+        <WritingSection />
       </main>
 
+      <HiringCloseSection />
     </div>
   );
 }
